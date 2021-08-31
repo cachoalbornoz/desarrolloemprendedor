@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<marcadores>
+	<marcador>
+	 	<id_expediente>122</id_expediente>
+	 	<propietario>ABIRAD, MARCIO EZEQUIEL</propietario>
+	 	<latitud>-31.24832416</latitud>
+	 	<longitud>-58.00858475</longitud>
+	 	<color>red</color>
+	 	<funciona>-1</funciona>
+	 	<rubro>CITRICOLA</rubro>
+	 	<resena>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal mane</resena>
+	 	<archivo>imagenagro.jpg</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>375</id_expediente>
+	 	<propietario>ASUETA, FRANCISCO JOSE</propietario>
+	 	<latitud>-31.38986326</latitud>
+	 	<longitud>-58.02154885</longitud>
+	 	<color>red</color>
+	 	<funciona>0</funciona>
+	 	<rubro>SIEMBRA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>437</id_expediente>
+	 	<propietario>BENEDETTI, MARIANO GABRIEL</propietario>
+	 	<latitud>-33.09795429</latitud>
+	 	<longitud>-59.11086293</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>SERVICIO</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>256</id_expediente>
+	 	<propietario>BOTTGES, CECILIA GABRIELA</propietario>
+	 	<latitud>-33.64952295</latitud>
+	 	<longitud>-58.60391631</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>APICOLA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>414</id_expediente>
+	 	<propietario>BOTTGES, CRISTIAN</propietario>
+	 	<latitud>-32.67937276</latitud>
+	 	<longitud>-58.88660425</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>APICOLA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>262</id_expediente>
+	 	<propietario>BOTTGES, SEBASTIAN</propietario>
+	 	<latitud>-33.64947702</latitud>
+	 	<longitud>-58.60392364</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>VACUNOS</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>487</id_expediente>
+	 	<propietario>BOUJON, FACUNDO JAVIER</propietario>
+	 	<latitud>-32.34502593</latitud>
+	 	<longitud>-58.44197216</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>CRIA/OTRO</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>198</id_expediente>
+	 	<propietario>BRAMBILLA, GABRIEL DAMIAN</propietario>
+	 	<latitud>-30.76038444</latitud>
+	 	<longitud>-58.0080497</longitud>
+	 	<color>red</color>
+	 	<funciona>0</funciona>
+	 	<rubro>FORESTACION</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>421</id_expediente>
+	 	<propietario>CABUCHE, MARIA MERCEDES</propietario>
+	 	<latitud>-30.67959926</latitud>
+	 	<longitud>-58.593172</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>VACUNOS</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>449</id_expediente>
+	 	<propietario>CAMOZZI, RAMON ALCIDES</propietario>
+	 	<latitud>-32.30669419</latitud>
+	 	<longitud>-59.15230193</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>APICOLA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>14</id_expediente>
+	 	<propietario>CARLAZARA, LEONARDO GUSTAVO</propietario>
+	 	<latitud>-30.64111067</latitud>
+	 	<longitud>-58.12387068</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>HORTICOLA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>233</id_expediente>
+	 	<propietario>CAVALLO, FABRICIO ENRIQUE</propietario>
+	 	<latitud>-31.96488263</latitud>
+	 	<longitud>-59.72312622</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>APICOLA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>429</id_expediente>
+	 	<propietario>CORREA, FELICIANO JAVIER</propietario>
+	 	<latitud>-33.03570768</latitud>
+	 	<longitud>-59.01122261</longitud>
+	 	<color>red</color>
+	 	<funciona>0</funciona>
+	 	<rubro>HORTICOLA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>461</id_expediente>
+	 	<propietario>CRETTAZ, JAVIER AURELIO</propietario>
+	 	<latitud>-32.17907908</latitud>
+	 	<longitud>-59.3987049</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>APICOLA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>278</id_expediente>
+	 	<propietario>DALINGER, GUIDO EMILIO</propietario>
+	 	<latitud>-32.16042705</latitud>
+	 	<longitud>-59.39610891</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>VACUNOS</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>523</id_expediente>
+	 	<propietario>DIMIER, GUSTAVO IVAN</propietario>
+	 	<latitud>-32.35432952</latitud>
+	 	<longitud>-58.44387091</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>SIEMBRA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>463</id_expediente>
+	 	<propietario>ELLEMBERGER, IVANA PAOLA</propietario>
+	 	<latitud>-31.18458224</latitud>
+	 	<longitud>-59.94540427</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>CRIA/OTRO</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>29</id_expediente>
+	 	<propietario>ENRIQUE, ALEJANDRA MARÍA</propietario>
+	 	<latitud>-32.03383805</latitud>
+	 	<longitud>-60.30340308</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>VACUNOS</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>484</id_expediente>
+	 	<propietario>FERNANDEZ, CHRISTIAN HUMERTO</propietario>
+	 	<latitud>-32.47988418</latitud>
+	 	<longitud>-58.25237122</longitud>
+	 	<color>red</color>
+	 	<funciona>0</funciona>
+	 	<rubro>VACUNOS</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>367</id_expediente>
+	 	<propietario>FIRPO, NATALIA RAQUEL</propietario>
+	 	<latitud>-32.6067392</latitud>
+	 	<longitud>-60.15256792</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>VACUNOS</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>507</id_expediente>
+	 	<propietario>FLOREAN, JUAN GUILLERMO</propietario>
+	 	<latitud>-31.76686681</latitud>
+	 	<longitud>-60.479121</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>FABRICACION DE PRODUCTOS METALES, MAQUINARIAS Y EQ</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>514</id_expediente>
+	 	<propietario>FLORES, JORGE LUIS</propietario>
+	 	<latitud>-30.82232142</latitud>
+	 	<longitud>-58.06884748</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>CITRICOLA</rubro>
+	 	<resena>Reseña de Flores</resena>
+	 	<archivo>logo_er.png</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>445</id_expediente>
+	 	<propietario>FRANCO, ARIEL</propietario>
+	 	<latitud>-32.17909152</latitud>
+	 	<longitud>-59.39874287</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>APICOLA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>462</id_expediente>
+	 	<propietario>FRANCO, DANIEL</propietario>
+	 	<latitud>-32.17907923</latitud>
+	 	<longitud>-59.39870803</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>APICOLA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>464</id_expediente>
+	 	<propietario>FURLAN, URIEL ROBERTO</propietario>
+	 	<latitud>-32.33611206</latitud>
+	 	<longitud>-59.36852221</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>APICOLA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>46</id_expediente>
+	 	<propietario>GEUNA, DIEGO ESTEBAN</propietario>
+	 	<latitud>-32.07809719</latitud>
+	 	<longitud>-60.61698154</longitud>
+	 	<color>red</color>
+	 	<funciona>0</funciona>
+	 	<rubro>HORTICOLA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>398</id_expediente>
+	 	<propietario>GIRARD MARINO, MARIA JESUS</propietario>
+	 	<latitud>-31.68385633</latitud>
+	 	<longitud>-60.33045399</longitud>
+	 	<color>red</color>
+	 	<funciona>0</funciona>
+	 	<rubro>AVICOLA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>205</id_expediente>
+	 	<propietario>GOMEZ, DIEGO ALBERTO</propietario>
+	 	<latitud>-33.64634401</latitud>
+	 	<longitud>-58.73817127</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>VACUNOS</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>48</id_expediente>
+	 	<propietario>GOYA, LEANDRO LUIS</propietario>
+	 	<latitud>-31.20243911</latitud>
+	 	<longitud>-58.01739025</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>VACUNOS</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>38</id_expediente>
+	 	<propietario>HERR, MARTA CRISTINA</propietario>
+	 	<latitud>-32.01258543</latitud>
+	 	<longitud>-59.75307871</longitud>
+	 	<color>red</color>
+	 	<funciona>0</funciona>
+	 	<rubro>VACUNOS</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>428</id_expediente>
+	 	<propietario>HUCK, LUIS MARIA</propietario>
+	 	<latitud>-33.04155388</latitud>
+	 	<longitud>-58.99499736</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>APICOLA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>343</id_expediente>
+	 	<propietario>HUCK, MARIA DEL HUERTO</propietario>
+	 	<latitud>-31.68601595</latitud>
+	 	<longitud>-58.83887143</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>OVINOS</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>240</id_expediente>
+	 	<propietario>IBARRA, ERICA MARIANELA</propietario>
+	 	<latitud>-31.18545718</latitud>
+	 	<longitud>-59.94777909</longitud>
+	 	<color>red</color>
+	 	<funciona>0</funciona>
+	 	<rubro>VACUNOS</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>23</id_expediente>
+	 	<propietario>IENO, FLAVIA ERIKA GISEL</propietario>
+	 	<latitud>-30.73962547</latitud>
+	 	<longitud>-59.62565617</longitud>
+	 	<color>red</color>
+	 	<funciona>0</funciona>
+	 	<rubro>AVICOLA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>208</id_expediente>
+	 	<propietario>JACOB, PABLO MARIA JOSE</propietario>
+	 	<latitud>-31.56042401</latitud>
+	 	<longitud>-59.96118517</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>TAMBO</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>35</id_expediente>
+	 	<propietario>JACOBI, CLAUDIO SEBASTIAN</propietario>
+	 	<latitud>-32.06442033</latitud>
+	 	<longitud>-60.24431934</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>HORTICOLA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>530</id_expediente>
+	 	<propietario>KLOSTER, ARIEL ALEJANDRO</propietario>
+	 	<latitud>-32.34444261</latitud>
+	 	<longitud>-58.44069503</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>SERVICIO</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>206</id_expediente>
+	 	<propietario>LEIVA, MIRIAM DEL CARMEN</propietario>
+	 	<latitud>-30.74208701</latitud>
+	 	<longitud>-57.9903905</longitud>
+	 	<color>red</color>
+	 	<funciona>0</funciona>
+	 	<rubro>HORTICOLA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>379</id_expediente>
+	 	<propietario>LELL, DANIEL ANTONIO</propietario>
+	 	<latitud>-31.99317344</latitud>
+	 	<longitud>-60.12839732</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>SIEMBRA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>502</id_expediente>
+	 	<propietario>LONGHI, DIEGO PABLO</propietario>
+	 	<latitud>-31.35557311</latitud>
+	 	<longitud>-58.01657829</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>APICOLA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>16</id_expediente>
+	 	<propietario>LOWER, MARCOS ANDRES</propietario>
+	 	<latitud>-30.7475092</latitud>
+	 	<longitud>-58.01682941</longitud>
+	 	<color>red</color>
+	 	<funciona>0</funciona>
+	 	<rubro>VACUNOS</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>419</id_expediente>
+	 	<propietario>LUJAN, EDGARDO ANTONIO</propietario>
+	 	<latitud>-33.00353913</latitud>
+	 	<longitud>-58.51346586</longitud>
+	 	<color>red</color>
+	 	<funciona>0</funciona>
+	 	<rubro>CRIA/OTRO</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>546</id_expediente>
+	 	<propietario>LUTZ, DAIANA VERONICA</propietario>
+	 	<latitud>-33.71548595</latitud>
+	 	<longitud>-58.66532177</longitud>
+	 	<color>red</color>
+	 	<funciona>0</funciona>
+	 	<rubro>VACUNOS</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>525</id_expediente>
+	 	<propietario>MARTINEZ, CARINA NORALI</propietario>
+	 	<latitud>-31.18635252</latitud>
+	 	<longitud>-59.9463744</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>FABRICACION DE PRENDAS DE VESTIR Y TEÑIDO DE PIELE</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>418</id_expediente>
+	 	<propietario>MARTINEZ, MIRIAM ANDREA</propietario>
+	 	<latitud>-33.02079334</latitud>
+	 	<longitud>-58.52988831</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>CRIA/OTRO</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>477</id_expediente>
+	 	<propietario>MARTINEZ, OSCAR NICOLAS</propietario>
+	 	<latitud>-33.02747334</latitud>
+	 	<longitud>-58.51254342</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>HORTICOLA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>547</id_expediente>
+	 	<propietario>MENDOZA, ROBERTO ANTONIO</propietario>
+	 	<latitud>-33.67062736</latitud>
+	 	<longitud>-58.70026853</longitud>
+	 	<color>red</color>
+	 	<funciona>0</funciona>
+	 	<rubro>CRIA/OTRO</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>413</id_expediente>
+	 	<propietario>NUÑEZ, NOE GABRIEL</propietario>
+	 	<latitud>-32.4405179</latitud>
+	 	<longitud>-60.37024005</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>OVINOS</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>501</id_expediente>
+	 	<propietario>PEZZARINI, ROBERTO ANTONIO</propietario>
+	 	<latitud>-30.72514188</latitud>
+	 	<longitud>-58.00408685</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>CRIA/OTRO</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>540</id_expediente>
+	 	<propietario>PONCE, GASTON NICOLAS</propietario>
+	 	<latitud>-33.71654998</latitud>
+	 	<longitud>-58.65728893</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>APICOLA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>438</id_expediente>
+	 	<propietario>RIGANTI, MELISA</propietario>
+	 	<latitud>-33.03551067</latitud>
+	 	<longitud>-59.00115628</longitud>
+	 	<color>red</color>
+	 	<funciona>0</funciona>
+	 	<rubro>OVINOS</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>538</id_expediente>
+	 	<propietario>ROMANO, MARIA FERNANDA</propietario>
+	 	<latitud>-33.71548566</latitud>
+	 	<longitud>-58.66532253</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>OVINOS</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>448</id_expediente>
+	 	<propietario>ROSTAN, MAXIMILIANO CARLOS</propietario>
+	 	<latitud>-32.37342588</latitud>
+	 	<longitud>-59.2353777</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>VACUNOS</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>452</id_expediente>
+	 	<propietario>SANTUCHO, LEANDRO ARIEL</propietario>
+	 	<latitud>-32.13575519</latitud>
+	 	<longitud>-59.79510479</longitud>
+	 	<color>red</color>
+	 	<funciona>0</funciona>
+	 	<rubro>PORCINOS</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>505</id_expediente>
+	 	<propietario>SCHMIDT, MARIO ALBERTO</propietario>
+	 	<latitud>-30.73620878</latitud>
+	 	<longitud>-59.64080217</longitud>
+	 	<color>red</color>
+	 	<funciona>0</funciona>
+	 	<rubro>PORCINOS</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>513</id_expediente>
+	 	<propietario>TAVASANI, SERGIO</propietario>
+	 	<latitud>-31.73044269</latitud>
+	 	<longitud>-60.53042291</longitud>
+	 	<color>red</color>
+	 	<funciona>0</funciona>
+	 	<rubro>VACUNOS</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>388</id_expediente>
+	 	<propietario>VALDEZ, LAUTARO EZEQUIEL</propietario>
+	 	<latitud>-31.72133057</latitud>
+	 	<longitud>-60.51833518</longitud>
+	 	<color>red</color>
+	 	<funciona>0</funciona>
+	 	<rubro>APICOLA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>492</id_expediente>
+	 	<propietario>VERA, DAVID EDGARDO</propietario>
+	 	<latitud>-31.32828837</latitud>
+	 	<longitud>-58.11661904</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>CRIA/OTRO</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>185</id_expediente>
+	 	<propietario>VERNHET, MIGUEL ANGEL</propietario>
+	 	<latitud>-33.03190378</latitud>
+	 	<longitud>-58.54113931</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>APICOLA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>410</id_expediente>
+	 	<propietario>VERSALLI, CLAUDIO FABIAN</propietario>
+	 	<latitud>-31.24832431</latitud>
+	 	<longitud>-58.00858491</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>APICOLA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>239</id_expediente>
+	 	<propietario>VERSALLI, DIEGO</propietario>
+	 	<latitud>-31.24814769</latitud>
+	 	<longitud>-58.0082314</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>APICOLA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>519</id_expediente>
+	 	<propietario>VIGANONI, FERNANDO RUBEN</propietario>
+	 	<latitud>-32.44762173</latitud>
+	 	<longitud>-58.43484939</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>CRIA/OTRO</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>52</id_expediente>
+	 	<propietario>ZAPATA, CIRO FERNANDO</propietario>
+	 	<latitud>-30.63765696</latitud>
+	 	<longitud>-58.11961209</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>APICOLA</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+	<marcador>
+	 	<id_expediente>54</id_expediente>
+	 	<propietario>ZAPATA, DIEGO FERNANDO</propietario>
+	 	<latitud>-30.63765804</latitud>
+	 	<longitud>-58.11962105</longitud>
+	 	<color>green</color>
+	 	<funciona>1</funciona>
+	 	<rubro>SERVICIO</rubro>
+	 	<resena>Sin datos</resena>
+	 	<archivo>0</archivo>
+	</marcador>
+</marcadores>

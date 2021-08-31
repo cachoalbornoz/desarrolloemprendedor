@@ -1,0 +1,172 @@
+@font-face {
+    font-family: 'DINPro-Regular';
+    src: local('DINPro-Regular'), url('/desarrolloemprendedor/public/font/dinpro/DINPro-Regular_13937.woff') format('woff');
+}
+
+@font-face {
+    font-family:'Avenir Next';
+    src: local('Avenir'), url('/desarrolloemprendedor/public/font/Avenir_95_Black.ttf');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: local('Robot'), url('/desarrolloemprendedor/public/font/roboto/Roboto-Light.ttf');
+}
+
+
+body {  
+    font-family: 'Roboto', sans-serif;
+    padding-top: 70px; 
+}
+
+.favenir {
+    font-family: 'Avenir Next' !important;;
+    font-style: normal;
+}
+
+.dinopro {
+    font-family: 'DINPro-Regular' !important; 
+    font-style: normal;
+}
+
+.mayus {
+
+    text-transform: uppercase;
+}
+
+.empty {
+    background: #F9F0E5;
+}
+
+.minus {
+
+    text-transform: lowercase;
+}
+
+/* Evitar ampliar textarea */
+textarea {
+    resize: none;
+}
+
+/* Estilos para el Plugin Data Table*/
+
+div.dt-buttons {
+    float: right;
+}
+
+.dataTables_filter {
+    float:left
+}
+
+td.rowspanning div { 
+    width:100%;  
+    overflow-y:auto;  
+    overflow-x:auto;
+}
+
+div.dataTables_wrapper div.dataTables_processing {
+    top: 0;
+    padding: 5px !important;
+    background: #F5F8FA !important;
+    color: blue !important;
+    border: 1px dotted darkgrey;
+    border-radius: 1px !important;
+    font-size: 14 !important;
+    opacity: 1 !important;
+    text-decoration: none;
+}
+
+.table-hover thead tr:hover th, .table-hover tbody tr:hover td {
+    background-color:darkgrey;
+    color:  #4b4b4b;
+}
+
+
+/* ESTILOS SUBMENUES */
+
+.dropdown-menu {
+    padding: 0px 0; 
+    margin: 0 0 0; 
+    border: 0px solid transition !important;
+    border: 0px solid rgba(0,0,0,.15);	
+    border-radius: 0px;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+
+}
+
+.dropdown-menu.show {
+    background-color: #4b4b4b;
+}
+  
+.dropdown-menu.show .dropdown-item {
+    color: #e1e1e1;
+  }
+  
+.dropdown-menu.show .dropdown-divider {
+    border-top: 1px solid rgba(50, 50, 50, 0.9);
+}
+  
+.dropdown-menu.show .dropdown-item:hover, .dropdown-menu.show .dropdown-item:focus {
+    background-color:  #4b4b4b;
+    color:whitesmoke;
+    opacity: 0.4;
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0px;
+    padding: 5px 0; 
+    left: 100%;
+    border: 0px solid transition !important;
+    border: 0px solid rgba(0,0,0,.15);	
+    border-radius: 0px;
+    margin-top: -6px;
+    margin-left: -1px;
+    background-color: #4b4b4b;
+    color: #e7e7e7;
+}
+
+.dropdown-submenu.show .dropdown-divider {
+    border-top: 1px solid rgba(50, 50, 50, 0.9);
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+
+/* Quitar flechitas a los campos numericos */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

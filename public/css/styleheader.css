@@ -1,0 +1,92 @@
+@font-face {
+    font-family: 'DINPro-Regular';
+    src: local('DINPro-Regular'), url('/desarrolloemprendedor/public/font/dinpro/DINPro-Regular_13937.woff') format('woff');
+}
+
+@font-face {
+    font-family:'Avenir Next';
+    src: local('Avenir'), url('/desarrolloemprendedor/public/font/Avenir_95_Black.ttf');
+}
+
+@font-face {
+    font-family:'Round';
+    src: local('Round'), url('/desarrolloemprendedor/public/font/ROUND_PRO.OTF');
+}
+
+body {  
+    font-family: 'DINPro-Regular' !important;  
+    padding-top: 70px; 
+}
+
+.favenir {
+    font-family: 'Avenir Next' !important;;
+    font-style: normal;
+}
+
+.dinopro {
+    font-family: 'DINPro-Regular' !important; 
+    font-style: normal;
+}
+
+.roundpro{
+    font-family: 'Round' !important; 
+    font-style: normal;
+}
+
+.mayus {
+
+    text-transform: uppercase;
+}
+
+.empty {
+    background: #F9F0E5;
+}
+
+.minus {
+
+    text-transform: lowercase;
+}
+
+.dropdown-menu.show .dropdown-item:hover, .dropdown-menu.show .dropdown-item:focus {
+    color: #58595a  ; 
+}
+
+.jumbotron {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.text-black-75{
+    color: #333333  ; 
+}
+
+.navbar-top {
+    background-color: transparent !important;
+}
+.navbar-top .nav-item>a:hover,
+.navbar-top .nav-item>a:focus {
+  background-color: #e0e0e0;
+}
+
+/* TextArea sin posibilidad de redimension */
+textarea {
+    resize: none;
+}
+
+/* Quitar flechitas a los campos numericos */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.nav-opacity{
+    opacity: 0.85 !important;;
+}
