@@ -17,11 +17,11 @@
                                     </tr>
                                     <tr>
                                         <td>Secretaría</td>
-                                        <td>(343) 4840356</td>
+                                        <td>(343) 4840964</td>
                                     </tr>
                                     <tr>
                                         <td>Jóvenes Emprendedores</td>
-                                        <td>(343) 4840964</td>
+                                        <td>(343) 4840681</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2">

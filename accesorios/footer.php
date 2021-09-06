@@ -34,7 +34,7 @@
 
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-lg-6">                
-                <i class="fas fa-phone-square-alt text-black-50"></i> Secretaría (343)4840356 / Jóvenes Emprendedores (343)4840964
+                <i class="fas fa-phone-square-alt text-black-50"></i> Secretaría (343)4840964 / Jóvenes Emprendedores (343)4840681
             </div>
             <div class="d-none d-lg-block col-lg-6">
                 <i class="fas fa-envelope text-black-50"></i> desarrolloemprendedor@entrerios.gov.ar
