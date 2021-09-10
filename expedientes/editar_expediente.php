@@ -31,6 +31,8 @@ $edita = "UPDATE expedientes SET nro_proyecto = '$nro_proyecto', id_rubro = '$id
 			nro_exp_control = $nro_expediente_control, id_localidad = $id_localidad, monto = $monto, fecha_otorgamiento = '$fecha_otorgamiento' 
 			WHERE id_expediente = '$id_expediente'";	
 	
+
+
 $resultado = mysqli_query($con, $edita) or die ("Error en la edicion expedientes");
 
 ///////////////////////////////////////////////////

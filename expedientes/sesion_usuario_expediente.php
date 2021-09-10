@@ -88,7 +88,7 @@ if ($observaciones == 1) {
                             $rubros = "SELECT id_rubro, rubro FROM tipo_rubro_productivos order by rubro";
                             $registro = mysqli_query($con, $rubros);
                             while ($fila = mysqli_fetch_array($registro)) {
-                                echo "<option value=\"".$fila[0]."\">".$fila[1]."</option>\n";
+                                echo "<option value=".$fila[0].">".$fila[1]."</option>\n";
                             }
                             mysqli_free_result($registro);
                             ?>
@@ -130,7 +130,7 @@ if ($observaciones == 1) {
                         $ciudades = "SELECT localidades.id, localidades.nombre FROM localidades, departamentos, provincias WHERE localidades.departamento_id = departamentos.id AND departamentos.provincia_id = provincias.id AND provincias.id = 7 order by localidades.nombre";
                         $registro = mysqli_query($con, $ciudades);
                         while ($fila = mysqli_fetch_array($registro)) {
-                            echo "<option value=".$fila[0]."\>".$fila[1]."</option>";
+                            echo "<option value=".$fila[0].">".$fila[1]."</option>";
                         }
                         ?>
                     </select>
