@@ -61,7 +61,7 @@ $con = conectar();
 
                     <div class="custom-control custom-radio mb-4">
                         <input type="radio" name="genero" id="radio3" value="2" class="custom-control-input ml-3 mr-3" onclick="vergenero();">
-                        <label class="custom-control-label" for="radio3"> No me identifico con ninguna opción</label>
+                        <label class="custom-control-label" for="radio3"> No me identifico con ninguna de las anteriores</label>
                     </div>
                 </div>
 

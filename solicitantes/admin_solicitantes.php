@@ -58,6 +58,7 @@ $pasado = null;
                                 <th>Resp</th>
                                 <th>id</th>
                                 <th>ApellidoNombresRegistrado</th>
+                                <th>Genero</th>
                                 <th>FechaRegistro</th>
                                 <th>Programa</th>
                                 <th>Habilitado</th>
@@ -126,7 +127,7 @@ function cargar_datos(fini, ffin) {
             },
             {
                 className: 'rowspanning',
-                targets: [16]
+                targets: [17]
             },
             {
                 className: 'text-center text-danger',

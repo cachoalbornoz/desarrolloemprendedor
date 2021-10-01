@@ -305,7 +305,7 @@ if ($registro_empresa = mysqli_fetch_array($tabla_empresa)) {
                     <div class="custom-control custom-radio col-md-6 col-lg-6">
                         <input type="radio" name="genero" id="radio3genero" value="2" class="custom-control-input ml-3 mr-3" <?php if ($genero == 2) { echo 'checked';} ?> onclick="vergenero();">
                         <label class="custom-control-label" for="radio3genero"> 
-                            No me identifico con ninguna opción
+                            No me identifico con ninguna de las anteriores
                         </label>
                     </div>
                 </div>

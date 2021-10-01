@@ -13,27 +13,28 @@ $col    = array(
     1   =>  'resp',
     2   =>  'id_solicitante',
     3   =>  'solicitante',
-    4   =>  'fecha',
-    5   =>  'abreviatura',
-    6   =>  'habilitado',
-    7   =>  'fhabilitacion',
-    8   =>  'email',
-    9   =>  'cod_area',
-    10   =>  'telefono',
-    11  =>  'dni',
-    12  =>  'tipo',
-    13  =>  'entidad',
-    14  =>  'ciudad',
-    15  =>  'dpto',
-    16  =>  'resena',
-    17  =>  'rubro',
-    18  =>  'estado',
-    19  =>  'fechar',
-    20  =>  'observacionesp'
+    4   =>  'genero',
+    5   =>  'fecha',
+    6   =>  'abreviatura',
+    7   =>  'habilitado',
+    8   =>  'fhabilitacion',
+    9   =>  'email',
+    10   =>  'cod_area',
+    11   =>  'telefono',
+    12  =>  'dni',
+    13  =>  'tipo',
+    14  =>  'entidad',
+    15  =>  'ciudad',
+    16  =>  'dpto',
+    17  =>  'resena',
+    18  =>  'rubro',
+    19  =>  'estado',
+    20  =>  'fechar',
+    21  =>  'observacionesp'
 );
 
 $sql =
-    "SELECT t1.id_solicitante, concat(t1.apellido, ', ', t1.nombres) AS solicitante, t1.id_responsabilidad, t1.fecha, t1.dni, t1.email, t1.cod_area, t1.celular, t4.nombre as ciudad, t5.nombre AS dpto, t2.observaciones as resena, rubro, t10.estado, t10.icono, if(habilitado=1,'SI',if(habilitado=0,'NO','NO')) as habilitado, t9.fecha as fechar, t2.observacionesp, abreviatura, forma, entidad, t8.id_estado, t7.fecha as fhabilitacion
+    "SELECT t1.id_solicitante, concat(t1.apellido, ', ', t1.nombres) AS solicitante, t1.id_responsabilidad, t1.genero ,t1.fecha, t1.dni, t1.email, t1.cod_area, t1.celular, t4.nombre as ciudad, t5.nombre AS dpto, t2.observaciones as resena, rubro, t10.estado, t10.icono, if(habilitado=1,'SI',if(habilitado=0,'NO','NO')) as habilitado, t9.fecha as fechar, t2.observacionesp, abreviatura, forma, entidad, t8.id_estado, t7.fecha as fhabilitacion
 FROM solicitantes t1
 LEFT JOIN registro_solicitantes t2 ON t1.id_solicitante = t2.id_solicitante
 LEFT JOIN tipo_rubro_productivos t3 ON t2.id_rubro = t3.id_rubro
@@ -54,7 +55,8 @@ $totalData  = mysqli_num_rows($query);
 $totalFilter = $totalData;
 
 $sql =
-    "SELECT t1.id_solicitante, concat(t1.apellido, ', ', t1.nombres) AS solicitante, t1.id_responsabilidad, t1.fecha, t1.dni, t1.email, t1.cod_area, t1.celular, t4.nombre as ciudad, t5.nombre AS dpto, t2.observaciones as resena, rubro, t10.estado, t10.icono, if(habilitado=1,'SI',if(habilitado=0,'NO','NO')) as habilitado, t9.fecha as fechar, t2.observacionesp, abreviatura, forma, entidad, t8.id_estado, t7.fecha as fhabilitacion
+
+"SELECT t1.id_solicitante, concat(t1.apellido, ', ', t1.nombres) AS solicitante, t1.id_responsabilidad, t1.genero ,t1.fecha, t1.dni, t1.email, t1.cod_area, t1.celular, t4.nombre as ciudad, t5.nombre AS dpto, t2.observaciones as resena, rubro, t10.estado, t10.icono, if(habilitado=1,'SI',if(habilitado=0,'NO','NO')) as habilitado, t9.fecha as fechar, t2.observacionesp, abreviatura, forma, entidad, t8.id_estado, t7.fecha as fhabilitacion
         FROM solicitantes t1
         LEFT JOIN registro_solicitantes t2 ON t1.id_solicitante = t2.id_solicitante
         LEFT JOIN tipo_rubro_productivos t3 ON t2.id_rubro = t3.id_rubro
@@ -76,6 +78,7 @@ if (!empty($request['search']['value'])) {
 
     $sql .= " AND ( concat(t1.apellido, ', ', t1.nombres) like '%" . $request['search']['value'] . "%'";
     $sql .= " OR t4.nombre like '%" . $request['search']['value'] . "%'";
+    $sql .= " OR t1.genero like '%" . $request['search']['value'] . "%'";
     $sql .= " OR t1.dni like '%" . $request['search']['value'] . "%'";
     $sql .= " OR habilitado like '%" . $request['search']['value'] . "%'";
     $sql .= " OR rubro like '%" . $request['search']['value'] . "%'";
@@ -86,7 +89,6 @@ if (!empty($request['search']['value'])) {
 }
 
 if (!empty($_POST['fini']) and !empty($_POST['ffin'])) {
-
     $sql .= " AND t1.fecha >= '" . $_POST['fini'] . "' AND  t1.fecha < '" . $_POST['ffin'] . "' + interval 1 day";
 }
 
@@ -119,6 +121,7 @@ while ($row  = mysqli_fetch_array($query)) {
     $subdata[]  = ($row['id_responsabilidad'] == 1) ? ' T' : ' A';
     $subdata[]  = $row['id_solicitante'];
     $subdata[]  = '<a href="javascript:void(0)" title="Editar datos" onclick="editar_solicitante(' . $row['id_solicitante'] . ')">' . $row['solicitante'] . '</a>';
+    $subdata[]  = ($row['genero'] == 0) ? 'MUJER' : ($row['genero'] == 1) ? 'HOMBRE':'OTRO';
     $subdata[]  = $row['fecha'];
     $subdata[]  = $row['abreviatura'];
     $subdata[]  = $row['habilitado'];
