@@ -55,7 +55,7 @@ $id_solicitante = $registro['id_solicitante'];
                 Nro expediente madre
                 <input type="number" name="nro_expediente_madre" id="nro_expediente_madre" class="form-control" required autofocus>
             </div>
-            <div class="col-xs-12 col-sm-3 col-lg-3">
+            <div class="col-xs-12 col-sm-3 col-lg-3 d-none">
                 Nro expediente control
                 <input type="number" name="nro_expediente_control" id="nro_expediente_control" class="form-control" required>
             </div>

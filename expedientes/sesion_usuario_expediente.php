@@ -101,7 +101,7 @@ if ($observaciones == 1) {
                     Nro expediente madre
                     <input type="text" name="nro_expediente_madre" id="nro_expediente_madre" value="<?php echo $nro_expediente_madre ?>" class="form-control"required>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-3 d-none">
                     
                     Nro expediente control
                     <input type="text" name="nro_expediente_control" id="nro_expediente_control" value="<?php echo $nro_expediente_control ?>" class="form-control"required>
