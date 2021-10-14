@@ -115,7 +115,7 @@
         </p>
 
         <p class="text-center">
-            <img src="/desarrolloemprendedor/public/imagenes/jovenesprog.jpeg" class="img-fluid shadow" />
+            <img src="/desarrolloemprendedor/public/imagenes/jovenesprog.png" class="img-fluid shadow" />
         </p>
 
         <p class="text-center text-uppercase pl-5 pr-5">
@@ -132,7 +132,7 @@
         </a>
         <p class="text-center text-black-50 m-3">&nbsp;</p>
         <p class="text-center">
-            <img src="/desarrolloemprendedor/public/imagenes/proaceerprog.png" class="img-fluid shadow" />
+            <img src="/desarrolloemprendedor/public/imagenes/proaceerprog-14-10-21.png" class="img-fluid shadow" />
         </p>
         <p class="text-center text-uppercase pl-5 pr-5">Para Jóvenes de 18 a 40 años con residencia en Entre Ríos y
             emprendimientos en marcha. </p>
@@ -142,7 +142,7 @@
         </h4>
         <p class="text-center">
             <a href="/desarrolloemprendedor/frontend/programa_formacion.php">
-                <img src="/desarrolloemprendedor/public/imagenes/taller.png" class="img-fluid shadow" />
+                <img src="/desarrolloemprendedor/public/imagenes/talleres-14-10-21.png" class="img-fluid shadow" />
             </a>
         </p>
         <p class="text-center text-uppercase pl-5 pr-5">Encuentros de sensibilización para el fomento de la cultura
@@ -153,13 +153,38 @@
         </h4>
         <p class="text-center">
             <a href="/desarrolloemprendedor/frontend/programa_tutorias.php">
-                <img src="/desarrolloemprendedor/public/imagenes/tutoriasprog.png" class="img-fluid shadow" />
+                <img src="/desarrolloemprendedor/public/imagenes/tutorias-14-12-21.png" class="img-fluid shadow" />
             </a>
         </p>
         <p class="text-center text-uppercase pl-5 pr-5">Para emprendedoras /es con proyecto en marcha. Participá de un
             grupo intensivo de trabajo con otros emprendedores y un tutor /a y profundizá tu desarrollo. </p>
     </div>
+    <div class="col-xs-12 col-md-6 col-lg-6">
+        <a href="frontend/programa_jovenes.php">
+            <h4 style="color:#72BD8E" class="favenir text-center mt-5 mb-3">
+                EMPRENDIMIENTOS DINÁMICOS
+            </h4>
+        </a>
+
+        <p>
+            &nbsp;
+        </p>
+        <p class="text-center text-black-50 m-3 d-none">
+            <a class=" text-black-75" href="/desarrolloemprendedor/frontend/registro.php">Pre-Inscripción</a>
+        </p>
+
+        <p class="text-center">
+            <img src="/desarrolloemprendedor/public/imagenes/emprendimientos-dinamicos.png" class="img-fluid shadow" />
+        </p>
+
+        <p class="text-center text-uppercase pl-5 pr-5">
+        Dirigido a emprendimientos innovadores y con ventajas competitivas sostenibles.
+        </p>
+
+    </div>
 </div>
+
+
 
 <div class="row">
     <div class="col-xs-12">
