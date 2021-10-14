@@ -160,7 +160,7 @@
             grupo intensivo de trabajo con otros emprendedores y un tutor /a y profundizá tu desarrollo. </p>
     </div>
     <div class="col-xs-12 col-md-6 col-lg-6">
-        <a href="frontend/programa_jovenes.php">
+        <a href="frontend/programa_proceder.php">
             <h4 style="color:#72BD8E" class="favenir text-center mt-5 mb-3">
                 EMPRENDIMIENTOS DINÁMICOS
             </h4>
@@ -168,9 +168,6 @@
 
         <p>
             &nbsp;
-        </p>
-        <p class="text-center text-black-50 m-3 d-none">
-            <a class=" text-black-75" href="/desarrolloemprendedor/frontend/registro.php">Pre-Inscripción</a>
         </p>
 
         <p class="text-center">
