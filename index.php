@@ -106,23 +106,16 @@
                 JÓVENES EMPRENDEDORES
             </h4>
         </a>
-
-        <p>
-            &nbsp;
-        </p>
-        <p class="text-center text-black-50 m-3 d-none">
+        <!-- <p class="text-center text-black-50 m-3 d-none">
             <a class=" text-black-75" href="/desarrolloemprendedor/frontend/registro.php">Pre-Inscripción</a>
-        </p>
-
+        </p> -->
         <p class="text-center">
             <img src="/desarrolloemprendedor/public/imagenes/jovenesprog.png" class="img-fluid shadow" />
         </p>
-
         <p class="text-center text-uppercase pl-5 pr-5">
             Para Jóvenes de 18 a 40 años con residencia en Entre Ríos. Presentá tu proyecto productivo o de servicios
             asociados y conseguí financiamiento para empezar a crecer.
         </p>
-
     </div>
     <div class="col-xs-12 col-md-6 col-lg-6">
         <a href="/desarrolloemprendedor/frontend/programa_proaccer.php">
@@ -130,7 +123,6 @@
                 APOYO COMERCIO EMPRENDEDOR
             </h4>
         </a>
-        <p class="text-center text-black-50 m-3">&nbsp;</p>
         <p class="text-center">
             <img src="/desarrolloemprendedor/public/imagenes/proaceerprog-14-10-21.png" class="img-fluid shadow" />
         </p>
@@ -138,7 +130,8 @@
             emprendimientos en marcha. </p>
     </div>
     <div class="col-xs-12 col-md-6 col-lg-6">
-        <h4 style="color:#9968bc" class="favenir text-center mt-5 mb-3">TALLERES <p class="text-center text-black-50 m-3">&nbsp;</p>
+        <h4 style="color:#9968bc" class="favenir text-center mt-5 mb-3">
+            TALLERES
         </h4>
         <p class="text-center">
             <a href="/desarrolloemprendedor/frontend/programa_formacion.php">
@@ -149,7 +142,8 @@
             emprendedora y de formación para quienes son emprendedores o quieren serlo.</p>
     </div>
     <div class="col-xs-12 col-md-6 col-lg-6">
-        <h4 style="color:#ea1543" class="favenir text-center mt-5 mb-3">TUTORÍAS <p class="text-center text-black-50 m-3">&nbsp;</p>
+        <h4 style="color:#ea1543" class="favenir text-center mt-5 mb-3">
+            TUTORÍAS
         </h4>
         <p class="text-center">
             <a href="/desarrolloemprendedor/frontend/programa_tutorias.php">
@@ -165,11 +159,6 @@
                 EMPRENDIMIENTOS DINÁMICOS
             </h4>
         </a>
-
-        <p>
-            &nbsp;
-        </p>
-
         <p class="text-center">
             <img src="/desarrolloemprendedor/public/imagenes/emprendimientos-dinamicos.png" class="img-fluid shadow" />
         </p>
