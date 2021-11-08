@@ -16,6 +16,18 @@
 
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-lg-12 text-center">
+        <img src="/desarrolloemprendedor/public/imagenes/semana_empredurismo.png" class="img-fluid shadow" />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <br />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-lg-12 text-center">
         <a id="registro" href="/desarrolloemprendedor/frontend/programa_jovenes.php">
             <img src="/desarrolloemprendedor/public/imagenes/inscripciones_gral.png" class="img-fluid shadow" />
         </a>
