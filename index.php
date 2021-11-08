@@ -16,7 +16,9 @@
 
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-lg-12 text-center">
-        <img src="/desarrolloemprendedor/public/imagenes/semana_empredurismo.png" class="img-fluid shadow" />
+        <a href="/desarrolloemprendedor/frontend/empredurismo.php">
+            <img src="/desarrolloemprendedor/public/imagenes/semana_empredurismo.png" class="img-fluid shadow" />
+        </a>
     </div>
 </div>
 
