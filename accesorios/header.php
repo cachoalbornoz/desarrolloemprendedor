@@ -8,9 +8,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     
     <link rel="shortcut icon" href="/desarrolloemprendedor/public/imagenes/favicon.ico" type="image/x-icon">
-	
-	<meta name="Keywords" content="proyectos, desarrollo, emprendedor, emprendedores, produccion, registro, gobierno,entre rios, financiacion" />
-	<meta name="description" content="Sistema Administrativo del Ministerio de Producción Entre Rios para registro de Proyectos Productivos" />
 	<meta name="robots" content="index,follow">
 
 	<title>Desarrollo Emprendedor</title>
