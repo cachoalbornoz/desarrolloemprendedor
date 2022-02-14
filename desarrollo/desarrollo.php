@@ -1,191 +1,80 @@
-<?php require('../accesorios/admin-superior.php');
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/public/libreria/TCPDF-main/examples/tcpdf_include.php';
 
-$hoy    = date("Y-m-d");
-$pasado = date("Y-m-d", strtotime("-1 month"));
+// create new PDF document
+$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
-?>
+// set document information
+$pdf->SetCreator(PDF_CREATOR);
+$pdf->SetAuthor('Nicola Asuni');
+$pdf->SetTitle('TCPDF Example 001');
+$pdf->SetSubject('TCPDF Tutorial');
+$pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
-<div class="card">
-    <div class="card-header">
+// set default header data
+$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE . ' 001', PDF_HEADER_STRING, [0, 64, 255], [0, 64, 128]);
+$pdf->setFooterData([0, 64, 0], [0, 64, 128]);
 
-        <div class="row">
-            <div class=" col-xs-12 col-sm-12 col-lg-12">
-                ADMINISTRACION DE SOLICITANTES
-            </div>
-        </div>
+// set header and footer fonts
+$pdf->setHeaderFont([PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN]);
+$pdf->setFooterFont([PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA]);
 
-    </div>
+// set default monospaced font
+$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
-    <div class="card-body">
+// set margins
+$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
-        <div class="row mb-3">
-            <div class="col-xs-12 col-sm-12 col-lg-12">
-                &nbsp;
-            </div>
-        </div>
+// set auto page breaks
+$pdf->SetAutoPageBreak(true, PDF_MARGIN_BOTTOM);
 
-        <div class="row mb−3">
-            <div class="col-xs-12 col-sm-2 col-lg-2">
-                <input type="date" name="fini" id="fini" value="<?php echo $pasado; ?>" class="form-control" />
-            </div>
-            <div class="col-xs-12 col-sm-2 col-lg-2">
-                <input type="date" name="ffin" id="ffin" value="<?php echo $hoy; ?>" class="form-control" />
-            </div>
-            <div class="col-xs-12 col-sm-2 col-lg-2">
-                <input type="button" name="buscar" id="buscar" value="Buscar" class="btn btn-info mr−5 ml−5" />                
-            </div>
-        </div>
+// set image scale factor
+$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
-        <div class="row mb-3 mt-3">
-            <div class="col-xs-12 col-sm-12 col-lg-12">
-                <div class="table-responsive">
-                    <table id="solicitantes" class="table table-condensed table-hover" style="font-size: small">
-                        <thead>
-                            <tr>
-                                <th>Borrar</th>
-                                <th>Id</th>
-                                <th>Solicitante</th>
-                                <th>FechaAlta</th>
-                                <th>Programa</th>
-                                <th>Habilitado</th>
-                                <th>Email</th>
-                                <th>CodArea</th>
-                                <th>Telefono</th>
-                                <th>Dni</th>
-                                <th>Inscripcion</th>
-                                <th>Entidad</th>
-                                <th>Ciudad</th>
-                                <th>Dpto</th>
-                                <th>Reseña</th>
-                                <th>Rubro</th>
-                                <th>Estado</th>
-                                <th>FechaRelev</th>
-                                <th>ObservP</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-            </div>
-        </div>
+// set some language-dependent strings (optional)
+if (@file_exists(dirname(__FILE__) . '/lang/eng.php')) {
+    require_once dirname(__FILE__) . '/lang/eng.php';
+    $pdf->setLanguageArray($l);
+}
 
-    </div>
-</div>
+// ---------------------------------------------------------
 
-<?php require_once('../accesorios/admin-scripts.php'); ?>
+// set default font subsetting mode
+$pdf->setFontSubsetting(true);
 
-<script type="text/javascript">
+// Set font
+// dejavusans is a UTF-8 Unicode font, if you only need to
+// print standard ASCII chars, you can use core fonts like
+// helvetica or times to reduce file size.
+$pdf->SetFont('dejavusans', '', 14, '', true);
 
-    $(document).ready(function() {
+// Add a page
+// This method has several options, check the source code documentation for more information.
+$pdf->AddPage();
 
-        cargar_datos();
-    })
+// set text shadow effect
+$pdf->setTextShadow(['enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2, 'color' => [196, 196, 196], 'opacity' => 1, 'blend_mode' => 'Normal']);
 
-    function cargar_datos(fini, ffin) {
+// Set some content to print
+$html = <<<EOD
+<h1>Welcome to <a href="http://www.tcpdf.org" style="text-decoration:none;background-color:#CC0000;color:black;">&nbsp;<span style="color:black;">TC</span><span style="color:white;">PDF</span>&nbsp;</a>!</h1>
+<i>This is the first example of TCPDF library.</i>
+<p>This text is printed using the <i>writeHTMLCell()</i> method but you can also use: <i>Multicell(), writeHTML(), Write(), Cell() and Text()</i>.</p>
+<p>Please check the source code documentation and other examples for further information.</p>
+<p style="color:#CC0000;">TO IMPROVE AND EXPAND TCPDF I NEED YOUR SUPPORT, PLEASE <a href="http://sourceforge.net/donate/index.php?group_id=128076">MAKE A DONATION!</a></p>
+EOD;
 
-        var table = $('#solicitantes').DataTable({
-            "lengthMenu": [
-                [5, 10, 25, 50, -1],
-                [5, 10, 25, 50, "Todos"]
-            ],
-            "dom": '<"wrapper"Brflit>',
-            "buttons": ['copy', 'excel', 'pdf', 'colvis'],
-            "order": [
-                [3, "desc"]
-            ],
-            "stateSave": true,
-            "processing": true,
-            "serverSide": true,
-            "ajax": {
-                url: "server-autogestionados.php",
-                type: "post",
-                data: {
-                    fini  : $("#fini").val(),
-                    ffin    : $("#ffin").val()
-                }
-            },
-            "columnDefs": [{
-                    orderable: false,
-                    targets: [0, 1, 5, 6, 9, 10, 14, 15]
-                },
-                {
-                    className: 'text-center',
-                    targets: [0, 1, 3, 16]
-                },
-                {
-                    className: 'rowspanning',
-                    targets: [14]
-                },
-                {
-                    className: 'text-center text-danger',
-                    targets: [5]
-                },
-                {
-                    type: 'date',
-                    targets: [3]
-                }
-            ],
-            "language": {
-                "url": "../public/DataTables/spanish.json"
-            }
-        });        
-    }
+// Print text using writeHTMLCell()
+$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 
+// ---------------------------------------------------------
 
-    $('#buscar').on("click", function() {
+// Close and output PDF document
+// This method has several options, check the source code documentation for more information.
+$pdf->Output('example_001.pdf', 'I');
 
-        var fini  = $("#fini").val();
-        var ffin    = $("#ffin").val();
-
-        $('#solicitantes').DataTable().destroy();
-
-        cargar_datos(fini, ffin);
-    })
-
-
-    $('#solicitantes').on("click", ".borrar", function() {
-
-
-        var texto = '&nbsp; Elimina ? &nbsp;';
-        var id = this.id;
-        var fila = $(this).parent().parent().parent();
-
-        ymz.jq_confirm({
-            title: texto,
-            text: "",
-            no_btn: "Cancelar",
-            yes_btn: "Confirma",
-            no_fn: function() {
-                return false;
-            },
-            yes_fn: function() {
-
-                $.ajax({
-
-                    url: 'server-d-autogestionados.php',
-                    type: 'POST',
-                    dataType: 'json',
-                    data: {
-                        id: id
-                    },
-                    success: function(data) {
-                        fila.remove();
-                        toastr.options = {
-                            "progressBar": true,
-                            "showDuration": "300",
-                            "timeOut": "1000"
-                        };
-                        toastr.error("&nbsp;", "Solicitante eliminado ... ");
-                    }
-                });
-            }
-        });
-    });
-
-
-    function editar_solicitante(id) {
-
-        window.location = "../personas/registro_edita.php?id_lugar=0&id_solicitante=" + id;
-    }
-</script>
-
-<?php require_once('../accesorios/admin-inferior.php'); ?>
+//============================================================+
+// END OF FILE
+//============================================================+

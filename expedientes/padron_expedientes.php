@@ -88,7 +88,6 @@
     <script type="text/javascript">
 
     $(document).ready(function() {
-
         cargar_datos();
     })    
 

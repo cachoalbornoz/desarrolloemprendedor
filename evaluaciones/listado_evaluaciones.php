@@ -1,5 +1,5 @@
 <?php
-require('../accesorios/admin-superior.php');
+require '../accesorios/admin-superior.php';
 ?>
 
 <div class="card">
@@ -10,13 +10,13 @@ require('../accesorios/admin-superior.php');
             </div>
         </div>
     </div>
-    
+
     <div class="card-body">
 
         <div class="row">
             <div class="col-xs-12 col-md-12 col-lg-12 mb-3 ">
                 &nbsp;
-			</div>                  
+            </div>
         </div>
 
         <div class="row mb-3">
@@ -52,116 +52,139 @@ require('../accesorios/admin-superior.php');
                         </thead>
                     </table>
                 </div>
-            </div>        
+            </div>
         </div>
 
     </div>
 </div>
 
-<?php require_once('../accesorios/admin-scripts.php'); ?>
+<?php require_once '../accesorios/admin-scripts.php'; ?>
 
 <script>
+    $(document).ready(function() {
 
-    $(document).ready(function(){
-
-        var table = $('#evaluaciones').DataTable({ 
-            "scrollY"       : "50vh",
-            "sScrollX"      : "100%",
+        var table = $('#evaluaciones').DataTable({
+            "scrollY": "500vh",
+            "sScrollX": "100%",
             "scrollCollapse": true,
-                "fixedColumns":   {
-                    leftColumns: 2,
+            "fixedColumns": {
+                leftColumns: 2,
             },
-            "lengthMenu"    : [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Todos"]],
-            "dom"           : '<"wrapper"Brflit>',      
-            "buttons"       : ['copy', 'excel', 'pdf',  'colvis'],
-            "order"         : [[ 1, "asc" ]],
-            "stateSave"     : true,
-            "processing"    : true,
-            "serverSide"    : true,
-            "ajax"          : {
-                url   : "server-evaluaciones.php",
-                type  : "post"
-            },
-            "columnDefs"    : [
-                { orderable:    false   ,   targets: [0, 2, 4, 5, 10, 11, 12, 14, 16, 17, 18, 20, 21, 22, 23, 24] },
-                { className: 'text-center', targets: [0, 2, 4, 5, 7, 10, 11, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24] },
-                { className: 'rowspanning', targets: [3] }
+            "lengthMenu": [
+                [5, 10, 25, 50, -1],
+                [5, 10, 25, 50, "Todos"]
             ],
-            "language"      : { "url": "../public/DataTables/spanish.json" }
-        }); 
-    });
-
-    $('#evaluaciones').on("click", ".borrar", function(){
-
-        var table = $('#evaluaciones').DataTable();
-        var id      = this.id;
-        var soli    = $(this).attr('value');
-        var texto   = '&nbsp; Anula la evaluación de '+ soli +' ? &nbsp;';
-
-        ymz.jq_confirm({
-            title:texto, 
-            text:"", 
-            no_btn:"Cancelar", 
-            yes_btn:"Confirma", 
-            no_fn:function(){
-                return false;
+            "dom": '<"wrapper"Brflit>',
+            "buttons": ['copy', 'excel', 'pdf', 'colvis'],
+            "order": [
+                [1, "asc"]
+            ],
+            "stateSave": true,
+            "processing": true,
+            "serverSide": true,
+            "ajax": {
+                url: "server-evaluaciones.php",
+                type: "post"
             },
-            yes_fn:function(){    
-
-                $.ajax({
-
-                    url 	: 'server-d-evaluaciones.php',
-                    type 	: 'POST',
-                    dataType: 'json',
-                    data 	: {id: id},
-                    success: function(data){  
-                        table.clear().draw();                      
-                        toastr.options = { "progressBar": true, "showDuration": "300", "timeOut": "1000" };
-                        toastr.error("&nbsp;", "Evaluacion anulada ... ");
-                    }
-                });                 
+            "columnDefs": [{
+                    orderable: false,
+                    targets: [0, 2, 4, 5, 10, 11, 12, 14, 16, 17, 18, 20, 21, 22, 23, 24]
+                },
+                {
+                    className: 'text-center',
+                    targets: [0, 2, 4, 5, 7, 10, 11, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+                },
+                {
+                    className: 'rowspanning',
+                    targets: [3]
+                }
+            ],
+            "language": {
+                "url": "../public/DataTables/spanish.json"
             }
         });
     });
 
-    $('#evaluaciones').on("click", ".borrari", function(){
+    $('#evaluaciones').on("click", ".borrar", function() {
 
         var table = $('#evaluaciones').DataTable();
+        var id = this.id;
+        var soli = $(this).attr('value');
+        var texto = '&nbsp; Anula la evaluación de ' + soli + ' ? &nbsp;';
 
-        var id      = this.id;
-        var soli    = $(this).attr('value');
-        var texto   = '&nbsp; Anula la evaluación de '+ soli +' ? &nbsp;';
-        var fila    = $(this).parent().parent().parent();
-        
         ymz.jq_confirm({
-            title:texto, 
-            text:"", 
-            no_btn:"Cancelar", 
-            yes_btn:"Confirma", 
-            no_fn:function(){
+            title: texto,
+            text: "",
+            no_btn: "Cancelar",
+            yes_btn: "Confirma",
+            no_fn: function() {
                 return false;
             },
-            yes_fn:function(){    
+            yes_fn: function() {
 
                 $.ajax({
 
-                    url 	: 'server-d-informes.php',
-                    type 	: 'POST',
+                    url: 'server-d-evaluaciones.php',
+                    type: 'POST',
                     dataType: 'json',
-                    data 	: {id: id},
-                    success: function(data){  
-                        table.clear().draw();                      
-                        toastr.options = { "progressBar": true, "showDuration": "300", "timeOut": "1000" };
+                    data: {
+                        id: id
+                    },
+                    success: function(data) {
+                        table.clear().draw();
+                        toastr.options = {
+                            "progressBar": true,
+                            "showDuration": "300",
+                            "timeOut": "1000"
+                        };
                         toastr.error("&nbsp;", "Evaluacion anulada ... ");
                     }
-                });                 
+                });
             }
         });
     });
 
+    $('#evaluaciones').on("click", ".borrari", function() {
 
+        var table = $('#evaluaciones').DataTable();
 
+        var id = this.id;
+        var soli = $(this).attr('value');
+        var texto = '&nbsp; Anula la evaluación de ' + soli + ' ? &nbsp;';
+        var fila = $(this).parent().parent().parent();
+
+        ymz.jq_confirm({
+            title: texto,
+            text: "",
+            no_btn: "Cancelar",
+            yes_btn: "Confirma",
+            no_fn: function() {
+                return false;
+            },
+            yes_fn: function() {
+
+                $.ajax({
+
+                    url: 'server-d-informes.php',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        id: id
+                    },
+                    success: function(data) {
+                        table.clear().draw();
+                        toastr.options = {
+                            "progressBar": true,
+                            "showDuration": "300",
+                            "timeOut": "1000"
+                        };
+                        toastr.error("&nbsp;", "Evaluacion anulada ... ");
+                    }
+                });
+            }
+        });
+    });
 </script>
 
 
-<?php require_once('../accesorios/admin-inferior.php'); ?>
+<?php require_once '../accesorios/admin-inferior.php';

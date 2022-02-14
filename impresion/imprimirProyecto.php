@@ -4,7 +4,7 @@ if (!isset($_SESSION['usuario'])) {
     header('location:../accesorios/salir.php');
     exit;
 }
-require($_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/accesorios/accesos_bd.php');
+require $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/accesorios/accesos_bd.php';
 date_default_timezone_set('America/Buenos_Aires');
 
 $con = conectar();
@@ -32,57 +32,55 @@ $tabla = mysqli_query(
 $registro = mysqli_fetch_array($tabla);
 
 if (isset($registro)) {
-
-    $id_solicitante = $registro['id_solicitante'];
-    $dni            = $registro['dni'];
-    $apellido       = $registro['apellido'];
-    $nombres        = $registro['nombres'];
-    $direccion      = $registro['direccion'];
-    $email          = $registro['email'];
-    $cod_area       = $registro['cod_area'];
-    $telefono       = $registro['telefono'];
-    $celular        = $registro['celular'];
-    $ciudad         = $registro['ciudad'];
-    $id_ciudad      = $registro['id_ciudad'];
-    $fecha_nac      = $registro['fecha_nac'];
+    $id_solicitante  = $registro['id_solicitante'];
+    $dni             = $registro['dni'];
+    $apellido        = $registro['apellido'];
+    $nombres         = $registro['nombres'];
+    $direccion       = $registro['direccion'];
+    $email           = $registro['email'];
+    $cod_area        = $registro['cod_area'];
+    $telefono        = $registro['telefono'];
+    $celular         = $registro['celular'];
+    $ciudad          = $registro['ciudad'];
+    $id_ciudad       = $registro['id_ciudad'];
+    $fecha_nac       = $registro['fecha_nac'];
     $id_departamento = $registro['id_departamento'];
-    $departamento   = $registro['departamento'];
+    $departamento    = $registro['departamento'];
 } else {
 
     //DATOS DEL SOLICITANTE
-    $dni            = '';
-    $apellido       = '';
-    $nombres        = '';
-    $direccion      = '';
-    $nro            = '';
-    $email          = '';
-    $cod_area       = '';
-    $telefono       = '';
-    $celular        = '';
-    $ciudad         = '';
-    $id_ciudad      = 0;
-    $fecha_nac      = '';
+    $dni             = '';
+    $apellido        = '';
+    $nombres         = '';
+    $direccion       = '';
+    $nro             = '';
+    $email           = '';
+    $cod_area        = '';
+    $telefono        = '';
+    $celular         = '';
+    $ciudad          = '';
+    $id_ciudad       = 0;
+    $fecha_nac       = '';
     $id_departamento = 0;
-    $departamento   = '';
+    $departamento    = '';
 }
 
-
-$tabla_proyectos    = mysqli_query($con, "SELECT * FROM proyectos WHERE id_proyecto = $id_proyecto")  or die("Error lectura de proyectos");
+$tabla_proyectos    = mysqli_query($con, "SELECT * FROM proyectos WHERE id_proyecto = $id_proyecto") or die('Error lectura de proyectos');
 $registro_proyectos = mysqli_fetch_array($tabla_proyectos);
 
 if (isset($registro_proyectos)) {
 
     // ACCEDER AL PROYECTO
-    $denominacion           = $registro_proyectos['denominacion'];
-    $resumen_ejecutivo      = $registro_proyectos['resumen_ejecutivo'];
-    $monto                  = $registro_proyectos['monto'];
-    $descripcion            = $registro_proyectos['descripcion'];
-    $objetivos              = $registro_proyectos['objetivos'];
-    $oportunidades          = $registro_proyectos['oportunidades'];
-    $desarrollo             = $registro_proyectos['desarrollo'];
-    $historia               = $registro_proyectos['historia'];
-    $presente               = $registro_proyectos['presente'];
-    $lugardesarrollo        = ($registro_proyectos['lugardesarrollo'] == 0) ? 'Alquilado' : 'Propio';
+    $denominacion      = $registro_proyectos['denominacion'];
+    $resumen_ejecutivo = $registro_proyectos['resumen_ejecutivo'];
+    $monto             = $registro_proyectos['monto'];
+    $descripcion       = $registro_proyectos['descripcion'];
+    $objetivos         = $registro_proyectos['objetivos'];
+    $oportunidades     = $registro_proyectos['oportunidades'];
+    $desarrollo        = $registro_proyectos['desarrollo'];
+    $historia          = $registro_proyectos['historia'];
+    $presente          = $registro_proyectos['presente'];
+    $lugardesarrollo   = ($registro_proyectos['lugardesarrollo'] == 0) ? 'Alquilado' : 'Propio';
 
     $detallelugar           = $registro_proyectos['detallelugar'];
     $caratecnicas           = $registro_proyectos['caratecnicas'];
@@ -109,71 +107,69 @@ if (isset($registro_proyectos)) {
     $longitud               = $registro_proyectos['longitud'];
     $fnovedad               = $registro_proyectos['fnovedad'];
     $fnovedad               = date('d/m/Y', strtotime($fnovedad));
-    //
-
+//
 } else {
 
     // INICIALIZO VARIABLES DEL PROYECTO
-    $denominacion = '';
-    $resumen_ejecutivo = '';
-    $monto = 0;
-    $descripcion = '';
-    $objetivos = '';
-    $oportunidades = '';
-    $desarrollo = '';
-    $historia = '';
-    $presente = '';
-    $lugardesarrollo = 0;
-    $detallelugar = '';
-    $caratecnicas = '';
-    $caratecnologicas = '';
-    $caraprocesos = '';
-    $caramateriasprimas = '';
-    $caradesechos = '';
-    $mercado = '';
-    $caraclientes = '';
-    $caracompetencia = '';
-    $caraproveedores = '';
+    $denominacion           = '';
+    $resumen_ejecutivo      = '';
+    $monto                  = 0;
+    $descripcion            = '';
+    $objetivos              = '';
+    $oportunidades          = '';
+    $desarrollo             = '';
+    $historia               = '';
+    $presente               = '';
+    $lugardesarrollo        = 0;
+    $detallelugar           = '';
+    $caratecnicas           = '';
+    $caratecnologicas       = '';
+    $caraprocesos           = '';
+    $caramateriasprimas     = '';
+    $caradesechos           = '';
+    $mercado                = '';
+    $caraclientes           = '';
+    $caracompetencia        = '';
+    $caraproveedores        = '';
     $carariesgosestrategias = '';
-    $destinomonto = '';
-    $personal = '';
-    $interaccion = '';
-    $impacto = '';
-    $preciosproductos = '';
-    $origenfinanciacion = '';
-    $fodafortalezas = '';
-    $fodaoportunidades = '';
-    $fodadebilidades = '';
-    $fodaamenazas = '';
-    $latitud = 0;
-    $longitud = 0;
-    $fnovedad = date('d/m/Y', time());
+    $destinomonto           = '';
+    $personal               = '';
+    $interaccion            = '';
+    $impacto                = '';
+    $preciosproductos       = '';
+    $origenfinanciacion     = '';
+    $fodafortalezas         = '';
+    $fodaoportunidades      = '';
+    $fodadebilidades        = '';
+    $fodaamenazas           = '';
+    $latitud                = 0;
+    $longitud               = 0;
+    $fnovedad               = date('d/m/Y', time());
 }
 
 $tabla_solicitantes    = mysqli_query($con, "SELECT * FROM registro_solicitantes WHERE id_solicitante = $id_solicitante");
 $registro_solicitantes = mysqli_fetch_array($tabla_solicitantes);
 
 // RUBROS PRODUCTIVOS
-$id_rubro       = $registro_solicitantes['id_rubro'];
-$tabla_rubros   = mysqli_query($con, "SELECT rubro FROM tipo_rubro_productivos WHERE id_rubro = $id_rubro");
+$id_rubro        = $registro_solicitantes['id_rubro'];
+$tabla_rubros    = mysqli_query($con, "SELECT rubro FROM tipo_rubro_productivos WHERE id_rubro = $id_rubro");
 $registro_rubros = mysqli_fetch_array($tabla_rubros);
-$rubro          = $registro_rubros['rubro'];
+$rubro           = $registro_rubros['rubro'];
 // MEDIO DE COMUNICACION QUE SE INFORMO
-$id_medio       = $registro_solicitantes['id_medio'];
-$tabla_medios   = mysqli_query($con, "SELECT medio FROM tipo_medios_contacto WHERE id_medio = $id_medio");
+$id_medio        = $registro_solicitantes['id_medio'];
+$tabla_medios    = mysqli_query($con, "SELECT medio FROM tipo_medios_contacto WHERE id_medio = $id_medio");
 $registro_medios = mysqli_fetch_array($tabla_medios);
-$medio          = $registro_medios['medio'];
+$medio           = $registro_medios['medio'];
 
 // ACCEDO A LOS DATOS DE LA EMPRESA (SI CORRESPONDE)
-$id_empresa     = $registro_solicitantes['id_empresa'];
+$id_empresa = $registro_solicitantes['id_empresa'];
 
 if ($id_empresa > 0) {
-
-    $tabla  = mysqli_query($con, "SELECT *
+    $tabla = mysqli_query($con, "SELECT *
     FROM maestro_empresas t1
     INNER JOIN tipo_forma_juridica t2 ON t1.id_tipo_sociedad = t2.id_forma
     WHERE id = $id_empresa");
-    $fila   = mysqli_fetch_array($tabla);
+    $fila = mysqli_fetch_array($tabla);
 
     $razon_social = $fila['razon_social'];
     $id_tipo_soc  = $fila['id_tipo_sociedad'];
@@ -184,15 +180,13 @@ if ($id_empresa > 0) {
     $fecha_insc   = date('d/m/Y', strtotime($fecha_insc));
     $fecha_inicio = date('d/m/Y', strtotime($fecha_inicio));
 } else {
-
     $razon_social = '';
     $id_tipo_soc  = 0;
     $sociedad     = '';
-    $cuit            = 0;
+    $cuit         = 0;
     $fecha_insc   = '';
     $fecha_inicio = '';
 }
-
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -333,13 +327,12 @@ $html = '
   <td colspan="4"><hr></td>
 </tr>';
 
-$contador = 1;
+$contador       = 1;
 $registro_otros = mysqli_query($con, "SELECT sol.*, loc.nombre as ciudad FROM solicitantes sol, 
 localidades loc, rel_proyectos_solicitantes rel 
 WHERE loc.id = sol.id_ciudad AND rel.id_solicitante = sol.id_solicitante AND id_responsabilidad = 0 AND rel.id_proyecto = $id_proyecto");
 
 while ($fila_otros = mysqli_fetch_array($registro_otros)) {
-
     $html .= ' 
       <tr>
         <td colspan="4">' . $contador . ' - </td>
@@ -365,7 +358,7 @@ while ($fila_otros = mysqli_fetch_array($registro_otros)) {
       </tr>';
 
     $contador++;
-};
+}
 
 $html .= '
   <tr>
@@ -706,14 +699,12 @@ $html .= '
     <td colspan="4">&nbsp;</td>
   </tr>';
 
-
-$total = 0;
-$contador = 1;
+$total              = 0;
+$contador           = 1;
 $registro_productos = mysqli_query($con, "SELECT id_producto, descripcion, cantidades, costounitario
   FROM jovenes_resumen_presupuestario
   WHERE id_proyecto = $id_proyecto");
 while ($fila_productos = mysqli_fetch_array($registro_productos)) {
-
     $subtotal = $fila_productos['cantidades'] * $fila_productos['costounitario'];
 
     $html .= '
@@ -809,9 +800,9 @@ $html .= '
     <td colspan="4"><hr></td>
   </tr>';
 
-$subtotal_ano1 = 0;
-$total        = 0;
-$contador     = 1;
+$subtotal_ano1      = 0;
+$total              = 0;
+$contador           = 1;
 $registro_conceptos = mysqli_query(
     $con,
     "SELECT id_concepto, concepto, monto, ano 
@@ -820,7 +811,6 @@ $registro_conceptos = mysqli_query(
 );
 
 while ($fila_conceptos = mysqli_fetch_array($registro_conceptos)) {
-
     $subtotal_ano1 = $fila_conceptos['monto'] + $subtotal_ano1;
 
     $html .= '
@@ -856,9 +846,9 @@ $html .= '
     <td colspan="4"><hr></td>
   </tr>';
 
-$subtotal_ano2 = 0;
-$total = 0;
-$contador = 1;
+$subtotal_ano2      = 0;
+$total              = 0;
+$contador           = 1;
 $registro_conceptos = mysqli_query(
     $con,
     "SELECT id_concepto, concepto, monto, ano 
@@ -866,7 +856,6 @@ $registro_conceptos = mysqli_query(
     WHERE id_proyecto = $id_proyecto AND ano = 2"
 );
 while ($fila_conceptos = mysqli_fetch_array($registro_conceptos)) {
-
     $subtotal_ano2 = $fila_conceptos['monto'] + $subtotal_ano2;
 
     $html .= '
@@ -909,9 +898,9 @@ $html .= '
     <td colspan="4"><hr></td>
   </tr>';
 
-$subtotal_ano1 = 0;
-$total = 0;
-$contador = 1;
+$subtotal_ano1      = 0;
+$total              = 0;
+$contador           = 1;
 $registro_conceptos = mysqli_query(
     $con,
     "SELECT concepto, monto, ano 
@@ -919,7 +908,6 @@ $registro_conceptos = mysqli_query(
     WHERE id_proyecto = $id_proyecto AND ano = 1"
 );
 while ($fila_conceptos = mysqli_fetch_array($registro_conceptos)) {
-
     $subtotal_ano1 = $fila_conceptos['monto'] + $subtotal_ano1;
 
     $html .= '
@@ -929,7 +917,6 @@ while ($fila_conceptos = mysqli_fetch_array($registro_conceptos)) {
     <td>&nbsp;</td>
     <td align="right">' . $fila_conceptos['monto'] . '</td>
   </tr> ';
-
 
     $contador++;
 }
@@ -957,9 +944,9 @@ $html .= '
     <td colspan="4"><hr></td>
   </tr>';
 
-$subtotal_ano2 = 0;
-$total        = 0;
-$contador     = 1;
+$subtotal_ano2      = 0;
+$total              = 0;
+$contador           = 1;
 $registro_conceptos = mysqli_query(
     $con,
     "SELECT concepto, monto, ano 
@@ -967,7 +954,6 @@ $registro_conceptos = mysqli_query(
     WHERE id_proyecto = $id_proyecto AND ano = 2"
 );
 while ($fila_conceptos = mysqli_fetch_array($registro_conceptos)) {
-
     $subtotal_ano2 = $fila_conceptos['monto'] + $subtotal_ano2;
 
     $html .= '
@@ -1009,14 +995,13 @@ $html .= '
     <td colspan = "4">&nbsp;</td>
   </tr>';
 
-$subtotal_ano1 = 0;
-$subtotal_ano2 = 0;
-$total = 0;
-$contador = 1;
+$subtotal_ano1    = 0;
+$subtotal_ano2    = 0;
+$total            = 0;
+$contador         = 1;
 $registro_fuentes = mysqli_query($con, "SELECT * FROM jovenes_fuente_financiacion fuen, tipo_origen_financiacion tipo 
 	WHERE fuen.id_tipo_origen = tipo.id_tipo AND id_proyecto = $id_proyecto order by ano, id_tipo");
 while ($fila_fuentes = mysqli_fetch_array($registro_fuentes)) {
-
     if ($fila_fuentes['ano'] == 1) {
         $subtotal_ano1 = $fila_fuentes['monto'] + $subtotal_ano1;
     } else {
@@ -1115,17 +1100,16 @@ $html .= '
     <td align="right">Subtotal</td>
   </tr>';
 
-$subtotal1 = 0;
-$contador = 1;
+$subtotal1         = 0;
+$contador          = 1;
 $registro_ingresos = mysqli_query($con, "SELECT * FROM jovenes_ingresos_ventas WHERE  id_proyecto = $id_proyecto AND ano = 1");
 while ($fila_ingresos = mysqli_fetch_array($registro_ingresos)) {
-
     $html .= '
 	  <tr>
 		<td>' . $contador . ' - ' . $fila_ingresos['concepto'] . '</td>
 		<td align="center">' . $fila_ingresos['cantidad'] . '</td>
 		<td align="center">' . $fila_ingresos['monto'] . '</td>
-		<td align="right">' .  $fila_ingresos['monto'] * $fila_ingresos['cantidad'] . '</td>
+		<td align="right">' . $fila_ingresos['monto'] * $fila_ingresos['cantidad'] . '</td>
 	  </tr> ';
 
     $subtotal1 = ($fila_ingresos['monto'] * $fila_ingresos['cantidad']) + $subtotal1;
@@ -1161,11 +1145,10 @@ $html .= '
     <td align="right">Subtotal</td>
   </tr>';
 
-$subtotal2 = 0;
-$contador  = 1;
+$subtotal2         = 0;
+$contador          = 1;
 $registro_ingresos = mysqli_query($con, "SELECT * FROM jovenes_ingresos_ventas WHERE id_proyecto = $id_proyecto AND ano = 2");
 while ($fila_ingresos = mysqli_fetch_array($registro_ingresos)) {
-
     $html .= '
 	  <tr>
 		<td>' . $contador . ' - ' . $fila_ingresos['concepto'] . '</td>
@@ -1236,11 +1219,10 @@ $html .= '
     <td align="right">AÑO 2</td>
   </tr> ';
 
-$subtotal_ano1_ing = 0;
-$subtotal_ano2_ing = 0;
+$subtotal_ano1_ing  = 0;
+$subtotal_ano2_ing  = 0;
 $registro_conceptos = mysqli_query($con, "SELECT ano, sum(cantidad*monto) as suma FROM jovenes_ingresos_ventas WHERE id_proyecto = $id_proyecto GROUP BY ano ");
 while ($fila_conceptos = mysqli_fetch_array($registro_conceptos)) {
-
     if ($fila_conceptos['ano'] == 1) {
         $subtotal_ano1_ing = $fila_conceptos['suma'];
     } else {
@@ -1270,7 +1252,6 @@ $registro_conceptos = mysqli_query(
 );
 
 while ($fila_conceptos = mysqli_fetch_array($registro_conceptos)) {
-
     if ($fila_conceptos['ano'] == 1) {
         $subtotal_ano1_ff = $fila_conceptos['suma'];
     } else {
@@ -1298,8 +1279,7 @@ $html .= '
   </tr>';
 
 $tot_ingresos_1 = $subtotal_ano1_ing + $subtotal_ano1_ff;
-$tot_ingresos_2 = $subtotal_ano2_ing  + $subtotal_ano2_ff;
-
+$tot_ingresos_2 = $subtotal_ano2_ing + $subtotal_ano2_ff;
 
 $html .= '
   <tr>
@@ -1324,10 +1304,10 @@ $html .= '
     <td colspan="4"><hr></td>
   </tr>';
 
-$subtotal_ano1_fijos  = 0;
-$subtotal_ano2_fijos  = 0;
+$subtotal_ano1_fijos = 0;
+$subtotal_ano2_fijos = 0;
 
-$registro_conceptos   = mysqli_query(
+$registro_conceptos = mysqli_query(
     $con,
     "SELECT ano, sum(monto) as suma 
   FROM jovenes_costos_fijos
@@ -1336,7 +1316,6 @@ $registro_conceptos   = mysqli_query(
 );
 
 while ($fila_conceptos = mysqli_fetch_array($registro_conceptos)) {
-
     if ($fila_conceptos['ano'] == 1) {
         $subtotal_ano1_fijos = $fila_conceptos['suma'];
     } else {
@@ -1362,7 +1341,6 @@ $registro_conceptos = mysqli_query(
 );
 
 while ($fila_conceptos = mysqli_fetch_array($registro_conceptos)) {
-
     if ($fila_conceptos['ano'] == 1) {
         $subtotal_ano1_variables = $fila_conceptos['suma'];
     } else {
@@ -1372,7 +1350,6 @@ while ($fila_conceptos = mysqli_fetch_array($registro_conceptos)) {
 
 $tot_egresos_1 = $subtotal_ano1_variables + $subtotal_ano1_fijos;
 $tot_egresos_2 = $subtotal_ano2_variables + $subtotal_ano2_fijos;
-
 
 $resultados_1 = $tot_ingresos_1 - $tot_egresos_1;
 $resultados_2 = $tot_ingresos_2 - $tot_egresos_2;
@@ -1602,20 +1579,17 @@ $html .= '
 
 mysqli_close($con);
 
-require $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/public/libreria/tcpdf/tcpdf.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/public/libreria/tcpdf/config/lang/spa.php';
-
+require_once $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/public/libreria/TCPDF-main/examples/tcpdf_include.php';
 
 class ConPies extends TCPDF
 {
-
     public function Header()
     {
-        /* definimos variables con titulo y subtitulo */
+        // definimos variables con titulo y subtitulo
 
-        $this->Image($_SERVER['DOCUMENT_ROOT'] . "/desarrolloemprendedor/public/imagenes/escudo_er.jpg", 15, 4, 40, 11);
+        $this->Image($_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/public/imagenes/escudo_er.jpg', 15, 4, 40, 11);
 
-        $subtitulo = "ANEXO I - Formulario Solicitud Jóvenes Emprendedores";
+        $subtitulo = 'ANEXO I - Formulario Solicitud Jóvenes Emprendedores';
         $this->SetY(8);
         $this->SetFont('times', '', 6, '', true);
         $this->Cell(0, 0, $subtitulo, 0, 1, 'R');
@@ -1623,11 +1597,11 @@ class ConPies extends TCPDF
 
     public function Footer()
     {
-        /* insertamos numero de pagina y total de paginas*/
+        // insertamos numero de pagina y total de paginas
         $this->SetFont('helvetica', '', 6, '', true);
         $this->Cell(0, 10, 'Secretaria Desarrollo Económico y Emprendedor  Página ' . $this->getAliasNumPage() . ' de ' . $this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
         $this->SetDrawColor(0, 0, 0);
-        /* dibujamos una linea roja delimitadora del pie de página */
+        // dibujamos una linea roja delimitadora del pie de página
         $this->Line(10, 282, 195, 282);
     }
 }
@@ -1639,7 +1613,7 @@ $pdf->SetHeaderMargin(PDF_MARGIN_TOP);
 $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
 // Saltos de página automáticos.
-$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+$pdf->SetAutoPageBreak(true, PDF_MARGIN_BOTTOM);
 
 $pdf->SetDisplayMode('fullpage');
 $pdf->AddPage();

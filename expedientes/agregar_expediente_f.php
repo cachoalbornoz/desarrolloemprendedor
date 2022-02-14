@@ -4,7 +4,7 @@ if (!isset($_SESSION['usuario'])) {
     header('location:../accesorios/salir.php');
     exit;
 }
-require_once('../accesorios/accesos_bd.php');
+require_once '../accesorios/accesos_bd.php';
 
 $con = conectar();
 
@@ -26,43 +26,46 @@ if (strlen($_POST['observaciones']) > 0) {
 // CAMBIAR ESTADO PROYECTO = 25 - PROYECTO FINANCIADO
 mysqli_query($con, "UPDATE proyectos SET id_estado = 25 WHERE id_proyecto = $nro_proyecto");
 
+$query_expedientes = mysqli_query($con, "SELECT id_expediente FROM expedientes WHERE nro_exp_madre = $nro_expediente_madre AND nro_exp_control = $nro_expediente_control");
+$rows              = mysqli_num_rows($query_expedientes);
 
-$inserta = "INSERT INTO expedientes (nro_proyecto, id_rubro, nro_exp_madre, nro_exp_control, id_localidad, monto, fecha_otorgamiento, observaciones, estado, saldo, id_proyecto) 
-VALUES ($nro_proyecto, $id_rubro, $nro_expediente_madre, $nro_expediente_control, $id_localidad, $monto, '$fecha_otorgamiento', '$observaciones', 1, $monto, $nro_proyecto)";
-
-$resultado = mysqli_query($con, $inserta) or die($inserta);
-
-$id_expediente = mysqli_insert_id($con);
+if ($rows == 0) {
+    $inserta = "INSERT INTO expedientes (nro_proyecto, id_rubro, nro_exp_madre, nro_exp_control, id_localidad, monto, fecha_otorgamiento, observaciones, estado, saldo, id_proyecto) 
+    VALUES ($nro_proyecto, $id_rubro, $nro_expediente_madre, $nro_expediente_control, $id_localidad, $monto, '$fecha_otorgamiento', '$observaciones', 1, $monto, $nro_proyecto)";
+    $resultado     = mysqli_query($con, $inserta) or die($inserta);
+    $id_expediente = mysqli_insert_id($con);
+} else {
+    $registro_expedientes = mysqli_fetch_array($query_expedientes);
+    $id_expediente        = $registro_expedientes['id_expediente'];
+}
 
 ///////////////////////////////////////////////////
 //REVISAR SI EL EXPEDIENTE TIENE OBSERVACIONES
 ///////////////////////////////////////////////////
 
 if (strlen($_POST['observaciones']) > 0) {
-    $observaciones = $_POST['observaciones'];
-
+    $observaciones   = $_POST['observaciones'];
     $tabla_insercion = "INSERT INTO observaciones_expedientes (id_expediente, observaciones) VALUES ('$id_expediente', '$observaciones')";
-    $resultado = mysqli_query($con, $tabla_insercion);
+    $resultado       = mysqli_query($con, $tabla_insercion);
 }
 
 // EXPEDIENTES - EMPRENDEDORES
 $query_solicitantes = mysqli_query($con, "SELECT id_solicitante FROM rel_proyectos_solicitantes WHERE id_proyecto = $nro_proyecto");
+$rows_solicitantes  = mysqli_num_rows($query_solicitantes);
 
 while ($registro_soli = mysqli_fetch_array($query_solicitantes)) {
+    $id_solicitante = $registro_soli['id_solicitante'];
 
-    $id_solicitante         = $registro_soli['id_solicitante'];
+    $datos_solicitante    = mysqli_query($con, "SELECT * FROM solicitantes WHERE id_solicitante = $id_solicitante");
+    $registro_solicitante = mysqli_fetch_array($datos_solicitante);
+    $dni                  = $registro_solicitante['dni'];
+    $id_resp              = $registro_solicitante['id_responsabilidad'];
 
-    $datos_solicitante      = mysqli_query($con, "SELECT * FROM solicitantes WHERE id_solicitante = $id_solicitante");
-    $registro_solicitante   = mysqli_fetch_array($datos_solicitante);
+    $seleccion = "SELECT id_emprendedor FROM emprendedores WHERE dni = $dni";
 
-    $dni        = $registro_solicitante['dni'];
-
-    $seleccion  = "SELECT id_emprendedor FROM emprendedores WHERE dni = $dni";
-
-    $registro   =   mysqli_query($con, $seleccion);
+    $registro = mysqli_query($con, $seleccion);
 
     if (mysqli_num_rows($registro) == 0) {
-
         $apellido   = $registro_solicitante['apellido'];
         $nombres    = $registro_solicitante['nombres'];
         $genero     = $registro_solicitante['genero'];
@@ -76,32 +79,30 @@ while ($registro_soli = mysqli_fetch_array($query_solicitantes)) {
         $telefono   = $registro_solicitante['telefono'];
         $cod_area   = $registro_solicitante['cod_area'];
         $email      = $registro_solicitante['email'];
-        $id_resp    = $registro_solicitante['id_responsabilidad'];
         $id_cond    = 0;
 
-        $inserta = "INSERT INTO emprendedores (apellido, nombres, genero, otrogenero, dni, cuit, direccion, fecha_nac, id_ciudad, cod_area, telefono, celular, email, id_responsabilidad, id_condicion_laboral, observaciones) 
-        VALUES ('$apellido', '$nombres', $genero, '$otrogenero', '$dni', '$cuit', '$direccion', '$fecha_nac', $id_ciudad, '$cod_area', '$telefono', '$celular', '$email', '$id_resp', '$id_cond', '$observaciones')";
+        $inserta = "INSERT INTO emprendedores (apellido, nombres, genero, otrogenero, dni, cuit, direccion, fecha_nac, id_ciudad, cod_area, telefono, celular, email, id_condicion_laboral, observaciones) 
+        VALUES ('$apellido', '$nombres', $genero, '$otrogenero', '$dni', '$cuit', '$direccion', '$fecha_nac', $id_ciudad, '$cod_area', '$telefono', '$celular', '$email', '$id_cond', '$observaciones')";
         $resultado = mysqli_query($con, $inserta) or die($inserta);
 
         $id_emprendedor = mysqli_insert_id($con);
-        
     } else {
-
-        $registro_emprendedor   = mysqli_fetch_array($registro);
-        $id_emprendedor         = $registro_emprendedor[0];
+        $registro_emprendedor = mysqli_fetch_array($registro);
+        $id_emprendedor       = $registro_emprendedor[0];
     }
 
-    mysqli_query($con, "INSERT INTO rel_expedientes_emprendedores (id_expediente, id_emprendedor) VALUES ($id_expediente, $id_emprendedor)") or die("Revisar insercion Nuevo Emprendedor");
+    mysqli_query($con, "INSERT INTO rel_expedientes_emprendedores (id_expediente, id_emprendedor, id_responsabilidad) VALUES ($id_expediente, $id_emprendedor, $id_resp)")
+        or die('Revisar insercion Nuevo Emprendedor');
 }
 
-/////////////////////////////////////////////////////////// EXPEDIENTES - UBICACIONES
+// /////////////////////////////////////////////////////////// EXPEDIENTES - UBICACIONES
 mysqli_query($con, "INSERT INTO ubicaciones (fecha, id_tipo_ubicacion, motivo) values ('$fecha_otorgamiento', 1, 'INICIO TRAMITE')");
 $id_ubicacion = mysqli_insert_id($con);
 mysqli_query($con, "INSERT INTO rel_expedientes_ubicacion (id_expediente, id_ubicacion) values ($id_expediente, $id_ubicacion)");
 
-/////////////////////////////////////////////////////////// EXPEDIENTES - ESTADOS
+// /////////////////////////////////////////////////////////// EXPEDIENTES - ESTADOS
 mysqli_query($con, "INSERT INTO expedientes_estados (id_expediente, fecha, id_tipo_estado) values ($id_expediente, '$fecha_otorgamiento', 1)");
 
 mysqli_close($con);
 
-header("location:../evaluaciones/listado_evaluaciones.php");
+header('location:../evaluaciones/listado_evaluaciones.php');
