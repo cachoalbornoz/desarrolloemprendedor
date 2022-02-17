@@ -74,7 +74,7 @@ require '../accesorios/admin-superior.php';
                 [5, 10, 25, 50, -1],
                 [5, 10, 25, 50, "Todos"]
             ],
-            "dom": '<"wrapper"Brflit>',
+            "dom": '<"wrapper"Brflitp>',
             "buttons": ['copy', 'excel', 'pdf', 'colvis'],
             "order": [
                 [1, "asc"]
