@@ -1,59 +1,58 @@
-<?php 
-require('../accesorios/admin-superior.php');
-require_once('../accesorios/accesos_bd.php');
-$con=conectar();
+<?php
+require '../accesorios/admin-superior.php';
+require_once '../accesorios/accesos_bd.php';
+$con = conectar();
 
 $id_proyecto = $_GET['id_proyecto'];
 
-$tabla    = mysqli_query($con, "SELECT informe FROM proyectos WHERE id_proyecto = '$id_proyecto'");
+$tabla = mysqli_query($con, "SELECT informe FROM proyectos WHERE id_proyecto = '$id_proyecto'");
 
 if ($registro = mysqli_fetch_array($tabla)) {
-    $informe    = $registro['informe'];
-} ;
-
+    $informe = $registro['informe'];
+}
 
 ?>
 
 
 <div class="card">
-    <div class="card-header">    
+    <div class="card-header">
         <div class="row">
             <div class="col-6">
-                <b><?php echo $_SESSION['titular'] ?> </b> - Forma de pago
-            </div>  
-            <div class="col-6">    
-                <?php include('../accesorios/menu_expediente.php');?>
+                <b><?php print $_SESSION['titular']; ?> </b> - Forma de pago
+            </div>
+            <div class="col-6">
+                <?php include '../accesorios/menu_expediente.php'; ?>
             </div>
         </div>
     </div>
-    
+
     <div class="card-body">
 
         <div class="row m-3">
             <div class="col-xs-12 col-sm-12 col-lg-4">
-                Monto crédito <b><?php echo number_format($_SESSION['monto'],2,',','.') ?></b>
+                Monto crédito <b><?php print number_format($_SESSION['monto'], 2, ',', '.'); ?></b>
             </div>
             <div class="col-xs-12 col-sm-12 col-lg-4">
-                Fecha otorgamiento <b><?php echo date('d/m/Y',strtotime($_SESSION['fecha_otorgamiento'])) ?></b>
-            </div>        
+                Fecha otorgamiento <b><?php print date('d/m/Y', strtotime($_SESSION['fecha_otorgamiento'])); ?></b>
+            </div>
             <div class="col-xs-12 col-sm-12 col-lg-4">
-            </div>  
-        </div>
-
-        <div class="row">
-            <div class="col-sm-12">
-                <br/>
             </div>
         </div>
 
         <div class="row">
             <div class="col-sm-12">
-                <br/>
+                <br />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <br />
             </div>
         </div>
 
         <div class="row m-3">
-            <table class="table table-condensed text-center">               
+            <table class="table table-condensed text-center">
                 <tr>
                     <td style=" width:120px">
                         Nro cuota
@@ -75,16 +74,16 @@ if ($registro = mysqli_fetch_array($tabla)) {
                     </td>
                 </tr>
                 <tr>
-                    <td>         
+                    <td>
                         <select id="nro_cuota" name="nro_cuota" class="form-control">
-                        <?php
+                            <?php
                         $nro = 1;
-                        while($nro <= 60){
-                            echo "<option value=".$nro.">".$nro."</option>";
-                            $nro ++;
+                        while ($nro <= 60) {
+                            print '<option value=' . $nro . '>' . $nro . '</option>';
+                            $nro++;
                         }
-                        ?>         
-                        </select>      
+                        ?>
+                        </select>
                     </td>
                     <td>
                         <input type="date" name="fecha" id="fecha" required class="form-control">
@@ -101,66 +100,99 @@ if ($registro = mysqli_fetch_array($tabla)) {
                     <td>
                         <button class="btn btn-secondary" onClick="generar_cuotas()">24 Cuotas</button>
                     </td>
-                </tr>  
-                
+                </tr>
+
             </table>
         </div>
 
-        <div id="forma_pago">   </div>
+        <div id="forma_pago"> </div>
 
-    </div>  
-</div>         
+    </div>
+</div>
 
-<?php require_once('../accesorios/admin-scripts.php'); ?>
+<?php require_once '../accesorios/admin-scripts.php'; ?>
 
 <script type="text/javascript">
-    $(document).ready(function(){
+    const procesando = () => {
+        let imgProcessing = '<img src="/desarrolloemprendedor/public/imagenes/cargando.gif"/>';
+        $("#forma_pago").html('Procesando, aguarde por favor... ' + imgProcessing);
+    }
+
+    $(document).ready(function() {
+        procesando();
         $("#forma_pago").load('detalle_forma_pago.php');
         $("#nro_cuota").focus()
-        
+
     });
-    
-    function generar_cuotas(){
-        $("#forma_pago").load('detalle_forma_pago.php',{operacion:1, cuotas:24});
+
+    function generar_cuotas() {
+        procesando();
+        $("#forma_pago").load('detalle_forma_pago.php', {
+                operacion: 1,
+                cuotas: 24
+            },
+            function(response, status, xhr) {
+                if (status == "success") {
+                    console.log('Ok')
+                }
+                if (status == "error") {
+                    var msg = "Error!, algo ha sucedido: ";
+                    $("#forma_pago").html(msg + xhr.status + " " + xhr.statusText);
+                }
+            });
     }
-    
-    function generar_cuotas_semestral(){
-        $("#forma_pago").load('detalle_forma_pago.php',{operacion:1, cuotas:3});
+
+    function generar_cuotas_semestral() {
+        procesando();
+        $("#forma_pago").load('detalle_forma_pago.php', {
+            operacion: 1,
+            cuotas: 3
+        });
     }
-    
-    function registrar(){
+
+    function registrar() {
         var cuota = document.getElementById('nro_cuota').value
         var importe = document.getElementById('monto').value
         var fecha = document.getElementById('fecha').value
-        
-        if(cuota == 0 || importe == 0 || fecha == 0){
+
+        if (cuota == 0 || importe == 0 || fecha == 0) {
             $("#estado").show();
             $("#estado").text("Ingrese Nro Cuota ó Importe ");
             $("#estado").toggle('slow');
             $("#estado").toggle('slow');
-            $("#estado").fadeOut(5000); 
-        }else{
-            $("#forma_pago").load('detalle_forma_pago.php',{operacion:4, cuota:cuota, importe:importe, fecha:fecha});
+            $("#estado").fadeOut(5000);
+        } else {
+            $("#forma_pago").load('detalle_forma_pago.php', {
+                operacion: 4,
+                cuota: cuota,
+                importe: importe,
+                fecha: fecha
+            });
             document.getElementById('nro_cuota').value = 1
             document.getElementById('monto').value = ''
             document.getElementById('fecha').value = ''
-            document.getElementById('nro_cuota').select()       
-        }   
-    }
-    
-    function eliminar_plan(){
-        if (confirm("Esta seguro que desea eliminar el Plan Pago ")){   
-            $("#forma_pago").load('detalle_forma_pago.php',{operacion:2});
+            document.getElementById('nro_cuota').select()
         }
     }
-    
-    function eliminar_cuota(id){
-        if (confirm("Desea eliminar Cuota ")){  
-            $("#forma_pago").load('detalle_forma_pago.php',{operacion:3, id_detalle:id});
-        }   
+
+    function eliminar_plan() {
+        if (confirm("Esta seguro que desea eliminar el Plan Pago ")) {
+            procesando();
+            $("#forma_pago").load('detalle_forma_pago.php', {
+                operacion: 2
+            });
+        }
     }
-    
+
+    function eliminar_cuota(id) {
+        if (confirm("Desea eliminar Cuota ")) {
+            procesando();
+            $("#forma_pago").load('detalle_forma_pago.php', {
+                operacion: 3,
+                id_detalle: id
+            });
+        }
+    }
 </script>
 
-<?php require_once('../accesorios/admin-inferior.php'); ?>
-
+<?php require_once '../accesorios/admin-inferior.php';

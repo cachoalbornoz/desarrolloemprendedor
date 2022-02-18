@@ -7,15 +7,15 @@ include '../accesorios/accesos_bd.php';
 
 <table class="table table-hover table-condensed" style="font-size: small">
   <thead>
-    <tr>
-      <th>#Nro</th>
-      <th>Apellido </th>
-      <th>Nombres</th>
-      <th>Cuit</th>
-      <th>Movil</th>
-      <th>Email</th>
-      <th>Responsabilidad</th>
-      <th>&nbsp;</th>
+    <tr class=" bg-secondary text-white">
+      <td>#Nro</td>
+      <td>Apellido </td>
+      <td>Nombres</td>
+      <td>Cuit</td>
+      <td>Movil</td>
+      <td>Email</td>
+      <td>Responsabilidad</td>
+      <td>&nbsp;</td>
     </tr>
   </thead>
   <tbody>
@@ -27,25 +27,25 @@ include '../accesorios/accesos_bd.php';
     $tabla_emprendedores = mysqli_query(
         $con,
         "SELECT t1.*, t3.nombre, t2.id_responsabilidad 
-    FROM emprendedores t1
-    INNER JOIN rel_expedientes_emprendedores t2 ON t1.id_emprendedor = t2.id_emprendedor
-    INNER JOIN localidades t3 ON t1.id_ciudad = t3.id
-    WHERE t2.id_expediente = $id_expediente
-    ORDER BY t2.id_responsabilidad DESC, apellido ASC "
+          FROM emprendedores t1
+          INNER JOIN rel_expedientes_emprendedores t2 ON t1.id_emprendedor = t2.id_emprendedor
+          INNER JOIN localidades t3 ON t1.id_ciudad = t3.id
+          WHERE t2.id_expediente = $id_expediente
+          ORDER BY t2.id_responsabilidad DESC, apellido ASC "
     );
 
       while ($fila = mysqli_fetch_array($tabla_emprendedores)) {
           ?>
     <tr>
-      <td><?php print $fila[0]; ?>
+      <td><?php print $fila['id_emprendedor']; ?>
       </td>
-      <td><a href="emprendedor.php?id=<?php print $fila[0]; ?>" title='Ver datos del emprendedor'><?php print $fila[1]; ?></a></td>
-      <td><?php print $fila[2]; ?>
+      <td><a href="emprendedor.php?id=<?php print $fila['id_emprendedor']; ?>" title='Ver datos del emprendedor'><?php print $fila['apellido']; ?></a></td>
+      <td><?php print $fila['nombres']; ?>
       </td>
-      <td><?php print $fila[4]; ?>
+      <td><?php print $fila['cuit']; ?>
       </td>
-      <td>(<?php print $fila[11]; ?>) - 15 (<?php print $fila[12]; ?>)</td>
-      <td><?php print $fila[15]; ?>
+      <td>(<?php print $fila['cod_area']; ?>) - 15 (<?php print $fila['celular']; ?>)</td>
+      <td><?php print $fila['email']; ?>
       </td>
       <td>
         <?php
