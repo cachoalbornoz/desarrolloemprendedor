@@ -1,8 +1,7 @@
 <?php
-require('../accesorios/admin-superior.php');
-require_once('../accesorios/accesos_bd.php');
+require '../accesorios/admin-superior.php';
+require_once '../accesorios/accesos_bd.php';
 $con = conectar();
-
 
 ?>
 
@@ -21,11 +20,11 @@ $con = conectar();
         <form action="agregar_emprendedor.php" method="post" name="emprendedor" id="emprendedor" class="form-horizontal">
 
             <div class="row m-3">
-                <div class="col-xs-12 col-sm-12 col-lg-4">
+                <div class="col-xs-12 col-sm-2 col-lg-2">
                     DNI
                     <input id="dni" name="dni" type="number" required class="form-control" autofocus>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-lg-4">
+                <div class="col-xs-12 col-sm-2 col-lg-2">
                     CUIT / CUIL
                     <input id="cuit" name="cuit" type="number" size="13" maxlength="11" required class="form-control">
                 </div>
@@ -35,6 +34,14 @@ $con = conectar();
                         <option value='0'>CODEUDOR</option>
                         <option value='1' selected>TITULAR</option>
                     </select>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-lg-4">
+                    <button type="submit" onClick="guardar()" class="btn btn-primary float-right">Guardar</button>
+                </div>
+            </div>
+            <div class="row m-3">
+                <div class="col-12">
+                    <hr>
                 </div>
             </div>
 
@@ -48,13 +55,17 @@ $con = conectar();
                     <input id="nombres" name="nombres" type="text" class="form-control mayus">
                 </div>
                 <div class="col-xs-12 col-sm-12 col-lg-4">
+                    FECHA NACIMIENTO
+                    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="form-control" />
+                </div>
+                <div class="col-xs-12 col-sm-12 col-lg-4">
                     CONDICION LABORAL
                     <select name="id_condicion_laboral" size="1" id="id_condicion_laboral" class="form-control">
                         <option value="1">AUTONOMO</option>
                         <?php
-                        $registro = mysqli_query($con, "select * from tipo_condicion_laboral where id_condicion_laboral <> 1 order by condicion_laboral");
+                        $registro = mysqli_query($con, 'select * from tipo_condicion_laboral where id_condicion_laboral <> 1 order by condicion_laboral');
                         while ($fila = mysqli_fetch_array($registro)) {
-                            echo "<option value=" . $fila[0] . ">" . $fila[1] . "</option>";
+                            print '<option value=' . $fila[0] . '>' . $fila[1] . '</option>';
                         }
                         ?>
                     </select>
@@ -62,17 +73,22 @@ $con = conectar();
             </div>
 
             <div class="row m-3">
+                <div class="col-6">
+                    <label>E-MAIL</label>
+                    <input name="email" type="email" id="email" class="form-control" />
+                </div>
+            </div>
+
+            <div class="row m-3">
+                <div class="col-12">
+                    <hr>
+                </div>
+            </div>
+
+            <div class="row m-3">
                 <div class="col-xs-12 col-sm-12 col-lg-4">
                     DOMICILIO
                     <input id="direccion" name="direccion" type="text" class="form-control mayus">
-                </div>
-                <div class="col-xs-12 col-sm-12 col-lg-4">
-                    E-MAIL
-                    <input name="email" type="email" id="email" class="form-control" />
-                </div>
-                <div class="col-xs-12 col-sm-12 col-lg-4">
-                    FECHA NACIMIENTO
-                    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="form-control" />
                 </div>
             </div>
 
@@ -82,9 +98,9 @@ $con = conectar();
                     <select name="provincia" id="provincia" size="1" onchange="from(document.emprendedor.provincia.value,'ciudad','ciudades.php')" class="form-control">
                         <option value="0">Seleccione ...</option>
                         <?php
-                        $registro   = mysqli_query($con, "SELECT id, nombre FROM provincias ORDER BY nombre");
+                        $registro = mysqli_query($con, 'SELECT id, nombre FROM provincias ORDER BY nombre');
                         while ($fila = mysqli_fetch_array($registro)) {
-                            echo "<option value=" . $fila[0] . ">" . $fila[1] . "</option>";
+                            print '<option value=' . $fila[0] . '>' . $fila[1] . '</option>';
                         }
                         ?>
                     </select>
@@ -144,34 +160,34 @@ $con = conectar();
 
 <?php
 mysqli_close($con);
-require_once('../accesorios/admin-scripts.php');    ?>
+require_once '../accesorios/admin-scripts.php'; ?>
 
 <script type="text/javascript">
-function chequea_cuit() {
+    function chequea_cuit() {
 
-    var cuit = document.getElementById('cuit').value
-    var url = 'verifica_emprendedor.php'
+        var cuit = document.getElementById('cuit').value
+        var url = 'verifica_emprendedor.php'
 
-    $.ajax({
-        type: 'GET',
-        url: url,
-        data: {
-            id: cuit
-        },
-        success: function(resp) {
-            if (resp == 0) {
-                document.getElementById("estado").innerHTML = "CUIT ya está registrado, presione Guardar.";
-                setTimeout(function() {
-                    document.getElementById("cuit").focus();
-                }, 0);
-                return false
+        $.ajax({
+            type: 'GET',
+            url: url,
+            data: {
+                id: cuit
+            },
+            success: function(resp) {
+                if (resp == 0) {
+                    document.getElementById("estado").innerHTML = "CUIT ya está registrado, presione Guardar.";
+                    setTimeout(function() {
+                        document.getElementById("cuit").focus();
+                    }, 0);
+                    return false
+                }
             }
-        }
-    });
+        });
 
-    document.getElementById("estado").innerHTML = ""
-    return true
-}
+        document.getElementById("estado").innerHTML = ""
+        return true
+    }
 </script>
 
-<?php require_once('../accesorios/admin-inferior.php'); ?>
+<?php require_once '../accesorios/admin-inferior.php';

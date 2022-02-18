@@ -8,11 +8,10 @@ require_once '../accesorios/accesos_bd.php';
 
 $con = conectar();
 
-$id_expediente = $_SESSION['id_expediente'];
-
-$cuit = $_POST['cuit'];
-
-$seleccion = "SELECT id_emprendedor, cuit, apellido, nombres FROM emprendedores WHERE cuit = $cuit";
+$id_expediente      = $_SESSION['id_expediente'];
+$cuit               = $_POST['cuit'];
+$id_responsabilidad = $_POST['id_responsabilidad'];
+$seleccion          = "SELECT id_emprendedor, cuit, apellido, nombres FROM emprendedores WHERE cuit = $cuit";
 
 $registro = mysqli_query($con, $seleccion);
 
@@ -63,7 +62,7 @@ if (mysqli_num_rows($registro) == 0) {
 
 $tabla_inserta = mysqli_query(
     $con,
-    "INSERT INTO rel_expedientes_emprendedores (id_expediente, id_emprendedor, id_responsabilidad) VALUES ($id_expediente, $id_emprendedor, 0)"
+    "INSERT INTO rel_expedientes_emprendedores (id_expediente, id_emprendedor, id_responsabilidad) VALUES ($id_expediente, $id_emprendedor, $id_responsabilidad)"
 ) or die('Revisar insercion Nuevo Emprendedor');
 
 //
