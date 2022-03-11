@@ -11,7 +11,6 @@ FROM emprendedores e
 LEFT JOIN rel_expedientes_emprendedores rela ON rela.id_emprendedor = e.id_emprendedor
 LEFT JOIN expedientes exped ON exped.id_expediente = rela.id_expediente
 LEFT JOIN tipo_estado te ON te.id_estado = exped.estado
-GROUP BY e.id_emprendedor
 ORDER BY apellido, nombres");
 ?>
 
