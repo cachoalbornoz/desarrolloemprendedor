@@ -109,7 +109,7 @@
                 data    : {anio: anio, estado:estado},
             },
             "columnDefs"    : [
-                { orderable:    false   , targets: [0, 2, 5, 8, 9, 10] },
+                { orderable:    false   , targets: [0, 2, 4, 5, 7,8, 9, 10] },
                 { className: 'text-center', targets: [0, 2, 3, 4, 5] },
             ],
             "language"      : { "url": "../public/DataTables/spanish.json" },            
