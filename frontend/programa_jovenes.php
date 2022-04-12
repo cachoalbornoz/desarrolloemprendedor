@@ -146,7 +146,7 @@
 </div>
 
 <div class="row mt-5 mb-5 text-center">
-    <div class="col-xs-12 col-sm-12 col-lg-12 d-none">
+    <div class="col-xs-12 col-sm-12 col-lg-12">
         <a href="/desarrolloemprendedor/frontend/registro.php" class="btn btn-lg btn-outline-info" style="color:#1e5571;">
             PRE-Inscribite aquí
         </a>

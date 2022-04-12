@@ -4,7 +4,9 @@
 
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-lg-12 text-center">
-        <img src="/desarrolloemprendedor/public/imagenes/portada.png" class="img-fluid shadow" />
+        <a href="/desarrolloemprendedor/frontend/programa_jovenes.php">
+            <img src="/desarrolloemprendedor/public/imagenes/prog_jovenes.jpg" class="img-fluid shadow" />
+        </a>
     </div>
 </div>
 
