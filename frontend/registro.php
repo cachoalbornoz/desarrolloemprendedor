@@ -28,7 +28,7 @@ $con = conectar();
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-lg-12">
                     <input id="id_solicitante" name="id_solicitante" type="hidden" value="0">
-                    <input id="tiempo" name="tiempo" type="hidden" value="<?php echo time(); ?>">
+                    <input id="tiempo" name="tiempo" type="hidden" value="<?php print time(); ?>">
                 </div>
             </div>
 
@@ -70,11 +70,42 @@ $con = conectar();
                 </div>
             </div>
 
+            <div class="panel panel-default border p-3">
+                <div class="panel-heading mt-3 mb-4">
+                    Redes sociales del emprendimiento (<strong>Indicar si no posee</strong>)
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <label>Facebook</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fab fa-facebook"></i>
+                                    </span>
+                                </div>
+                                <input id="facebook" name="facebook" type="text" class="form-control shadow" required>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <label>Instagram</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fab fa-instagram "></i>
+                                    </span>
+                                </div>
+                                <input id="instagram" name="instagram" type="text" class="form-control shadow" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-xs-12 col-md-6 col-lg-3 p-3">
                     <label>Cuit/Cuil</label>
-                    <input name="cuit" type="number" id="cuit" class="form-control shadow" required maxlength="11"
-                        onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                    <input name="cuit" type="number" id="cuit" class="form-control shadow" required maxlength="11" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                 </div>
                 <div class="col-xs-12 col-md-6 col-lg-3 p-3">
                     <label>Fecha Nacimiento</label>
@@ -84,8 +115,7 @@ $con = conectar();
                                 <i class="far fa-calendar-alt"></i>
                             </span>
                         </div>
-                        <input id="fecha_nac" name="fecha_nac" type="date" class="form-control text-center shadow"
-                            required>
+                        <input id="fecha_nac" name="fecha_nac" type="date" class="form-control text-center shadow" required>
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-12 col-lg-6 p-3">
@@ -104,21 +134,20 @@ $con = conectar();
             <div class="row">
                 <div class="col-xs-12 col-md-12 col-lg-12 p-3">
                     <label>Domicilio</label>
-                    <input id="direccion" name="direccion" type="text" class="form-control mayus shadow" required maxlength="150" >
+                    <input id="direccion" name="direccion" type="text" class="form-control mayus shadow" required maxlength="150">
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-xs-12 col-md-6 col-lg-6 p-3">
                     <label>Departamento</label>
-                    <select name="departamento" id="departamento" onchange="from(this.value,'ciudad','ciudades.php')"
-                        class="form-control shadow" required>
+                    <select name="departamento" id="departamento" onchange="from(this.value,'ciudad','ciudades.php')" class="form-control shadow" required>
                         <option value="" disabled selected></option>
                         <?php
-                        $departamentos = "SELECT id, nombre FROM departamentos WHERE provincia_id = 7 ORDER BY nombre";
+                        $departamentos = 'SELECT id, nombre FROM departamentos WHERE provincia_id = 7 ORDER BY nombre';
                         $registro      = mysqli_query($con, $departamentos);
                         while ($fila = mysqli_fetch_array($registro)) {
-                            echo "<option value=\"" . $fila[0] . '-id_ciudad' . "\">" . $fila[1] . "</option>\n";
+                            print '<option value="' . $fila[0] . '-id_ciudad' . '">' . $fila[1] . "</option>\n";
                         }
                         ?>
                     </select>

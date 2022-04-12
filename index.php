@@ -15,24 +15,8 @@
 </div>
 
 <div class="row">
-    <div class="col-xs-12 col-sm-12 col-lg-12 text-center">
-        <a href="/desarrolloemprendedor/frontend/empredurismo.php">
-            <img src="/desarrolloemprendedor/public/imagenes/semana_empredurismo.png" class="img-fluid shadow" />
-        </a>
-    </div>
-</div>
-
-<div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <br />
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-lg-12 text-center">
-        <a id="registro" href="/desarrolloemprendedor/frontend/programa_jovenes.php">
-            <img src="/desarrolloemprendedor/public/imagenes/inscripciones_gral.png" class="img-fluid shadow" />
-        </a>
     </div>
 </div>
 
@@ -45,14 +29,6 @@
 <div class="row mb-3">
     <div class="col-xs-12">
         <br />
-    </div>
-</div>
-
-<div class="row p-3">
-    <div class="col-xs-12">
-        <a href="https://comproencasaer.com/" target=" blank">
-            <img src="/desarrolloemprendedor/public/imagenes/comproencasaer.png" class="img-fluid shadow" />
-        </a>
     </div>
 </div>
 
@@ -178,7 +154,7 @@
         </p>
 
         <p class="text-center text-uppercase pl-5 pr-5">
-        Dirigido a emprendimientos innovadores y con ventajas competitivas sostenibles.
+            Dirigido a emprendimientos innovadores y con ventajas competitivas sostenibles.
         </p>
 
     </div>
@@ -208,12 +184,12 @@
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/accesorios/script.php'; ?>
 <br />
 <script>
-$(document).ready(function() {
-    $('#logModal').on('shown.bs.modal', function() {
-        $('#usuario').trigger('focus');
+    $(document).ready(function() {
+        $('#logModal').on('shown.bs.modal', function() {
+            $('#usuario').trigger('focus');
+        });
     });
-});
 </script>
 
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/accesorios/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/accesorios/footer.php';

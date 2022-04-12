@@ -25,6 +25,8 @@ if ($id_lugar == 4) {
 
 // INICIALIZO DATOS DEL EMPRENDEDOR
 $cuit             = null;
+$facebook         = null;
+$instagram        = null;
 $sociedad         = null;
 $id_departamentol = null;
 $departamentol    = null;
@@ -77,6 +79,8 @@ $registro_solicitantes = mysqli_fetch_array($tabla_solicitantes);
 $dni                = $registro_solicitantes['dni'];
 $apellido           = $registro_solicitantes['apellido'];
 $nombres            = $registro_solicitantes['nombres'];
+$facebook           = $registro_solicitantes['facebook'];
+$instagram          = $registro_solicitantes['instagram'];
 $genero             = $registro_solicitantes['genero'];
 $otrogenero         = $registro_solicitantes['otrogenero'];
 $email              = $registro_solicitantes['email'];
@@ -314,6 +318,39 @@ if ($registro_empresa = mysqli_fetch_array($tabla_empresa)) {
                     <input id="otrogenero" name="otrogenero" value="<?php echo $otrogenero; ?>" type="text" class="form-control shadow <?php if ($genero == 0 or $genero == 1) {
                         echo 'd-none';
                     } ?>" placeholder="A los fines de identificar poblaciones pasibles de políticas públicas compensatorias específicas, te solicitamos que definas tu identidad de género">
+                </div>
+            </div>
+
+
+            <div class="panel panel-default border p-3">
+                <div class="panel-heading mt-3 mb-4">
+                    Redes sociales del emprendimiento (<strong>Indicar si no posee</strong>)
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <label>Facebook</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fab fa-facebook"></i>
+                                    </span>
+                                </div>
+                                <input id="facebook" name="facebook" type="text" class="form-control shadow"  value="<?php echo  $facebook; ?>" required>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <label>Instagram</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fab fa-instagram "></i>
+                                    </span>
+                                </div>
+                                <input id="instagram" name="instagram" type="text" class="form-control shadow"  value="<?php echo  $instagram; ?>" required>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

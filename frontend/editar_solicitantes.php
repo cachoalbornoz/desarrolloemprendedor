@@ -16,6 +16,8 @@ $nombres        = strtoupper(ltrim($_POST['nombres']));
 $genero         = $_POST['genero'];
 ($_POST['genero'] == 0 or $_POST['genero'] == 1) ? $_POST['otrogenero'] = '' : null;
 $otrogenero     = $_POST['otrogenero'];
+$facebook    	= strtoupper(ltrim($_POST['facebook']));
+$instagram    	= strtoupper(ltrim($_POST['instagram']));
 $fecha_nac      = $_POST['fecha_nac'];
 $email          = $_POST['email'];
 $cuit           = $_POST['cuit'];
@@ -60,7 +62,7 @@ if (isset($_POST['funciona']) and $_POST['funciona'] == "on") {
 
 mysqli_query($con,
 "UPDATE solicitantes 
-	SET dni = '$dni', apellido='$apellido', nombres='$nombres', genero=$genero, otrogenero = '$otrogenero', direccion='$direccion', cuit='$cuit', observaciones = 1,
+	SET dni = '$dni', apellido='$apellido', nombres='$nombres', genero=$genero, facebook = '$facebook', instagram = '$instagram', otrogenero = '$otrogenero', direccion='$direccion', cuit='$cuit', observaciones = 1,
 	fecha_nac= '$fecha_nac', email='$email', cod_area = '$cod_area', telefono='$telefono',celular='$celular', id_ciudad=$id_ciudad
 	WHERE id_solicitante = $id_solicitante" ) or die("Error en la actualización solicitantes");
 

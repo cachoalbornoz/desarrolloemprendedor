@@ -5,13 +5,13 @@ if (!isset($_SESSION['usuario'])) {
     exit;
 }
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/frontend/accesorios/front-superior.php');
-require_once($_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/accesorios/accesos_bd.php');
+require_once $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/frontend/accesorios/front-superior.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/accesorios/accesos_bd.php';
 $con = conectar();
 
 $id_solicitante = $_SESSION['id_usuario'];
 
-// COMPROBAR SI EL USUARIO LOGUEADO TIENE UN PROYECTO 
+// COMPROBAR SI EL USUARIO LOGUEADO TIENE UN PROYECTO
 
 $tabla = mysqli_query(
     $con,
@@ -22,7 +22,7 @@ $tabla = mysqli_query(
     WHERE t1.id_estado <> 25 AND t2.id_solicitante = $id_solicitante"
 );
 
-if ($registro    = mysqli_fetch_array($tabla)) {
+if ($registro = mysqli_fetch_array($tabla)) {
 
     // DATOS DEL PROYECTO
     $id_proyecto            = $registro['id_proyecto'];
@@ -60,8 +60,7 @@ if ($registro    = mysqli_fetch_array($tabla)) {
     $latitud                = $registro['latitud'];
     $longitud               = $registro['longitud'];
 } else {
-
-    mysqli_query($con, "INSERT INTO proyectos (id_estado) VALUES (20)") or die("Error inserción proyectos");
+    mysqli_query($con, 'INSERT INTO proyectos (id_estado) VALUES (20)') or die('Error inserción proyectos');
 
     $id_proyecto = mysqli_insert_id($con);
 
@@ -107,16 +106,14 @@ if ($registro    = mysqli_fetch_array($tabla)) {
 
 $tabla = mysqli_query($con, "SELECT * FROM registro_solicitantes WHERE id_solicitante = $id_solicitante");
 
-if ($registro    = mysqli_fetch_array($tabla)) {
-
-    $id_rubro               = $registro['id_rubro'];
-    $id_medio               = $registro['id_medio'];
-    $id_programa            = $registro['id_programa'];
-    $observaciones          = $registro['observaciones'];
+if ($registro = mysqli_fetch_array($tabla)) {
+    $id_rubro      = $registro['id_rubro'];
+    $id_medio      = $registro['id_medio'];
+    $id_programa   = $registro['id_programa'];
+    $observaciones = $registro['observaciones'];
 }
 
-$_SESSION['id_proyecto']    = $id_proyecto;
-
+$_SESSION['id_proyecto'] = $id_proyecto;
 
 ?>
 
@@ -138,7 +135,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-prepend1">Nro proyecto</span>
                         </div>
-                        <input type="text" id="id_proyecto" name="id_proyecto" class="form-control text-center bg-white" readonly value="<?php echo $id_proyecto; ?>">
+                        <input type="text" id="id_proyecto" name="id_proyecto" class="form-control text-center bg-white" readonly value="<?php print $id_proyecto; ?>">
                     </div>
                 </div>
 
@@ -230,7 +227,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-info text-white">Latitud</span>
                         </div>
-                        <input id="latitud" name="latitud" type="number" class="form-control text-center empty" placeholder="Ej. -31.24139513" value=<?php echo $latitud ?>>
+                        <input id="latitud" name="latitud" type="number" class="form-control text-center empty" placeholder="Ej. -31.24139513" value=<?php print $latitud; ?>>
                     </div>
                 </div>
 
@@ -239,7 +236,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-info text-white">Longitud</span>
                         </div>
-                        <input id="longitud" name="longitud" type="number" class="form-control text-center empty" placeholder="Ej. -59.8765868" value=<?php echo $longitud ?>>
+                        <input id="longitud" name="longitud" type="number" class="form-control text-center empty" placeholder="Ej. -59.8765868" value=<?php print $longitud; ?>>
                     </div>
                 </div>
             </div>
@@ -268,7 +265,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
             <div class="row mb-5">
                 <div class="col-xs-12 col-sm-12 col-lg-12">
                     <label for="denominacion">Denominación</label>
-                    <input id="denominacion" name="denominacion" type="text" value="<?php echo $denominacion; ?>" class="form-control mayus empty" maxlength="100">
+                    <input id="denominacion" name="denominacion" type="text" value="<?php print $denominacion; ?>" class="form-control mayus empty" maxlength="100">
                     <small>
                         Referencia e identificación de la idea de negocio; Referencia al proceso o producto que se pretende desarrollar.
                         <span class="text-muted">
@@ -289,7 +286,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                                 <i class="fas fa-dollar-sign"></i>
                             </span>
                         </div>
-                        <input id="monto" name="monto" type="number" value="<?php echo $monto; ?>" class="form-control text-center">
+                        <input id="monto" name="monto" type="number" value="<?php print $monto; ?>" class="form-control text-center">
                     </div>
                     <small>
                         <span class="text-muted">
@@ -304,7 +301,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
             <div class="row mb-5">
                 <div class="col-xs-12 col-sm-12 col-lg-12">
                     <label>Resumen ejecutivo</label>
-                    <textarea id="resumen_ejecutivo" name="resumen_ejecutivo" rows="2" class="form-control mayus empty" maxlength="500"><?php echo $resumen_ejecutivo; ?></textarea>
+                    <textarea id="resumen_ejecutivo" name="resumen_ejecutivo" rows="2" class="form-control mayus empty" maxlength="500"><?php print $resumen_ejecutivo; ?></textarea>
                     <small>Resumen descriptivo de la idea de negocio, de los rasgos sobresalientes y toda la información relevante que permita tener una idea acabada del proyecto.
                         <span class="text-muted">(máx 500 caracteres)</span>
                     </small>
@@ -316,7 +313,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Descripción</label>
-                    <textarea id="descripcion" name="descripcion" rows="2" class="form-control mayus empty" maxlength="500"><?php echo $descripcion; ?></textarea>
+                    <textarea id="descripcion" name="descripcion" rows="2" class="form-control mayus empty" maxlength="500"><?php print $descripcion; ?></textarea>
                     <small>Características sobresalientes del emprendimiento.
                         <span class="text-muted">(máx 500 caracteres)</span>
                     </small>
@@ -328,7 +325,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Objetivos</label>
-                    <textarea id="objetivos" name="objetivos" rows="2" class="form-control mayus empty" maxlength="500"><?php echo $objetivos; ?></textarea>
+                    <textarea id="objetivos" name="objetivos" rows="2" class="form-control mayus empty" maxlength="500"><?php print $objetivos; ?></textarea>
                     <small>Objetivos que se persiguen con este emprendimiento.
                         <span class="text-muted">(máx 500 caracteres)</span>
                     </small>
@@ -340,7 +337,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Oportunidades que significa</label>
-                    <textarea id="oportunidades" name="oportunidades" rows="2" class="form-control mayus empty" maxlength="500"><?php echo $oportunidades; ?></textarea>
+                    <textarea id="oportunidades" name="oportunidades" rows="2" class="form-control mayus empty" maxlength="500"><?php print $oportunidades; ?></textarea>
                     <small>Oportunidades técnicas y/o comerciales existentes en el medio que acrecientan el atractivo general de esta Idea de Negocio.
                         <span class="text-muted">(máx 500 caracteres)</span>
                     </small>
@@ -352,7 +349,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Desarrollo actual</label>
-                    <textarea id="desarrollo" name="desarrollo" rows="3" class="form-control mayus empty" maxlength="500"><?php echo $desarrollo; ?></textarea>
+                    <textarea id="desarrollo" name="desarrollo" rows="3" class="form-control mayus empty" maxlength="500"><?php print $desarrollo; ?></textarea>
                     <small>Estado en que se encuentra actualmente la Idea de Negocio.
                         <span class="text-muted">(máx 500 caracteres)</span>
                     </small>
@@ -376,7 +373,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Historia del proyecto</label>
-                    <textarea id="historia" name="historia" rows="2" maxlength="500" class="form-control mayus empty" placeholder="Historia del grupo de emprendedores"><?php echo $historia; ?></textarea>
+                    <textarea id="historia" name="historia" rows="2" maxlength="500" class="form-control mayus empty" placeholder="Historia del grupo de emprendedores"><?php print $historia; ?></textarea>
                     <small>Origen del grupo de emprendedores.
                         <span class="text-muted">(máx 500 caracteres)</span>
                     </small>
@@ -388,7 +385,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Presente</label>
-                    <textarea id="presente" name="presente" rows="2" maxlength="500" class="form-control mayus empty" placeholder="Presente del grupo de emprendedores"><?php echo $presente; ?></textarea>
+                    <textarea id="presente" name="presente" rows="2" maxlength="500" class="form-control mayus empty" placeholder="Presente del grupo de emprendedores"><?php print $presente; ?></textarea>
                     <small>Actualidad del grupo de emprendedores.
                         <span class="text-muted">(máx 500 caracteres)</span>
                     </small>
@@ -402,11 +399,13 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                     <label>Ingrese aspectos de los productos y/o servicios; producción de los mismos</label>
                     <select id="lugardesarrollo" name="lugardesarrollo" class="form-control select2">
                         <option value="0" <?php if ($lugardesarrollo == 0) {
-                                                echo "selected";
-                                            } ?>>Alquilado / Arrendado</option>
+    print 'selected';
+} ?>>Alquilado / Arrendado
+                        </option>
                         <option value="1" <?php if ($lugardesarrollo == 1) {
-                                                echo "selected";
-                                            } ?>>Propio</option>
+    print 'selected';
+} ?>>Propio
+                        </option>
                     </select>
 
                 </div>
@@ -416,7 +415,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Descripción del lugar</label>
-                    <textarea id="detallelugar" name="detallelugar" rows="2" maxlength="500" class="form-control mayus empty" placeholder="Descripción del lugar laboral, años alquiler, dimensiones, etc"><?php echo $detallelugar; ?></textarea>
+                    <textarea id="detallelugar" name="detallelugar" rows="2" maxlength="500" class="form-control mayus empty" placeholder="Descripción del lugar laboral, años alquiler, dimensiones, etc"><?php print $detallelugar; ?></textarea>
                     <small>Propio o alquiler / arrendamiento. Descripción del mismo, ubicación, etc.
                         <span class="text-muted">(máx 500 caracteres)</span>
                     </small>
@@ -428,7 +427,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Técnicas</label>
-                    <textarea id="caratecnicas" name="caratecnicas" rows="2" maxlength="500" class="form-control mayus empty"><?php echo $caratecnicas; ?></textarea>
+                    <textarea id="caratecnicas" name="caratecnicas" rows="2" maxlength="500" class="form-control mayus empty"><?php print $caratecnicas; ?></textarea>
                     <small>Características técnicas, especificaciones, funciones, cualidades, usos y aplicaciones del producto/servicio.
                         <span class="text-muted">(máx 500 caracteres)</span>
                     </small>
@@ -440,7 +439,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Tecnológicas</label>
-                    <textarea id="caratecnologicas" name="caratecnologicas" rows="2" maxlength="500" class="form-control mayus empty"><?php echo $caratecnologicas; ?></textarea>
+                    <textarea id="caratecnologicas" name="caratecnologicas" rows="2" maxlength="500" class="form-control mayus empty"><?php print $caratecnologicas; ?></textarea>
                     <small>Estado del arte de la tecnología necesaria para elaborar sus productos y/o prestar sus servicios; ventajas o desventajas que la tecnología escogida presenta sobre otras existentes.
                         <span class="text-muted">(máx 500 caracteres)</span>
                     </small>
@@ -452,7 +451,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Procesos</label>
-                    <textarea id="caraprocesos" name="caraprocesos" rows="2" maxlength="500" class="form-control mayus empty"><?php echo $caraprocesos; ?></textarea>
+                    <textarea id="caraprocesos" name="caraprocesos" rows="2" maxlength="500" class="form-control mayus empty"><?php print $caraprocesos; ?></textarea>
                     <small>Etapas de los procesos productivos. Describir las que se realizarán en forma directa y las que serán tercerizadas.
                         <span class="text-muted">(máx 500 caracteres)</span>
                     </small>
@@ -464,7 +463,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Materias primas</label>
-                    <textarea id="caramateriasprimas" name="caramateriasprimas" rows="2" maxlength="500" class="form-control mayus empty"><?php echo $caramateriasprimas; ?></textarea>
+                    <textarea id="caramateriasprimas" name="caramateriasprimas" rows="2" maxlength="500" class="form-control mayus empty"><?php print $caramateriasprimas; ?></textarea>
                     <small>Materias primas que utilizará en los procesos productivos; volumen necesario por unidad de producto.
                         <span class="text-muted">(máx 500 caracteres)</span>
                     </small>
@@ -476,7 +475,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Desechos</label>
-                    <textarea id="caradesechos" name="caradesechos" rows="2" maxlength="500" class="form-control mayus empty"><?php echo $caradesechos; ?></textarea>
+                    <textarea id="caradesechos" name="caradesechos" rows="2" maxlength="500" class="form-control mayus empty"><?php print $caradesechos; ?></textarea>
                     <small>
                         <span class="text-muted">(máx 500 caracteres)</span>
                     </small>
@@ -499,7 +498,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Determinación Mercado</label>
-                    <textarea id="mercado" name="mercado" maxlength="500" class="form-control mayus empty"><?php echo $mercado; ?></textarea>
+                    <textarea id="mercado" name="mercado" maxlength="500" class="form-control mayus empty"><?php print $mercado; ?></textarea>
                     <small>Características del mercado; tamaño y el volumen de ventas en unidades.</small>
 
                 </div>
@@ -509,7 +508,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Descripción de los clientes</label>
-                    <textarea id="caraclientes" name="caraclientes" maxlength="500" class="form-control mayus empty"><?php echo $caraclientes; ?></textarea>
+                    <textarea id="caraclientes" name="caraclientes" maxlength="500" class="form-control mayus empty"><?php print $caraclientes; ?></textarea>
                     <small>
                         Rasgos esenciales de los clientes que forman los segmentos del mercado y características
                         principales de los mismos como ser: edad, sexo, nivel socio económico, establecimientos, etc.
@@ -522,7 +521,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Características de la competencia</label>
-                    <textarea id="caracompetencia" name="caracompetencia" rows="2" maxlength="500" class="form-control mayus empty"><?php echo $caracompetencia; ?></textarea>
+                    <textarea id="caracompetencia" name="caracompetencia" rows="2" maxlength="500" class="form-control mayus empty"><?php print $caracompetencia; ?></textarea>
                     <small>Características esenciales de los competidores.</small>
 
                 </div>
@@ -532,7 +531,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Características de los proveedores</label>
-                    <textarea id="caraproveedores" name="caraproveedores" rows="2" maxlength="500" class="form-control mayus empty"><?php echo $caraproveedores; ?></textarea>
+                    <textarea id="caraproveedores" name="caraproveedores" rows="2" maxlength="500" class="form-control mayus empty"><?php print $caraproveedores; ?></textarea>
                     <small>Nombrar y caracterizar proveedores de materias primas y otros bienes o servicios.</small>
 
                 </div>
@@ -542,7 +541,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Riesgos y estrategias de superación de los mismos</label>
-                    <textarea id="carariesgosestrategias" name="carariesgosestrategias" rows="2" maxlength="500" class="form-control mayus empty"><?php echo $carariesgosestrategias; ?></textarea>
+                    <textarea id="carariesgosestrategias" name="carariesgosestrategias" rows="2" maxlength="500" class="form-control mayus empty"><?php print $carariesgosestrategias; ?></textarea>
                     <small>
                         Riesgos comerciales o técnicos que pueden surgir durante el desarrollo del emprendimiento, y vías de superación de los mismos previstas.
                     </small>
@@ -554,7 +553,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Destino del monto solicitado</label>
-                    <textarea id="destinomonto" name="destinomonto" rows="2" maxlength="500" class="form-control mayus empty" placeholder="Destino del monto solicitado"><?php echo $destinomonto; ?></textarea>
+                    <textarea id="destinomonto" name="destinomonto" rows="2" maxlength="500" class="form-control mayus empty" placeholder="Destino del monto solicitado"><?php print $destinomonto; ?></textarea>
 
                 </div>
             </div>
@@ -563,7 +562,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Personal</label>
-                    <textarea id="personal" name="personal" rows="2" maxlength="500" class="form-control mayus empty" placeholder="Describa personal a emplear"><?php echo $personal; ?></textarea>
+                    <textarea id="personal" name="personal" rows="2" maxlength="500" class="form-control mayus empty" placeholder="Describa personal a emplear"><?php print $personal; ?></textarea>
 
                 </div>
             </div>
@@ -572,7 +571,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Interacción prevista con el sector científico-tecnológico regional y nacional</label>
-                    <textarea id="interaccion" name="interaccion" rows="2" maxlength="500" class="form-control mayus empty" placeholder="Interacción prevista con el sector Cientif/Tecnológico de la región."><?php echo $interaccion; ?></textarea>
+                    <textarea id="interaccion" name="interaccion" rows="2" maxlength="500" class="form-control mayus empty" placeholder="Interacción prevista con el sector Cientif/Tecnológico de la región."><?php print $interaccion; ?></textarea>
 
                 </div>
             </div>
@@ -581,7 +580,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Impacto económico y social</label>
-                    <textarea id="impacto" name="impacto" rows="2" maxlength="500" class="form-control mayus empty" placeholder="Impacto económico y social"><?php echo $impacto; ?></textarea>
+                    <textarea id="impacto" name="impacto" rows="2" maxlength="500" class="form-control mayus empty" placeholder="Impacto económico y social"><?php print $impacto; ?></textarea>
 
                 </div>
             </div>
@@ -601,7 +600,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Precio de los productos</label>
-                    <textarea id="preciosproductos" name="preciosproductos" rows="2" maxlength="500" class="form-control mayus empty" placeholder="Precio productos / servicios"><?php echo $preciosproductos; ?></textarea>
+                    <textarea id="preciosproductos" name="preciosproductos" rows="2" maxlength="500" class="form-control mayus empty" placeholder="Precio productos / servicios"><?php print $preciosproductos; ?></textarea>
 
                 </div>
             </div>
@@ -610,7 +609,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Origen de la financiación</label>
-                    <textarea id="origenfinanciacion" name="origenfinanciacion" rows="2" maxlength="500" class="form-control mayus empty" placeholder="Origen de la Financiación"><?php echo $origenfinanciacion; ?></textarea>
+                    <textarea id="origenfinanciacion" name="origenfinanciacion" rows="2" maxlength="500" class="form-control mayus empty" placeholder="Origen de la Financiación"><?php print $origenfinanciacion; ?></textarea>
 
                 </div>
             </div>
@@ -631,7 +630,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Fortalezas</label>
-                    <textarea id="fodafortalezas" name="fodafortalezas" rows="2" maxlength="500" class="form-control mayus empty"><?php echo $fodafortalezas; ?></textarea>
+                    <textarea id="fodafortalezas" name="fodafortalezas" rows="2" maxlength="500" class="form-control mayus empty"><?php print $fodafortalezas; ?></textarea>
 
                 </div>
             </div>
@@ -640,7 +639,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Oportunidades</label>
-                    <textarea id="fodaoportunidades" name="fodaoportunidades" rows="2" maxlength="500" class="form-control mayus empty"><?php echo $fodaoportunidades; ?></textarea>
+                    <textarea id="fodaoportunidades" name="fodaoportunidades" rows="2" maxlength="500" class="form-control mayus empty"><?php print $fodaoportunidades; ?></textarea>
 
                 </div>
             </div>
@@ -649,7 +648,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Debilidades</label>
-                    <textarea id="fodadebilidades" name="fodadebilidades" rows="2" maxlength="500" class="form-control mayus empty"><?php echo $fodadebilidades; ?></textarea>
+                    <textarea id="fodadebilidades" name="fodadebilidades" rows="2" maxlength="500" class="form-control mayus empty"><?php print $fodadebilidades; ?></textarea>
 
                 </div>
             </div>
@@ -658,7 +657,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                 <div class="col-xs-12 col-sm-12 col-lg-12">
 
                     <label>Amenazas</label>
-                    <textarea id="fodaamenazas" name="fodaamenazas" rows="2" maxlength="500" class="form-control mayus empty"><?php echo $fodaamenazas; ?></textarea>
+                    <textarea id="fodaamenazas" name="fodaamenazas" rows="2" maxlength="500" class="form-control mayus empty"><?php print $fodaamenazas; ?></textarea>
                     <br />
                     <small>
                         Fortalezas y debilidades propias del emprendimiento, conforme la visión que los
@@ -721,13 +720,12 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                     <label> Rubro productivo de interés </label>
                     <select id="id_rubro" name="id_rubro" size="1" class="form-control" readonly>
                         <?php
-                        $registro = mysqli_query($con, "select id_rubro, rubro from tipo_rubro_productivos order by rubro");
+                        $registro = mysqli_query($con, 'select id_rubro, rubro from tipo_rubro_productivos order by rubro');
                         while ($fila = mysqli_fetch_array($registro)) {
-
                             if ($id_rubro == $fila[0]) {
-                                echo "<option value=\"" . $fila[0] . "\" selected>" . $fila[1] . "</option>\n";
+                                print '<option value="' . $fila[0] . '" selected>' . $fila[1] . "</option>\n";
                             } else {
-                                echo "<option value=\"" . $fila[0] . "\">" . $fila[1] . "</option>\n";
+                                print '<option value="' . $fila[0] . '">' . $fila[1] . "</option>\n";
                             }
                         }
                         ?>
@@ -741,12 +739,12 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                     <select name="id_medio" id="id_medio" size="1" class="form-control" readonly>
                         <?php
 
-                        $registro = mysqli_query($con, "select id_medio, medio from tipo_medios_contacto");
+                        $registro = mysqli_query($con, 'select id_medio, medio from tipo_medios_contacto');
                         while ($fila = mysqli_fetch_array($registro)) {
                             if ($id_medio == $fila[0]) {
-                                echo "<option value=\"" . $fila[0] . "\" selected>" . $fila[1] . "</option>\n";
+                                print '<option value="' . $fila[0] . '" selected>' . $fila[1] . "</option>\n";
                             } else {
-                                echo "<option value=\"" . $fila[0] . "\">" . $fila[1] . "</option>\n";
+                                print '<option value="' . $fila[0] . '">' . $fila[1] . "</option>\n";
                             }
                         }
                         ?>
@@ -759,12 +757,12 @@ $_SESSION['id_proyecto']    = $id_proyecto;
                     <label> Programa registrado </label>
                     <select name="id_programa" id="id_programa" size="1" class="form-control" readonly>
                         <?php
-                        $registro = mysqli_query($con, "select id_programa, programa from tipo_programas");
+                        $registro = mysqli_query($con, 'select id_programa, programa from tipo_programas');
                         while ($fila = mysqli_fetch_array($registro)) {
                             if ($id_programa == $fila[0]) {
-                                echo "<option value=\"" . $fila[0] . "\" selected>" . $fila[1] . "</option>\n";
+                                print '<option value="' . $fila[0] . '" selected>' . $fila[1] . "</option>\n";
                             } else {
-                                echo "<option value=\"" . $fila[0] . "\">" . $fila[1] . "</option>\n";
+                                print '<option value="' . $fila[0] . '">' . $fila[1] . "</option>\n";
                             }
                         }
                         ?>
@@ -775,7 +773,7 @@ $_SESSION['id_proyecto']    = $id_proyecto;
             <div class="row  mb-3">
                 <div class="col-xs-12 col-sm-12 col-lg-12">
                     <label>Reseña del proyecto</label>
-                    <textarea name="observaciones" id="observaciones" rows="2" class="form-control mayus empty"><?php echo $observaciones ?></textarea>
+                    <textarea name="observaciones" id="observaciones" rows="2" class="form-control mayus empty"><?php print $observaciones; ?></textarea>
                 </div>
             </div>
 
@@ -786,16 +784,14 @@ $_SESSION['id_proyecto']    = $id_proyecto;
 
 <!-- Lista de Emprendedores -->
 <div class="card">
-
     <div class="card-header border border-primary">
-
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-xs-6">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">DNI </span>
                     </div>
-                    <input id="dni" name="dni" type="number" placeholder="Escriba DNI a asociar " class="form-control shadow" onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57">
+                    <input id="dni" name="dni" type="number" placeholder="Escriba DNI a asociar " class="form-control shadow">
                     <div class=" input-group-append">
                         <button type="button" id="addAsociado" name="addAsociado" class="btn btn-info">
                             <i class="fa fa-plus"></i> Agregar
@@ -819,6 +815,40 @@ $_SESSION['id_proyecto']    = $id_proyecto;
         </div>
     </div>
 </div>
+
+
+<!-- Lista de Emprendedores -->
+<div class="card">
+    <div class="card-header border border-primary">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-xs-4">
+
+                <form method="post" action="" enctype="multipart/form-data" id="form">
+                    <input type="file" name="image" id="image" class=" form-control-file" accept="image/png, image/jpeg, image/gif">
+                    <span class="input-group btn">
+                        <button type="submit" class="btn btn-info btn-sm" id="submit">Enviar</button>
+                    </span>
+                </form>
+
+            </div>
+            <div class="col-xs-12 col-sm-4 col-xs-4">
+            </div>
+            <div class="col-xs-12 col-sm-4 col-xs-4 text-right">
+                <h4 class="card-title">Foto del proyecto</h4>
+                <small>Sólo imagenes JPG, PNG . Tamaño max 3 Mbytes</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-xs-12 text-center">
+                <div id="detalle_foto"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-lg-12">
@@ -846,361 +876,386 @@ $_SESSION['id_proyecto']    = $id_proyecto;
 <?php
 
 mysqli_close($con);
-require_once($_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/frontend/accesorios/front-scripts.php'); ?>
+require_once $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/frontend/accesorios/front-scripts.php'; ?>
 
 <style>
-#spopup {
-    opacity: 0.8;
-    width: auto;
-    position: fixed;
-    bottom: 13px;
-    right: 25px;
-    display: none;
-    z-index: 90;
-}
+    #spopup {
+        opacity: 0.8;
+        width: auto;
+        position: fixed;
+        bottom: 13px;
+        right: 25px;
+        display: none;
+        z-index: 90;
+    }
 
-.hidden {
-    display: none;
-}
+    .hidden {
+        display: none;
+    }
 </style>
 
 <script>
-var objeto = document.getElementById('enviar');
+    var objeto = document.getElementById('enviar');
 
-$(document).ready(function() {
+    $(document).ready(function() {
 
-    $("#monto").bind("cut copy paste", function(e) {
-        e.preventDefault();
-    });
-
-    $("#detalle_emprendedores").load('detalle_solicitantes.php');
-
-    $("#detalle_empresa").load('detalle_empresa.php');
-
-});
-
-$("#addAsociado").on('click', function() {
-
-    var dni = $("#dni").val();
-
-    if (dni > 0) {
-
-        $("#detalle_emprendedores").load('detalle_solicitantes.php', {
-            operacion: 1,
-            dni: dni
+        $("#monto").bind("cut copy paste", function(e) {
+            e.preventDefault();
         });
+        $("#detalle_emprendedores").load('detalle_solicitantes.php');
+        $("#detalle_empresa").load('detalle_empresa.php');
+        $("#detalle_foto").load('detalle_fotos.php');
 
-        $("#dni").select();
-
-    }
-})
-
-function borrar_solicitante(id, solicitante) {
-
-    var id_proyecto = $("#id_proyecto").val();
-
-    ymz.jq_confirm({
-        title: "",
-        text: "<div class='text-center'>Confirme desvincular a <b>" + solicitante + " </b> ? </div>",
-        no_btn: "Cancelar",
-        yes_btn: "Ok",
-        no_fn: function() {
-            return false;
-        },
-        yes_fn: function() {
-            $("#detalle_emprendedores").load('detalle_solicitantes.php', {
-                operacion: 2,
-                id_solicitante: id,
-                id_proyecto: id_proyecto
-            });
-        }
     });
 
-    $("#dni").select();
-}
+    $("#form").submit(function(event) {
+        event.preventDefault();
 
-function eliminarEmpresa() {
-
-    var id = $("#id_empresa").val();
-
-    var em = $("#razon_social").val();
-
-    ymz.jq_confirm({
-        title: "",
-        text: "<div class='text-center'> Confirme borrar empresa: " + em + "? </div>",
-        no_btn: "Cancelar",
-        yes_btn: "Ok",
-        no_fn: function() {
-            return false;
-        },
-        yes_fn: function() {
-            $("#detalle_empresa").load('detalle_empresa.php', {
-                eliminar: 1,
-                id_empresa: id
-            });
-        }
-    });
-}
-
-function guardarEmpresa(this1) {
-
-    var validado = true;
-    elementos = document.getElementsByClassName("formu");
-
-    for (i = 0; i < elementos.length; i++) {
-        if (elementos[i].value == "" || elementos[i].value == null) {
-            validado = false
-        }
-    }
-
-    if (validado) {
-
-        this1.disabled = true;
-        this1.innerHTML = 'Guardando empresa... aguarde ';
-
-        var url = 'actualiza_empresa.php';
+        $("#detalle_foto").html('Cargando .... <img src="/desarrolloemprendedor/public/imagenes/cargando.gif">');        
+        var file = $('#image').prop('files')[0];  
+        var form_data = new FormData();                  
+        form_data.append('file', file);
 
         $.ajax({
             type: 'POST',
+            url: 'detalle_fotos.php',
+            data: form_data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            complete: function() {
+                
+                setTimeout(function() {
+                    $("#detalle_foto").load('detalle_fotos.php');
+                }, 1000);
+            }
+        });
+    })
+
+
+
+    $("#addAsociado").on('click', function() {
+
+        var dni = $("#dni").val();
+
+        if (dni > 0) {
+
+            $("#detalle_emprendedores").load('detalle_solicitantes.php', {
+                operacion: 1,
+                dni: dni
+            });
+
+            $("#dni").select();
+
+        }
+    })
+
+    function borrar_solicitante(id, solicitante) {
+
+        var id_proyecto = $("#id_proyecto").val();
+
+        ymz.jq_confirm({
+            title: "",
+            text: "<div class='text-center'>Confirme desvincular a <b>" + solicitante + " </b> ? </div>",
+            no_btn: "Cancelar",
+            yes_btn: "Ok",
+            no_fn: function() {
+                return false;
+            },
+            yes_fn: function() {
+                $("#detalle_emprendedores").load('detalle_solicitantes.php', {
+                    operacion: 2,
+                    id_solicitante: id,
+                    id_proyecto: id_proyecto
+                });
+            }
+        });
+
+        $("#dni").select();
+    }
+
+    function eliminarEmpresa() {
+
+        var id = $("#id_empresa").val();
+
+        var em = $("#razon_social").val();
+
+        ymz.jq_confirm({
+            title: "",
+            text: "<div class='text-center'> Confirme borrar empresa: " + em + "? </div>",
+            no_btn: "Cancelar",
+            yes_btn: "Ok",
+            no_fn: function() {
+                return false;
+            },
+            yes_fn: function() {
+                $("#detalle_empresa").load('detalle_empresa.php', {
+                    eliminar: 1,
+                    id_empresa: id
+                });
+            }
+        });
+    }
+
+    function guardarEmpresa(this1) {
+
+        var validado = true;
+        elementos = document.getElementsByClassName("formu");
+
+        for (i = 0; i < elementos.length; i++) {
+            if (elementos[i].value == "" || elementos[i].value == null) {
+                validado = false
+            }
+        }
+
+        if (validado) {
+
+            this1.disabled = true;
+            this1.innerHTML = 'Guardando empresa... aguarde ';
+
+            var url = 'actualiza_empresa.php';
+
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: $("#solicitud").serialize(),
+                success: function(response) {
+
+                    setTimeout(function() {
+                        this1.disabled = false;
+                        this1.innerHTML = '<i class="fas fa-save text-info"></i> Guardar empresa';
+                    }, 1000);
+
+                    $("#detalle_empresa").load('detalle_empresa.php');
+
+                }
+            })
+
+        } else {
+
+            toastr.options = {
+                "progressBar": true,
+                "showDuration": "800",
+                "timeOut": "3000"
+            };
+            toastr.warning("Complete todos los datos", "No se guardó la empresa ... ");
+
+        }
+    }
+
+    $(document).on('keydown', function(e) {
+
+        if (e.keyCode === 121) { // F10
+
+            guardar(objeto);
+
+        }
+
+    });
+
+    function guardar(this1) {
+
+        this1.disabled = true;
+        this1.innerHTML = 'Guardando ... aguarde ';
+
+        var url = "editar_proyectos.php";
+        $.ajax({
+            type: "POST",
             url: url,
             data: $("#solicitud").serialize(),
-            success: function(response) {
+
+            success: function(data) {
 
                 setTimeout(function() {
                     this1.disabled = false;
-                    this1.innerHTML = '<i class="fas fa-save text-info"></i> Guardar empresa';
+                    this1.innerHTML = ' <i class="fas fa-save"></i> Guardar (F10)';
+
                 }, 1000);
-
-                $("#detalle_empresa").load('detalle_empresa.php');
-
             }
-        })
+        });
 
-    } else {
-
-        toastr.options = {
-            "progressBar": true,
-            "showDuration": "800",
-            "timeOut": "3000"
-        };
-        toastr.warning("Complete todos los datos", "No se guardó la empresa ... ");
-
-    }
-}
-
-$(document).on('keydown', function(e) {
-
-    if (e.keyCode === 121) { // F10
-
-        guardar(objeto);
-
+        return false;
     }
 
-});
-
-function guardar(this1) {
-
-    this1.disabled = true;
-    this1.innerHTML = 'Guardando ... aguarde ';
-
-    var url = "editar_proyectos.php";
-    $.ajax({
-        type: "POST",
-        url: url,
-        data: $("#solicitud").serialize(),
-
-        success: function(data) {
-
-            setTimeout(function() {
-                this1.disabled = false;
-                this1.innerHTML = ' <i class="fas fa-save"></i> Guardar (F10)';
-
-            }, 1000);
-        }
+    $(window).scroll(function() {
+        if ($(document).scrollTop() >= ($(document).height() / 50))
+            $("#spopup").show("slow");
+        else
+            $("#spopup").hide("slow");
     });
 
-    return false;
-}
+    // Funcion incorporada de Internet para que no metan espacios en blancos y parezca un campo completado
+    // Devuelve String sin espacios
+    String.prototype.trimstring = function() {
+        return this.replace(/^\s+|\s+$/g, "");
+    };
+    //
 
-$(window).scroll(function() {
-    if ($(document).scrollTop() >= ($(document).height() / 50))
-        $("#spopup").show("slow");
-    else
-        $("#spopup").hide("slow");
-});
+    function ir_planillas() {
 
-// Funcion incorporada de Internet para que no metan espacios en blancos y parezca un campo completado
-// Devuelve String sin espacios
-String.prototype.trimstring = function() {
-    return this.replace(/^\s+|\s+$/g, "");
-};
-//
+        var latitud = document.getElementById('latitud').value;
+        var longitud = document.getElementById('longitud').value;
+        var denominacion = document.getElementById('denominacion').value;
+        var resumen_ejecutivo = document.getElementById('resumen_ejecutivo').value;
+        var monto = document.getElementById('monto').value;
+        var id_rubro = document.getElementById('id_rubro').value;
+        var descripcion = document.getElementById('descripcion').value;
+        var objetivos = document.getElementById('objetivos').value;
+        var oportunidades = document.getElementById('oportunidades').value;
+        var desarrollo = document.getElementById('desarrollo').value;
+        var historia = document.getElementById('historia').value;
+        var presente = document.getElementById('presente').value;
+        var lugardesarrollo = document.getElementById('lugardesarrollo').value;
+        var detallelugar = document.getElementById('detallelugar').value;
+        var caratecnicas = document.getElementById('caratecnicas').value;
+        var caratecnologicas = document.getElementById('caratecnologicas').value;
+        var caraprocesos = document.getElementById('caraprocesos').value;
+        var caramateriasprimas = document.getElementById('caramateriasprimas').value;
+        var caradesechos = document.getElementById('caradesechos').value;
+        var mercado = document.getElementById('mercado').value;
+        var caraclientes = document.getElementById('caraclientes').value;
+        var caracompetencia = document.getElementById('caracompetencia').value;
+        var caraproveedores = document.getElementById('caraproveedores').value;
+        var carariesgosestrategias = document.getElementById('carariesgosestrategias').value;
+        var destinomonto = document.getElementById('destinomonto').value;
+        var personal = document.getElementById('personal').value;
+        var interaccion = document.getElementById('interaccion').value;
+        var impacto = document.getElementById('impacto').value;
+        var preciosproductos = document.getElementById('preciosproductos').value;
+        var origenfinanciacion = document.getElementById('origenfinanciacion').value;
+        var fodafortalezas = document.getElementById('fodafortalezas').value;
+        var fodaoportunidades = document.getElementById('fodaoportunidades').value;
+        var fodadebilidades = document.getElementById('fodadebilidades').value;
+        var fodaamenazas = document.getElementById('fodaamenazas').value;
+        var observaciones = document.getElementById('observaciones').value;
+        var id_medio = document.getElementById('id_medio').value;
 
-function ir_planillas() {
+        var valido = 1;
 
-    var latitud = document.getElementById('latitud').value;
-    var longitud = document.getElementById('longitud').value;
-    var denominacion = document.getElementById('denominacion').value;
-    var resumen_ejecutivo = document.getElementById('resumen_ejecutivo').value;
-    var monto = document.getElementById('monto').value;
-    var id_rubro = document.getElementById('id_rubro').value;
-    var descripcion = document.getElementById('descripcion').value;
-    var objetivos = document.getElementById('objetivos').value;
-    var oportunidades = document.getElementById('oportunidades').value;
-    var desarrollo = document.getElementById('desarrollo').value;
-    var historia = document.getElementById('historia').value;
-    var presente = document.getElementById('presente').value;
-    var lugardesarrollo = document.getElementById('lugardesarrollo').value;
-    var detallelugar = document.getElementById('detallelugar').value;
-    var caratecnicas = document.getElementById('caratecnicas').value;
-    var caratecnologicas = document.getElementById('caratecnologicas').value;
-    var caraprocesos = document.getElementById('caraprocesos').value;
-    var caramateriasprimas = document.getElementById('caramateriasprimas').value;
-    var caradesechos = document.getElementById('caradesechos').value;
-    var mercado = document.getElementById('mercado').value;
-    var caraclientes = document.getElementById('caraclientes').value;
-    var caracompetencia = document.getElementById('caracompetencia').value;
-    var caraproveedores = document.getElementById('caraproveedores').value;
-    var carariesgosestrategias = document.getElementById('carariesgosestrategias').value;
-    var destinomonto = document.getElementById('destinomonto').value;
-    var personal = document.getElementById('personal').value;
-    var interaccion = document.getElementById('interaccion').value;
-    var impacto = document.getElementById('impacto').value;
-    var preciosproductos = document.getElementById('preciosproductos').value;
-    var origenfinanciacion = document.getElementById('origenfinanciacion').value;
-    var fodafortalezas = document.getElementById('fodafortalezas').value;
-    var fodaoportunidades = document.getElementById('fodaoportunidades').value;
-    var fodadebilidades = document.getElementById('fodadebilidades').value;
-    var fodaamenazas = document.getElementById('fodaamenazas').value;
-    var observaciones = document.getElementById('observaciones').value;
-    var id_medio = document.getElementById('id_medio').value;
+        if (latitud.trimstring().length == 0 || longitud.trimstring().length == 0) {
+            var valido = 0;
+            $("#latitud").focus();
+            var texto =
+                '<div class="card card-warning"><div class="card-header border border-primary"><h3 class="card-title">&nbsp;</div><div class="card-body"><div class="row"><label> Geolocalización - presione obtener por favor </label></div></div></div>';
+            ymz.jq_alert({
+                title: "&nbsp; Complete los siguientes <b>items</b>  &nbsp;",
+                text: texto,
+                ok_btn: "Aceptar",
+                close_fn: null
+            });
+        }
 
-    var valido = 1;
+        if (denominacion.trimstring().length == 0 || resumen_ejecutivo.trimstring().length == 0 || monto == 0 || descripcion.trimstring().length == 0 || objetivos.trimstring().length == 0 ||
+            oportunidades.trimstring().length == 0 || desarrollo.trimstring().length == 0) {
+            var valido = 0;
+            $("#denominacion").focus();
 
-    if (latitud.trimstring().length == 0 || longitud.trimstring().length == 0) {
-        var valido = 0;
-        $("#latitud").focus();
-        var texto =
-            '<div class="card card-warning"><div class="card-header border border-primary"><h3 class="card-title">&nbsp;</div><div class="card-body"><div class="row"><label> Geolocalización - presione obtener por favor </label></div></div></div>';
-        ymz.jq_alert({
-            title: "&nbsp; Complete los siguientes <b>items</b>  &nbsp;",
-            text: texto,
-            ok_btn: "Aceptar",
-            close_fn: null
-        });
+            var texto =
+                '<div class="card card-warning"><div class="card-header border border-primary"><div class="card-body"><div class="row"><label> <li>Denominación del proyecto</li></label></div></div></div>';
+            ymz.jq_alert({
+                title: "&nbsp; Complete los siguientes <b>items</b> &nbsp;",
+                text: texto,
+                ok_btn: "Aceptar",
+                close_fn: null
+            });
+        }
+
+        if (historia.trimstring().length == 0 || presente.trimstring().length == 0 || lugardesarrollo.trimstring().length == 0 || detallelugar.trimstring().length == 0 || caratecnicas.trimstring().length == 0 ||
+            caratecnologicas.trimstring().length == 0 || caraprocesos.trimstring().length == 0 || caramateriasprimas.trimstring().length == 0 || caradesechos.trimstring().length == 0) {
+            var valido = 0;
+            $("#historia").focus();
+            var texto =
+                '<div class="card card-warning"><div class="card-header border border-primary"><h3 class="card-title">&nbsp;</div><div class="card-body"><div class="row"><label> Presentacion grupo emprendedor</label></div></div></div>';
+            ymz.jq_alert({
+                title: "&nbsp; Complete los siguientes <b>items</b> &nbsp;",
+                text: texto,
+                ok_btn: "Aceptar",
+                close_fn: null
+            });
+        }
+
+        if (mercado.trimstring().length == 0 || caraclientes.trimstring().length == 0 || caracompetencia.trimstring().length == 0 || caraproveedores.trimstring().length == 0 || carariesgosestrategias.trimstring().length == 0 ||
+            destinomonto.trimstring().length == 0 || personal.trimstring().length == 0 || interaccion.trimstring().length == 0 || impacto.trimstring().length == 0) {
+
+            var valido = 0;
+            $("#mercado").focus();
+            var texto =
+                '<div class="card card-warning"><div class="card-header border border-primary"><h3 class="card-title">&nbsp;</div><div class="card-body"><div class="row"><label> Aspectos del mercado</label></div></div></div>';
+            ymz.jq_alert({
+                title: "&nbsp; Complete los siguientes <b>items</b>  &nbsp;",
+                text: texto,
+                ok_btn: "Aceptar",
+                close_fn: null
+            });
+        }
+
+        if (preciosproductos.trimstring().length == 0 || origenfinanciacion.trimstring().length == 0) {
+
+            var valido = 0;
+            $("#preciosproductos").focus();
+            var texto =
+                '<div class="card card-warning"><div class="card-header border border-primary"><h3 class="card-title">&nbsp;</div><div class="card-body"><div class="row"><label> Aspectos económicos - financieros </label></div></div></div>';
+            ymz.jq_alert({
+                title: "&nbsp; Complete los siguientes <b>items</b>  &nbsp;",
+                text: texto,
+                ok_btn: "Aceptar",
+                close_fn: null
+            });
+        }
+
+        if (fodafortalezas.trimstring().length == 0 || fodaoportunidades.trimstring().length == 0 || fodadebilidades.trimstring().length == 0 || fodaamenazas.trimstring().length == 0) {
+
+            var valido = 0;
+            $("#fodafortalezas").focus();
+            var texto =
+                '<div class="card card-warning"><div class="card-header border border-primary"><h3 class="card-title">&nbsp;</div><div class="card-body"><div class="row"><label> Aspectos económicos y financieros</label></div></div></div>';
+            ymz.jq_alert({
+                title: "&nbsp; Complete los siguientes <b>items</b>  &nbsp;",
+                text: texto,
+                ok_btn: "Aceptar",
+                close_fn: null
+            });
+        }
+
+        if (observaciones.trimstring().length == 0) {
+            var valido = 0;
+            var texto =
+                '<div class="card card-warning"><div class="card-header border border-primary"><h3 class="card-title">&nbsp;</div><div class="card-body"><div class="row"><label> Reseña del proyecto </label></div></div></div>';
+            ymz.jq_alert({
+                title: "&nbsp; Complete los siguientes <b>items</b>  &nbsp;",
+                text: texto,
+                ok_btn: "Aceptar",
+                close_fn: null
+            });
+        }
+
+        if (valido == 1) {
+            window.location = 'planillas.php';
+        }
+
     }
 
-    if (denominacion.trimstring().length == 0 || resumen_ejecutivo.trimstring().length == 0 || monto == 0 || descripcion.trimstring().length == 0 || objetivos.trimstring().length == 0 ||
-        oportunidades.trimstring().length == 0 || desarrollo.trimstring().length == 0) {
-        var valido = 0;
-        $("#denominacion").focus();
+    function getLocation() {
+        if (navigator.geolocation) {
 
-        var texto =
-            '<div class="card card-warning"><div class="card-header border border-primary"><div class="card-body"><div class="row"><label> <li>Denominación del proyecto</li></label></div></div></div>';
-        ymz.jq_alert({
-            title: "&nbsp; Complete los siguientes <b>items</b> &nbsp;",
-            text: texto,
-            ok_btn: "Aceptar",
-            close_fn: null
-        });
+            navigator.geolocation.getCurrentPosition(showPosition);
+
+        } else {
+
+            var texto = 'Geolocación no identificada por su navegador';
+            ymz.jq_alert({
+                title: "Información",
+                text: texto,
+                ok_btn: "Ok",
+                close_fn: null
+            });
+        }
     }
 
-    if (historia.trimstring().length == 0 || presente.trimstring().length == 0 || lugardesarrollo.trimstring().length == 0 || detallelugar.trimstring().length == 0 || caratecnicas.trimstring().length == 0 ||
-        caratecnologicas.trimstring().length == 0 || caraprocesos.trimstring().length == 0 || caramateriasprimas.trimstring().length == 0 || caradesechos.trimstring().length == 0) {
-        var valido = 0;
-        $("#historia").focus();
-        var texto =
-            '<div class="card card-warning"><div class="card-header border border-primary"><h3 class="card-title">&nbsp;</div><div class="card-body"><div class="row"><label> Presentacion grupo emprendedor</label></div></div></div>';
-        ymz.jq_alert({
-            title: "&nbsp; Complete los siguientes <b>items</b> &nbsp;",
-            text: texto,
-            ok_btn: "Aceptar",
-            close_fn: null
-        });
+    function showPosition(position) {
+        document.getElementById('latitud').value = position.coords.latitude;
+        document.getElementById('longitud').value = position.coords.longitude;
     }
-
-    if (mercado.trimstring().length == 0 || caraclientes.trimstring().length == 0 || caracompetencia.trimstring().length == 0 || caraproveedores.trimstring().length == 0 || carariesgosestrategias.trimstring().length == 0 ||
-        destinomonto.trimstring().length == 0 || personal.trimstring().length == 0 || interaccion.trimstring().length == 0 || impacto.trimstring().length == 0) {
-
-        var valido = 0;
-        $("#mercado").focus();
-        var texto =
-            '<div class="card card-warning"><div class="card-header border border-primary"><h3 class="card-title">&nbsp;</div><div class="card-body"><div class="row"><label> Aspectos del mercado</label></div></div></div>';
-        ymz.jq_alert({
-            title: "&nbsp; Complete los siguientes <b>items</b>  &nbsp;",
-            text: texto,
-            ok_btn: "Aceptar",
-            close_fn: null
-        });
-    }
-
-    if (preciosproductos.trimstring().length == 0 || origenfinanciacion.trimstring().length == 0) {
-
-        var valido = 0;
-        $("#preciosproductos").focus();
-        var texto =
-            '<div class="card card-warning"><div class="card-header border border-primary"><h3 class="card-title">&nbsp;</div><div class="card-body"><div class="row"><label> Aspectos económicos - financieros </label></div></div></div>';
-        ymz.jq_alert({
-            title: "&nbsp; Complete los siguientes <b>items</b>  &nbsp;",
-            text: texto,
-            ok_btn: "Aceptar",
-            close_fn: null
-        });
-    }
-
-    if (fodafortalezas.trimstring().length == 0 || fodaoportunidades.trimstring().length == 0 || fodadebilidades.trimstring().length == 0 || fodaamenazas.trimstring().length == 0) {
-
-        var valido = 0;
-        $("#fodafortalezas").focus();
-        var texto =
-            '<div class="card card-warning"><div class="card-header border border-primary"><h3 class="card-title">&nbsp;</div><div class="card-body"><div class="row"><label> Aspectos económicos y financieros</label></div></div></div>';
-        ymz.jq_alert({
-            title: "&nbsp; Complete los siguientes <b>items</b>  &nbsp;",
-            text: texto,
-            ok_btn: "Aceptar",
-            close_fn: null
-        });
-    }
-
-    if (observaciones.trimstring().length == 0) {
-        var valido = 0;
-        var texto =
-            '<div class="card card-warning"><div class="card-header border border-primary"><h3 class="card-title">&nbsp;</div><div class="card-body"><div class="row"><label> Reseña del proyecto </label></div></div></div>';
-        ymz.jq_alert({
-            title: "&nbsp; Complete los siguientes <b>items</b>  &nbsp;",
-            text: texto,
-            ok_btn: "Aceptar",
-            close_fn: null
-        });
-    }
-
-    if (valido == 1) {
-        window.location = 'planillas.php';
-    }
-
-}
-
-function getLocation() {
-    if (navigator.geolocation) {
-
-        navigator.geolocation.getCurrentPosition(showPosition);
-
-    } else {
-
-        var texto = 'Geolocación no identificada por su navegador';
-        ymz.jq_alert({
-            title: "Información",
-            text: texto,
-            ok_btn: "Ok",
-            close_fn: null
-        });
-    }
-}
-
-function showPosition(position) {
-    document.getElementById('latitud').value = position.coords.latitude;
-    document.getElementById('longitud').value = position.coords.longitude;
-}
 </script>
 
-<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/frontend/accesorios/front-inferior.php'); ?>
+<?php require_once $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/frontend/accesorios/front-inferior.php';

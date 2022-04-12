@@ -37,13 +37,17 @@ if($captcha_success->success){
 	$email      	= strtolower($_POST['email']);
 	$cuit       	= $_POST['cuit'];
 	$direccion  	= strtoupper(ltrim($_POST['direccion']));
+	$facebook    	= strtoupper(ltrim($_POST['facebook']));
+	$instagram    	= strtoupper(ltrim($_POST['instagram']));
 	$id_ciudad  	= $_POST['id_ciudad'];
 	$cod_area 		= $_POST['cod_area'];
 	$celular    	= $_POST['celular'];
 	$telefono   	= $_POST['telefono'];
 
-    $inserta    = "INSERT INTO solicitantes (dni, apellido, nombres, genero, otrogenero, direccion, fecha_nac, email, cuit, cod_area, telefono, celular, id_ciudad, observaciones, id_responsabilidad)
-    VALUES ('$dni','$apellido','$nombres', $genero, '$otrogenero', '$direccion', '$fecha_nac', '$email', '$cuit', '$cod_area', '$telefono', '$celular', $id_ciudad, '1', 1)";
+    $inserta    = "INSERT INTO solicitantes 
+		(dni, apellido, nombres, genero, otrogenero, direccion, fecha_nac, facebook, instagram, email, cuit, cod_area, telefono, celular, id_ciudad, observaciones, id_responsabilidad)
+    	VALUES 
+		('$dni','$apellido','$nombres', $genero, '$otrogenero', '$direccion', '$fecha_nac', '$facebook', '$instagram', '$email', '$cuit', '$cod_area', '$telefono', '$celular', $id_ciudad, '1', 1)";
 
 
 	mysqli_query($con, $inserta) or die ($inserta);
