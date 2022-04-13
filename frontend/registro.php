@@ -72,7 +72,7 @@ $con = conectar();
 
             <div class="panel panel-default border p-3">
                 <div class="panel-heading mt-3 mb-4">
-                    Redes sociales del emprendimiento (<strong>Indicar si no posee</strong>)
+                    Redes sociales del emprendimiento
                 </div>
                 <div class="panel-body">
                     <div class="row">

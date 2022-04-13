@@ -22,11 +22,12 @@
 
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-lg-12">
-        <h4 style="color:#1e5571;">PROGRAMA JÓVENES EMPRENDEDORES <?php echo date('Y') ?></h4>
+        <h4 style="color:#1e5571;">PROGRAMA JÓVENES EMPRENDEDORES <?php print date('Y'); ?>
+        </h4>
     </div>
 </div>
 
-<div class="row">
+<div class="row mb-5">
     <div class="col-xs-12 col-sm-12 col-lg-12">
         <p>El Programa Jóvenes Emprendedores asesora, capacita y financia a emprendimientos en marcha de
             jóvenes residentes en Entre Ríos, con ideas de emprendimientos innovadores, sustentables y con
@@ -40,9 +41,15 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row mb-5">
     <div class="col-xs-12 col-sm-12 col-lg-12">
-        <h5><span style="color:#1e5571;">Requisitos <?php echo date('Y') ?></span></h5>
+        &nbsp;
+    </div>
+</div>
+
+<div class="row mt-5 mb-2">
+    <div class="col-xs-12 col-sm-12 col-lg-12">
+        <h5><span style="color:#1e5571;">Requisitos <?php print date('Y'); ?></span></h5>
         <br>
         <div class="m-3">
             * Tener entre dieciocho (18) y cuarenta (40) años de edad.
@@ -54,9 +61,6 @@
             * Realizar actividades vinculadas a la producción industrial y TICs, agropecuarios o de servicios.
             asociados a estos sectores
         </div>
-        <div class="m-3">
-            * Presentar un proyecto en funcionamiento con antigüedad demostrable mínima de 3 meses.
-        </div>
 
     </div>
 </div>
@@ -73,25 +77,33 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row mb-3">
     <div class="col-xs-12 col-sm-12 col-lg-12">
         <h5 style="color:#1e5571;">ASESORAMIENTO, CAPACITACIÓN, EVALUACIÓN</h5>
     </div>
 </div>
 
-<div class="row">
+<div class="row mb-3">
     <div class="col-xs-12 col-sm-12 col-lg-12">
         El programa brinda asesoramiento respecto de sus lineamientos, sus requisitos y para la formulación de
         planes de negocios a partir de las ideas presentadas. Para eso se llevan adelante capacitaciones que
         fortalecen las aptitudes de las y los emprendedores en materia de ciclos productivos, comercialización,
         costos, entre otras.
-        <br>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-xs-12 col-sm-12 col-lg-12">
         La evaluación de los proyectos está a cargo de una Comisión Evaluadora conformada por el equipo
         técnico de la Secretaría de Desarrollo Económico y Emprendedor.
         Entre los criterios de evaluación se destacan el carácter asociativo de los proyectos, la viabilidad de la
         propuesta económica, experiencia en la actividad objeto del proyecto, la inversión propia, la generación
         de empleo, el carácter innovador de la iniciativa.
-        <br>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-xs-12 col-sm-12 col-lg-12">
         El proceso de evaluación constituye una etapa más de aprendizaje en el proceso de armado de un plan de
         negocios, y se articula de manera decisiva con las instancias de capacitación y asesoramiento técnico.
     </div>
@@ -103,7 +115,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row mb-3">
     <div class="col-xs-12 col-sm-12 col-lg-12">
         <h5 style="color:#1e5571;">FINANCIAMIENTO</h5>
     </div>
@@ -124,7 +136,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row mb-3">
     <div class="col-xs-12 col-sm-12 col-lg-12">
         <h5 style="color:#1e5571;">CONTROL Y SEGUIMIENTO</h5>
     </div>
@@ -184,4 +196,4 @@
 <script src="/desarrolloemprendedor/public/js/ScriptsJovenes.js"></script>
 
 
-<?php include $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/accesorios/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/accesorios/footer.php';

@@ -834,13 +834,34 @@ $_SESSION['id_proyecto'] = $id_proyecto;
             <div class="col-xs-12 col-sm-4 col-xs-4">
             </div>
             <div class="col-xs-12 col-sm-4 col-xs-4 text-right">
-                <h4 class="card-title">Foto del proyecto</h4>
+                <h4 class="card-title">Foto del emprendimiento</h4>
                 <small>Sólo imagenes JPG, PNG . Tamaño max 3 Mbytes</small>
             </div>
         </div>
     </div>
 
     <div class="card-body">
+        <div class="row mb-5">
+            <div class="col-xs-12 col-sm-12 col-xs-12">
+                Por favor, obtené una foto lo más clara y representativa posible de tu emprendimiento.
+                Recordá que el tamaño de ésta foto <strong>no puede</strong> superar los 3 Mbytes, y
+                debe ser tipo <strong>JPG o PNG</strong>.
+                En caso de necesitar reducirle el tamaño a la foto, te sugerimos visitar algunos de éstos enlaces para reducirla.
+
+                <ul class="mt-3">
+                    <li>
+                        <a href="https://www.iloveimg.com/es/redimensionar-imagen" target="_blank">
+                            Redimensionar Imagen 1
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.achicarimagenes.com.ar" target="_blank">
+                            Redimensionar Imagen 2
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-xs-12 text-center">
                 <div id="detalle_foto"></div>
@@ -908,12 +929,19 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/frontend/acceso
 
     });
 
+    const quitarFoto = () => {
+        
+        $("#detalle_foto").load('detalle_fotos.php', {
+            operacion: 2,
+        });
+    }
+
     $("#form").submit(function(event) {
         event.preventDefault();
 
-        $("#detalle_foto").html('Cargando .... <img src="/desarrolloemprendedor/public/imagenes/cargando.gif">');        
-        var file = $('#image').prop('files')[0];  
-        var form_data = new FormData();                  
+        $("#detalle_foto").html('Cargando .... <img src="/desarrolloemprendedor/public/imagenes/cargando.gif">');
+        var file = $('#image').prop('files')[0];
+        var form_data = new FormData();
         form_data.append('file', file);
 
         $.ajax({
@@ -924,7 +952,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/frontend/acceso
             contentType: false,
             processData: false,
             complete: function() {
-                
+
                 setTimeout(function() {
                     $("#detalle_foto").load('detalle_fotos.php');
                 }, 1000);
