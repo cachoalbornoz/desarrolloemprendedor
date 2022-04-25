@@ -58,8 +58,7 @@
             * Detentar domicilio real en la Provincia de Entre Ríos.
         </div>
         <div class="m-3">
-            * Realizar actividades vinculadas a la producción industrial y TICs, agropecuarios o de servicios.
-            asociados a estos sectores
+            * Realizar actividades vinculadas a la producción industrial, agropecuaria, TICs, o de servicios asociados a estos sectores.
         </div>
 
     </div>

@@ -68,7 +68,7 @@
     <div class="col-xs-12 col-md-6 col-lg-3 favenir text-center">
         <a href="/desarrolloemprendedor/frontend/programa_proceder.php">
             <img src="/desarrolloemprendedor/public/imagenes/proceder.png" class="img-fluid" />
-            <span style="color:#72BD8E">PROCEDER</span>
+            <span style="color:#72BD8E">INNOVACION</span>
         </a>
     </div>
 
