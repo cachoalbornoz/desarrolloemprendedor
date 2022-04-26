@@ -3,7 +3,7 @@
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/accesorios/programas_desarrollo.php'; ?>
 
 <div class="row">
-    <div class="col-xs-12 col-sm-12 col-lg-12 text-center">
+    <div class="col-xs-12 col-sm-12 col-lg-12">
         <a href="/desarrolloemprendedor/frontend/programa_jovenes.php">
             <img src="/desarrolloemprendedor/public/imagenes/prog_jovenes.jpg" class="img-fluid shadow" />
         </a>
@@ -157,6 +157,21 @@
 
         <p class="text-center text-uppercase pl-5 pr-5">
             Dirigido a emprendimientos innovadores y con ventajas competitivas sostenibles.
+        </p>
+    </div>
+
+    <div class="col-xs-12 col-md-6 col-lg-6">
+        <a href="https://www.entrerios.gov.ar/economicoemprendedor/mipymes">
+            <h4 style="color:#FF5733" class="favenir text-center mt-5 mb-3">
+                CONSOLIDACION PRODUCTIVA
+            </h4>
+        </a>
+        <p class="text-center">
+            <img src="/desarrolloemprendedor/public/imagenes/mipymes.png" class="img-fluid shadow" />
+        </p>
+
+        <p class="text-center text-uppercase pl-5 pr-5">
+            Diversas líneas de asistencia técnica y financiera dirigidas a Pymes y MiPyMEs entrerrianas.
         </p>
 
     </div>
