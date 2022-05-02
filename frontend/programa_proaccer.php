@@ -95,8 +95,8 @@
 
         <br>
 
-        <p>
-            Más información
+        <p style=" color: #C67D26">
+            Contacto
         </p>
 
         <p>

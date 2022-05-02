@@ -109,6 +109,16 @@ while ($row  = mysqli_fetch_array($query)) {
 
     $id_proyecto = $row['id_proyecto'];
 
+    // IMAGEN DEL PROYECTO
+    $query_foto    = mysqli_query($con, "SELECT foto1 FROM rel_proyectos_fotos WHERE id_proyecto = $id_proyecto");
+    $record_foto   = mysqli_fetch_array($query_foto);
+    $link_foto     = ($record_foto)?
+        '<a href="../evaluaciones/ver_imagen.php?foto='.$record_foto['foto1'].'&IdProyecto=' . $row['id_proyecto'] . '&solicitante=' . $row['solicitante'] . '">
+            <i class="fas fa-camera"></i>
+        </a>':str_pad($id_proyecto, 4, '0', STR_PAD_LEFT);
+
+
+
     //NROS DE SOLICITANTES
     $query_sol    = mysqli_query($con, "SELECT count(id_solicitante) FROM rel_proyectos_solicitantes WHERE id_proyecto = $id_proyecto");
     $record_sol    = mysqli_fetch_array($query_sol);
@@ -129,6 +139,9 @@ while ($row  = mysqli_fetch_array($query)) {
     } else {
         $icono = null;
     }
+
+
+
 
     if (isset($row['informe'])) {
         $informe     =
@@ -254,10 +267,9 @@ while ($row  = mysqli_fetch_array($query)) {
             }
     }
 
-
     //
 
-    $subdata[]    =     str_pad($id_proyecto, 4, '0', STR_PAD_LEFT);
+    $subdata[]    =     $link_foto;
     $subdata[]    =     $row['solicitante'];
     $subdata[]    =     $asociados;
     $subdata[]    =     '<div style="max-width: 15em; max-height: 5em">' . $row['denominacion'] . '</div>';
