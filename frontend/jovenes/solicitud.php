@@ -279,22 +279,21 @@ $_SESSION['id_proyecto'] = $id_proyecto;
             <div class="row mb-5">
                 <div class="col-xs-12 col-sm-12 col-lg-6">
 
-                    <label>Importe solicitado</label>
+                    <label class=" text-danger">Importe solicitado</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text">
                                 <i class="fas fa-dollar-sign"></i>
                             </span>
                         </div>
-                        <input id="monto" name="monto" type="number" value="<?php print $monto; ?>" class="form-control text-center">
+                        <input id="monto" name="monto" type="number" value="<?php print $monto; ?>" class="form-control shadow text-center" onkeydown="noPuntoComa( event )">
                     </div>
-                    <small>
-                        <span class="text-muted">
-                            Importe solicitado a la Dirección de Desarrollo Emprendedor
-                        </span>
-                    </small>
-
                 </div>
+                <small class="ml-3 mt-3">
+                    <span class="text-muted">
+                        Importe solicitado a la Dirección de Desarrollo Emprendedor. Ingrese el valor sin puntos ni comas.
+                    </span>
+                </small>
             </div>
 
 
@@ -918,6 +917,15 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/frontend/acceso
 <script>
     var objeto = document.getElementById('enviar');
 
+    const noPuntoComa = (event) => {
+        var e = event || window.event;
+        var key = e.keyCode || e.which;
+
+        if (key === 110 || key === 190 || key === 188) {
+            e.preventDefault();
+        }
+    }
+
     $(document).ready(function() {
 
         $("#monto").bind("cut copy paste", function(e) {
@@ -929,8 +937,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/frontend/acceso
 
     });
 
+
+
     const quitarFoto = () => {
-        
+
         $("#detalle_foto").load('detalle_fotos.php', {
             operacion: 2,
         });
@@ -1094,11 +1104,19 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/frontend/acceso
 
             success: function(data) {
 
+                console.log(data);
+
+                toastr.options = {
+                    "progressBar": true,
+                    "showDuration": "800",
+                    "timeOut": "3000"
+                };
                 setTimeout(function() {
                     this1.disabled = false;
                     this1.innerHTML = ' <i class="fas fa-save"></i> Guardar (F10)';
-
                 }, 1000);
+                toastr.info("Datos actualizados ! ");
+
             }
         });
 
