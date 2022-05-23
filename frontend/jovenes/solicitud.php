@@ -1104,8 +1104,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/frontend/acceso
 
             success: function(data) {
 
-                console.log(data);
-
                 toastr.options = {
                     "progressBar": true,
                     "showDuration": "800",
