@@ -9,7 +9,7 @@ $idProyecto = $_GET['IdProyecto'];
 $solicitante= $_GET['solicitante']; 
 
 $tabla      = mysqli_query($con,"SELECT * from proyectos_seguimientos WHERE id_proyecto = $idProyecto");
-$registro   = mysqli_fetch_array($tabla,MYSQLI_BOTH);
+$registro   = mysqli_fetch_array($tabla);
 
 ?>
 

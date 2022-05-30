@@ -184,7 +184,9 @@ while ($row  = mysqli_fetch_array($query)) {
 				<i class="fas fa-th-list"></i>
 			</a>';
 
-                $imprime         = null;
+                $imprime         = '<a href="../evaluaciones/ImprimirEvaluacion.php?IdProyecto=' . $row['id_proyecto'] . '" title="Imprime evaluación ">
+				<i class="fas fa-print"></i>
+			</a>';
 
                 $lee            =
                     '<a href="../impresion/imprimirProyecto.php?IdProyecto=' . $row['id_proyecto'] . '">
