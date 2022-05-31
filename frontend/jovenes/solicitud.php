@@ -822,11 +822,9 @@ $_SESSION['id_proyecto'] = $id_proyecto;
         <div class="row">
             <div class="col-xs-12 col-sm-4 col-xs-4">
 
-                <form method="post" action="" enctype="multipart/form-data" id="form">
-                    <input type="file" name="image" id="image" class=" form-control-file" accept="image/png, image/jpeg, image/gif">
-                    <span class="input-group btn">
-                        <button type="submit" class="btn btn-info btn-sm" id="submit">Enviar</button>
-                    </span>
+                <form method="post" action="" enctype="multipart/form-data">
+                    <input type="file" name="image" id="image" class=" form-control-file btn-info" accept="image/png, image/jpeg, image/gif">
+                    <label class="form-control-label" for="image">Imagen del proyecto...</label>
                 </form>
 
             </div>
@@ -840,7 +838,7 @@ $_SESSION['id_proyecto'] = $id_proyecto;
     </div>
 
     <div class="card-body">
-        <div class="row mb-5">
+        <div class="row">
             <div class="col-xs-12 col-sm-12 col-xs-12">
                 Por favor, obtené una foto lo más clara y representativa posible de tu emprendimiento.
                 Recordá que el tamaño de ésta foto <strong>no puede</strong> superar los 3 Mbytes, y
@@ -861,11 +859,7 @@ $_SESSION['id_proyecto'] = $id_proyecto;
                 </ul>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-xs-12 text-center">
-                <div id="detalle_foto"></div>
-            </div>
-        </div>
+        <div id="detalle_foto"></div>
     </div>
 </div>
 
@@ -946,13 +940,24 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/frontend/acceso
         });
     }
 
-    $("#form").submit(function(event) {
+    $("#image").on('change', function(event) {
+
         event.preventDefault();
 
+        if (this.files[0].size > 3000000) {
+            toastr.options = {
+                "progressBar": true,
+                "showDuration": "800",
+                "timeOut": "3000"
+            };
+            toastr.error("Excede los 3 Mbytes permitidos ", "Imagen del proyecto");
+            return
+        };
+
         $("#detalle_foto").html('Cargando .... <img src="/desarrolloemprendedor/public/imagenes/cargando.gif">');
-        var file = $('#image').prop('files')[0];
+        var image = $('#image').prop('files')[0];
         var form_data = new FormData();
-        form_data.append('file', file);
+        form_data.append('image', image);
 
         $.ajax({
             type: 'POST',
@@ -968,7 +973,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/frontend/acceso
                 }, 1000);
             }
         });
-    })
+
+        $('#image').val(null);
+    });
 
 
 
