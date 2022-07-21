@@ -14,6 +14,7 @@ if (!isset($_SESSION['usuario'])) {
 <head>
 
   	<meta charset="utf-8">
+	<link rel="icon" type="image/png" href="/desarrolloemprendedor/public/imagenes/favicon.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
