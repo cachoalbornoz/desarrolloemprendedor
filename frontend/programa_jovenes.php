@@ -168,12 +168,12 @@
 <div class="row mt-5 mb-5 text-center">
     <div class="col-xs-12 col-sm-8 col-lg-8 mx-auto">
 
-        <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <!-- <div class="alert alert-info alert-dismissible fade show" role="alert">
             <strong>Inscripción de la primer corte hasta el 15 de julio  </strong>
-            <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
-            </button> -->
-        </div>
+            </button>
+        </div> -->
 
     </div>
 </div>

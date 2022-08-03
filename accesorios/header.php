@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <link rel="shortcut icon" href="/desarrolloemprendedor/public/imagenes/favicon.ico" type="image/x-icon">
+	<link rel="icon" type="image/png" href="/desarrolloemprendedor/public/imagenes/favicon.png">
 	<meta name="robots" content="index,follow">
 
 	<title>Desarrollo Emprendedor</title>
