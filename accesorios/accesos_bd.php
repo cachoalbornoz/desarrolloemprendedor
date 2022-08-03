@@ -59,6 +59,15 @@ function getEdad($fecha = null)
 }
 ////////////////////////////////////////////////////////////////////////////////
 
+function getEdadconMes($fecha = null)
+{
+    $fecha_nac = new DateTime(date('Y/m/d',strtotime($fecha))); // Creo un objeto DateTime de la fecha ingresada
+    $fecha_hoy =  new DateTime(date('Y/m/d',time())); // Creo un objeto DateTime de la fecha de hoy
+    $edad = date_diff($fecha_hoy,$fecha_nac); // La funcion ayuda a calcular la diferencia, esto seria un objeto
+    return $edad;
+}
+
+
 function RestarHoras($horaini, $horafin)
 {
     $horai = substr($horaini, 0, 2);

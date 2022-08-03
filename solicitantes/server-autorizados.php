@@ -85,6 +85,8 @@ while ($row = mysqli_fetch_array($query)) {
 
     $checked = ($row['habilitado'] == 1) ? 'checked' : '';
 
+    $edad = getEdadconMes($row['fecha_nac']);
+
     $subdata[] = $row['id_solicitante'];
     $subdata[] = '<a href="../personas/registro_edita.php?id_lugar=0&id_solicitante=' . $row['id_solicitante'] . '" title="Editar datos">' . $row['solicitante'] . '</a>';
     $subdata[] = strtoupper($row['direccion']);
@@ -95,7 +97,7 @@ while ($row = mysqli_fetch_array($query)) {
     $subdata[] = $row['ciudad'];
     $subdata[] = $row['dpto'];
     $subdata[] = $row['rubro'];
-    $subdata[] = getEdad($row['fecha_nac']);
+    $subdata[] = $edad->format('%Y').','.$edad->format('%m');
     $subdata[] = '<input type="checkbox" class="autorizar" ' . $checked . ' id="' . $row['id_solicitante'] . '" >';
 
     $data[] = $subdata;

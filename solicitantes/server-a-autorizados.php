@@ -11,9 +11,11 @@ $tabla_solicitantes = mysqli_query($con, "SELECT fecha_nac FROM solicitantes WHE
 $registro           = mysqli_fetch_array($tabla_solicitantes);
 
 $fecha_nac          = $registro['fecha_nac'];
+$fecha = getEdadconMes($fecha_nac);
+$edad = $fecha->format('%Y');
 
-// SI TIENE MENOS DE 40 AÑOS
-if(getEdad($fecha_nac) < 41){
+// SI TIENE ENTRE 18 y 40 AÑOS
+if(($edad>=18) AND ($edad < 41)){
 
     $tabla           = mysqli_query($con, "SELECT * FROM habilitaciones WHERE id_solicitante = $id_solicitante AND id_programa = 1");
     $registro        = mysqli_fetch_array($tabla);

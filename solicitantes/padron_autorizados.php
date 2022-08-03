@@ -82,17 +82,6 @@
 
         var id_solicitante  = this.id;
 
-        if( $(this).prop("checked") == true){
-
-            toastr.options = { "progressBar": true, "showDuration": "300", "timeOut": "1000" };
-            toastr.success("&nbsp;", "Autorizado ... ");
-
-        }else{                         
-
-            toastr.options = { "progressBar": true, "showDuration": "300", "timeOut": "1000" };
-            toastr.error("&nbsp;", "Bloqueado ... ");
-        }
-
         $.ajax({
 
             url 	: 'server-a-autorizados.php',
@@ -106,7 +95,7 @@
                     $("#"+id_solicitante).prop("checked", false);
 
                     toastr.options = { "progressBar": true, "showDuration": "3000", "timeOut": "3000" };
-                    toastr.error("&nbsp;", "Quitando autorización, tiene más de 40 años... ");
+                    toastr.error("&nbsp;", "Su edad no está entre 18 y 40 años... ");
 
                 }
             }
