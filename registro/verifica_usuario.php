@@ -34,7 +34,6 @@ $con = conectar();
 
 
 if ($captcha_success->success) {
-
     $usuario    =   $_POST['usuario'];
     $password   =   $_POST['password'];
     $cadena     =   $_POST['usuario'];
@@ -56,7 +55,7 @@ if ($captcha_success->success) {
                 $_SESSION['tipo_usuario']   = $registro['estado'];
             }
         }
-    } else {                // ENCUENTRO @ EN EL USUARIO 
+    } else {                // ENCUENTRO @ EN EL USUARIO
 
         $_SESSION['es_expediente']  = false;
 
@@ -65,7 +64,6 @@ if ($captcha_success->success) {
             or die("Error lectura de solicitantes");
 
         if (mysqli_num_rows($tabla) > 0) {
-
             $registro = mysqli_fetch_array($tabla);
 
             $_SESSION['id_usuario']     = $registro['id_solicitante'];
@@ -81,7 +79,6 @@ if ($captcha_success->success) {
                 or die("Error lectura de emprendedores");
 
             if (mysqli_num_rows($tabla) > 0) {
-
                 $registro = mysqli_fetch_array($tabla);
 
                 $_SESSION['id_usuario']     = $registro['id_emprendedor'];
@@ -99,9 +96,7 @@ if ($captcha_success->success) {
     mysqli_close($con);
 
     if (isset($_SESSION['tipo_usuario'])) {
-
         if (!isset($_SESSION)) {
-
             ini_set('session.gc_maxlifetime', 3600); // EXTENDER A UNA HORA TIEMPO DE LA SESSION
             session_start();
 
@@ -113,39 +108,37 @@ if ($captcha_success->success) {
         switch ($_SESSION['tipo_usuario']) {
 
             case ($_SESSION['tipo_usuario'] == 'a' || $_SESSION['tipo_usuario'] == 'c'): {
-                    ///////////////// USUARIOS ADMINISTRATIVOS  ////////////////////////
-                    header("location:/desarrolloemprendedor/expedientes/bienvenida_direccion.php");
-                    break;
-                }
+                ///////////////// USUARIOS ADMINISTRATIVOS  ////////////////////////
+                header("location:/desarrolloemprendedor/expedientes/bienvenida_direccion.php");
+                break;
+            }
             case 'b': {
-                    /////////////////       SOLICITANTES        ////////////////////////
-                    header("location:/desarrolloemprendedor/frontend/registro_edita.php?id_solicitante=" . $_SESSION['id_usuario']);
-                    break;
-                }
+                /////////////////       SOLICITANTES        ////////////////////////
+                header("location:/desarrolloemprendedor/frontend/registro_edita.php?id_solicitante=" . $_SESSION['id_usuario']);
+                break;
+            }
             case 'd': {
-                    ///////////////// USUARIOS ASESORES         ///////////////////////
-                    header("location:/desarrolloemprendedor/expedientes/bienvenida_direccion.php");
-                    break;
-                }
+                ///////////////// USUARIOS ASESORES         ///////////////////////
+                header("location:/desarrolloemprendedor/expedientes/bienvenida_direccion.php");
+                break;
+            }
             case 'e': {
-                    ///////////////// USUARIOS ASESORES         ///////////////////////
-                    header("location:/desarrolloemprendedor/entidades/bienvenida_direccion.php");
-                    break;
-                }
+                ///////////////// USUARIOS ASESORES         ///////////////////////
+                header("location:/desarrolloemprendedor/entidades/bienvenida_direccion.php");
+                break;
+            }
             case 'f': {
-                    ///////////////// USUARIOS ASESORES         ///////////////////////
-                    header("location:/desarrolloemprendedor/expedientes/bienvenida_direccion.php");
-                    break;
-                }
+                ///////////////// USUARIOS ASESORES         ///////////////////////
+                header("location:/desarrolloemprendedor/expedientes/bienvenida_direccion.php");
+                break;
+            }
         }
     } else {
-
-        $mensaje     = "Credenciales incorrectas .";
+        $mensaje     = "Usuario y/o clave errónea .";
         $enlace        = "<a href='javascript:history.go(-1);' class='btn btn-warning'> Regresar</a>";
         $clase        = 'class="alert alert-warning"';
     }
 } else {
-
     $mensaje     = "Código <b>captcha erroneo / nulo </b>.";
     $enlace        = "<a href='javascript:history.go(-1);' class='btn btn-warning'> Regresar</a>";
     $clase        = 'class="alert alert-warning"';
@@ -159,17 +152,16 @@ if ($captcha_success->success) {
     <div class="card-body">
 
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-lg-12">
+            <div class="col-5">
                 <div <?php echo $clase; ?>>
                     <?php echo $mensaje; ?>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-lg-12">
+        
+            <div class="col-7">
                 <?php echo $enlace; ?>
             </div>
+
         </div>
 
 
@@ -184,6 +176,3 @@ if ($captcha_success->success) {
 require_once $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/frontend/accesorios/front-scripts.php';
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/frontend/accesorios/front-inferior.php';
-
-
-?>
