@@ -83,7 +83,7 @@ if ($captcha_success->success) {
     $_SESSION['dni']            = $dni;
     $_SESSION['tipo_usuario']   = 'b';
 
-    header("location:/desarrolloemprendedor/frontend/registro_edita.php?id_solicitante=" . $_SESSION['id_usuario']);
+    header("location:/desarrolloemprendedor/frontend/registro_edita.php");
     
     $titulo 	= "correcto";
     $mensaje 	= "<h5><i class='far fa-edit'></i> ".$nombres . " </h5> <br> Tu usuario es  <b>" . $email . " </br> y tu clave <b>" . $dni . "</b>";

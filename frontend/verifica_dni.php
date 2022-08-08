@@ -2,7 +2,11 @@
 require_once("../accesorios/accesos_bd.php");
 $con=conectar();
 
-$dni = $_GET['dni'];
+if(!$_POST){
+    header("Location:../index.php");
+}
+
+$dni = $_POST['dni'];
 
 $tabla_solicitantes = mysqli_query($con,"SELECT id_solicitante FROM solicitantes WHERE dni = $dni" );
 

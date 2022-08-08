@@ -1,13 +1,16 @@
 $(function () {
     var form = $("#formsolicitante");
 
-    form.validate({
+    const validacion =  form.validate({
         rules: {
             dni: {
                 required: true,
                 minlength: 7,
                 maxlength: 10,
-                remote: "verifica_dni.php",
+                remote: {
+                    url: "verifica_dni.php",
+                    type: 'POST',
+                },
             },
             otrogenero: {
                 maxlength: 20,
@@ -15,7 +18,10 @@ $(function () {
             email: {
                 required: true,
                 email: true,
-                remote: "verifica_email.php",
+                remote: {
+                    url: "verifica_email.php",
+                    type: 'POST'
+                },
             },
             cuit: {
                 required: true,
@@ -40,6 +46,17 @@ $(function () {
         }
     });
 });
+
+$('#formsolicitante').on('submit', function () {
+    if ($(this).data('form_is_invalid')) {
+        $(this).data('form_is_invalid', false);
+    } else {
+        $(this).find('.submit').prop('disabled', true);
+    }
+}).on('invalid-form.validate', function () {
+    $(this).data('form_is_invalid', true);
+});
+
 
 $(function () {
     var form = $("#formsolicitanteedit");

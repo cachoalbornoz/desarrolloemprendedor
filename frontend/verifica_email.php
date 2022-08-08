@@ -2,7 +2,11 @@
 require_once("../accesorios/accesos_bd.php");
 $con=conectar();
 
-$email = $_GET['email'];
+if(!$_POST){
+    header("Location:../index.php");
+}
+
+$email = $_POST['email'];
 
 $cadena = "SELECT id_solicitante FROM solicitantes WHERE email = '".$email."'";
 $query  = mysqli_query($con, $cadena);

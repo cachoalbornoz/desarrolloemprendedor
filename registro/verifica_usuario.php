@@ -114,7 +114,7 @@ if ($captcha_success->success) {
             }
             case 'b': {
                 /////////////////       SOLICITANTES        ////////////////////////
-                header("location:/desarrolloemprendedor/frontend/registro_edita.php?id_solicitante=" . $_SESSION['id_usuario']);
+                header("location:/desarrolloemprendedor/frontend/registro_edita.php?");
                 break;
             }
             case 'd': {

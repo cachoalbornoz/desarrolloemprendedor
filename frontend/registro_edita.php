@@ -5,6 +5,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/accesorios/acce
 
 $con = conectar();
 
+if(!$_SESSION['id_usuario']){
+    header("Location:../index.php");
+}
+
 // INICIALIZO DATOS DEL EMPRENDEDOR
 $cuit             = null;
 $facebook         = null;
