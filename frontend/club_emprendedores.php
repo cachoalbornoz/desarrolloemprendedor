@@ -77,13 +77,13 @@
                 </p>
 
                 <ul>
-                    <li>CPN <b>Eduardo Muani </b> (Facultad de Ciencias Económicas)</li>
+                    <li>CPN <b>Sebastián Pérez </b> (Facultad de Ciencias Económicas)</li>
                     <li>Dr. <b>Pedro Gebhart </b> (Secretaría de Desarrollo Económico y Emprendedor)</li>
                     <li>Lic. <b>Germán Gatti </b>(Asociación Civil Entre Ríos Emprende)</li>
                 </ul>
 
                 <p>
-                    La Coordinación diaria de las actividades del Club, por su parte, está a cargo de la CPN María Belén Marquesín. 
+                    La Coordinación diaria de las actividades del Club, por su parte, está a cargo de Pablo Galarza. 
                 </p>
                 
             </div>
