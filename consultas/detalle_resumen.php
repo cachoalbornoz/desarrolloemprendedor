@@ -1,95 +1,91 @@
 <?php
-    session_start();
-    require("../accesorios/accesos_bd.php");
-    $con=conectar();
 
-    if(isset($_POST['id_cuenta'])){
+require_once '../accesorios/accesos_bd.php';
 
-        $id_cuenta = " and id_cuenta =".$_POST['id_cuenta']." ";
+$con = conectar();
 
-    }else{
+$request = $_REQUEST;
 
-        $id_cuenta = "";
+// COLUMNAS DE LA TABLA
 
-    }
-?>
+$col = [
 
-<script type="text/javascript">
+    0  => 'fecha',
+    1  => 'codigo',
+    2  => 'titular',
+    3  => 'monto',
+    4  => 'cuenta',
+    5  => 'operacion',
+    6  => 'nro',
+];
 
-    $(document).ready(function() {
+$sql = "SELECT exped.nro_proyecto, year(exped.fecha_otorgamiento) as ano, emp.apellido, emp.nombres , exp.id_pago, exp.id_cuenta, exp.fecha, exp.monto, exp.nro_operacion, tp.pago
+FROM expedientes_pagos as exp, tipo_pago as tp, expedientes as exped,
+rel_expedientes_emprendedores as rel ,emprendedores as emp
+WHERE tp.id_tipo_pago = exp.id_tipo_pago and exp.id_expediente = exped.id_expediente
+AND exped.id_expediente = rel.id_expediente AND rel.id_emprendedor = emp.id_emprendedor
+AND emp.id_responsabilidad = 1";
 
-        var table = $('#resumen').DataTable({ 
-        "lengthMenu"    : [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
-        "dom"           : '<"wrapper"Brflit>',        
-        "buttons"       : ['copy', 'excel', 'pdf',  'colvis'],
-        "order"         : [[ 0, "desc" ]],
-        "stateSave"     : true,
-        "columnDefs"	: [ {  targets: 0, render: $.fn.dataTable.render.moment('DD-MM-YYYY', 'DD-MM-YYYY')	} ],
-        "language"      : { "url": "../public/DataTables/spanish.json" }
-        });
-    }); 
-    
+$query       = mysqli_query($con, $sql);
+$totalData   = mysqli_num_rows($query);
+$totalFilter = $totalData;
 
-</script>
+// FILTRO
+if (!empty($request['search']['value'])) {
+    $sql .= " AND ( concat(apellido, ', ', nombres) like '%" . $request['search']['value'] . "%'";
+}
 
-<div class="table-responsive">
-    <table class="table table-striped table-hover text-center" style="font-size: small" id="resumen">
-    <thead>
-    <tr>
-            <td>Fecha</td>
-            <td>Cod_Jov</td>
-            <td>Titular</td>
-            <td>Monto</td>
-            <td>Nro_cuenta</td>
-            <td>Tipo_Movimiento</td>
-            <td>Nro_Operacion</td>
-    </tr>
-    </thead>
-    <tbody>
-        <?php
-        $tabla_pagos = mysqli_query($con, "select exped.nro_proyecto, year(exped.fecha_otorgamiento) as ano, emp.apellido, emp.nombres , exp.id_pago, exp.id_cuenta, exp.fecha, exp.monto, exp.nro_operacion, tp.pago
-        from expedientes_pagos as exp, tipo_pago as tp, expedientes as exped,
-        rel_expedientes_emprendedores as rel ,emprendedores as emp
-        where tp.id_tipo_pago = exp.id_tipo_pago and exp.id_expediente = exped.id_expediente
-        and exped.id_expediente = rel.id_expediente and rel.id_emprendedor = emp.id_emprendedor
-        and emp.id_responsabilidad = 1 $id_cuenta
-        order by exp.fecha desc");
+$query     = mysqli_query($con, $sql);
+$totalData = mysqli_num_rows($query);
 
-        $filas_pagos = mysqli_num_rows($tabla_pagos);
-        $total_pagado = 0;
+// ORDEN
 
-        while ($fila = mysqli_fetch_array($tabla_pagos)) {
-            ?>
-        <tr>
-            <td><?php echo date('d-m-Y', strtotime($fila['fecha'])); ?></td>
-            <td><?php echo $fila['nro_proyecto'] ?> / <?php echo substr($fila['ano'], -2) ?></td>
-            <td><?php echo substr($fila['apellido'].', '.$fila['nombres'], 0, 25) ?></td>
-            <td style="color:#900; font-weight:bold;"><?php echo number_format($fila['monto'], 2, ',', '.') ?> </td>
-            <td>
-            <?php
-            if ($fila['id_cuenta'] == 0) {
-                echo "090024/7";
-            } else {
-                if ($fila['id_cuenta'] == 1) {
-                    echo "662047/1";
-                } else {
-                    if ($fila['id_cuenta'] == 2) {
-                        echo "620230/1";
-                    }else{
-                        echo "622988/5";
-                    }
-                }
-            } ?>
-            </td>
-            <td><?php echo $fila['pago'] ?></td>
-            <td><?php echo $fila['nro_operacion'] ?></td>
-        </tr>
-        <?php
-        $total_pagado = $total_pagado + $fila['monto'];
+if ($request['length'] > 0) {
+    $sql .= ' ORDER BY exp.fecha DESC LIMIT ' . $request['start'] . ' ,' . $request['length'] . ' ';
+} else {
+    $sql .= ' ORDER BY exp.fecha DESC LIMIT 10000000 ';
+}
+
+$query = mysqli_query($con, $sql);
+
+$data = [];
+
+while ($row = mysqli_fetch_array($query)) {
+    $subdata = [];
+
+    $cuenta         = null;
+    if ($row['id_cuenta'] == 0) {
+        $cuenta = "090024/7";
+    } else {
+        if ($row['id_cuenta'] == 1) {
+            $cuenta = "662047/1";
+        } else {
+            if ($row['id_cuenta'] == 2) {
+                $cuenta = "620230/1";
+            }else{
+                $cuenta = "622988/5";
+            }
         }
-        ?>
-    </tbody>
-    </table>
-</div>
+    }
 
-<?php mysqli_close($con);
+    $subdata[] = date('d-m-Y', strtotime($row['fecha']));
+    $subdata[] = $row['nro_proyecto'].'/'.substr($row['ano'], -2);
+    $subdata[] = substr($row['apellido'].', '.$row['nombres'], 0, 25);
+    $subdata[] = number_format($row['monto'], 2, ',', '.');
+    $subdata[] = $cuenta;
+    $subdata[] = $row['pago'];
+    $subdata[] = $row['nro_operacion'];    
+
+    $data[] = $subdata;
+}
+
+$json_data = [
+
+    'draw'            => intval($request['draw']),
+    'recordsTotal'    => intval($totalData),
+    'recordsFiltered' => intval($totalFilter),
+    'data'            => $data,
+];
+
+print json_encode($json_data);
+
