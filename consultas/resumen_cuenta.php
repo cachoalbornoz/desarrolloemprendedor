@@ -57,10 +57,7 @@
         var table = $('#resumen').DataTable({
 
             "scrollCollapse": true,
-            "lengthMenu": [
-                [10, 25, 50, -1],
-                [10, 25, 50, "Todos"]
-            ],
+            "lengthMenu": [  [10, 25, 50, -1], [10, 25, 50, "Todos"]],
             "dom"     : '<"wrapper"rflipt>',
             "stateSave": true,
             "processing": true,
@@ -86,9 +83,7 @@
         var nro_cuenta = $("#nro_cuenta").val();
         $('#resumen').DataTable().destroy();
         cargar_datos(nro_cuenta);
-    })
-
-</script>
+    })  
 
 
 <?php require_once '../accesorios/admin-inferior.php';
