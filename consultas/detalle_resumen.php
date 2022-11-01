@@ -24,24 +24,23 @@ WHERE tp.id_tipo_pago = exp.id_tipo_pago and exp.id_expediente = exped.id_expedi
 AND exped.id_expediente = rel.id_expediente AND rel.id_emprendedor = emp.id_emprendedor
 AND emp.id_responsabilidad = 1';
 
-$query       = mysqli_query($con, $sql);
-$totalData   = mysqli_num_rows($query);
-$totalFilter = $totalData;
-
-// FILTRO
-if (!empty($request['search']['value'])) {
-    $sql .= " AND ( concat(apellido, ', ', nombres) like '%" . $request['search']['value'] . "%'";
-}
-
 $query     = mysqli_query($con, $sql);
 $totalData = mysqli_num_rows($query);
 
+// FILTRO
+if (!empty($request['search']['value'])) {
+    $sql .= " AND ( CONCAT(TRIM(emp.apellido), ', ', TRIM(emp.nombres)) like '" . $request['search']['value'] . "%')";
+}
+
+$query       = mysqli_query($con, $sql);
+$totalFilter = mysqli_num_rows($query);
+
 // ORDEN
 
-if($request['length']>0){
+if ($request['length'] > 0) {
     $sql .= ' ORDER BY exp.fecha DESC LIMIT ' . $request['start'] . ' ,' . $request['length'] . ' ';
 } else {
-    $sql .= " ORDER BY exp.fecha DESC  ";
+    $sql .= ' ORDER BY exp.fecha DESC  ';
 }
 
 $query = mysqli_query($con, $sql);
@@ -66,9 +65,12 @@ while ($row = mysqli_fetch_array($query)) {
         }
     }
 
+    $proyecto = ($row['nro_proyecto']) ? $row['nro_proyecto'] : null;
+    $anio     = ($row['ano']) ? substr($row['ano'], -2) : null;
+
     $subdata[] = date('d-m-Y', strtotime($row['fecha']));
-    $subdata[] = $row['nro_proyecto'] . '/' . substr($row['ano'], -2);
-    $subdata[] = substr($row['apellido'] . ', ' . $row['nombres'], 0, 25);
+    $subdata[] = $proyecto . '/' . $anio;
+    $subdata[] = trim($row['apellido']) . ', ' . trim($row['nombres']);
     $subdata[] = number_format($row['monto'], 2, ',', '.');
     $subdata[] = $cuenta;
     $subdata[] = $row['pago'];

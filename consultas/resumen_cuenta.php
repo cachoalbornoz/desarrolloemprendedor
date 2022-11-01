@@ -21,7 +21,7 @@
 
         <div class="row mb-3">
             <div class=" col-xs-12 col-sm-12 col-lg-12">
-                <table class="table table-striped table-hover text-center" id="resumen">
+                <table class="table table-striped table-hover text-center table-condensed" id="resumen" style="font-size: small">
                     <thead>
                         <tr>
                             <td>Fecha</td>
@@ -63,10 +63,11 @@
                 [10, 25, 50, -1],
                 [10, 25, 50, "Todos"]
             ],
-            "dom": '<"wrapper"rflipt>',
+            "dom": '<"wrapper"fliprt>',
             "stateSave": true,
             "processing": true,
             "serverSide": true,
+            "ordering":false,
             "ajax": {
                 url: "detalle_resumen.php",
                 type: "post",
@@ -74,10 +75,7 @@
                     nro_cuenta
                 },
             },
-            "columnDefs": [{
-                    orderable: false,
-                    targets: [0, 1, 2, 3, 4, 5, 6]
-                },
+            "columnDefs": [
                 {
                     className: 'text-left',
                     targets: [2]
