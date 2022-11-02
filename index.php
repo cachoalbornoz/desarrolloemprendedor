@@ -116,7 +116,7 @@
             </h4>
         </a>
         <p class="text-center">
-            <img src="/desarrolloemprendedor/public/imagenes/proaceerprog-14-10-21.png" class="img-fluid shadow" />
+            <img src="/desarrolloemprendedor/public/imagenes/proaceerprog-1-11-22.png" class="img-fluid shadow" />
         </p>
         <p class="text-center text-uppercase pl-5 pr-5">Para Jóvenes de 18 a 40 años con residencia en Entre Ríos y
             emprendimientos en marcha. </p>
