@@ -157,6 +157,11 @@
 </div>
 
 <div class="row mt-5 mb-5 text-center">
+    <div class="col-xs-12 col-sm-12 col-lg-12 d-none">
+        <a href="javascript:void(0)" class="btn btn-lg btn-outline-info" style="color:#1e5571;">
+            Inscripción cerrada 
+        </a>
+    </div>
     <div class="col-xs-12 col-sm-12 col-lg-12">
         <a href="javascript:void(0)" class="btn btn-lg btn-outline-info" style="color:#1e5571;">
             Inscripción cerrada 

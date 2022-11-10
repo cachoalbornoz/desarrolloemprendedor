@@ -22,7 +22,7 @@
                             INICIO
                         </a>
                     </li>
-                    <li class="nav-item d-none">
+                    <li class="nav-item">
                         <a href="/desarrolloemprendedor/frontend/registro.php" class="nav-link text-black-50">
                             PRE-Inscripción
                         </a>
