@@ -22,8 +22,7 @@
 
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-lg-12">
-        <h4 style="color:#1e5571;">PROGRAMA JÓVENES EMPRENDEDORES <?php print date('Y'); ?>
-        </h4>
+        <h4 style="color:#1e5571;">PROGRAMA JÓVENES EMPRENDEDORES </h4>
     </div>
 </div>
 
@@ -49,7 +48,7 @@
 
 <div class="row mt-5 mb-2">
     <div class="col-xs-12 col-sm-12 col-lg-12">
-        <h5><span style="color:#1e5571;">Requisitos <?php print date('Y'); ?></span></h5>
+        <h5><span style="color:#1e5571;">Requisitos</span></h5>
         <br>
         <div class="m-3">
             * Tener entre dieciocho (18) y cuarenta (40) años de edad.
@@ -159,12 +158,12 @@
 <div class="row mt-5 mb-5 text-center">
     <div class="col-xs-12 col-sm-12 col-lg-12 d-none">
         <a href="javascript:void(0)" class="btn btn-lg btn-outline-info" style="color:#1e5571;">
-            Inscripción cerrada 
+            Inscripción cerrada
         </a>
     </div>
     <div class="col-xs-12 col-sm-12 col-lg-12">
         <a href="javascript:void(0)" class="btn btn-lg btn-outline-info" style="color:#1e5571;">
-            Inscripción cerrada 
+            Inscripción cerrada
         </a>
     </div>
     <div class="col-xs-12 col-sm-12 col-lg-12 d-none">
