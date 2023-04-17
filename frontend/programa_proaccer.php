@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-lg-12">
-        <img src="/desarrolloemprendedor/public/imagenes/prog_proaccer.jpg" class="img-fluid" />
+        <img src="/desarrolloemprendedor/public/imagenes/prog_proaccer.png" class="img-fluid" />
     </div>
 </div>
 

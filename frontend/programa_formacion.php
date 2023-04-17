@@ -145,8 +145,9 @@
 
 	    </div>
 	</div>
-	<?
+	<?php
         }
+
     } else {
         echo '';
     }
@@ -327,4 +328,4 @@ $(document).ready(function() {
 });
 	</script>
 
-	<?php include $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/accesorios/footer.php'; ?>
+	<?php include $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/accesorios/footer.php'; 
