@@ -156,7 +156,7 @@
             </p>
         </a>
         <p class="text-center">
-            <img src="/desarrolloemprendedor/public/imagenes/proaceerprog-1-11-22.png" class="img-fluid shadow" />
+            <img src="/desarrolloemprendedor/public/imagenes/proaceerprog.png" class="img-fluid shadow" />
         </p>
         <p class="text-center text-uppercase pl-5 pr-5">Para Jóvenes de 18 a 40 años con residencia en Entre Ríos y
             emprendimientos en marcha. </p>
@@ -167,7 +167,7 @@
         </p>
         <p class="text-center">
             <a href="/desarrolloemprendedor/frontend/programa_formacion.php">
-                <img src="/desarrolloemprendedor/public/imagenes/talleres-14-10-21.png" class="img-fluid shadow" />
+                <img src="/desarrolloemprendedor/public/imagenes/talleres.png" class="img-fluid shadow" />
             </a>
         </p>
         <p class="text-center text-uppercase pl-5 pr-5">Encuentros de sensibilización para el fomento de la cultura
@@ -179,7 +179,7 @@
         </p>
         <p class="text-center">
             <a href="/desarrolloemprendedor/frontend/programa_tutorias.php">
-                <img src="/desarrolloemprendedor/public/imagenes/tutorias-05-04-23.png" class="img-fluid shadow" />
+                <img src="/desarrolloemprendedor/public/imagenes/tutorias.png" class="img-fluid shadow" />
             </a>
         </p>
         <p class="text-center text-uppercase pl-5 pr-5">Para emprendedoras /es con proyecto en marcha. Participá de un
@@ -192,7 +192,7 @@
             </p>
         </a>
         <p class="text-center">
-            <img src="/desarrolloemprendedor/public/imagenes/emprendimientos-dinamicos05-04-23.png" class="img-fluid shadow" />
+            <img src="/desarrolloemprendedor/public/imagenes/emprendimientos-dinamicos.png" class="img-fluid shadow" />
         </p>
 
         <p class="text-center text-uppercase pl-5 pr-5">
@@ -200,7 +200,7 @@
         </p>
     </div>
 
-    <div class="col-xs-12 col-md-6 col-lg-6">
+    <!-- <div class="col-xs-12 col-md-6 col-lg-6">
         <a href="https://www.entrerios.gov.ar/economicoemprendedor/mipymes">
             <p style="color: black;" class="favenir text-center mt-5 mb-3">
                 CONSOLIDACION PRODUCTIVA
@@ -214,7 +214,7 @@
             Diversas líneas de asistencia técnica y financiera dirigidas a Pymes y MiPyMEs entrerrianas.
         </p>
 
-    </div>
+    </div> -->
 </div>
 
 
