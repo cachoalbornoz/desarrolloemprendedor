@@ -4,7 +4,7 @@
 		
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-lg-12 text-center">
-				<img src="/desarrolloemprendedor/public/imagenes/club_emprendedores.png" class="img-fluid"/>
+				<img src="/desarrolloemprendedor/public/imagenes/club-de-emprendedores.png" class="img-fluid"/>
 			</div>
 		</div>	
 		

@@ -67,7 +67,7 @@
                             </a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/desarrolloemprendedor/frontend/integrantes_ecosistema.php">
-                                INTEGRANTES ECOSISTEMA
+                                ESTACION COWORKING
                             </a>
 
                         </div>
