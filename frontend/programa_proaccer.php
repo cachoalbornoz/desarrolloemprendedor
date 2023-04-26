@@ -26,14 +26,13 @@
     </div>
 </div>
 
-
-<div class="row">
+<div class="row mb-3">
     <div class="col-xs-12 col-sm-12 col-lg-12">
-        <h4 style="color:#c67d26">PROGRAMA DE APOYO AL COMERCIO EMPRENDEDOR <?php echo date('Y') ?></h4>
+        <h4 style="color: #22bcef;">PROGRAMA DE APOYO AL COMERCIO EMPRENDEDOR </h4>
     </div>
 </div>
 
-<div class="row pb-3">
+<div class="row mb-5">
     <div class="col-xs-12 col-sm-12 col-lg-12">
         <p>
             El Programa de Apoyo al Comercio Emprendedor de Entre Ríos brinda asesoramiento técnico en estrategias
@@ -43,9 +42,9 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row mb-5">
     <div class="col-xs-12 col-sm-12 col-lg-12">
-        <h5 style="color:#c67d26">Requisitos</h5>
+        <h5 style="color: #22bcef;">Requisitos</h5>
         <p>
             * Tener entre dieciocho (18) y cuarenta (40) años de edad
         </p>
@@ -62,21 +61,9 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row mb-5">
     <div class="col-xs-12 col-sm-12 col-lg-12">
-        <br />
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-lg-12">
-        <br />
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-lg-12">
-        <h5 style="color:#c67d26">BENEFICIOS DEL PROGRAMA</h5>
+        <h5 style="color: #22bcef;">Beneficios del programa</h5>
         <p>
             Las exposiciones, ferias y eventos de índole similar constituyen una plataforma privilegiada para
             la promoción y puesta en valor de empresas y emprendimientos tanto frente a la sociedad entrerriana
@@ -92,23 +79,15 @@
             de logística, asesoramiento técnico y de generación de material gráfico de comunicación para la
             participación en eventos específicos.
         </p>
-
-        <br>
-
-        <p style=" color: #C67D26">
-            Contacto
-        </p>
-
-        <p>
-            <strong> economicoemprendedorer@gmail.com o jovenesemprendedores@gmail.com </strong>
-        </p>
-
     </div>
 </div>
 
-<div class="row">
+<div class="row mb-5">
     <div class="col-xs-12 col-sm-12 col-lg-12">
-        </br>
+        <h5 style="color: #22bcef;">Contacto</h5>
+        <p>
+            <strong> economicoemprendedorer@gmail.com o jovenesemprendedores@gmail.com </strong>
+        </p>
     </div>
 </div>
 

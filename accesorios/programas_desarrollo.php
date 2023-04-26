@@ -66,8 +66,12 @@
                                 CLUB DE EMPRENDEDORES
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/desarrolloemprendedor/frontend/integrantes_ecosistema.php">
+                            <a class="dropdown-item" href="/desarrolloemprendedor/frontend/estacion_coworking.php">
                                 ESTACION COWORKING
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="/desarrolloemprendedor/frontend/integrantes_ecosistema.php">
+                                INTEGRANTES DEL ECOSISTEMA
                             </a>
 
                         </div>

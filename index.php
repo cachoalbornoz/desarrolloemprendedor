@@ -200,21 +200,21 @@
         </p>
     </div>
 
-    <!-- <div class="col-xs-12 col-md-6 col-lg-6">
+    <div class="col-xs-12 col-md-6 col-lg-6">
         <a href="https://www.entrerios.gov.ar/economicoemprendedor/mipymes">
             <p style="color: black;" class="favenir text-center mt-5 mb-3">
                 CONSOLIDACION PRODUCTIVA
             </p>
         </a>
         <p class="text-center">
-            <img src="/desarrolloemprendedor/public/imagenes/mipymes.png" class="img-fluid shadow" />
+            <img src="/desarrolloemprendedor/public/imagenes/mipymes-new.png" class="img-fluid shadow" />
         </p>
 
         <p class="text-center text-uppercase pl-5 pr-5">
             Diversas líneas de asistencia técnica y financiera dirigidas a Pymes y MiPyMEs entrerrianas.
         </p>
 
-    </div> -->
+    </div>
 </div>
 
 

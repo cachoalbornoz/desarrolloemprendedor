@@ -35,42 +35,23 @@
 	    </div>
 	</div>
 
-	<div class="row">
+	<div class="row mb-3">
 	    <div class="col-xs-12 col-sm-12 col-lg-12">
-	        <h4 style="color:#9968bc">PROGRAMA DE FORMACION EMPRENDEDORA Y FORTALECIMIENTO MiPyME</h4>
+	        <h4 style="color: #22bcef;">PROGRAMA DE FORMACION EMPRENDEDORA Y FORTALECIMIENTO MiPyME</h4>
 	    </div>
 	</div>
 
-	<div class="row">
+	<div class="row mb-5">
 	    <div class="col-xs-12 col-sm-12 col-lg-12">
-	        <p class="m-3">
+	        <p>
 	            El Programa de Formación Emprendedora y Fortalecimiento MiPyme impulsa <b>capacitaciones, talleres, seminarios, y jornadas</b> enfocadas en el desarrollo de actitudes y aptitudes para la consolidación del empredorismo y crecimiento de Mipymes en Entre Ríos.
-	        </p>
-	        <p class="m-3">
 	            Los encuentros son de participación gratuita, organizados de manera conjunta con instituciones públicas y privadas del ecosistema
 	            emprendedor y tienen lugar en todos los departamentos de la provincia.
 	        </p>
 	    </div>
 	</div>
 
-	<div class="row">
-	    <div class="col-xs-12 col-sm-12 col-lg-12">
-	        <br />
-	    </div>
-	</div>
-
-	<div class="row">
-	    <div class="col-xs-12 col-sm-12 col-lg-12">
-	        <br />
-	    </div>
-	</div>
-	<div class="row">
-	    <div class="col-xs-12 col-sm-12 col-lg-12">
-	        <br />
-	    </div>
-	</div>
-
-	<div class="row">
+	<div class="row mb-5">
 	    <div class="col-xs-12 col-sm-12 col-lg-12">
 	        <p>FORMACIONES DISPONIBLES</p>
 	    </div>
