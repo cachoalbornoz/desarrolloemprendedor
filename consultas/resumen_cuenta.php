@@ -1,6 +1,6 @@
 <?php
-    require '../accesorios/admin-superior.php';
-    ?>
+require '../accesorios/admin-superior.php';
+?>
 
 <div class="card">
     <div class=" card-header">
@@ -48,8 +48,6 @@
 <?php require_once '../accesorios/admin-scripts.php'; ?>
 
 <script type="text/javascript">
-
-
     $(document).ready(function() {
         cargar_datos();
     })
@@ -60,14 +58,14 @@
 
             "scrollCollapse": true,
             "lengthMenu": [
-                [10, 25, 50, -1],
-                [10, 25, 50, "Todos"]
+                [10, 25, 50, 250, -1],
+                [10, 25, 50, 250, "Todos"]
             ],
             "dom": '<"wrapper"fliprt>',
             "stateSave": true,
             "processing": true,
             "serverSide": true,
-            "ordering":false,
+            "ordering": false,
             "ajax": {
                 url: "detalle_resumen.php",
                 type: "post",
@@ -75,12 +73,10 @@
                     nro_cuenta
                 },
             },
-            "columnDefs": [
-                {
-                    className: 'text-left',
-                    targets: [2]
-                },
-            ],
+            "columnDefs": [{
+                className: 'text-left',
+                targets: [2]
+            }, ],
             "language": {
                 "url": "../public/DataTables/spanish.json"
             },
@@ -92,8 +88,7 @@
         $('#resumen').DataTable().destroy();
         cargar_datos(nro_cuenta);
     })
-
-
-</script> 
+</script>
 
 <?php require_once '../accesorios/admin-inferior.php';
+?>
