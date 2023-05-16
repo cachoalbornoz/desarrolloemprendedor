@@ -24,7 +24,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="/desarrolloemprendedor/frontend/registro.php" class="nav-link text-black-50">
-                            PRE-Inscripción
+                            REGISTRO
                         </a>
                     </li>
                     <li class="nav-item active">
