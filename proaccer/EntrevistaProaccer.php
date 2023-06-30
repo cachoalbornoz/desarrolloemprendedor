@@ -18,8 +18,7 @@ $con=conectar();
 
         </div>
 
-        <div class="card-body">
-				
+        <div class="card-body">				
 			<div class="row mb-5">
 				<div class="col-xs-12 col-sm-12 col-lg-12">
 					<label class="mb-2">
@@ -47,14 +46,14 @@ $con=conectar();
 					<select id="id_solicitante" name="id_solicitante" class="form-control" required>
 					<option value="" disabled selected>Seleccione solicitante .... &nbsp;</option>
 					<?php
-					$registro  = mysqli_query($con, "SELECT t1.id_solicitante, t1.apellido, t1.nombres
+					$registro  = mysqli_query($con, "SELECT DISTINCT t1.id_solicitante, t1.apellido, t1.nombres
 					FROM solicitantes t1
 					INNER JOIN habilitaciones t2 ON t1.id_solicitante = t2.id_solicitante
 					INNER JOIN registro_solicitantes t3 ON t1.id_solicitante = t3.id_solicitante
 					LEFT JOIN proaccer_inscripcion t4 ON t1.id_solicitante = t4.id_solicitante
 					LEFT JOIN proaccer_seguimientos t5 ON t4.id = t5.id_proyecto
 					WHERE t1.id_responsabilidad = 1 AND (t2.id_programa = 2 OR t2.id_programa is NULL) 
-					AND t2.habilitado = 1 AND t5.resultado_final > 49
+					AND t2.habilitado = 1 AND (t5.resultado_final > 49 OR t5.resultado_final IS NULL)
 					ORDER BY t1.apellido, t1.nombres");
 					while ($fila = mysqli_fetch_array($registro)) {
 						?>
