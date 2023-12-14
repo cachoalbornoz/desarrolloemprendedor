@@ -83,16 +83,8 @@ if (!isset($_SESSION['usuario'])) {
 								<a class="dropdown-item" href="../expedientes/expediente_nuevo.php">Expediente Nuevo</a>
 							</li>
 							<li class="dropdown-divider">
-							<li class="dropdown-submenu">
-								<a class="dropdown-item dropdown-toggle" href="#">Emp Financ Externo</a>
-								<ul class="dropdown-menu">
-									<li>
-										<a class="dropdown-item" href="../expedientes/sesion_usuario_expediente_nuevo_cs.php">Expediente Nuevo</a>
-									</li>
-									<li>
-										<a class="dropdown-item" href="../expedientes/padron_expedientes_cs.php">Listado Expedientes</a>
-									</li>
-								</ul>
+							<li>
+								<a class="dropdown-item" href="../expedientes/padron_ingresos_detallado.php">Listado Cobros</a>
 							</li>
 						</ul>
 					</li>
