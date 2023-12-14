@@ -54,17 +54,18 @@ if (isset($_POST['operacion'])) {
             $id_detalle = $registro_cuota[3];
             $nro_cuota = $registro_cuota[1];
 
-            if ($total_cobrado >= $registro_cuota[0]) {
+            if (round($total_cobrado,2) >= round($registro_cuota['importe'],2)) {
 
                 mysqli_query($con, "UPDATE expedientes_detalle_cuotas set id_pago = $id_pago, estado = 1, entrega_parcial = 0 WHERE id_detalle = $id_detalle") or die("Revisar actualización de Cuotas");
+            
             } else {
 
-                mysqli_query($con, "UPDATE expedientes_detalle_cuotas set id_pago = $id_pago, entrega_parcial = $total_cobrado WHERE id_detalle = $id_detalle")                or die("Revisar actualización de Entrega Parcial");
+                mysqli_query($con, "UPDATE expedientes_detalle_cuotas set id_pago = $id_pago, entrega_parcial = $total_cobrado WHERE id_detalle = $id_detalle") or die("Revisar actualización de Entrega Parcial");
                 break;
                 $bandera = false;
             }
-
             $total_cobrado = $total_cobrado - $registro_cuota[0];
+            
         }
 
         $saldo = $_SESSION['monto'] - $monto_cobrado;
