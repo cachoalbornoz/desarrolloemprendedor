@@ -14,7 +14,7 @@ $clave_registro = $registro['password'];
 if(md5($clave_vieja) == $clave_registro)
 {
 	$password= md5($clave_nueva);
-	$edita="UPDATE usuarios SET password = '$password', clave = '$clave_nueva' WHERE id_usuario = $id_usuario";
+	$edita="UPDATE usuarios SET password = '$password', clave = NULL WHERE id_usuario = $id_usuario";
 	$resultado=mysqli_query($con, $edita);
 	$_SESSION['verifica']=true;
 }

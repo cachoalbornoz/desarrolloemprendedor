@@ -41,20 +41,20 @@ if ($captcha_success->success) {
 
     if ($pos === false) {   // NO ENCUENTRA @ EN EL USUARIO
 
-        $tabla = mysqli_query($con, "SELECT * FROM usuarios WHERE nombre_usuario=\"" . mysqli_real_escape_string($con, $usuario) . "\"") or die("Error lectura de usuarios");
+        $password = md5($password);
+        $consulta = "SELECT * FROM usuarios WHERE nombre_usuario='$usuario' AND password = '$password';";
+        $tabla = mysqli_query($con, $consulta) or die("Error lectura de usuarios");
 
         if (mysqli_num_rows($tabla) > 0) {
             $registro = mysqli_fetch_array($tabla);
-            $clave = $registro['password'];
 
-            if (md5($password) == $clave) {
-                $_SESSION['id_usuario']     = $registro['id_usuario'];
-                $_SESSION['usuario']        = $registro['nombre_usuario'];
-                $_SESSION['apellido']       = $registro['apellido'];
-                $_SESSION['nombres']        = $registro['nombres'];
-                $_SESSION['tipo_usuario']   = $registro['estado'];
-            }
+            $_SESSION['id_usuario']     = $registro['id_usuario'];
+            $_SESSION['usuario']        = $registro['nombre_usuario'];
+            $_SESSION['apellido']       = $registro['apellido'];
+            $_SESSION['nombres']        = $registro['nombres'];
+            $_SESSION['tipo_usuario']   = $registro['estado'];           
         }
+
     } else {                // ENCUENTRO @ EN EL USUARIO
 
         $_SESSION['es_expediente']  = false;
@@ -103,7 +103,6 @@ if ($captcha_success->success) {
             // each client should remember their session id for EXACTLY 24 hour
             session_set_cookie_params(60 * 60 * 24);
         }
-
 
         switch ($_SESSION['tipo_usuario']) {
 

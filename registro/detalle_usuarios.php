@@ -21,8 +21,8 @@ if(isset($_POST['id'])) {
         $password = md5($_POST['clave']);
         $tipo     = $_POST['tipo'];
 
-        $carga = "INSERT INTO usuarios (nombre_usuario, apellido, nombres, estado, clave, password)
-        VALUES ('$usuario', '$apellido', '$nombres', '$tipo', '$clave', '$password')";
+        $carga = "INSERT INTO usuarios (nombre_usuario, apellido, nombres, estado, password)
+        VALUES ('$usuario', '$apellido', '$nombres', '$tipo', '$password')";
 
         mysqli_query($con, $carga) or die($carga);
 
@@ -56,7 +56,7 @@ if(isset($_POST['id'])) {
             "buttons"       : ['copy', 'excel', 'pdf',  'colvis'],
             "order"         : [[ 1, "asc" ]],
             "stateSave"     : true,
-            "columnDefs"    : [{ className: 'text-center', targets: [4,5,6] },],
+            "columnDefs"    : [{ className: 'text-center', targets: [3,4,5] },],
             "language"      : { "url": "../public/DataTables/spanish.json" }
         }); 
     }) 
@@ -70,7 +70,6 @@ if(isset($_POST['id'])) {
         <th>Apellido</th>
         <th>Nombres</th>
         <th>Usuario</th>
-        <th>Clave</th>
         <th>Estado</th>            
         <th>Cambiar</th>
         <th>Borrar</th>
@@ -84,8 +83,7 @@ while($fila = mysqli_fetch_array($tabla_usuarios)) {
         <tr>
             <td><?php print  $fila['apellido']; ?></td>
             <td><?php print  $fila['nombres']; ?></td>
-            <td><?php print strtoupper($fila['nombre_usuario']); ?></td>
-            <td><?php print $fila['clave']; ?></td>                
+            <td><?php print strtoupper($fila['nombre_usuario']); ?></td>             
             <td><?php print  strtoupper($fila['estado']); ?></td>
             <td>
                 <?php
