@@ -26,9 +26,6 @@
         <th>#</th>
         <th>Apellido</th>
         <th>Nombres</th>
-        <th>Importe</th>
-        <th>UltPago</th>
-        <th>HsVcto</th>
         <th>Localidad</th>
         <th>CodArea</th>
         <th>Movil</th>
@@ -45,8 +42,7 @@
     INNER JOIN rel_expedientes_emprendedores rel_exp ON exped.id_expediente = rel_exp.id_expediente
     INNER JOIN emprendedores as emp ON rel_exp.id_emprendedor = emp.id_emprendedor
     INNER JOIN localidades AS loca ON emp.id_ciudad = loca.id
-    WHERE edc.fecha_vcto >= CURDATE() AND edc.estado = 0 AND emp.id_responsabilidad = 1 AND (exped.estado = 1 or exped.estado = 6)
-    GROUP BY edc.id_expediente
+    WHERE edc.fecha_vcto >= CURDATE() AND edc.nro_cuota = 1 AND rel_exp.id_responsabilidad = 1
     ORDER BY emp.apellido, emp.nombres");
 
     $total = 0;
@@ -55,17 +51,6 @@
 
         $id_expediente = $fila['id_expediente'];
         $id_proyecto = $fila['nro_proyecto'];
-
-        $tabla_deuda = mysqli_query($con, "SELECT SUM(edc.importe) FROM expedientes_detalle_cuotas edc 
-        WHERE edc.fecha_vcto < CURDATE() AND edc.estado = 0 AND edc.id_expediente = $id_expediente");
-        $registro_deuda = mysqli_fetch_array($tabla_deuda);
-
-        $tabla_deuda_fecha = mysqli_query($con, "SELECT min(edc.fecha_vcto) FROM expedientes_detalle_cuotas edc 
-        WHERE edc.fecha_vcto < CURDATE() AND edc.estado = 1 AND edc.id_expediente = $id_expediente");
-        $registro_deuda_fecha = mysqli_fetch_array($tabla_deuda_fecha);
-
-        $ultimo_pago = ( is_null($registro_deuda_fecha[0]) )?null:date('d-m-Y', strtotime($registro_deuda_fecha[0]));
-
 
         ?>
         <tr>
@@ -76,9 +61,6 @@
             </td>
             <td><?php echo $fila['apellido']; ?></td>
             <td><?php echo $fila['nombres']; ?></td>
-            <td><?php echo $registro_deuda[0]; ?></td>
-            <td><?php echo $ultimo_pago; ?></td>
-            <td>Hs</td>
             <td><?php echo $fila['localidad']; ?></td>
             <td class="text-center"><?php echo $fila['cod_area']; ?></td>
             <td class="text-center"><?php echo $fila['celular']; ?></td>
@@ -86,15 +68,11 @@
             <td><?php echo $fila['email']; ?></td>
         </tr>
         <?php
-        $total = $total + $registro_deuda[0];
     }
     ?>
     </tbody>
     <tr>
         <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td><b><?php echo number_format($total,2,',','.') ?></b></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>

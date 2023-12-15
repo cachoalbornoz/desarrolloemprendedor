@@ -76,16 +76,25 @@ if (!isset($_SESSION['usuario'])) {
 						</a>
 						<ul class="dropdown-menu">
 							<li>
-								<a class="dropdown-item" href="../expedientes/padron_expedientes.php">Listado Expedientes</a>
+								<a class="dropdown-item" href="../expedientes/padron_expedientes.php">Listado expedientes</a>
 							</li>
 							<li class="dropdown-divider"></li>
 							<li>
-								<a class="dropdown-item" href="../expedientes/expediente_nuevo.php">Expediente Nuevo</a>
+								<a class="dropdown-item" href="../expedientes/expediente_nuevo.php">Expediente nuevo</a>
 							</li>
 							<li class="dropdown-divider">
 							<li>
-								<a class="dropdown-item" href="../expedientes/padron_ingresos_detallado.php">Listado Cobros</a>
+								<a class="dropdown-item" href="../expedientes/padron_ingresos_2448.php">Expedientes vencidos 24/48 Hs </a>
 							</li>
+							<li class="dropdown-divider">
+							<li>
+								<a class="dropdown-item" href="../expedientes/padron_ingresos_detallado.php">Expedientes a cobrar </a>
+							</li>
+							<li class="dropdown-divider">	
+							<li>
+								<a class="dropdown-item" href="../expedientes/padron_periodo_gracia.php">Expedientes período gracia </a>
+							</li>
+							<li class="dropdown-divider">
 						</ul>
 					</li>
 
