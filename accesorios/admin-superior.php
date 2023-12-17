@@ -84,7 +84,7 @@ if (!isset($_SESSION['usuario'])) {
 							</li>
 							<li class="dropdown-divider">
 							<li>
-								<a class="dropdown-item" href="../expedientes/padron_ingresos_2448.php">Expedientes vencidos 24/48 Hs </a>
+								<a class="dropdown-item" href="../expedientes/padron_ingresos_2448.php">Expedientes vencidos del mes </a>
 							</li>
 							<li class="dropdown-divider">
 							<li>
@@ -93,6 +93,10 @@ if (!isset($_SESSION['usuario'])) {
 							<li class="dropdown-divider">	
 							<li>
 								<a class="dropdown-item" href="../expedientes/padron_periodo_gracia.php">Expedientes período gracia </a>
+							</li>
+							<li class="dropdown-divider">
+							<li>
+								<a class="dropdown-item" href="../expedientes/padron_eliminados.php">Expedientes eliminados </a>
 							</li>
 							<li class="dropdown-divider">
 						</ul>

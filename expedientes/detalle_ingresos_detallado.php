@@ -9,8 +9,9 @@
     var table = $('#futuros').DataTable({ 
         "lengthMenu"    : [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
         "pagingType"    : 'full_numbers',
+        "dom"           : '<"wrapper"Brflitp>', 
         "info"          : true,
-        "buttons"       : ['copy', 'excel', 'pdf', 'colvis'],
+        "buttons"       : ['copy', 'excel', 'pdf',  'colvis'],
         "order"         : [[ 1, "asc" ]],
         "stateSave"     : true,
         "columnDefs"    : [{}, ],
@@ -28,7 +29,6 @@
         <th>Nombres</th>
         <th>Importe</th>
         <th>UltPago</th>
-        <th>HsVcto</th>
         <th>Localidad</th>
         <th>CodArea</th>
         <th>Movil</th>
@@ -78,7 +78,6 @@
             <td><?php echo $fila['nombres']; ?></td>
             <td><?php echo $registro_deuda[0]; ?></td>
             <td><?php echo $ultimo_pago; ?></td>
-            <td>Hs</td>
             <td><?php echo $fila['localidad']; ?></td>
             <td class="text-center"><?php echo $fila['cod_area']; ?></td>
             <td class="text-center"><?php echo $fila['celular']; ?></td>
@@ -95,7 +94,6 @@
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td><b><?php echo number_format($total,2,',','.') ?></b></td>
-        <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>

@@ -9,8 +9,9 @@
     var table = $('#futuros').DataTable({ 
         "lengthMenu"    : [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
         "pagingType"    : 'full_numbers',
+        "dom"           : '<"wrapper"Brflitp>', 
         "info"          : true,
-        "buttons"       : ['copy', 'excel', 'pdf', 'colvis'],
+        "buttons"       : ['copy', 'excel', 'pdf',  'colvis'],
         "order"         : [[ 1, "asc" ]],
         "stateSave"     : true,
         "columnDefs"    : [{}, ],

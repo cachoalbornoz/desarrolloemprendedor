@@ -8,14 +8,14 @@ require '../accesorios/admin-superior.php';
             <div class="card-header">
                 <div class="row">
                     <div class=" col-xs-12 col-sm-12 col-lg-12">
-                        EXPEDIENTES VENCIDOS DEL MES
+                        EXPEDIENTES ELIMINADOS
                     </div>
                 </div>
             </div>
             <div class="card-body">
                 <div class="row mb-3">
                     <div class=" col-xs-12 col-sm-12 col-lg-12">
-                        <div id="detalle_nocobrado_2448">
+                        <div id="detalle_eliminados">
                             <div id="estado" style="display:none">
                                 Recuperando información, aguarde  <i class="fa fa-spinner fa-spin fa-fw"></i>
                             </div>
@@ -34,7 +34,7 @@ require '../accesorios/admin-superior.php';
 
     $(document).ready(function(){
         $("#estado").show();
-        $("#detalle_nocobrado_2448").load('detalle_nocobrado_2448.php',function(){
+        $("#detalle_eliminados").load('detalle_eliminados.php',function(){
         })
     });
 </script>

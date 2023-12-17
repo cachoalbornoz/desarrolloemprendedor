@@ -1,5 +1,5 @@
 <?php
-
+session_start();	
 require_once '../accesorios/accesos_bd.php';
 
 $con = conectar();
@@ -111,9 +111,9 @@ while ($row = mysqli_fetch_array($query)) {
     $subdata[] = date('d/m/Y', strtotime($row['fecha_otorgamiento']));
     $subdata[] = number_format($row['monto'], 0, '.', ',');
     $subdata[] = number_format($row['saldo'], 0, '.', ',');
-    $subdata[] = '<a href="javascript:void(0)" title="Elimina expediente">
+    $subdata[] = ($_SESSION['tipo_usuario'] == 'c')?'<a href="javascript:void(0)" title="Elimina expediente">
                         <i class="fas fa-trash text-danger borrar" id="' . $id_expediente . '" value="' . $row['solicitante'] . '" title="Eliminar expediente de ' . $row['solicitante'] . '"></i>
-                    </a>';
+                    </a>':null;
 
     $data[] = $subdata;
 }
