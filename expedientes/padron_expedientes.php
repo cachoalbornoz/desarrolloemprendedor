@@ -94,6 +94,10 @@ while ($fila = mysqli_fetch_array($registro)) {
 
         var table = $('#expedientes').DataTable({
 
+            "lengthMenu"    : [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
+            "dom"           : '<"wrapper"Brflitp>', 
+            "columnDefs"    : [{}, ],
+            "language"      : { "url": "../public/DataTables/spanish.json" },
             "pagingType": 'full_numbers',
             "lengthMenu": [ [10, 25, 50, 500], [10, 25, 50, 500]],
             "paging": true,

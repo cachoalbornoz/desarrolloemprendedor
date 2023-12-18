@@ -82,23 +82,27 @@ if (!isset($_SESSION['usuario'])) {
 							<li>
 								<a class="dropdown-item" href="../expedientes/expediente_nuevo.php">Expediente nuevo</a>
 							</li>
-							<li class="dropdown-divider">
+							<li class="dropdown-divider"></li>
 							<li>
-								<a class="dropdown-item" href="../expedientes/padron_ingresos_2448.php">Expedientes vencidos del mes </a>
+								<a class="dropdown-item" href="../expedientes/padron_morosos.php">Expedientes morosos </a>
 							</li>
-							<li class="dropdown-divider">
-							<li>
-								<a class="dropdown-item" href="../expedientes/padron_ingresos_detallado.php">Expedientes a cobrar </a>
-							</li>
-							<li class="dropdown-divider">	
+							<li class="dropdown-divider"></li>
 							<li>
 								<a class="dropdown-item" href="../expedientes/padron_periodo_gracia.php">Expedientes período gracia </a>
 							</li>
-							<li class="dropdown-divider">
+							<li class="dropdown-divider"></li>
+							<!-- <li>
+								<a class="dropdown-item" href="../expedientes/padron_ingresos_2448.php">Expedientes vencidos del mes </a>
+							</li>							
+							<li class="dropdown-divider"></li>
+							<li>
+								<a class="dropdown-item" href="../expedientes/padron_ingresos_detallado.php">Expedientes a cobrar </a>
+							</li>
+							<li class="dropdown-divider"></li>
 							<li>
 								<a class="dropdown-item" href="../expedientes/padron_eliminados.php">Expedientes eliminados </a>
 							</li>
-							<li class="dropdown-divider">
+							<li class="dropdown-divider"></li> -->
 						</ul>
 					</li>
 
