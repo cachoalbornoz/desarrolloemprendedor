@@ -96,9 +96,13 @@ while ($registro_soli = mysqli_fetch_array($query_solicitantes)) {
 }
 
 // /////////////////////////////////////////////////////////// EXPEDIENTES - UBICACIONES
-mysqli_query($con, "INSERT INTO expedientes_ubicaciones (fecha, id_tipo_ubicacion, motivo) values ('$fecha_otorgamiento', 1, 'INICIO TRAMITE')");
+mysqli_query($con, "INSERT INTO expedientes_ubicaciones (fecha, id_tipo_ubicacion, motivo) values ('$fecha_otorgamiento', 1, 'INICIO TRAMITE')")
+or die('Revisar insercion Expediente ubicacion');
+
 $id_ubicacion = mysqli_insert_id($con);
-mysqli_query($con, "INSERT INTO rel_expedientes_ubicacion (id_expediente, id_ubicacion) values ($id_expediente, $id_ubicacion)");
+
+mysqli_query($con, "INSERT INTO rel_expedientes_ubicacion (id_expediente, id_ubicacion) values ($id_expediente, $id_ubicacion)")
+or die('Revisar insercion Relacion del Expediente y ubicacion');
 
 // /////////////////////////////////////////////////////////// EXPEDIENTES - ESTADOS
 mysqli_query($con, "INSERT INTO expedientes_estados (id_expediente, fecha, id_tipo_estado) values ($id_expediente, '$fecha_otorgamiento', 1)");
