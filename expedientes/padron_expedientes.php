@@ -37,38 +37,38 @@ $max  = $reg[1];
                     <table class="records_list table table-hover table-striped" style="font-size: small" id="expedientes">
                         <thead>
                             <tr>
-                                <th>NroExpediente</th>
+                                <th>Nro</th>
                                 <th>Titular</th>
                                 <th>
                                     <select id="anio" class="filtro">
                                         <option value="-1" selected="true">Año</option>
                                         <?php
-                                $actual = date('Y', time());
-$año                                    = $min;
-while ($año <= $actual) {
-    print '<option value=' . $año . '>' . $año . '</option>';
-    $año++;
-}
-?>
+                                        $actual = date('Y', time());
+                                        $año                                    = $min;
+                                        while ($año <= $actual) {
+                                            print '<option value=' . $año . '>' . $año . '</option>';
+                                            $año++;
+                                        }
+                                        ?>
                                     </select>
                                 </th>
                                 <th>Dni</th>
                                 <th>Icono</th>
+                                <th>Ubicacion</th>
                                 <th>
                                     <select id="estado" class="filtro">
                                         <option value="-1" selected="true">Estado</option>
                                         <?php
-$estados  = 'SELECT * FROM tipo_estado WHERE id_estado < 20 ORDER BY estado asc';
-$registro = mysqli_query($con, $estados);
-while ($fila = mysqli_fetch_array($registro)) {
-    print "<option value='" . $fila[0] . "'>" . $fila[1] . '</option>';
-}
-?>
+                                        $estados  = 'SELECT * FROM tipo_estado WHERE id_estado < 20 ORDER BY estado asc';
+                                        $registro = mysqli_query($con, $estados);
+                                        while ($fila = mysqli_fetch_array($registro)) {
+                                            print "<option value='" . $fila[0] . "'>" . $fila[1] . '</option>';
+                                        }
+                                        ?>
                                     </select>
-
                                 </th>
                                 <th>Finalidad</th>
-                                <th>FechaOtorgam</th>
+                                <th>F.Otorgam</th>
                                 <th>Monto</th>
                                 <th>Saldo</th>
                                 <th>&nbsp;</th>

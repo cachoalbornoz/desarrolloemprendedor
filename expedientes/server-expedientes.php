@@ -15,12 +15,13 @@ $col = [
     2  => 'anio',
     3  => 'dni',
     4  => 'icono',
-    5  => 'estado',
-    6  => 'rubro',
-    7  => 'fechao',
-    8  => 'monto',
-    9  => 'saldo',
-    10 => 'borrar',
+    5  => 'ubicacion',
+    6  => 'estado',
+    7  => 'rubro',
+    8  => 'fechao',
+    9  => 'monto',
+    10 => 'saldo',
+    11 => 'borrar',
 ];
 
 $sql = "SELECT t1.id_expediente, nro_proyecto, concat(apellido, ', ' , nombres) AS solicitante, YEAR(fecha_otorgamiento) AS anio, dni, icono, t4.estado, rubro, monto, saldo, t3.id_emprendedor, dni, fecha_otorgamiento, t4.id_estado
@@ -83,31 +84,38 @@ while ($row = mysqli_fetch_array($query)) {
     $id_expediente = $row['id_expediente'];
     $dni           = $row['dni'];
 
-    $tabla_proyecto = mysqli_query(
-        $con,
-        "SELECT proy.id_proyecto FROM proyectos proy 
+    $tabla_proyecto = mysqli_query($con, "SELECT proy.id_proyecto FROM proyectos proy 
         INNER JOIN rel_proyectos_solicitantes relps on relps.id_proyecto = proy.id_proyecto 
         INNER JOIN solicitantes soli on soli.id_solicitante = relps.id_solicitante 
-            WHERE proy.id_estado = 25 AND soli.dni = $dni"
+        WHERE proy.id_estado = 25 AND soli.dni = $dni"
     );
 
     $registro_proyecto = mysqli_fetch_array($tabla_proyecto);
+    $id_proyecto = ($registro_proyecto)?$registro_proyecto['id_proyecto']:0;
+    
 
-    if ($registro_proyecto) {
-        $id_proyecto = $registro_proyecto['id_proyecto'];
-    } else {
-        $id_proyecto = 0;
-    }
+    // Ubicaion del Expediente
+
+    $tabla_ubicacion = mysqli_query($con, "SELECT tu.ubicacion FROM rel_expedientes_ubicacion reu
+        INNER JOIN expedientes_ubicaciones eu ON eu.id_ubicacion = reu.id_ubicacion
+        INNER JOIN tipo_ubicaciones tu ON eu.id_tipo_ubicacion = tu.id_ubicacion
+        WHERE reu.id_expediente = $id_expediente
+        ORDER BY eu.fecha 
+		DESC LIMIT 1");
+    $registro_ubicacion = mysqli_fetch_array($tabla_ubicacion); 
+
+    $ubicacion = ($registro_ubicacion)?$registro_ubicacion[0]:null;
 
     //
 
     $subdata[] = $row['nro_proyecto'];
-    $subdata[] = '<a class="text-dark" href="sesion_usuario_expediente.php?id=' . $id_expediente . '&id_proyecto=' . $id_proyecto . '" title="Ver expediente">' . $row['solicitante'] . '</a>';
+    $subdata[] = '<a href="sesion_usuario_expediente.php?id=' . $id_expediente . '&id_proyecto=' . $id_proyecto . '" title="Ver expediente">' . substr($row['solicitante'],0,50) . '</a>';
     $subdata[] = $row['anio'];
     $subdata[] = $row['dni'];
     $subdata[] = $row['icono'];
+    $subdata[] = $ubicacion;
     $subdata[] = $row['estado'];
-    $subdata[] = substr($row['rubro'],0,50);
+    $subdata[] = substr($row['rubro'],0,20);
     $subdata[] = date('d/m/Y', strtotime($row['fecha_otorgamiento']));
     $subdata[] = number_format($row['monto'], 0, '.', ',');
     $subdata[] = number_format($row['saldo'], 0, '.', ',');
