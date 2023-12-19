@@ -96,7 +96,7 @@ while ($registro_soli = mysqli_fetch_array($query_solicitantes)) {
 }
 
 // /////////////////////////////////////////////////////////// EXPEDIENTES - UBICACIONES
-mysqli_query($con, "INSERT INTO ubicaciones (fecha, id_tipo_ubicacion, motivo) values ('$fecha_otorgamiento', 1, 'INICIO TRAMITE')");
+mysqli_query($con, "INSERT INTO expedientes_ubicaciones (fecha, id_tipo_ubicacion, motivo) values ('$fecha_otorgamiento', 1, 'INICIO TRAMITE')");
 $id_ubicacion = mysqli_insert_id($con);
 mysqli_query($con, "INSERT INTO rel_expedientes_ubicacion (id_expediente, id_ubicacion) values ($id_expediente, $id_ubicacion)");
 
