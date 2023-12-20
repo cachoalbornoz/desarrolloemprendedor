@@ -91,17 +91,17 @@ if (!isset($_SESSION['usuario'])) {
 								<a class="dropdown-item" href="../expedientes/padron_periodo_gracia.php">Expedientes período gracia </a>
 							</li>
 							<li class="dropdown-divider"></li>
+							<li>
+								<a class="dropdown-item" href="../expedientes/padron_eliminados.php">Expedientes eliminados </a>
+							</li>
+							<li class="dropdown-divider"></li>
 							<!-- <li>
 								<a class="dropdown-item" href="../expedientes/padron_ingresos_2448.php">Expedientes vencidos del mes </a>
 							</li>							
 							<li class="dropdown-divider"></li>
 							<li>
 								<a class="dropdown-item" href="../expedientes/padron_ingresos_detallado.php">Expedientes a cobrar </a>
-							</li>
-							<li class="dropdown-divider"></li>
-							<li>
-								<a class="dropdown-item" href="../expedientes/padron_eliminados.php">Expedientes eliminados </a>
-							</li>
+							</li>								
 							<li class="dropdown-divider"></li> -->
 						</ul>
 					</li>

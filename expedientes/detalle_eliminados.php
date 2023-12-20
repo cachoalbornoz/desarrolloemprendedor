@@ -25,10 +25,12 @@
     <thead>
     <tr>
         <th>#</th>
+        <th>Año</th>
+        <th>Ubicación</th>
         <th>Apellido</th>
         <th>Nombres</th>
         <th>Importe</th>
-        <th>UltPago</th>
+        <th>UltimoPago</th>
         <th>Localidad</th>
         <th>CodArea</th>
         <th>Movil</th>
@@ -41,7 +43,8 @@
     <tbody>
     <?php
 
-    $tabla_expedientes = mysqli_query($con, "SELECT edc.id_expediente, exped.nro_exp_control, exped.nro_proyecto, emp.apellido, emp.nombres, loca.nombre as localidad, emp.cod_area, emp.celular, emp.telefono, emp.email, ea.usuario
+    $tabla_expedientes = mysqli_query($con, "SELECT edc.id_expediente, exped.nro_exp_control, exped.nro_proyecto, emp.apellido, emp.nombres, loca.nombre as localidad, emp.cod_area, emp.celular, emp.telefono, emp.email, ea.usuario,
+    year(exped.fecha_otorgamiento) AS aotorga
     FROM expedientes exped
     INNER JOIN expedientes_detalle_cuotas edc ON exped.id_expediente = edc.id_expediente
     LEFT JOIN expedientes_auditoria ea ON exped.id_expediente = ea.id_expediente 
@@ -75,31 +78,53 @@
         $registro_eliminacion = mysqli_fetch_array($tabla_eliminacion);
         $fecha_eliminacion = ( is_null($registro_eliminacion[0]) )?null:date('d-m-Y', strtotime($registro_eliminacion[0]));
 
-        ?>
-        <tr>
-            <td class="text-center">
-                <a href="sesion_usuario_expediente.php?id=<?php echo $id_expediente; ?>&id_proyecto=<?php echo $id_proyecto; ?>" title="Ver expediente">
-                    <?php echo $fila['nro_proyecto']; ?>
-                </a>                
-            </td>
-            <td><?php echo $fila['apellido']; ?></td>
-            <td><?php echo $fila['nombres']; ?></td>
-            <td><?php echo $registro_deuda[0]; ?></td>
-            <td><?php echo $ultimo_pago; ?></td>
-            <td><?php echo $fila['localidad']; ?></td>
-            <td class="text-center"><?php echo $fila['cod_area']; ?></td>
-            <td class="text-center"><?php echo $fila['celular']; ?></td>
-            <td class="text-center"><?php echo $fila['telefono']; ?></td>
-            <td><?php echo $fila['email']; ?></td>
-            <td><?php echo $fila['usuario']; ?></td>
-            <td><?php echo $fecha_eliminacion; ?></td>
-        </tr>
-        <?php
-        $total = $total + $registro_deuda[0];
+
+        $tabla_ubicacion = mysqli_query($con, "SELECT tu.id_ubicacion, tu.ubicacion
+            FROM rel_expedientes_ubicacion reu
+            INNER JOIN expedientes_ubicaciones eu ON eu.id_ubicacion = reu.id_ubicacion
+            INNER JOIN tipo_ubicaciones tu ON eu.id_tipo_ubicacion = tu.id_ubicacion
+            WHERE reu.id_expediente = $id_expediente
+            ORDER BY eu.fecha DESC LIMIT 1;");
+
+        if($registro_ubicacion = mysqli_fetch_array($tabla_ubicacion)){
+
+            // EXPEDIENTES CON UBICACION EN JOVENES - 1 / JURIDICOS - 2 / FISCALIA - 4
+            if($registro_ubicacion[0] == 1 OR $registro_ubicacion[0] == 2 OR $registro_ubicacion[0] == 4){
+
+            ?>
+            <tr>
+                <td class="text-center">
+                    <a href="sesion_usuario_expediente.php?id=<?php echo $id_expediente; ?>&id_proyecto=<?php echo $id_proyecto; ?>" title="Ver expediente">
+                        <?php echo $fila['nro_proyecto']; ?>
+                    </a>                
+                </td>
+                <td><?php echo $fila['aotorga']; ?></td>
+                <td><?php echo substr($registro_ubicacion['ubicacion'],0,8); ?></td>
+                <td><?php echo $fila['apellido']; ?></td>
+                <td><?php echo $fila['nombres']; ?></td>
+                <td><?php echo $registro_deuda[0]; ?></td>
+                <td><?php echo $ultimo_pago; ?></td>
+                <td><?php echo substr($fila['localidad'],0,15); ?></td>
+                <td class="text-center"><?php echo $fila['cod_area']; ?></td>
+                <td class="text-center"><?php echo $fila['celular']; ?></td>
+                <td class="text-center"><?php echo $fila['telefono']; ?></td>
+                <td><?php echo $fila['email']; ?></td>
+                <td><?php echo $fila['usuario']; ?></td>
+                <td><?php echo $fecha_eliminacion; ?></td>
+            </tr>
+            
+            <?php
+
+                $total = $total + $registro_deuda[0];
+            }           
+
+        }
     }
     ?>
     </tbody>
     <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
