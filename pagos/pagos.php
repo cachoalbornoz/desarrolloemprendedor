@@ -53,19 +53,24 @@
                 <input type="number" id="monto" name="monto" class="form-control" required>
             </div>
             <div class="col-xs-12 col-sm-12 col-lg-2">
-                <select id="id_cuenta" name="id_cuenta" class="form-control" > 
-                    <option value="2">620230/1</option>
-                    <option value="3" selected>622988/5</option> 
+                <select id="id_cuenta" name="id_cuenta" class="form-control"> 
+                    <?php
+                        $registro = mysqli_query($con, "select * from tipo_cuenta where id > 1") or die("Error al leer tipo cuentas");
+                        while($fila = mysqli_fetch_array($registro)){
+                            $selected = ($fila[0]==3)?'selected':null ;                            
+                            echo "<option value=".$fila[0]." $selected>".$fila[1]."</option>";
+                        }
+                    ?>   
                 </select>
             </div>
             <div class="col-xs-12 col-sm-12 col-lg-2">
                 <select id="id_tipo_pago" name="id_tipo_pago" class="form-control" >
-                <?php
-                $registro = mysqli_query($con, "select * from tipo_pago order by pago") or die("Error al leer tipo pagos");
-                while($fila = mysqli_fetch_array($registro)){
-                    echo "<option value=".$fila[0].">".$fila[1]."</option>";
-                }
-                ?>   
+                    <?php
+                        $registro = mysqli_query($con, "select * from tipo_pago order by pago") or die("Error al leer tipo pagos");
+                        while($fila = mysqli_fetch_array($registro)){
+                            echo "<option value=".$fila[0].">".$fila[1]."</option>";
+                        }
+                    ?>   
                 </select>
             </div>
             <div class="col-xs-12 col-sm-12 col-lg-2">
