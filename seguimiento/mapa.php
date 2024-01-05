@@ -11,7 +11,7 @@
 	<meta name="description" content="Sistema Administrativo del Ministerio de Producción Entre Rios para registro de Proyectos Productivos" />
 	<meta name="robots" content="index,follow">
 
-	<title>Proyectos - Jovenes Emprendedores</title>
+	<title>Proyectos - Desarrollo Emprendedor</title>
     
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
@@ -20,17 +20,6 @@
 	<link rel="stylesheet" href="/desarrolloemprendedor/public/font-awesome-5.9.0/css/all.min.css">
 	<link rel="stylesheet" href="/desarrolloemprendedor/public/Ionicons/css/ionicons.min.css">
 	<link rel="stylesheet" href="/desarrolloemprendedor/public/bootstrap-4.3.1/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/desarrolloemprendedor/public/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="/desarrolloemprendedor/public/css/EstilosJovenes.css">
-    
-    <!-- jQuery 3 -->
-    <script src="/desarrolloemprendedor/public/js/jquery-3.4.1.min.js"></script>
-    <!-- Popper -->
-    <script src="/desarrolloemprendedor/public/bootstrap-4.3.1/js/dist/popper.min.js"></script>
-    <!-- Utils -->
-    <script src="/desarrolloemprendedor/public/bootstrap-4.3.1/js/dist/util.js"></script>
-    <!-- Bootstrap 4.3.1 -->
-    <script src="/desarrolloemprendedor/public/bootstrap-4.3.1/dist/js/bootstrap.min.js"></script>
 
     <style>
         .leaflet-tooltip{
@@ -66,30 +55,18 @@
         }
     </style>
 
-    <link href="libreria/leaflet/leaflet.css" rel="stylesheet" type="text/css"/>
-    <script src="libreria/leaflet/leaflet.js" type="text/javascript"></script>    
-   
+    <!-- Librerias LeafLet -->
+    <link href="libreria/leaflet/leaflet.css" rel="stylesheet" type="text/css"/>   
     <!-- Librerias Mouse Position -->
     <link href="libreria/Leaflet.MousePosition-master/src/L.Control.MousePosition.css" rel="stylesheet" type="text/css"/>
-    <script src="libreria/Leaflet.MousePosition-master/src/L.Control.MousePosition.js" type="text/javascript"></script>
-   
     <!-- Librerias Print Layer-->    
-    <script src="libreria/leaflet-easyPrint-gh-pages/dist/leaflet.easyPrint.js" type="text/javascript"></script>
-    
     <!-- Librerias Scale Layer-->
-    <script src="libreria/leaflet-graphicscale-master/dist/Leaflet.GraphicScale.min.js" type="text/javascript"></script>
-    <link href="libreria/leaflet-graphicscale-master/dist/Leaflet.GraphicScale.min.css" rel="stylesheet" type="text/css"/>    
-    
+    <link href="libreria/leaflet-graphicscale-master/dist/Leaflet.GraphicScale.min.css" rel="stylesheet" type="text/css"/> 
     <!-- Icons-->
     <link href="libreria/leaflet-mapkey-icon-master/dist/L.Icon.Mapkey.css" rel="stylesheet" type="text/css"/>
-    <script src="libreria/leaflet-mapkey-icon-master/dist/L.Icon.Mapkey.js" type="text/javascript"></script>
-    
     <!-- LayerGroup-->
     <link href="libreria/leaflet-groupedlayercontrol-gh-pages/src/leaflet.groupedlayercontrol.css" rel="stylesheet" type="text/css"/>
-    <script src="libreria/leaflet-groupedlayercontrol-gh-pages/src/leaflet.groupedlayercontrol.js" type="text/javascript"></script>
-    
     <!-- Bing Layers -->
-    <script src="libreria/leaflet-bing-layer-gh-pages/leaflet-bing-layer.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -103,14 +80,42 @@
     
     ?>  
     
-    <div class=" col-xs-12 text-center" style="background-color: #78a04f; color: whitesmoke">
-        <h4>Mapas de Créditos otorgados</h4> - <small>según <strong>Rubros Productivos</strong></small> -
-    </div>    
-
-    <br/>
-    
+    <div class="row ml-1 mr-1 mt-1 mb-1 rounded">
+        <div class="col-lg-12 col-md-12 col-xs-12 text-center">
+            <div class="jumbotron">
+                <h3>Mapas de Créditos otorgados </h3>
+                <small>según <strong>rubros productivos</strong></small>
+            </div>
+        </div>    
+    </div>
      
-    <div id="map" style="box-shadow: 5px 5px 5px #888;"></div>    
+    <div id="map" style="box-shadow: 5px 5px 5px #888;"></div>   
+    
+    
+    <!-- jQuery 3 -->
+    <script src="/desarrolloemprendedor/public/js/jquery-3.4.1.min.js"></script>
+    <!-- Popper -->
+    <script src="/desarrolloemprendedor/public/bootstrap-4.3.1/js/dist/popper.min.js"></script>
+    <!-- Utils -->
+    <script src="/desarrolloemprendedor/public/bootstrap-4.3.1/js/dist/util.js"></script>
+    <!-- Bootstrap 4.3.1 -->
+    <script src="/desarrolloemprendedor/public/bootstrap-4.3.1/dist/js/bootstrap.min.js"></script>
+
+    <!-- Librerias LeafLet -->
+    <script src="libreria/leaflet/leaflet.js" type="text/javascript"></script> 
+    <!-- Librerias Mouse Position -->
+    <script src="libreria/Leaflet.MousePosition-master/src/L.Control.MousePosition.js" type="text/javascript"></script>
+    <!-- Librerias Print Layer-->    
+    <script src="libreria/leaflet-easyPrint-gh-pages/dist/leaflet.easyPrint.js" type="text/javascript"></script>
+    <!-- Librerias Scale Layer-->
+    <script src="libreria/leaflet-graphicscale-master/dist/Leaflet.GraphicScale.min.js" type="text/javascript"></script>
+    <!-- Icons-->
+    <script src="libreria/leaflet-mapkey-icon-master/dist/L.Icon.Mapkey.js" type="text/javascript"></script>
+    <!-- LayerGroup-->
+    <script src="libreria/leaflet-groupedlayercontrol-gh-pages/src/leaflet.groupedlayercontrol.js" type="text/javascript"></script>
+    <!-- Bing Layers -->
+    <script src="libreria/leaflet-bing-layer-gh-pages/leaflet-bing-layer.js" type="text/javascript"></script>
+
     
     <script>
         
@@ -118,7 +123,7 @@
     
     var bingkey= 'Av1z4G0ITtfkMdxUW0qsvJHvYZbjDXOVibWwMhCmEJxAXf-YHYL1uoRjU9YBE-s6';
     
-     var imagerySet = "ROADMAP"; // AerialWithLabels | Birdseye | BirdseyeWithLabels | Road
+     var imagerySet = "AerialWithLabels"; // AerialWithLabels | Birdseye | BirdseyeWithLabels | Road
     
     var base1 = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png'),
         base2 = L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png');
@@ -137,7 +142,7 @@
     /////////////////////////////////////////////////////////////////
     var map = L.map('map',{
     fullscreenControl: true,
-    fullscreenControlOptions: {position: 'topright'}}).setView([-31.95528,-57.97186],7);
+    fullscreenControlOptions: {position: 'topright'}}).setView([-31.95528,-57.97186],8);
     
     bing.addTo(map);
     
@@ -152,14 +157,15 @@
     
     $indice  = 0;
     
-    $seleccion_marcadores = mysqli_query($con, "select sege.latitud, sege.longitud,rub.tipo,if(rub.tipo=0,'AGRO','INDUSTRIA') as tipo,rub.rubro,emp.apellido, emp.nombres, sege.archivo,sege.resena
-    from seguimiento_expedientes sege
-    inner join expedientes exped on sege.id_expediente = exped.id_expediente
-    inner join rel_expedientes_emprendedores relee on relee.id_expediente = exped.id_expediente
-    inner join emprendedores emp on emp.id_emprendedor = relee.id_emprendedor
-    inner join tipo_rubro_productivos rub on rub.id_rubro = exped.id_rubro
-    where sege.latitud < 0 and sege.longitud <0 and emp.id_responsabilidad = 1
-    order by rub.tipo,rub.rubro,emp.apellido") or die('Revisar Expedientes funcionando');
+    $seleccion_marcadores = mysqli_query($con, "SELECT sege.latitud, sege.longitud,rub.tipo,if(rub.tipo=0,'AGRO','INDUSTRIA') as tipo,rub.rubro,emp.apellido, emp.nombres, sege.archivo,sege.resena
+    FROM seguimiento_expedientes sege
+    INNER JOIN expedientes exped on sege.id_expediente = exped.id_expediente
+    INNER JOIN rel_expedientes_emprendedores relee on relee.id_expediente = exped.id_expediente
+    INNER JOIN emprendedores emp on emp.id_emprendedor = relee.id_emprendedor
+    INNER JOIN tipo_rubro_productivos rub on rub.id_rubro = exped.id_rubro
+    WHERE sege.latitud < 0 AND sege.longitud < 0 AND emp.id_responsabilidad = 1
+    ORDER BY rub.tipo,rub.rubro,emp.apellido") or die('Revisar Expedientes funcionando');
+
     $registro_marcadores = mysqli_fetch_array($seleccion_marcadores, MYSQLI_BOTH);
 
     $id_rubro   = $registro_marcadores[2];
@@ -225,18 +231,18 @@
         
         
         $tooltip    = 
-            '<table class="table table-striped">'
+            '<table class="table table-sm">'
             . '<tr>'
-                . '<td>Emprendedor</td><td><strong>'.$registro_marcadores[5].', '.$registro_marcadores[6].'</strong></td>'
+                . '<td>Emprendedor: '.$registro_marcadores[5].', '.$registro_marcadores[6].'</td>'
             . '</tr>'
             . '<tr>'
-                . '<td>Rubro</td><td><strong>'.$registro_marcadores[4].'</strong></td>'
+                . '<td>Rubro :'.$registro_marcadores[4].'</td>'
             . '</tr>'
             . '<tr>'
-                . '<td colspan="2">Reseña </br><strong>'.$registro_marcadores[8].'</strong></td>'
+                . '<td>Reseña :'.$registro_marcadores[8].'</td>'
             . '</tr>'
             . '<tr>'
-                . '<td colspan="2">'.$grafico.'</td>'
+                . '<td>'.$grafico.'</td>'
             . '</tr>'
             . '</table>';     
         
@@ -289,18 +295,10 @@
     $tooltip    = 
                 '<div class="table-responsive">'
                     .'<table class="table table-striped table-responsive dt-responsive nowrap">'
-                    .'<tr>'
-                    .'<td>Emprendedor</td><td><strong>'.$registro_marcadores[4].', '.$registro_marcadores[5].'</strong></td>'
-                    .'</tr>'
-                    .'<tr>'
-                    .'<td>Rubro</td><td><strong>'.$registro_marcadores[3].'</strong></td>'
-                    .'</tr>'
-                    .'<tr>'
-                    .'<td colspan="2">Reseña </br><strong>'.$registro_marcadores[7].'</strong></td>'
-                    .'</tr>'
-                    .'<tr>'
-                    .'<td colspan="2">'.$grafico.'</td>'
-                    .'</tr>'
+                    .'<tr><td>Emprendedor :'.$registro_marcadores[4].', '.$registro_marcadores[5].'</td></tr>'
+                    .'<tr><td>Rubro :'.$registro_marcadores[3].'</td></tr>'
+                    .'<tr><td>Reseña :'.$registro_marcadores[7].'</td></tr>'
+                    .'<tr><td>'.$grafico.'</td></tr>'
                     .'</table>'
                 . '</div>';
     ?>
@@ -339,19 +337,11 @@
         
         $tooltip    = 
                 '<div>'
-                    .'<table class="table">'
-                    .'<tr>'
-                    .'<td class="ajustar">Emprendedor</td><td class="ajustar"><strong>'.$registro_marcadores[4].', '.$registro_marcadores[5].'</strong></td>'
-                    .'</tr>'
-                    .'<tr>'
-                    .'<td class="ajustar">Rubro</td><td class="ajustar"><strong>'.$registro_marcadores[3].'</strong></td>'
-                    .'</tr>'
-                    .'<tr>'
-                    .'<td colspan="2" class="ajustar" style="text-align:justify">Reseña </br><strong>'.$registro_marcadores[7].'</strong></td>'
-                    .'</tr>'
-                    .'<tr>'
-                    .'<td colspan="2" class="ajustar">'.$grafico.'</td>'
-                    .'</tr>'
+                    .'<table class="table table-sm">'
+                    .'<tr><td>Emprendedor : '.$registro_marcadores[4].', '.$registro_marcadores[5].'</td></tr>'
+                    .'<tr><td>Rubro : '.$registro_marcadores[3].'</tr>'
+                    .'<tr><td style="text-align:justify">Reseña : '.$registro_marcadores[7].'</td></tr>'
+                    .'<tr><td>'.$grafico.'</td></tr>'
                     .'</table>'
                 . '</div>'
                 . '<div class="limpiar"><!-- fix --></div>';
@@ -395,7 +385,7 @@
         }
         ?>
                
-    };
+    }
            
     var options = {
         collapsed:false,
@@ -413,7 +403,7 @@
 
     <div class="col-md-12 text-center">                    
         <h6>
-            <i class="fa fa-calendar" aria-hidden="true"></i> <?php echo strftime("%A %d de %B %G");  ?> :: SubSecretaria de Desarrollo Emprendedor / Cervantes 69 Parana C.P.(3100) E.Ríos
+            <i class="fa fa-calendar" aria-hidden="true"></i> <?php echo date('d-m-Y',time());  ?> :: Subsecretaria de Desarrollo Emprendedor / Cervantes 69 Parana C.P.(3100) E.Ríos
         </h6>
     </div>     
     
