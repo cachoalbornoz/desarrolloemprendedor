@@ -379,7 +379,7 @@
         <?php            
         $indice = 2;
         foreach ($otrostitulos as $legenda){  ?>          
-            "<i class='fa fa-circle fa' aria-hidden='true' style='color:<?php echo $colores[$indice]?>'></i> <?php echo ucfirst(strtolower($legenda)); ?>": <?php echo $legenda ?>,
+            "<i class='fa fa-circle fa' aria-hidden='true' style='color:<?php echo $colores[$indice]?>'></i> <?php echo ucfirst(strtolower($legenda)); ?>": <?php echo $legenda.', ' ?>
             <?php
             $indice ++;
         }
