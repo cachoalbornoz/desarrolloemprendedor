@@ -15,7 +15,8 @@ $col = [
     2  => 'anio',
     3  => 'dni',
     4  => 'icono',
-    5  => 'ubicacion',
+    5  => '
+    ',
     6  => 'estado',
     7  => 'rubro',
     8  => 'fechao',
@@ -70,7 +71,7 @@ $totalData = mysqli_num_rows($query);
 if ($request['length'] > 0) {
     $sql .= ' ORDER BY apellido ASC LIMIT ' . $request['start'] . ' ,' . $request['length'] . ' ';
 } else {
-    $sql .= ' ORDER BY ' . $col[$request['order'][0]['column']] . '   ' . $request['order'][0]['dir'] . '  LIMIT ' . $totalData . ' ';
+    $sql .= ' ORDER BY apellido ASC LIMIT ' . $totalData . ' ';
 }
 
 $query = mysqli_query($con, $sql);

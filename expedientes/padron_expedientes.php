@@ -99,7 +99,7 @@ $max  = $reg[1];
             "columnDefs"    : [{}, ],
             "language"      : { "url": "../public/DataTables/spanish.json" },
             "pagingType": 'full_numbers',
-            "lengthMenu": [ [10, 25, 50, 500], [10, 25, 50, 500]],
+            "lengthMenu": [ [10, 25, 50, 500, -1], [10, 25, 50, 500, "All"]],
             "paging": true,
             "info": true,
             "buttons": ['copy', 'excel', 'pdf', 'colvis'],
