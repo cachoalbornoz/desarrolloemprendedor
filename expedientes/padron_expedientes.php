@@ -94,7 +94,6 @@ $max  = $reg[1];
 
         var table = $('#expedientes').DataTable({
 
-            "lengthMenu"    : [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
             "dom"           : '<"wrapper"Brflitp>', 
             "columnDefs"    : [{}, ],
             "language"      : { "url": "../public/DataTables/spanish.json" },
@@ -114,10 +113,7 @@ $max  = $reg[1];
                     anio: anio,
                     estado: estado
                 },
-            },
-            "language": {
-                "url": "../public/DataTables/spanish.json"
-            },
+            }
         });
     }
 
