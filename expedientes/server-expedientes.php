@@ -11,21 +11,21 @@ $request = $_REQUEST;
 $col = [
 
     0  => 'nroproyecto',
-    1  => 'solicitante',
-    2  => 'anio',
-    3  => 'dni',
-    4  => 'icono',
-    5  => '
-    ',
-    6  => 'estado',
-    7  => 'rubro',
-    8  => 'fechao',
-    9  => 'monto',
-    10 => 'saldo',
-    11 => 'borrar',
+    1  => 'nroexpmadre',
+    2  => 'solicitante',
+    3  => 'anio',
+    4  => 'dni',
+    5  => 'icono',
+    6  => '',
+    7  => 'estado',
+    8  => 'rubro',
+    9  => 'fechao',
+    10 => 'monto',
+    11 => 'saldo',
+    12 => 'borrar',
 ];
 
-$sql = "SELECT t1.id_expediente, nro_proyecto, concat(apellido, ', ' , nombres) AS solicitante, YEAR(fecha_otorgamiento) AS anio, dni, icono, t4.estado, rubro, monto, saldo, t3.id_emprendedor, dni, fecha_otorgamiento, t4.id_estado
+$sql = "SELECT t1.id_expediente, nro_exp_madre, nro_proyecto, concat(apellido, ', ' , nombres) AS solicitante, YEAR(fecha_otorgamiento) AS anio, dni, icono, t4.estado, rubro, monto, saldo, t3.id_emprendedor, dni, fecha_otorgamiento, t4.id_estado
 FROM expedientes t1
 INNER JOIN rel_expedientes_emprendedores t2 ON t1.id_expediente = t2.id_expediente
 INNER JOIN emprendedores t3 ON t2.id_emprendedor = t3.id_emprendedor
@@ -37,7 +37,7 @@ $query       = mysqli_query($con, $sql);
 $totalData   = mysqli_num_rows($query);
 $totalFilter = $totalData;
 
-$sql = "SELECT t1.id_expediente, nro_proyecto, concat(apellido, ', ' , nombres) AS solicitante, YEAR(fecha_otorgamiento) AS anio, dni, icono, t4.estado, rubro, monto, saldo, t3.id_emprendedor, dni, fecha_otorgamiento, t4.id_estado
+$sql = "SELECT t1.id_expediente, nro_exp_madre, nro_proyecto, concat(apellido, ', ' , nombres) AS solicitante, YEAR(fecha_otorgamiento) AS anio, dni, icono, t4.estado, rubro, monto, saldo, t3.id_emprendedor, dni, fecha_otorgamiento, t4.id_estado
 FROM expedientes t1
 INNER JOIN rel_expedientes_emprendedores t2 ON t1.id_expediente = t2.id_expediente
 INNER JOIN emprendedores t3 ON t2.id_emprendedor = t3.id_emprendedor
@@ -48,6 +48,7 @@ WHERE t2.id_responsabilidad = 1 AND t1.nro_exp_madre > 0 AND t1.estado <> 99 ";
 // FILTRO
 if (!empty($request['search']['value'])) {
     $sql .= " AND ( concat(apellido, ', ', nombres) like '%" . $request['search']['value'] . "%'";
+    $sql .= " OR nro_exp_madre like '%" . $request['search']['value'] . "%'";
     $sql .= " OR nro_proyecto like '%" . $request['search']['value'] . "%'";
     $sql .= " OR YEAR(fecha_otorgamiento) like '%" . $request['search']['value'] . "%'";
     $sql .= " OR dni like '%" . $request['search']['value'] . "%'";
@@ -110,6 +111,7 @@ while ($row = mysqli_fetch_array($query)) {
     //
 
     $subdata[] = $row['nro_proyecto'];
+    $subdata[] = $row['nro_exp_madre'];
     $subdata[] = '<a href="sesion_usuario_expediente.php?id=' . $id_expediente . '&id_proyecto=' . $id_proyecto . '" title="Ver expediente">' . substr($row['solicitante'],0,50) . '</a>';
     $subdata[] = $row['anio'];
     $subdata[] = $row['dni'];

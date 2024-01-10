@@ -38,6 +38,7 @@ $max  = $reg[1];
                         <thead>
                             <tr>
                                 <th>Nro</th>
+                                <th>ExpMadre</th>
                                 <th>Titular</th>
                                 <th>
                                     <select id="anio" class="filtro">
