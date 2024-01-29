@@ -125,18 +125,12 @@
     
      var imagerySet = "AerialWithLabels"; // AerialWithLabels | Birdseye | BirdseyeWithLabels | Road
     
-    var base1 = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png'),
-        base2 = L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png');
-        base3 = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png');
-        base4 = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiY2FjaG9hbGJvcm5veiIsImEiOiJjaXFuczZudTQwMWJkZ3NqZmg5ZWd1dmljIn0.-2dfXqyCXP-d_ij7Sp1waA');
-        bing  = L.tileLayer.bing(bingkey,{type: imagerySet});
+    var politico = L.tileLayer('https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG%3A3857@png/{z}/{x}/{-y}.png');
+    var topografico  = L.tileLayer.bing(bingkey,{type: imagerySet});
     
     var baseLayers = {
-        "TopoGrafico": bing,
-        "FondoTipo1": base2,
-        "FondoTipo2": base3,        
-        "FondoTipo3": base1,
-        
+        "Politico": politico,       
+        "TopoGrafico": topografico,  
     };        
         
     /////////////////////////////////////////////////////////////////
@@ -144,7 +138,7 @@
     fullscreenControl: true,
     fullscreenControlOptions: {position: 'topright'}}).setView([-31.95528,-57.97186],8);
     
-    bing.addTo(map);
+    politico.addTo(map);
     
     /////////////////////////////////////////////////////////////////
     L.control.mousePosition({position: 'topright'}).addTo(map);
