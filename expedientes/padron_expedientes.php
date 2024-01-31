@@ -53,7 +53,7 @@ $max  = $reg[1];
                                         ?>
                                     </select>
                                 </th>
-                                <th>Dni</th>
+                                <th>Localidad</th>
                                 <th>Icono</th>
                                 <th>Ubicacion</th>
                                 <th>

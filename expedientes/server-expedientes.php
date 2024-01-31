@@ -25,25 +25,29 @@ $col = [
     12 => 'borrar',
 ];
 
-$sql = "SELECT t1.id_expediente, nro_exp_madre, nro_proyecto, concat(apellido, ', ' , nombres) AS solicitante, YEAR(fecha_otorgamiento) AS anio, dni, icono, t4.estado, rubro, monto, saldo, t3.id_emprendedor, dni, fecha_otorgamiento, t4.id_estado
+$sql = "SELECT t1.id_expediente, nro_exp_madre, nro_proyecto, concat(apellido, ', ' , nombres) AS solicitante, YEAR(fecha_otorgamiento) AS anio, dni, t7.nombre AS localidad, icono, t4.estado, rubro, monto, saldo, t3.id_emprendedor, dni, fecha_otorgamiento, t4.id_estado
 FROM expedientes t1
 INNER JOIN rel_expedientes_emprendedores t2 ON t1.id_expediente = t2.id_expediente
 INNER JOIN emprendedores t3 ON t2.id_emprendedor = t3.id_emprendedor
 INNER JOIN tipo_estado t4 ON t1.estado = t4.id_estado
 INNER JOIN tipo_rubro_productivos t5 ON t1.id_rubro = t5.id_rubro
+INNER JOIN localidades t6 ON t3.id_ciudad = t6.id
+INNER JOIN departamentos t7 ON t6.departamento_id = t7.id
 WHERE t2.id_responsabilidad = 1 AND t1.nro_exp_madre > 0 AND t1.estado <> 99";
 
 $query       = mysqli_query($con, $sql);
 $totalData   = mysqli_num_rows($query);
 $totalFilter = $totalData;
 
-$sql = "SELECT t1.id_expediente, nro_exp_madre, nro_proyecto, concat(apellido, ', ' , nombres) AS solicitante, YEAR(fecha_otorgamiento) AS anio, dni, icono, t4.estado, rubro, monto, saldo, t3.id_emprendedor, dni, fecha_otorgamiento, t4.id_estado
+$sql = "SELECT t1.id_expediente, nro_exp_madre, nro_proyecto, concat(apellido, ', ' , nombres) AS solicitante, YEAR(fecha_otorgamiento) AS anio, dni, t7.nombre AS localidad, icono, t4.estado, rubro, monto, saldo, t3.id_emprendedor, dni, fecha_otorgamiento, t4.id_estado
 FROM expedientes t1
 INNER JOIN rel_expedientes_emprendedores t2 ON t1.id_expediente = t2.id_expediente
 INNER JOIN emprendedores t3 ON t2.id_emprendedor = t3.id_emprendedor
 INNER JOIN tipo_estado t4 ON t1.estado = t4.id_estado
 INNER JOIN tipo_rubro_productivos t5 ON t1.id_rubro = t5.id_rubro
-WHERE t2.id_responsabilidad = 1 AND t1.nro_exp_madre > 0 AND t1.estado <> 99 ";
+INNER JOIN localidades t6 ON t3.id_ciudad = t6.id
+INNER JOIN departamentos t7 ON t6.departamento_id = t7.id
+WHERE t2.id_responsabilidad = 1 AND t1.nro_exp_madre > 0 AND t1.estado <> 99";
 
 // FILTRO
 if (!empty($request['search']['value'])) {
@@ -51,7 +55,7 @@ if (!empty($request['search']['value'])) {
     $sql .= " OR nro_exp_madre like '%" . $request['search']['value'] . "%'";
     $sql .= " OR nro_proyecto like '%" . $request['search']['value'] . "%'";
     $sql .= " OR YEAR(fecha_otorgamiento) like '%" . $request['search']['value'] . "%'";
-    $sql .= " OR dni like '%" . $request['search']['value'] . "%'";
+    $sql .= " OR t7.nombre like '%" . $request['search']['value'] . "%'";
     $sql .= " OR t4.estado like '%" . $request['search']['value'] . "%'";
     $sql .= " OR rubro like '%" . $request['search']['value'] . "%' )";
 }
@@ -112,9 +116,9 @@ while ($row = mysqli_fetch_array($query)) {
 
     $subdata[] = $row['nro_proyecto'];
     $subdata[] = $row['nro_exp_madre'];
-    $subdata[] = '<a href="sesion_usuario_expediente.php?id=' . $id_expediente . '&id_proyecto=' . $id_proyecto . '" title="Ver expediente">' . substr($row['solicitante'],0,50) . '</a>';
+    $subdata[] = '<a href="sesion_usuario_expediente.php?id=' . $id_expediente . '&id_proyecto=' . $id_proyecto . '" title="Ver expediente">' . substr($row['solicitante'],0,20) . '</a>';
     $subdata[] = $row['anio'];
-    $subdata[] = $row['dni'];
+    $subdata[] = $row['localidad'];
     $subdata[] = $row['icono'];
     $subdata[] = $ubicacion;
     $subdata[] = $row['estado'];
