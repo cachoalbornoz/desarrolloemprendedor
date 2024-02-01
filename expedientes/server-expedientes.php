@@ -14,7 +14,7 @@ $col = [
     1  => 'nroexpmadre',
     2  => 'solicitante',
     3  => 'anio',
-    4  => 'dni',
+    4  => 'localidad',
     5  => 'icono',
     6  => '',
     7  => 'estado',
@@ -110,13 +110,13 @@ while ($row = mysqli_fetch_array($query)) {
 		DESC LIMIT 1");
     $registro_ubicacion = mysqli_fetch_array($tabla_ubicacion); 
 
-    $ubicacion = ($registro_ubicacion)?$registro_ubicacion[0]:null;
+    $ubicacion = ($registro_ubicacion)?substr($registro_ubicacion[0],0,15):null;
 
     //
 
     $subdata[] = $row['nro_proyecto'];
     $subdata[] = $row['nro_exp_madre'];
-    $subdata[] = '<a href="sesion_usuario_expediente.php?id=' . $id_expediente . '&id_proyecto=' . $id_proyecto . '" title="Ver expediente">' . substr($row['solicitante'],0,20) . '</a>';
+    $subdata[] = '<a href="sesion_usuario_expediente.php?id=' . $id_expediente . '&id_proyecto=' . $id_proyecto . '" title="Ver expediente">' . substr($row['solicitante'],0,15) . '</a>';
     $subdata[] = $row['anio'];
     $subdata[] = $row['localidad'];
     $subdata[] = $row['icono'];
