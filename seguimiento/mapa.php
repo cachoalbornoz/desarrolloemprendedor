@@ -22,10 +22,6 @@
 	<link rel="stylesheet" href="/desarrolloemprendedor/public/bootstrap-4.3.1/dist/css/bootstrap.min.css">
 
     <style>
-        .leaflet-tooltip{
-            width: 650px;
-            
-        }
         
         .ajustar{
             width: 600px;
@@ -38,20 +34,46 @@
             white-space: -moz-pre-wrap; /* Mozilla */
             white-space: -hp-pre-wrap; /* HP */
             word-wrap: break-word; /* IE 5+ */
-            }
+        }
         div.limpiar{
             clear: both;
         }        
         html,
-        body,
-        #map {
-          height: 90%;
-          width:  99%;
-          margin: 0 auto;
-          padding: 0;          
+        body {
+            width: 100%;
+            height: 97%;
+            margin: 0;
         }
-        .leaflet-bottom .leaflet-control-graphicscale {
-            background-color: #78a04f ;
+
+        #map {
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .info {
+            padding: 6px 8px;
+            font: 12px/14px Arial, Helvetica, sans-serif;
+            background: white;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        .info h5 {
+            margin: 0 0 5px;
+            color: #777;
+        }
+
+        /* Para definir el diseño del objeto al pasar el mouse*/
+        #sidebar li:hover {
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Para esconder un objeto*/
+        .hidden {
+            display: none;
         }
     </style>
 
@@ -75,54 +97,41 @@
     require_once("../accesorios/accesos_bd.php");
     $con=conectar(); 
 
-    $colores = array("#000000","#F2C357","#FF0000","#04B404","#FE642E", "#FFFF00","#FF00BF","#BDBDBD","#E6E6E6","#B40404","#80FF00","#00FFFF","#FA58F4",
-    "#FE2E9A","#F6D8CE","#38610B","#86B404","#8904B1","#F5A9E1","#F5A9A9","#F3F781","#E3CEF6");
-    
-    ?>  
-    
-    <div class="row ml-1 mr-1 mt-1 mb-1 rounded">
-        <div class="col-lg-12 col-md-12 col-xs-12 text-center">
-            <div class="jumbotron">
-                <h3>Mapas de Créditos otorgados </h3>
-                <small>según <strong>rubros productivos</strong></small>
+    ?>
+
+    <div class="d-flex h-100">
+
+        <div class="row m-0 w-100">
+
+            <div id="sidebar" class="d-flex flex-column justify-content-between col-2 h-100">
+                <div id="alert" class="w-100 alert alert-warning fw-bold hidden" role="alert"></div>
             </div>
-        </div>    
+
+            <div id="map" class="col" style="box-shadow: 5px 5px 5px #888;"></div> 
+
+        </div>
+
     </div>
-     
-    <div id="map" style="box-shadow: 5px 5px 5px #888;"></div>   
-    
-    
-    <!-- jQuery 3 -->
+      
+
     <script src="/desarrolloemprendedor/public/js/jquery-3.4.1.min.js"></script>
-    <!-- Popper -->
     <script src="/desarrolloemprendedor/public/bootstrap-4.3.1/js/dist/popper.min.js"></script>
-    <!-- Utils -->
     <script src="/desarrolloemprendedor/public/bootstrap-4.3.1/js/dist/util.js"></script>
-    <!-- Bootstrap 4.3.1 -->
     <script src="/desarrolloemprendedor/public/bootstrap-4.3.1/dist/js/bootstrap.min.js"></script>
 
-    <!-- Librerias LeafLet -->
     <script src="libreria/leaflet/leaflet.js" type="text/javascript"></script> 
-    <!-- Librerias Mouse Position -->
     <script src="libreria/Leaflet.MousePosition-master/src/L.Control.MousePosition.js" type="text/javascript"></script>
-    <!-- Librerias Print Layer-->    
-    <script src="libreria/leaflet-easyPrint-gh-pages/dist/leaflet.easyPrint.js" type="text/javascript"></script>
-    <!-- Librerias Scale Layer-->
-    <script src="libreria/leaflet-graphicscale-master/dist/Leaflet.GraphicScale.min.js" type="text/javascript"></script>
-    <!-- Icons-->
-    <script src="libreria/leaflet-mapkey-icon-master/dist/L.Icon.Mapkey.js" type="text/javascript"></script>
-    <!-- LayerGroup-->
-    <script src="libreria/leaflet-groupedlayercontrol-gh-pages/src/leaflet.groupedlayercontrol.js" type="text/javascript"></script>
-    <!-- Bing Layers -->
     <script src="libreria/leaflet-bing-layer-gh-pages/leaflet-bing-layer.js" type="text/javascript"></script>
 
+    <script src="departamentos.js"></script>
     
     <script>
+
+    colores = ["#000000","#F2C357","#FF0000","#04B404","#FE642E", "#FFFF00","#FF00BF","#BDBDBD","#E6E6E6","#B40404","#80FF00","#00FFFF","#FA58F4",
+    "#FE2E9A","#F6D8CE","#38610B","#86B404","#8904B1","#F5A9E1","#F5A9A9","#F3F781","#E3CEF6"];
         
-    var mapkey = 'pk.eyJ1IjoiY2FjaG9hbGJvcm5veiIsImEiOiJjaXFuczZudTQwMWJkZ3NqZmg5ZWd1dmljIn0.-2dfXqyCXP-d_ij7Sp1waA';
-    
-    var bingkey= 'Av1z4G0ITtfkMdxUW0qsvJHvYZbjDXOVibWwMhCmEJxAXf-YHYL1uoRjU9YBE-s6';
-    
+    var mapkey = 'pk.eyJ1IjoiY2FjaG9hbGJvcm5veiIsImEiOiJjaXFuczZudTQwMWJkZ3NqZmg5ZWd1dmljIn0.-2dfXqyCXP-d_ij7Sp1waA';    
+    var bingkey= 'Av1z4G0ITtfkMdxUW0qsvJHvYZbjDXOVibWwMhCmEJxAXf-YHYL1uoRjU9YBE-s6';    
      var imagerySet = "AerialWithLabels"; // AerialWithLabels | Birdseye | BirdseyeWithLabels | Road
     
     var politico = L.tileLayer('https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG%3A3857@png/{z}/{x}/{-y}.png');
@@ -141,15 +150,59 @@
     politico.addTo(map);
     
     /////////////////////////////////////////////////////////////////
-    L.control.mousePosition({position: 'topright'}).addTo(map);
-    ////////////////////////////////////////////////////////////////
-    var graphicScale = L.control.graphicScale({labelPlacement: 'bottomright',doubleLine:true,fill: 'fill',labelPlacement: 'top'}).addTo(map);        
-    /////////////////////////////////////////////////////////////////      
+    new L.control.mousePosition({position: 'topright'}).addTo(map);
+    new L.control.scale({ imperial: true }).addTo(map);
+    /////////////////////////////////////////////////////////////////  
+    
+    // Referencias
+    const sidebar = document.querySelector('#sidebar');
+    const alert = document.querySelector('#alert');
+
+    //Crear listado de lugares
+    const volar = (lugar) => {
+        const zoom = (lugar.nombre == 'Todos') ? 8 : 12;
+        map.flyTo(lugar.coordenadas, zoom)
+    }
+
+    const definirAlert = ([latitud, longitud]) => {
+        alert.classList.remove('hidden');
+        alert.innerText = `Lat: ${latitud}, Long: ${longitud}`
+    }
+
+    // Primero limpiar el Active de cada item
+    const limpiarItems = () => {
+        const listadoLi = document.querySelectorAll('li');
+        listadoLi.forEach(li => {
+            li.classList.remove('active');
+        })
+    }
+
+    // Crear el listado
+    const crearListado = () => {
+        const ul = document.createElement('ul');
+        ul.classList.add('list-group');
+        sidebar.prepend(ul);
+
+        departamentos.forEach(lugar => {
+            const li = document.createElement('li');
+            li.innerText = lugar.nombre;
+            li.classList.add('list-group-item');
+            ul.append(li);
+
+            li.addEventListener('click', () => {
+                limpiarItems();
+                li.classList.add('active');
+                volar(lugar);
+                definirAlert(lugar.coordenadas);
+            })
+        })
+
+    }
+
+    crearListado();
     </script>
   
-    <?php  
-    
-    $indice  = 0;
+    <?php
     
     $seleccion_marcadores = mysqli_query($con, "SELECT sege.latitud, sege.longitud,rub.tipo,if(rub.tipo=0,'AGRO','INDUSTRIA') as tipo,rub.rubro,emp.apellido, emp.nombres, sege.archivo,sege.resena
     FROM seguimiento_expedientes sege
@@ -166,8 +219,7 @@
     
     $latitud    = round($registro_marcadores[0],8);
     $longitud   = round($registro_marcadores[1],8);
-    $rotulo     = $registro_marcadores[3];    
-    $color      = $colores[$indice];   
+    $rotulo     = $registro_marcadores[3];       
     $titulos[]  = $rotulo;
     
     if(strlen($registro_marcadores[6]) > 0){
@@ -193,11 +245,20 @@
             . '</table>';
     ?>
     <script>  
+
+        let index = 1
         var latitud = <?php echo $latitud ?>;
         var longitud= <?php echo $longitud ?>;    
         var <?php echo $rotulo ?> = new L.LayerGroup(); 
-        var mki = L.icon.mapkey({icon:"marker",color:'#725139',background:'<?php echo $color ?>',size:15,boxShadow:false}); 
-        L.marker([latitud,longitud],{icon:mki}).bindTooltip('<?php echo $tooltip ?>').addTo(<?php echo $rotulo ?>);     
+
+        let opciones = {
+            color: colores[index],
+            fillColor: colores[index],
+            size:15,
+            boxShadow:false
+        }; 
+
+        L.circleMarker(L.latLng([latitud,longitud], opciones)).bindTooltip('<?php echo $tooltip ?>').addTo(<?php echo $rotulo ?>);     
     </script>
     <?php    
     while($registro_marcadores = mysqli_fetch_array($seleccion_marcadores)){ 
@@ -243,9 +304,14 @@
         ?>
         <script>
             var latitud = <?php echo $latitud ?>;
-            var longitud= <?php echo $longitud ?>;
-            var mki = L.icon.mapkey({icon:"marker",color:'#725139',background:'<?php echo $color ?>',size:15,boxShadow:false});             
-            L.marker([latitud,longitud],{icon:mki}).bindTooltip('<?php echo $tooltip ?>').addTo(<?php echo $rotulo ?>);  
+            var longitud= <?php echo $longitud ?>; 
+            opciones = {
+                color:'<?php echo $color ?>',
+                fillColor:'<?php echo $color ?>',
+                size:15,
+                boxShadow:false
+            }            
+            L.circleMarker(L.latLng([latitud,longitud],opciones)).bindTooltip('<?php echo $tooltip ?>').addTo(<?php echo $rotulo ?>);  
         </script>
         <?php
         
@@ -300,8 +366,15 @@
         var latitud = <?php echo $latitud ?>;
         var longitud= <?php echo $longitud ?>;    
         var <?php echo $rotulo ?> = new L.LayerGroup(); 
-        var mki = L.icon.mapkey({icon:"fa-map-marker",color:'#725139',background:'<?php echo $color ?>',size:10,boxShadow:true}); 
-        L.marker([latitud,longitud],{icon:mki}).bindTooltip('<?php echo $tooltip ?>').addTo(<?php echo $rotulo ?>);     
+        opciones = {
+            color:'<?php echo $color ?>',
+            fillColor:'<?php echo $color ?>',
+            size:10,
+            boxShadow:true
+        } 
+
+        L.circleMarker(L.latLng([latitud,longitud], opciones)).bindTooltip('<?php echo $tooltip ?>').addTo(<?php echo $rotulo ?>); 
+
     </script> 
     <?php    
     while($registro_marcadores = mysqli_fetch_array($seleccion_marcadores)){ 
@@ -345,8 +418,14 @@
             
             var latitud = <?php echo $latitud ?>;
             var longitud= <?php echo $longitud ?>;
-            var mki = L.icon.mapkey({icon:"fa-map-marker",color:'#725139',background:'<?php echo $color ?>',size:10,boxShadow:true});             
-            L.marker([latitud,longitud],{icon:mki}).bindTooltip('<?php echo $tooltip ?>').addTo(<?php echo $rotulo ?>);  
+            opciones = {
+                color:'<?php echo $color ?>',
+                fillColor:'<?php echo $color ?>',
+                size:10,
+                boxShadow:true
+            }
+                             
+            L.circleMarker(L.latLng([latitud,longitud],opciones)).bindTooltip('<?php echo $tooltip ?>').addTo(<?php echo $rotulo ?>);  
             
         </script>
         <?php
@@ -357,14 +436,31 @@
     ?>        
         
     <script>
-   /////////////////////////////////////////////////////////////////    
+    //    /////////////////////////////////////////////////////////////////    
+    //     var info = new L.control({position: 'bottomleft'});
+    //     info.onAdd = function (map) {
+    //         var div = L.DomUtil.create('div', 'info legend');
+    //         div.innerHTML += '<img src="libreria/isologoER_Gob.png" style="width:10%;" alt="Ministerio">';
+    //         return div;
+    //     };
+    //     info.addTo(map);
+
+    // Crear un div con una clase info
     var info = new L.control({position: 'bottomleft'});
     info.onAdd = function (map) {
-        var div = L.DomUtil.create('div', 'info legend');
-        div.innerHTML += '<img src="libreria/isologoER_Gob.png" style="width:10%;" alt="Ministerio">';
-        return div;
+        this._div = L.DomUtil.create('div', 'info');
+        this.update();
+        return this._div;
     };
-    info.addTo(map);    
+
+    // Agregar el metodo que actualiza el control segun el puntero vaya pasando
+    info.update = function (props) {
+        this._div.innerHTML = '<h6>Créditos Productivos - Categorias productivas</h6>';
+        //let path = APP_URL + "/public/mapas/libreria/isologoER_Gob.png"
+        //this._div.innerHTML += '<img class=" img-thumbnail" src=' + path + ' alt="Ministerio">';
+        this._div.innerHTML += '<h4>Ministerio de Desarrollo Económico - Entre Ríos</h4>';
+    };
+    info.addTo(map);
     ////////////////////////////////////////////////////////////////     
         
     // Overlay layers are grouped
