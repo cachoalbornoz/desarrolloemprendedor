@@ -25,7 +25,7 @@ $col = [
     12 => 'borrar',
 ];
 
-$sql = "SELECT t1.id_expediente, nro_exp_madre, nro_proyecto, concat(apellido, ', ' , nombres) AS solicitante, YEAR(fecha_otorgamiento) AS anio, dni, t7.nombre AS localidad, icono, t4.estado, rubro, monto, saldo, t3.id_emprendedor, dni, fecha_otorgamiento, t4.id_estado
+$sql = "SELECT t1.id_expediente, nro_exp_madre, nro_proyecto, t1.latitud, t1.longitud, concat(apellido, ', ' , nombres) AS solicitante, YEAR(fecha_otorgamiento) AS anio, dni, t7.nombre AS localidad, icono, t4.estado, rubro, monto, saldo, t3.id_emprendedor, dni, fecha_otorgamiento, t4.id_estado, t1.id_rubro
 FROM expedientes t1
 INNER JOIN rel_expedientes_emprendedores t2 ON t1.id_expediente = t2.id_expediente
 INNER JOIN emprendedores t3 ON t2.id_emprendedor = t3.id_emprendedor
@@ -39,7 +39,7 @@ $query       = mysqli_query($con, $sql);
 $totalData   = mysqli_num_rows($query);
 $totalFilter = $totalData;
 
-$sql = "SELECT t1.id_expediente, nro_exp_madre, nro_proyecto, concat(apellido, ', ' , nombres) AS solicitante, YEAR(fecha_otorgamiento) AS anio, dni, t7.nombre AS localidad, icono, t4.estado, rubro, monto, saldo, t3.id_emprendedor, dni, fecha_otorgamiento, t4.id_estado
+$sql = "SELECT t1.id_expediente, nro_exp_madre, nro_proyecto, t1.latitud, t1.longitud, concat(apellido, ', ' , nombres) AS solicitante, YEAR(fecha_otorgamiento) AS anio, dni, t7.nombre AS localidad, icono, t4.estado, rubro, monto, saldo, t3.id_emprendedor, dni, fecha_otorgamiento, t4.id_estado, t1.id_rubro
 FROM expedientes t1
 INNER JOIN rel_expedientes_emprendedores t2 ON t1.id_expediente = t2.id_expediente
 INNER JOIN emprendedores t3 ON t2.id_emprendedor = t3.id_emprendedor
@@ -71,8 +71,9 @@ if (isset($_POST['estado']) and $_POST['estado'] > 0) {
 $query     = mysqli_query($con, $sql);
 $totalData = mysqli_num_rows($query);
 
-// ORDEN
+$sql_expediente = $sql;
 
+// ORDEN
 if ($request['length'] > 0) {
     $sql .= ' ORDER BY apellido ASC LIMIT ' . $request['start'] . ' ,' . $request['length'] . ' ';
 } else {
@@ -80,7 +81,6 @@ if ($request['length'] > 0) {
 }
 
 $query = mysqli_query($con, $sql);
-
 $data = [];
 
 while ($row = mysqli_fetch_array($query)) {
@@ -116,13 +116,13 @@ while ($row = mysqli_fetch_array($query)) {
 
     $subdata[] = $row['nro_proyecto'];
     $subdata[] = $row['nro_exp_madre'];
-    $subdata[] = '<a href="sesion_usuario_expediente.php?id=' . $id_expediente . '&id_proyecto=' . $id_proyecto . '" title="Ver expediente">' . substr($row['solicitante'],0,15) . '</a>';
+    $subdata[] = '<a href="sesion_usuario_expediente.php?id=' . $id_expediente . '&id_proyecto=' . $id_proyecto . '" title="Ver expediente">' . $row['solicitante'] . '</a>';
     $subdata[] = $row['anio'];
     $subdata[] = $row['localidad'];
     $subdata[] = $row['icono'];
     $subdata[] = $ubicacion;
     $subdata[] = $row['estado'];
-    $subdata[] = substr($row['rubro'],0,20);
+    $subdata[] = substr($row['rubro'],0,10);
     $subdata[] = date('d/m/Y', strtotime($row['fecha_otorgamiento']));
     $subdata[] = number_format($row['monto'], 0, '.', ',');
     $subdata[] = number_format($row['saldo'], 0, '.', ',');
@@ -134,11 +134,52 @@ while ($row = mysqli_fetch_array($query)) {
 }
 
 $json_data = [
-
     'draw'            => intval($request['draw']),
     'recordsTotal'    => intval($totalData),
     'recordsFiltered' => intval($totalFilter),
     'data'            => $data,
 ];
+
+
+
+
+// Data expedientes
+$sql_expediente     .= ' ORDER BY apellido ASC LIMIT ' . $totalData . ' ';
+$query_expediente   = mysqli_query($con, $sql_expediente);
+$totalDataExped     = mysqli_num_rows($query_expediente);
+$data = [];
+
+while ($row = mysqli_fetch_array($query_expediente)) {
+    $subdata = [];
+    
+    $subdata[] = (int)$row['nro_proyecto'];
+    $subdata[] = $row['solicitante'];
+    $subdata[] = (int)$row['anio'];
+    $subdata[] = $row['localidad'];
+    $subdata[] = $row['estado'];
+    $subdata[] = (int)$row['id_rubro'];
+    $subdata[] = $row['rubro'];
+    $subdata[] = ($row['latitud'] > 0)?round($row['latitud'],4)*(-1):0;
+    $subdata[] = ($row['longitud'] > 0)?round($row['longitud'],4)*(-1):0;
+
+    // Si tiene datos de Latitud y Longitud, van al archivo de Expediente 
+    if(($row['latitud'] > 0) AND ($row['longitud'] > 0)){
+        $data[] = $subdata;
+    }
+
+}
+
+$filename = "../seguimiento/expedientes.js";
+$handle = fopen($filename, 'w+');
+$contenido = "let expedientes = " . json_encode($data) . ";";
+fputs($handle, $contenido);
+fclose($handle);
+
+
+
+
+
+
+
 
 print json_encode($json_data);

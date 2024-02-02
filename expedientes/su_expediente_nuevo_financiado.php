@@ -84,6 +84,17 @@ $id_solicitante = $registro['id_solicitante'];
             </div>
 
             <div class="row mb-5">
+                <div class="col-xs-12 col-sm-12 col-lg-3">
+                    Latitud
+                    <input type="text" name="latitud" id="latitud" class="form-control">
+                </div>
+                <div class="col-xs-12 col-sm-12 col-lg-3">
+                    Longitud
+                    <input type="text" name="longitud" id="longitud" class="form-control">
+                </div>
+            </div>
+
+            <div class="row mb-5">
                 <div class="col-xs-12 col-sm-12 col-lg-12 text-right">
                     <button type="submit" title="Guardar" name="guardar" id="guardar" class="btn btn-info">Guardar</button>
                 </div>

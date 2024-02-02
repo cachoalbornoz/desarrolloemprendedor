@@ -19,6 +19,8 @@ $id_rubro = $_POST['id_rubro'];
 
 $nro_expediente_madre   = $_POST['nro_expediente_madre'];
 $nro_expediente_control = $_POST['nro_expediente_control'];
+$latitud                = $_POST['latitud'];
+$longitud               = $_POST['longitud'];
 
 $id_localidad = $_POST['id_localidad'];
 
@@ -28,8 +30,8 @@ if (strlen($_POST['observaciones']) > 0) {
     $observaciones = 0;
 }
 
-$inserta = "INSERT INTO expedientes (nro_proyecto, id_rubro, nro_exp_madre, nro_exp_control, id_localidad, monto, fecha_otorgamiento, observaciones, estado, saldo) 
-VALUES ($nro_proyecto, $id_rubro, $nro_expediente_madre, $nro_expediente_control, $id_localidad, $monto, '$fecha_otorgamiento', '$observaciones', 1, $monto)";
+$inserta = "INSERT INTO expedientes (nro_proyecto, id_rubro, nro_exp_madre, nro_exp_control, id_localidad, latitud, longitud, monto, fecha_otorgamiento, observaciones, estado, saldo) 
+VALUES ($nro_proyecto, $id_rubro, $nro_expediente_madre, $nro_expediente_control, $id_localidad, $latitud, $longitud, $monto, '$fecha_otorgamiento', '$observaciones', 1, $monto)";
 
 $resultado = mysqli_query($con, $inserta) or die('Error en la insercion expedientes');
 

@@ -17,6 +17,8 @@ $id_rubro = $registro['id_rubro'];
 
 $nro_expediente_madre   = $registro['nro_exp_madre'];
 $nro_expediente_control = $registro['nro_exp_control'];
+$latitud                = $registro['latitud'];
+$longitud               = $registro['longitud'];
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 $tabla_emprendedores = mysqli_query(
@@ -141,6 +143,17 @@ if ($observaciones == 1) {
                 <div class="col-xs-12 col-sm-3 col-lg-6">
                     Observaciones
                     <input type="text" name="observaciones" id="observaciones" rows="2" value="<?php print $observaciones; ?>" class="form-control">
+                </div>
+            </div>
+
+            <div class="row mb-5">
+                <div class="col-xs-12 col-sm-12 col-lg-3">
+                    Latitud
+                    <input type="text" name="latitud" id="latitud" value="<?php print $latitud; ?>" class="form-control">
+                </div>
+                <div class="col-xs-12 col-sm-12 col-lg-3">
+                    Longitud
+                    <input type="text" name="longitud" id="longitud" value="<?php print $longitud; ?>" class="form-control">
                 </div>
             </div>
 
