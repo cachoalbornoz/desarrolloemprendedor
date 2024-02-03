@@ -23,6 +23,7 @@
     <link href="mapa.css" rel="stylesheet" type="text/css"/>   
     <link href="libreria/leaflet/leaflet.css" rel="stylesheet" type="text/css"/>
     <link href="libreria/Leaflet.MousePosition-master/src/L.Control.MousePosition.css" rel="stylesheet" type="text/css"/>
+    <link href="libreria/Leaflet.StyledLayerControl-master/Leaflet.StyledLayerControl-master/css/styledLayerControl.css" rel="stylesheet" type="text/css"/>
    
     <?php
 
@@ -41,7 +42,7 @@
         $subdata = [];
         
         $subdata[] = (int)$row['id_rubro'];
-        $subdata[] = $row['rubro'];
+        $subdata[] = substr($row['rubro'],0,30);
     
         $data[] = $subdata;
     }
@@ -78,7 +79,9 @@
     <script src="libreria/leaflet/leaflet.js" type="text/javascript"></script> 
     <script src="libreria/Leaflet.MousePosition-master/src/L.Control.MousePosition.js" type="text/javascript"></script>
     <script src="libreria/leaflet-bing-layer-gh-pages/leaflet-bing-layer.js" type="text/javascript"></script>
+    <script src="libreria/Leaflet.StyledLayerControl-master/Leaflet.StyledLayerControl-master/src/styledLayerControl.js" type="text/javascript"></script>
 
+    <script src="colores.js"></script>
     <script src="departamentos.js"></script>
     <script src="expedientes.js"></script>
     <script src="rubros.js"></script>

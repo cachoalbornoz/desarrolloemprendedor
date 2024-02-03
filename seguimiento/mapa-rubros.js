@@ -78,31 +78,45 @@ let streetView = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap - Secretaria Desarrollo Productivo E.R. </a>'
     });
 
-var baseLayers = {
-    "Politico": politico,
-    "StreetView": streetView,
-};
-
-var overlays = {};
-
-var options = {
-    collapsed: false,
-    position: 'topright'
-};
-
-politico.addTo(map);
-
-const layerControl = L.control.layers(baseLayers, overlays, options).addTo(map);
-
-
 // Funcion de Mayuscula primer letra 
 const capitalize = (t) => { return t[0].toUpperCase() + t.substr(1).toLowerCase() };
 
+var baseMaps = [
+    {
+        groupName: "Capas mapas",
+        expanded: true,
+        layers: {
+            " Politico": politico,
+            " StreetView": streetView,
+        }
+    },
+];
 
-// Definir colores
-const colores = ["#000000", "#6E1906", "#FF0000", "#FE642E", "#04B404", "#948E0A", "#0A1D94", "#BDBDBD", "#E6E6E6", "#B40404", "#80FF00", "#00FFFF", "#FA58F4",
-    "#FE2E9A", "#F6D8CE", "#38610B", "#86B404", "#8904B1", "#F5A9E1", "#F5A9A9", "#F3F781", "#E3CEF6"];
+var overlays = [
+    {
+        groupName: " Categorias",
+        expanded: true,
+        layers: {}
 
+    }, {
+        groupName: " Estados",
+        expanded: true,
+        layers: {}
+    }
+];
+
+var options = {
+    collapse: false,
+    container_width: "300px",
+    container_maxHeight: "800px",
+    group_maxHeight: "400px",
+    exclusive: true
+};
+
+
+politico.addTo(map);
+const layerControl = L.Control.styledLayerControl(baseMaps, overlays, options).addTo(map);
+layerControl.expand();
 
 // Definir marcadores por cada categoria - Tipo_Categoria
 let index = 0
@@ -114,7 +128,7 @@ rubros.forEach(item => {
 
     let id_rubro = item[0]
     let rubro = item[1]
-    let color = colores[index]
+    let color = '#' + colores[index].hex
 
     expedientes.forEach(expediente => {
 
@@ -142,7 +156,6 @@ rubros.forEach(item => {
 
         let cantidad = capaCategoria.getLayers().length
         let NombreCategoria = cantidad + " <i class='fa fa-circle fa' aria-hidden='true' style='color:" + color + "'></i> " + capitalize(rubro)
-        layerControl.addOverlay(capaCategoria, NombreCategoria);
+        layerControl.addOverlay(capaCategoria, NombreCategoria, { groupName: "Categorias", expanded: true });
     }
-
 })
