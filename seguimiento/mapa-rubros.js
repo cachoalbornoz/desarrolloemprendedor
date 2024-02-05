@@ -1,3 +1,4 @@
+
 // Definir el mapas
 let map = L.map('map', {
     fullscreenControl: true,
@@ -81,6 +82,8 @@ let streetView = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',
 // Funcion de Mayuscula primer letra 
 const capitalize = (t) => { return t[0].toUpperCase() + t.substr(1).toLowerCase() };
 
+const padLeft = (number, digits) => { return Array(Math.max(digits - String(number).length + 1, 0)).join(0) + number; }
+
 var baseMaps = [
     {
         groupName: "Capas mapas",
@@ -94,68 +97,126 @@ var baseMaps = [
 
 var overlays = [
     {
-        groupName: " Categorias",
+        groupName: "Categorias",
         expanded: true,
         layers: {}
 
     }, {
-        groupName: " Estados",
+        groupName: "Estados",
         expanded: true,
         layers: {}
     }
 ];
 
 var options = {
-    collapse: false,
+    collapsed: false,
     container_width: "300px",
-    container_maxHeight: "800px",
-    group_maxHeight: "400px",
-    exclusive: true
+    container_maxHeight: "700px",
+    group_maxHeight: "300px",
+    exclusive: false
 };
 
 
 politico.addTo(map);
 const layerControl = L.Control.styledLayerControl(baseMaps, overlays, options).addTo(map);
-layerControl.expand();
 
 // Definir marcadores por cada categoria - Tipo_Categoria
-let index = 0
+let mapRubros = (anio) => {
 
-rubros.forEach(item => {
+    let index = 0
 
-    index++
-    capaCategoria = L.layerGroup();
+    rubros.forEach(rubro => {
 
-    let id_rubro = item[0]
-    let rubro = item[1]
-    let color = '#' + colores[index].hex
+        index++
+        capaCategoria = L.layerGroup();
 
-    expedientes.forEach(expediente => {
+        let id_rubro = rubro.id_rubro
+        let color = '#' + colores[index].hex
 
-        if (id_rubro == expediente[5]) {
+        // Filtrar los expedientes x año
+        if (anio != 0) {
+            expedientes = expedientes.filter((expediente) => {
+                return expediente.anio === parseInt(anio);
+            });
+        }
 
-            let opciones = {
-                radius: 6,
-                fillColor: color,
-                color: color,
-                weight: 1,
-                opacity: 0.8,
-                fillOpacity: 0.8,
+        console.log(expedientes.length)
+
+        expedientes.forEach(expediente => {
+
+            if (id_rubro == expediente.id_rubro) {
+
+                let opciones = {
+                    radius: 6,
+                    fillColor: color,
+                    color: color,
+                    weight: 2,
+                }
+
+                L.circleMarker(L.latLng(expediente.latitud, expediente.longitud), opciones).addTo(capaCategoria).bindTooltip(expediente.titular, { sticky: true })
             }
+        })
 
-            let razon_social = expediente[1]
-            let latitud = expediente[7]
-            let longitud = expediente[8]
+        // Agregar la nueva capa al grupo overlays, si tiene marcadores
+        if (capaCategoria.getLayers().length > 0) {
 
-            L.circleMarker(L.latLng(latitud, longitud), opciones).addTo(capaCategoria).bindTooltip(razon_social, { sticky: true })
+            let cantidad = capaCategoria.getLayers().length
+            let NombreCategoria = " " + padLeft(cantidad, 2) + " <i class='fa fa-circle fa' aria-hidden='true' style='color:" + color + "'></i> " + capitalize(rubro.nombre)
+            layerControl.addOverlay(capaCategoria, NombreCategoria, { groupName: "Categorias", expanded: true });
         }
     })
+}
 
-    // Agregar la nueva capa al grupo overlays, si tiene marcadores
-    if (capaCategoria.getLayers().length > 0) {
 
-        let cantidad = capaCategoria.getLayers().length
-        let NombreCategoria = cantidad + " <i class='fa fa-circle fa' aria-hidden='true' style='color:" + color + "'></i> " + capitalize(rubro)
-        layerControl.addOverlay(capaCategoria, NombreCategoria, { groupName: "Categorias", expanded: true });
-    }
+let mapEstados = () => {
+    let index = 0
+
+    estados.forEach(estado => {
+
+        index++
+        capaCategoria = L.layerGroup();
+
+        let id_estado = estado.id_estado
+        let color = '#' + colores[index].hex
+
+        expedientes.forEach(expediente => {
+
+            if (id_estado == expediente.id_estado) {
+
+                const fontAwesomeIcon = L.divIcon({
+                    html: estado.icono,
+                    iconSize: [5, 5],
+                });
+
+                L.marker([51.5, -0.09], { icon: fontAwesomeIcon }).addTo(map)
+                    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+
+                let opciones = {
+                    radius: 6,
+                    fillColor: color,
+                    color: color,
+                    weight: 2,
+                }
+
+                L.marker([expediente.latitud, expediente.longitud], { icon: fontAwesomeIcon }).addTo(capaCategoria).bindTooltip(expediente.titular, { sticky: true })
+            }
+        })
+
+        // Agregar la nueva capa al grupo overlays, si tiene marcadores
+        if (capaCategoria.getLayers().length > 0) {
+
+            let cantidad = capaCategoria.getLayers().length
+            let NombreCategoria = " " + padLeft(cantidad, 3) + " " + estado.icono + " " + capitalize(estado.nombre)
+            layerControl.addOverlay(capaCategoria, NombreCategoria, { groupName: "Estados", expanded: true });
+        }
+
+    })
+}
+
+
+document.getElementById('anio').addEventListener('change', function (e) {
+    mapRubros(e.target.value);
 })
+
+mapRubros(0);
+mapEstados();

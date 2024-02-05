@@ -30,28 +30,24 @@
     require_once "../accesorios/accesos_bd.php";
     $con=conectar(); 
 
-    $query   = mysqli_query($con,"SELECT t5.id_rubro, rubro
-        FROM expedientes t1
-        INNER JOIN tipo_rubro_productivos t5 ON t1.id_rubro = t5.id_rubro
-        WHERE t1.nro_exp_madre > 0 AND t1.estado <> 99 
-        GROUP BY rubro
-        ORDER BY t5.id_rubro") 
-    or die ('Ver seleccion rubros'); 
+    // Determinar los años a mostrar dinamicamente
+    $fila = mysqli_query($con, 'SELECT min(year(date(fecha_otorgamiento))), max(year(date(fecha_otorgamiento))) FROM expedientes WHERE estado <> 99');
+    $reg  = mysqli_fetch_array($fila);
+    $min  = $reg[0];
+    $max  = $reg[1];
 
-    while ($row = mysqli_fetch_array($query)) {
-        $subdata = [];
-        
-        $subdata[] = (int)$row['id_rubro'];
-        $subdata[] = substr($row['rubro'],0,30);
     
-        $data[] = $subdata;
-    }
-    
-    $filename = "rubros.js";
-    $handle = fopen($filename, 'w+');
-    $contenido = "let rubros = " . json_encode($data) . ";";
-    fputs($handle, $contenido);
-    fclose($handle);
+    // Crear Expedientes
+    include ('crearExpedientes.php');
+
+    // Crear Rubros
+    include ('crearRubros.php');
+
+    // // Data estados
+    include ('crearEstados.php');
+
+    // // Data Años otorgamiento
+    include ('crearAnios.php');
 
     ?>
 
@@ -63,7 +59,19 @@
 
         <div class="row m-0 w-100">
 
-            <div id="sidebar" class="d-flex flex-column justify-content-between col-2 h-100"> </div>
+            <div id="sidebar" class="d-flex flex-column justify-content-between col-2 h-100">
+                <select class="form-control" name="anio" id="anio">
+                    <option value="" disabled selected>Año otorgamiento</option>
+                    <?php
+                    $actual = date('Y', time());
+                    $año                                    = $min;
+                    while ($año <= $actual) {
+                        print '<option value=' . $año . '>' . $año . '</option>';
+                        $año++;
+                    }
+                    ?>
+                </select>
+            </div>
 
             <div id="map" class="col" style="box-shadow: 5px 5px 5px #888;"></div> 
 
@@ -85,6 +93,7 @@
     <script src="departamentos.js"></script>
     <script src="expedientes.js"></script>
     <script src="rubros.js"></script>
+    <script src="estados.js"></script>
     <script src="mapa-rubros.js"></script>
   
 

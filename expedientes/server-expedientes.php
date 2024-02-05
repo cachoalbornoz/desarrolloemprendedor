@@ -100,7 +100,7 @@ while ($row = mysqli_fetch_array($query)) {
     $id_proyecto = ($registro_proyecto)?$registro_proyecto['id_proyecto']:0;
     
 
-    // Ubicaion del Expediente
+    // Ubicacion del Expediente
 
     $tabla_ubicacion = mysqli_query($con, "SELECT tu.ubicacion FROM rel_expedientes_ubicacion reu
         INNER JOIN expedientes_ubicaciones eu ON eu.id_ubicacion = reu.id_ubicacion
@@ -139,47 +139,5 @@ $json_data = [
     'recordsFiltered' => intval($totalFilter),
     'data'            => $data,
 ];
-
-
-
-
-// Data expedientes
-$sql_expediente     .= ' ORDER BY apellido ASC LIMIT ' . $totalData . ' ';
-$query_expediente   = mysqli_query($con, $sql_expediente);
-$totalDataExped     = mysqli_num_rows($query_expediente);
-$data = [];
-
-while ($row = mysqli_fetch_array($query_expediente)) {
-    $subdata = [];
-    
-    $subdata[] = (int)$row['nro_proyecto'];
-    $subdata[] = $row['solicitante'];
-    $subdata[] = (int)$row['anio'];
-    $subdata[] = $row['localidad'];
-    $subdata[] = $row['estado'];
-    $subdata[] = (int)$row['id_rubro'];
-    $subdata[] = $row['rubro'];
-    $subdata[] = ($row['latitud'] > 0)?round($row['latitud'],4)*(-1):0;
-    $subdata[] = ($row['longitud'] > 0)?round($row['longitud'],4)*(-1):0;
-
-    // Si tiene datos de Latitud y Longitud, van al archivo de Expediente 
-    if(($row['latitud'] > 0) AND ($row['longitud'] > 0)){
-        $data[] = $subdata;
-    }
-
-}
-
-$filename = "../seguimiento/expedientes.js";
-$handle = fopen($filename, 'w+');
-$contenido = "let expedientes = " . json_encode($data) . ";";
-fputs($handle, $contenido);
-fclose($handle);
-
-
-
-
-
-
-
 
 print json_encode($json_data);
