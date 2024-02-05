@@ -8,6 +8,7 @@ let map = L.map('map', {
 
 // Referencias
 const sidebar = document.querySelector('#sidebar');
+const alert = document.querySelector('#alert');
 
 // Agregados al mapa
 new L.control.mousePosition({ position: 'topright' }).addTo(map);
@@ -51,7 +52,15 @@ const limpiarItems = () => {
 const crearListado = () => {
     const ul = document.createElement('ul');
     ul.classList.add('list-group');
+    ul.classList.add('mt-4');
     sidebar.prepend(ul);
+
+    const li = document.createElement('li');
+    li.innerText = 'Seleccione un departamento';
+    li.classList.add('list-group-item');
+    ul.append(li);
+    li.classList.add('text-center');
+    li.classList.add('bg-warning');
 
     departamentos.forEach(lugar => {
         const li = document.createElement('li');
@@ -84,7 +93,7 @@ const capitalize = (t) => { return t[0].toUpperCase() + t.substr(1).toLowerCase(
 
 const padLeft = (number, digits) => { return Array(Math.max(digits - String(number).length + 1, 0)).join(0) + number; }
 
-var baseMaps = [
+const baseMaps = [
     {
         groupName: "Capas mapas",
         expanded: true,
@@ -95,7 +104,7 @@ var baseMaps = [
     },
 ];
 
-var overlays = [
+const overlays = [
     {
         groupName: "Categorias",
         expanded: true,
@@ -108,22 +117,38 @@ var overlays = [
     }
 ];
 
-var options = {
+const options = {
     collapsed: false,
     container_width: "300px",
-    container_maxHeight: "700px",
-    group_maxHeight: "300px",
+    container_maxHeight: "3000px",
+    group_maxHeight: "700px",
     exclusive: false
 };
 
-
 politico.addTo(map);
-const layerControl = L.Control.styledLayerControl(baseMaps, overlays, options).addTo(map);
+let layerControl = L.Control.styledLayerControl(baseMaps, overlays, options).addTo(map);
 
 // Definir marcadores por cada categoria - Tipo_Categoria
-let mapRubros = (anio) => {
+let mapRubros = () => {
 
-    let index = 0
+    // Obtener valor año 
+    const anio = Number(document.getElementById('anio').value)
+
+    // Filtrar los expedientes x año
+    let expedientesFiltrados = [];
+
+    // Quitar capa
+    layerControl.removeGroup("Categorias");
+
+    if (anio > 0) {
+        expedientesFiltrados = expedientes.filter((expediente) => {
+            return expediente.anio == anio;
+        });
+    } else {
+        expedientesFiltrados = expedientes
+    }
+
+    let index = -1
 
     rubros.forEach(rubro => {
 
@@ -133,16 +158,7 @@ let mapRubros = (anio) => {
         let id_rubro = rubro.id_rubro
         let color = '#' + colores[index].hex
 
-        // Filtrar los expedientes x año
-        if (anio != 0) {
-            expedientes = expedientes.filter((expediente) => {
-                return expediente.anio === parseInt(anio);
-            });
-        }
-
-        console.log(expedientes.length)
-
-        expedientes.forEach(expediente => {
+        expedientesFiltrados.forEach(expediente => {
 
             if (id_rubro == expediente.id_rubro) {
 
@@ -165,11 +181,32 @@ let mapRubros = (anio) => {
             layerControl.addOverlay(capaCategoria, NombreCategoria, { groupName: "Categorias", expanded: true });
         }
     })
+
+    alert.innerText = `Expedientes : ${expedientesFiltrados.length}`
 }
 
 
+// Definir marcadores por cada estado - Tipo_Estado
 let mapEstados = () => {
-    let index = 0
+
+    // Obtener valor año 
+    const anio = Number(document.getElementById('anio').value)
+
+    // Quitar capa
+    layerControl.removeGroup("Estados");
+
+    // Filtrar los expedientes x año
+    let expedientesFiltrados = [];
+
+    if (anio > 0) {
+        expedientesFiltrados = expedientes.filter((expediente) => {
+            return expediente.anio == anio;
+        });
+    } else {
+        expedientesFiltrados = expedientes
+    }
+
+    let index = -1
 
     estados.forEach(estado => {
 
@@ -177,9 +214,8 @@ let mapEstados = () => {
         capaCategoria = L.layerGroup();
 
         let id_estado = estado.id_estado
-        let color = '#' + colores[index].hex
 
-        expedientes.forEach(expediente => {
+        expedientesFiltrados.forEach(expediente => {
 
             if (id_estado == expediente.id_estado) {
 
@@ -187,16 +223,6 @@ let mapEstados = () => {
                     html: estado.icono,
                     iconSize: [5, 5],
                 });
-
-                L.marker([51.5, -0.09], { icon: fontAwesomeIcon }).addTo(map)
-                    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-
-                let opciones = {
-                    radius: 6,
-                    fillColor: color,
-                    color: color,
-                    weight: 2,
-                }
 
                 L.marker([expediente.latitud, expediente.longitud], { icon: fontAwesomeIcon }).addTo(capaCategoria).bindTooltip(expediente.titular, { sticky: true })
             }
@@ -215,8 +241,9 @@ let mapEstados = () => {
 
 
 document.getElementById('anio').addEventListener('change', function (e) {
-    mapRubros(e.target.value);
+    mapRubros();
+    mapEstados();
 })
 
-mapRubros(0);
+mapRubros();
 mapEstados();
