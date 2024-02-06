@@ -33,7 +33,6 @@ info.update = function (props) {
 };
 info.addTo(map);
 
-
 //Crear listado de lugares
 const volar = (lugar) => {
     const zoom = (lugar.nombre == 'Todos') ? 8 : 12;
@@ -121,16 +120,18 @@ const options = {
     collapsed: false,
     container_width: "300px",
     container_maxHeight: "3000px",
-    group_maxHeight: "700px",
+    group_maxHeight: "500px",
     exclusive: false
 };
 
 politico.addTo(map);
 let layerControl = L.Control.styledLayerControl(baseMaps, overlays, options).addTo(map);
 
-// Definir marcadores por cada categoria - Tipo_Categoria
-let mapRubros = () => {
+let arrCapas = []
 
+
+// Definir marcadores por cada categoria - Tipo_Categoria
+let mapCategorias = () => {
     // Obtener valor año 
     const anio = Number(document.getElementById('anio').value)
 
@@ -153,8 +154,7 @@ let mapRubros = () => {
     rubros.forEach(rubro => {
 
         index++
-        capaCategoria = L.layerGroup();
-
+        let capaCategoria = L.layerGroup();
         let id_rubro = rubro.id_rubro
         let color = '#' + colores[index].hex
 
@@ -173,6 +173,8 @@ let mapRubros = () => {
             }
         })
 
+        arrCapas.push(capaCategoria);
+
         // Agregar la nueva capa al grupo overlays, si tiene marcadores
         if (capaCategoria.getLayers().length > 0) {
 
@@ -186,6 +188,7 @@ let mapRubros = () => {
 }
 
 
+
 // Definir marcadores por cada estado - Tipo_Estado
 let mapEstados = () => {
 
@@ -194,6 +197,7 @@ let mapEstados = () => {
 
     // Quitar capa
     layerControl.removeGroup("Estados");
+
 
     // Filtrar los expedientes x año
     let expedientesFiltrados = [];
@@ -211,8 +215,7 @@ let mapEstados = () => {
     estados.forEach(estado => {
 
         index++
-        capaCategoria = L.layerGroup();
-
+        let capaCategoria = L.layerGroup();
         let id_estado = estado.id_estado
 
         expedientesFiltrados.forEach(expediente => {
@@ -228,6 +231,8 @@ let mapEstados = () => {
             }
         })
 
+        arrCapas.push(capaCategoria);
+
         // Agregar la nueva capa al grupo overlays, si tiene marcadores
         if (capaCategoria.getLayers().length > 0) {
 
@@ -241,9 +246,15 @@ let mapEstados = () => {
 
 
 document.getElementById('anio').addEventListener('change', function (e) {
-    //mapRubros();
+
+    // Quitar todas las capas del mapa
+    arrCapas.forEach(capa => {
+        map.removeLayer(capa);
+    })
+
+    //mapCategorias();
     //mapEstados();
 })
 
-//mapRubros();
+//mapCategorias();
 //mapEstados();

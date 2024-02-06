@@ -12,31 +12,30 @@ INNER JOIN departamentos t7 ON t6.departamento_id = t7.id
 WHERE t2.id_responsabilidad = 1 AND t1.nro_exp_madre > 0 AND t1.estado <> 99 
 ORDER BY apellido ASC";
 
-
 // Data expedientes
-$query_expediente   = mysqli_query($con, $sql_expediente);
-$data       = [];
+$query_expediente = mysqli_query($con, $sql_expediente);
+$data             = [];
 
 while ($row = mysqli_fetch_array($query_expediente)) {
 
-$arreglo = array(
-    "titular"           => $row['titular'],
-    "anio"              => (int)$row['anio'],
-    "id_departamento"   => $row['id_departamento'],
-    "id_estado"         => $row['id_estado'],
-    "id_rubro"          => (int)$row['id_rubro'],
-    "latitud"           => ($row['latitud'] > 0)?round($row['latitud'],4)*(-1):0,
-    "longitud"          =>($row['longitud'] > 0)?round($row['longitud'],4)*(-1):0,
-);        
+    $arreglo = [
+        'titular'         => $row['titular'],
+        'anio'            => (int)$row['anio'],
+        'id_departamento' => $row['id_departamento'],
+        'id_estado'       => $row['id_estado'],
+        'id_rubro'        => (int)$row['id_rubro'],
+        'latitud'         => $row['latitud'],
+        'longitud'        => $row['longitud'],
+    ];
 
-// Si tiene datos de Latitud y Longitud, van al archivo de Expediente 
-if(($row['latitud'] > 0) AND ($row['longitud'] > 0)){
-    $data[]         = $arreglo;
-}
+    // Si tiene datos de Latitud y Longitud, van al archivo de Expediente
+    if( !(is_null($row['latitud'])) or !($row['latitud'] == 0)) {
+        $data[] = $arreglo;
+    }
 }
 
-$filename = "expedientes.js";
-$handle = fopen($filename, 'w+');
-$contenido = "let expedientes = " . json_encode($data) . ";";
+$filename  = 'expedientes.js';
+$handle    = fopen($filename, 'w+');
+$contenido = 'let expedientes = ' . json_encode($data) . ';';
 fputs($handle, $contenido);
 fclose($handle);
