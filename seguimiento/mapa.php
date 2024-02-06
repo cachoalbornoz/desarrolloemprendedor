@@ -62,19 +62,26 @@
             <div id="sidebar" class="d-flex flex-column justify-content-between col-2 h-100">
                 
                 <div class="w-100">
-                    Año de otorgamiento del crédito
-                    <select class="form-control" name="anio" id="anio">
-                        <option value="" disabled selected>Seleccione ...</option>
-                        <option value="0">Todos</option>
-                        <?php
-                        $actual = date('Y', time());
-                        $año  = $actual;
-                        while ($año >= $min) {
-                            print '<option value=' . $año . '>' . $año . '</option>';
-                            $año --;
-                        }
-                        ?>
-                    </select>
+                    <div class="list-group">
+                        <div class="list-group-item bg-info">
+                            Seleccione año de otorgamiento
+                        </div>
+                        
+                        <select class="form-control" name="anio" id="anio">
+                            <option value="" disabled selected>Seleccione ...</option>
+                            <option value="0">Todos</option>
+                            <?php
+                            $actual = date('Y', time());
+                            $año  = $actual;
+                            while ($año >= $min) {
+                                print '<option value=' . $año . '>' . $año . '</option>';
+                                $año --;
+                            }
+                            ?>
+                        </select>
+                        
+                    </div>
+                    
                 </div>
 
                 <div id="alert" class="w-100 alert alert-warning fw-bold" role="alert"> </div>

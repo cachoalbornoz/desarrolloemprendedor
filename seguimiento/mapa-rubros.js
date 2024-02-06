@@ -26,7 +26,7 @@ info.onAdd = function () {
 
 // Agregar leyenda
 info.update = function (props) {
-    this._div.innerHTML = '<h6>Créditos MyPYME - Categorias productivas</h6>';
+    this._div.innerHTML = '<h6>Créditos a emprendedores</h6>';
     //let path = APP_URL + "/public/mapas/libreria/isologoER_Gob.png"
     //this._div.innerHTML += '<img class=" img-thumbnail" src=' + path + ' alt="Ministerio">';
     this._div.innerHTML += '<h4>Ministerio de Desarrollo Económico - Entre Ríos</h4>';
@@ -60,7 +60,7 @@ const crearListado = () => {
     li.classList.add('list-group-item');
     ul.append(li);
     li.classList.add('text-center');
-    li.classList.add('bg-warning');
+    li.classList.add('bg-info');
 
     departamentos.forEach(lugar => {
         const li = document.createElement('li');
@@ -95,7 +95,7 @@ const padLeft = (number, digits) => { return Array(Math.max(digits - String(numb
 
 const baseMaps = [
     {
-        groupName: "Capas mapas",
+        groupName: "Capas base del mapa",
         expanded: true,
         layers: {
             " Politico": politico,
@@ -241,9 +241,9 @@ let mapEstados = () => {
 
 
 document.getElementById('anio').addEventListener('change', function (e) {
-    mapRubros();
-    mapEstados();
+    //mapRubros();
+    //mapEstados();
 })
 
-mapRubros();
-mapEstados();
+//mapRubros();
+//mapEstados();
