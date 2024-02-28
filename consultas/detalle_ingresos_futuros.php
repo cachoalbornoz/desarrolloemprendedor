@@ -8,7 +8,7 @@
 
     var table = $('#futuros').DataTable({ 
         "lengthMenu"    : [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
-        "dom"           : '<"wrapper"Brflit>',        
+        "dom"           : '<"wrapper"Brflitp>',        
         "buttons"       : ['copy', 'excel', 'pdf',  'colvis'],
         "order"         : [[ 1, "asc" ]],
         "stateSave"     : true,
@@ -30,12 +30,13 @@
     <tbody>
     <?php
 
-    $tabla_expedientes = mysqli_query($con, " select month(exp_c.fecha_vcto) as mes, year(exp_c.fecha_vcto) as ano, sum(exp_c.importe) as monto
-    from expedientes_detalle_cuotas exp_c, rel_expedientes_emprendedores as rel_exp, emprendedores as emp,
-    expedientes as exped where exp_c.id_expediente = rel_exp.id_expediente and exped.id_expediente = rel_exp.id_expediente
-    and rel_exp.id_emprendedor = emp.id_emprendedor and fecha_vcto >= curdate() and emp.id_responsabilidad = 1
+    $tabla_expedientes = mysqli_query($con, 
+    "SELECT month(exp_c.fecha_vcto) as mes, year(exp_c.fecha_vcto) as ano, sum(exp_c.importe) as monto
+    FROM expedientes_detalle_cuotas exp_c, rel_expedientes_emprendedores as rel_exp, emprendedores as emp, expedientes as exped 
+    WHERE exp_c.id_expediente = rel_exp.id_expediente and exped.id_expediente = rel_exp.id_expediente
+    and rel_exp.id_emprendedor = emp.id_emprendedor and fecha_vcto >= curdate() and rel_exp.id_responsabilidad = 1
     and (exped.estado = 1 or exped.estado = 6)
-    group by ano, mes asc  ");
+    group by ano, mes");
 
     $total = 0;
 

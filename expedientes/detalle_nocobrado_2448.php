@@ -43,7 +43,7 @@
     INNER JOIN rel_expedientes_emprendedores rel_exp ON exped.id_expediente = rel_exp.id_expediente
     INNER JOIN emprendedores as emp ON rel_exp.id_emprendedor = emp.id_emprendedor
     INNER JOIN localidades AS loca ON emp.id_ciudad = loca.id
-    WHERE MONTH(edc.fecha_vcto) = MONTH(CURDATE()) AND YEAR(edc.fecha_vcto) = YEAR(CURDATE()) AND edc.estado = 0 AND emp.id_responsabilidad = 1 AND (exped.estado = 1 or exped.estado = 6)
+    WHERE MONTH(edc.fecha_vcto) = MONTH(CURDATE()) AND YEAR(edc.fecha_vcto) = YEAR(CURDATE()) AND edc.estado = 0 AND rel_exp.id_responsabilidad = 1 AND (exped.estado = 1 or exped.estado = 6)
     GROUP BY edc.id_expediente
     ORDER BY emp.apellido, emp.nombres");
 

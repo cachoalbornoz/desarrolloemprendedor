@@ -6,7 +6,8 @@ require_once("../accesorios/accesos_bd.php");
 $con=conectar();
 
 
-$tabla_emprendedores = mysqli_query($con, "SELECT exped.id_expediente, exped.nro_proyecto, exped.fecha_otorgamiento, exped.saldo, e.id_emprendedor, e.apellido, e.nombres, e.dni, te.icono, e.id_responsabilidad
+$tabla_emprendedores = mysqli_query($con, 
+"SELECT exped.id_expediente, exped.nro_proyecto, exped.fecha_otorgamiento, exped.saldo, e.id_emprendedor, e.apellido, e.nombres, e.dni, te.icono, e.id_responsabilidad
 FROM emprendedores e
 LEFT JOIN rel_expedientes_emprendedores rela ON rela.id_emprendedor = e.id_emprendedor
 LEFT JOIN expedientes exped ON exped.id_expediente = rela.id_expediente
