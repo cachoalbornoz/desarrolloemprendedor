@@ -1,16 +1,14 @@
 <?php
-    require('../accesorios/admin-superior.php');
-    require('../accesorios/accesos_bd.php');
-    $con=conectar();
+require '../accesorios/admin-superior.php';
+require '../accesorios/accesos_bd.php';
+$con = conectar();
 
-    $id_usuario = $_SESSION['id_usuario'];
-    $sql        = "SELECT id_entidad FROM rel_entidad_usuario WHERE id_usuario = $id_usuario";
-    $query      = mysqli_query($con, $sql);
-    $row        = mysqli_fetch_array($query);
+$id_usuario = $_SESSION['id_usuario'];
+$sql        = "SELECT id_entidad FROM rel_entidad_usuario WHERE id_usuario = $id_usuario";
+$query      = mysqli_query($con, $sql);
+$row        = mysqli_fetch_array($query);
 
-    $id_entidad = $row['id_entidad'];
-
-
+$id_entidad = $row['id_entidad'];
 
 ?>
 
@@ -19,7 +17,7 @@
     <div class="card-header">
         <div class="row">
             <div class=" col-xs-12 col-sm-12 col-lg-12">
-                PADRON AUTOGESTIONADOS A VERIFICAR - Entidad # <?php echo $id_entidad;?>
+                PADRON AUTOGESTIONADOS A VERIFICAR - Entidad # <?php print $id_entidad; ?>
             </div>
         </div>
     </div>
@@ -55,7 +53,7 @@
 
 <?php
     mysqli_close($con);
-    require_once('../accesorios/admin-scripts.php');
+require_once '../accesorios/admin-scripts.php';
 ?>
 
 <script>
@@ -64,7 +62,7 @@
 
         var table = $('#autorizados').DataTable({    
             "lengthMenu"    : [[10, 25, 50, -1], [10, 25, 50, "Todos"]],
-            "dom"           : '<"wrapper"Brflit>',         
+            "dom"           : '<"wrapper"Brflitp>',          
             "buttons"       : ['copy', 'excel', 'pdf', 'colvis'],
             "order"         : [[ 1, "asc" ]],
             "stateSave"     : true,
@@ -112,4 +110,4 @@
 
 </script>
 
-<?php require_once('../accesorios/admin-inferior.php'); ?>
+<?php require_once '../accesorios/admin-inferior.php'; ?>

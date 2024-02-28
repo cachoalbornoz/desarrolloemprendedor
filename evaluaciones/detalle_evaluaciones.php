@@ -12,17 +12,16 @@ $con = conectar();
 $tabla_evaluaciones = mysqli_query(
     $con,
     "SELECT t1.id_proyecto, t1.id_estado, t5.apellido, t5.nombres, t1.denominacion, t2.icono, t1.monto, t6.nombre as ciudad, t7.nombre as depto, t8.resultado_final, t5.dni, t3.tipo as sector, rubro, t3.id_rubro, t6.id as id_localidad, t1.fnovedad as fechan, informe, t1.latitud, t1.longitud, t1.funciona, t8.ultima_fecha as fechae
-FROM proyectos t1
-INNER JOIN tipo_estado t2 ON t1.id_estado = t2.id_estado
-INNER JOIN tipo_rubro_productivos t3 ON t1.id_rubro = t3.id_rubro
-LEFT JOIN  rel_proyectos_solicitantes t4 ON t1.id_proyecto = t4.id_proyecto
-LEFT JOIN  solicitantes t5 ON t4.id_solicitante = t5.id_solicitante
-INNER JOIN localidades t6 ON t5.id_ciudad = t6.id
-INNER JOIN departamentos t7 ON t6.departamento_id = t7.id
-LEFT JOIN proyectos_seguimientos t8 ON t1.id_proyecto = t8.id_proyecto
-WHERE t5.id_responsabilidad = 1 AND t1.id_estado > 0 AND t1.id_estado != 25
-ORDER BY t5.apellido, t5.nombres"
-);
+        FROM proyectos t1
+        INNER JOIN tipo_estado t2 ON t1.id_estado = t2.id_estado
+        INNER JOIN tipo_rubro_productivos t3 ON t1.id_rubro = t3.id_rubro
+        LEFT JOIN  rel_proyectos_solicitantes t4 ON t1.id_proyecto = t4.id_proyecto
+        LEFT JOIN  solicitantes t5 ON t4.id_solicitante = t5.id_solicitante
+        INNER JOIN localidades t6 ON t5.id_ciudad = t6.id
+        INNER JOIN departamentos t7 ON t6.departamento_id = t7.id
+        LEFT JOIN proyectos_seguimientos t8 ON t1.id_proyecto = t8.id_proyecto
+        WHERE t5.id_responsabilidad = 1 AND t1.id_estado > 0 AND t1.id_estado != 25
+        ORDER BY t5.apellido, t5.nombres");
 
 ?>
 
@@ -35,7 +34,7 @@ ORDER BY t5.apellido, t5.nombres"
                 [10, 25, 50, -1],
                 [10, 25, 50, "Todos"]
             ],
-            "dom": '<"wrapper"Brflit>',
+            "dom": '<"wrapper"Brflitp>',
             "buttons": ['copy', 'excel', 'pdf', 'colvis'],
             "order": [
                 [1, "asc"]
