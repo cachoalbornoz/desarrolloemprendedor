@@ -61,7 +61,11 @@ while ($registro_soli = mysqli_fetch_array($query_solicitantes)) {
     $datos_solicitante    = mysqli_query($con, "SELECT * FROM solicitantes WHERE id_solicitante = $id_solicitante");
     $registro_solicitante = mysqli_fetch_array($datos_solicitante);
     $dni                  = $registro_solicitante['dni'];
-    $id_resp              = $registro_solicitante['id_responsabilidad'];
+
+    // id responsabilidad
+    $datos_responsabilidad    = mysqli_query($con, "SELECT * FROM solicitantes WHERE id_solicitante = $id_solicitante");
+    $registro_responsabilidad = mysqli_fetch_array($datos_responsabilidad);
+    $id_responsabilidad       = $registro_responsabilidad['id_responsabilidad'];
 
     $seleccion = "SELECT id_emprendedor FROM emprendedores WHERE dni = $dni";
 
@@ -93,18 +97,18 @@ while ($registro_soli = mysqli_fetch_array($query_solicitantes)) {
         $id_emprendedor       = $registro_emprendedor[0];
     }
 
-    mysqli_query($con, "INSERT INTO rel_expedientes_emprendedores (id_expediente, id_emprendedor, id_responsabilidad) VALUES ($id_expediente, $id_emprendedor, $id_resp)")
-        or die('Revisar insercion Nuevo Emprendedor');
+    mysqli_query($con, "INSERT INTO rel_expedientes_emprendedores (id_expediente, id_emprendedor, id_responsabilidad) VALUES ($id_expediente, $id_emprendedor, $id_responsabilidad)")
+        or die('Revisar insercion rel_expedientes_emprendedores');
 }
 
 // /////////////////////////////////////////////////////////// EXPEDIENTES - UBICACIONES
 mysqli_query($con, "INSERT INTO expedientes_ubicaciones (fecha, id_tipo_ubicacion, motivo) values ('$fecha_otorgamiento', 1, 'INICIO TRAMITE')")
-or die('Revisar insercion Expediente ubicacion');
+ or die('Revisar insercion Expediente ubicacion');
 
 $id_ubicacion = mysqli_insert_id($con);
 
 mysqli_query($con, "INSERT INTO rel_expedientes_ubicacion (id_expediente, id_ubicacion) values ($id_expediente, $id_ubicacion)")
-or die('Revisar insercion Relacion del Expediente y ubicacion');
+ or die('Revisar insercion Relacion del Expediente y ubicacion');
 
 // /////////////////////////////////////////////////////////// EXPEDIENTES - ESTADOS
 mysqli_query($con, "INSERT INTO expedientes_estados (id_expediente, fecha, id_tipo_estado) values ($id_expediente, '$fecha_otorgamiento', 1)");

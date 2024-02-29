@@ -88,24 +88,27 @@ if ($observaciones == 1) {
           DNI
           <input id="dni" name="dni" type="number" value="<?php print $dni; ?>" class="form-control" required autofocus>
         </div>
-        <div class="col-xs-12 col-sm-12 col-lg-4">
+        <div class="col-xs-12 col-sm-12 col-lg-2">
           CUIT / CUIL
           <input id="cuit" name="cuit" type="number" value="<?php print $cuit; ?>" class="form-control" maxlength="11" required />
+        </div>
+        <div class="col-xs-12 col-sm-12 col-lg-2">
+          
         </div>
         <div class="col-xs-12 col-sm-12 col-lg-4">
           RESPONSABILIDAD
           <select name="id_responsabilidad" id="id_responsabilidad" class="form-control">
             <?php
                   $responsabilidades = 'SELECT * FROM tipo_responsabilidad';
-                  $registro          = mysqli_query($con, $responsabilidades);
-                  while ($fila = mysqli_fetch_array($registro)) {
-                      if ($id_responsabilidad == $fila[0]) {
-                          print '<option value=' . $fila[0] . ' selected >' . $fila[1] . '</option>';
-                      } else {
-                          print '<option value=' . $fila[0] . '>' . $fila[1] . '</option>';
-                      }
-                  }
-                ?>
+$registro                            = mysqli_query($con, $responsabilidades);
+while ($fila = mysqli_fetch_array($registro)) {
+    if ($id_responsabilidad == $fila[0]) {
+        print '<option value=' . $fila[0] . ' selected >' . $fila[1] . '</option>';
+    } else {
+        print '<option value=' . $fila[0] . '>' . $fila[1] . '</option>';
+    }
+}
+?>
           </select>
         </div>
       </div>
@@ -122,15 +125,15 @@ if ($observaciones == 1) {
           CONDICION LABORAL
           <select name="id_condicion_laboral" size="1" id="id_condicion_laboral" class="form-control">
             <?php
-                $registro = mysqli_query($con, 'SELECT * FROM tipo_condicion_laboral WHERE id_condicion_laboral <> 1 order by condicion_laboral');
-                while ($fila = mysqli_fetch_array($registro)) {
-                    if ($id_condicion_laboral == $fila[0]) {
-                        print '<option value=' . $fila[0] . ' selected >' . $fila[1] . '</option>';
-                    } else {
-                        print '<option value=' . $fila[0] . '>' . $fila[1] . '</option>';
-                    }
-                }
-                ?>
+            $registro = mysqli_query($con, 'SELECT * FROM tipo_condicion_laboral WHERE id_condicion_laboral <> 1 order by condicion_laboral');
+while ($fila = mysqli_fetch_array($registro)) {
+    if ($id_condicion_laboral == $fila[0]) {
+        print '<option value=' . $fila[0] . ' selected >' . $fila[1] . '</option>';
+    } else {
+        print '<option value=' . $fila[0] . '>' . $fila[1] . '</option>';
+    }
+}
+?>
           </select>
         </div>
       </div>
@@ -144,7 +147,7 @@ if ($observaciones == 1) {
           E-MAIL
           <input name="email" type="email" id="email" class="form-control" value="<?php print $email; ?>" />
         </div>
-        <div class="col-xs-12 col-sm-12 col-lg-4">
+        <div class="col-xs-12 col-sm-12 col-lg-2">
           FECHA NACIMIENTO
           <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="form-control" value="<?php print $fecha_nacimiento; ?>" />
         </div>
@@ -155,19 +158,19 @@ if ($observaciones == 1) {
           PROVINCIA
           <select name="provincia" id="provincia" size="1" onchange="from(document.emprendedor.provincia.value,'ciudad','ciudades.php')" class="form-control">
             <?php
-                $registro = mysqli_query($con, 'SELECT id, nombre FROM provincias ORDER BY nombre');
-                while ($fila = mysqli_fetch_array($registro)) {
-                    if ($id_provincia == $fila[0]) {
-                        print '<option value=' . $fila[0] . ' selected >' . $fila[1] . '</option>';
-                    } else {
-                        print '<option value=' . $fila[0] . '>' . $fila[1] . '</option>';
-                    }
-                }
-                ?>
+$registro = mysqli_query($con, 'SELECT id, nombre FROM provincias ORDER BY nombre');
+while ($fila = mysqli_fetch_array($registro)) {
+    if ($id_provincia == $fila[0]) {
+        print '<option value=' . $fila[0] . ' selected >' . $fila[1] . '</option>';
+    } else {
+        print '<option value=' . $fila[0] . '>' . $fila[1] . '</option>';
+    }
+}
+?>
           </select>
 
         </div>
-        <div class="col-xs-12 col-sm-12 col-lg-8">
+        <div class="col-xs-12 col-sm-4 col-lg-4">
           LOCALIDAD
           <div id="ciudad">
             <select name="id_ciudad" id="id_ciudad" size="1" class="form-control">
@@ -229,7 +232,7 @@ if ($observaciones == 1) {
   <?php
 
   mysqli_close($con);
-  require_once '../accesorios/admin-scripts.php'; ?>
+require_once '../accesorios/admin-scripts.php'; ?>
 
 
   <script type="text/javascript">

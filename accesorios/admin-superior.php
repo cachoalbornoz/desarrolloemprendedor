@@ -53,8 +53,8 @@ if (!isset($_SESSION['usuario'])) {
 	<div class="container-fluid">
 
 		<?php
-            $habilitados = ["a", "b", "c"];
-        ?>
+            $habilitados = ['a', 'b', 'c'];
+?>
 
 		<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
 
@@ -116,10 +116,6 @@ if (!isset($_SESSION['usuario'])) {
 							<li>
 								<a class="dropdown-item" href="../personas/personas_proyectos.php">Consulta general de solicitantes</a>
 							</li>							
-							<li class="dropdown-divider"></li>
-                            <li>
-								<a class="dropdown-item" href="../personas/personas_generos.php">Actualización género</a>
-							</li>
                             <li class="dropdown-divider"></li>
 							<li class="dropdown-submenu">
 								<a class="dropdown-item dropdown-toggle" href="#">Jóvenes</a>
@@ -132,6 +128,9 @@ if (!isset($_SESSION['usuario'])) {
 									</li>
 									<li>
 										<a class="dropdown-item" href="../evaluaciones/listado_evaluaciones.php">Proyectos a evaluar</a>
+									</li>									
+									<li>
+										<a class="dropdown-item" href="../personas/personas_generos.php">Actualización género</a>
 									</li>
 									<li>
 										<a class="dropdown-item" href="../entidades/padron_entidades.php">Padrón entidades</a>
@@ -328,9 +327,9 @@ if (!isset($_SESSION['usuario'])) {
 					<!-- FIN MENU ADMINISTRACION -->
 
 					<?php  }
-                    } else {
-                        if ($_SESSION['tipo_usuario'] == "d") {
-                            ?>
+					} else {
+					    if ($_SESSION['tipo_usuario'] == 'd') {
+					        ?>
 
 							<!-- MENU USUARIOS SOLO CONSULTAS TECNICAS -->
 							<li class="nav-item dropdown">
@@ -345,10 +344,10 @@ if (!isset($_SESSION['usuario'])) {
 							</li>	
 							<!-- FIN MENU USUARIOS SOLO CONSULTAS TECNICAS -->
 						<?php
-                        }
+					    }
 
-                        if ($_SESSION['tipo_usuario'] == "e") {
-                            ?>
+					    if ($_SESSION['tipo_usuario'] == 'e') {
+					        ?>
 
 							<!-- MENU USUARIOS ENTIDADES -->
 							<li class="nav-item dropdown">
@@ -364,10 +363,10 @@ if (!isset($_SESSION['usuario'])) {
 							<!-- FIN MENU USUARIOS ENTIDADES -->
 
 						<?php
-                        }
+					    }
 
-                        if ($_SESSION['tipo_usuario'] == "f") {
-                            ?>
+					    if ($_SESSION['tipo_usuario'] == 'f') {
+					        ?>
 
 							<!-- MENU USUARIOS formadores -->
 							<li class="nav-item dropdown">
@@ -383,16 +382,16 @@ if (!isset($_SESSION['usuario'])) {
 							<!-- FIN MENU USUARIOS formadores -->
 
 						<?php
-                        }
-                    }
-                    ?>					
+					    }
+					}
+?>					
 
 				</ul>
 
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<?php echo ucwords($_SESSION['usuario']); ?>
+						<?php print ucwords($_SESSION['usuario']); ?>
 						</a>
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="../registro/cambio_clave.php" class="nav-link" onClick="salida()" title="Modificar contraseña">
