@@ -121,16 +121,8 @@ if (isset($_POST['operacion'])) {
             $id_solicitante = $_POST['id_solicitante'];
             $id_proyecto    = $_POST['id_proyecto'];
 
-            mysqli_query(
-                $con,
-                "DELETE t2
-                FROM solicitantes t1
-                INNER JOIN rel_proyectos_solicitantes t2 ON t1.id_solicitante = t2.id_solicitante
-                WHERE t1.id_solicitante = $id_solicitante AND id_proyecto = $id_proyecto"
-            );
-
-            // SETEAR SOLICITANTE PARA QUE SEA TITULAR
-            mysqli_query($con, "UPDATE solicitantes set id_responsabilidad = 1 WHERE id_solicitante = $id_solicitante");
+            mysqli_query($con, "DELETE FROM rel_proyectos_solicitantes WHERE id_solicitante = $id_solicitante AND id_proyecto = $id_proyecto") 
+            or die("Error en la eliminacion Rel-proyectos-solicitantes");
 
             $mensaje =
                 '<div class="alert alert-warning alert-dismissible">
@@ -147,30 +139,24 @@ echo $mensaje;
 function agregar($con, $id_proyecto, $id_solicitante)
 {
     // SETEAR SOLICITANTE PARA QUE SEA ASOCIADO
-    mysqli_query($con, "UPDATE solicitantes 
-    SET id_responsabilidad = 0 
-    WHERE id_solicitante = $id_solicitante");
+    mysqli_query($con, "INSERT INTO rel_proyectos_solicitantes (id_proyecto, id_solicitante, id_responsabilidad) 
+        VALUES ($id_proyecto, $id_solicitante, 0)") or die("Error en la insercion Rel-Solic-Proyectos");
 
     // DATOS INICIALIZADOS PARA EL SOLICITANTE 
 
-    $id_medio       = 6;                // OTRO MEDIO
-    $id_programa    = 1;                // JOVENES EMPRENDEDORES
-    $id_rubro       = 30;               // AGROINDUSTRIA
-    $id_empresa     = 0;                // EMPRESA RESETEADA
-    $id_entidad     = 0;                // ENTIDAD RESETEADA
-    $funciona       = 0;                // NO FUNCIONA - TIENE QUE CARGAR DATOS DE LA EMPRESA
-    $observaciones  = 'Completar ';     // RESEÑA DEL PROYECTO
+    // $id_medio       = 6;                // OTRO MEDIO
+    // $id_programa    = 1;                // JOVENES EMPRENDEDORES
+    // $id_rubro       = 30;               // AGROINDUSTRIA
+    // $id_empresa     = 0;                // EMPRESA RESETEADA
+    // $id_entidad     = 0;                // ENTIDAD RESETEADA
+    // $funciona       = 0;                // NO FUNCIONA - TIENE QUE CARGAR DATOS DE LA EMPRESA
+    // $observaciones  = 'Completar ';     // RESEÑA DEL PROYECTO
 
     // AGREGA DATOS AL REGISTRO DEL SOLICITANTE
 
-    mysqli_query($con, "INSERT INTO registro_solicitantes (id_solicitante, id_rubro, id_medio, id_programa, id_entidad, observaciones, id_empresa) 
-    VALUES ($id_solicitante, $id_rubro, $id_medio, $id_programa, $id_entidad, '$observaciones', $id_empresa)") or
-        die("Error en la insercion registro_solicitantes");
-
-    // DATOS DEL PROYECTO 
-
-    mysqli_query($con, "INSERT INTO rel_proyectos_solicitantes (id_proyecto,id_solicitante) 
-    VALUES ($id_proyecto, $id_solicitante)") or die("Error en la insercion Rel-Solic-Proyectos");
+    // mysqli_query($con, "INSERT INTO registro_solicitantes (id_solicitante, id_rubro, id_medio, id_programa, id_entidad, observaciones, id_empresa) 
+    // VALUES ($id_solicitante, $id_rubro, $id_medio, $id_programa, $id_entidad, '$observaciones', $id_empresa)") or
+    //     die("Error en la insercion registro_solicitantes");
 }
 
 ?>
@@ -197,20 +183,20 @@ function agregar($con, $id_proyecto, $id_solicitante)
 
             if ($id_proyecto > 0) {       // SE GUARDARON DATOS EN LA "TABLA PROYECTOS"
 
-                $resultado = mysqli_query($con, "SELECT sol.*, loc.nombre as ciudad, dep.id as id_departamento, dep.nombre as departamento, responsabilidad
+                $resultado = mysqli_query($con, "SELECT sol.*, loc.nombre as ciudad, dep.id as id_departamento, dep.nombre as departamento, responsabilidad, rel.id_responsabilidad AS id_res
                     FROM solicitantes sol, localidades loc, departamentos dep, tipo_responsabilidad respo, rel_proyectos_solicitantes rel
                     WHERE loc.id = sol.id_ciudad and loc.departamento_id = dep.id and rel.id_solicitante = sol.id_solicitante
-                    AND sol.id_responsabilidad = respo.id_responsabilidad and rel.id_proyecto = $id_proyecto
-                    ORDER BY id_responsabilidad Desc, apellido Asc ");
+                    AND rel.id_responsabilidad = respo.id_responsabilidad and rel.id_proyecto = $id_proyecto
+                    ORDER BY rel.id_responsabilidad Desc, apellido Asc ");
             } else {                      // TODAVIA NO SE GUARDARON DATOS EN LA "TABLA PROYECTOS"
 
-                $resultado = mysqli_query($con, "SELECT sol.*, loc.nombre as ciudad, dep.id as id_departamento, dep.nombre as departamento, responsabilidad
+                $resultado = mysqli_query($con, "SELECT sol.*, loc.nombre as ciudad, dep.id as id_departamento, dep.nombre as departamento, responsabilidad, rel.id_responsabilidad AS id_res
                     FROM solicitantes sol 
                     INNER JOIN localidades loc ON loc.id = sol.id_solicitante
                     INNER JOIN departamentos dep ON dep.id = loc.departamento_id
-                    INNER JOIN tipo_responsabilidad respo ON respo.id_responsabilidad = sol.id_responsabilidad
+                    INNER JOIN tipo_responsabilidad respo ON respo.id_responsabilidad = rel.id_responsabilidad
                     WHERE sol.id_solicitante = $id_solicitante
-                    ORDER BY id_responsabilidad DESC, apellido ASC ");
+                    ORDER BY rel.id_responsabilidad DESC, apellido ASC ");
             }
 
             while ($fila = mysqli_fetch_array($resultado)) {
@@ -218,7 +204,7 @@ function agregar($con, $id_proyecto, $id_solicitante)
             <tr>
                 <td>
                     <?php
-                        if ($fila['id_responsabilidad'] == 0) {
+                        if ($fila['id_res'] == 0) {
                         ?>
                     <a href="javascript:void(0)" onclick="borrar_solicitante('<?php echo $fila['id_solicitante'] ?>', '<?php echo ucwords($fila['apellido']) . ', ' . ucwords($fila['nombres']) ?>')">
                         <i class="fas fa-trash text-danger" title="Desvincular del proyecto"></i>

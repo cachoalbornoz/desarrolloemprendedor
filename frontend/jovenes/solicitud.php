@@ -64,7 +64,7 @@ if ($registro = mysqli_fetch_array($tabla)) {
 
     $id_proyecto = mysqli_insert_id($con);
 
-    mysqli_query($con, "INSERT INTO rel_proyectos_solicitantes (id_proyecto,id_solicitante) VALUES ($id_proyecto, $id_solicitante)");
+    mysqli_query($con, "INSERT INTO rel_proyectos_solicitantes (id_proyecto, id_solicitante, id_responsabilidad) VALUES ($id_proyecto, $id_solicitante, 1)");
 
     // INICIALIZO VARIABLES DEL PROYECTO
     $denominacion           = '';
@@ -398,12 +398,12 @@ $_SESSION['id_proyecto'] = $id_proyecto;
                     <label>Ingrese aspectos de los productos y/o servicios; producción de los mismos</label>
                     <select id="lugardesarrollo" name="lugardesarrollo" class="form-control select2">
                         <option value="0" <?php if ($lugardesarrollo == 0) {
-    print 'selected';
-} ?>>Alquilado / Arrendado
+                            print 'selected';
+                        } ?>>Alquilado / Arrendado
                         </option>
                         <option value="1" <?php if ($lugardesarrollo == 1) {
-    print 'selected';
-} ?>>Propio
+                            print 'selected';
+                        } ?>>Propio
                         </option>
                     </select>
 
@@ -719,15 +719,15 @@ $_SESSION['id_proyecto'] = $id_proyecto;
                     <label> Rubro productivo de interés </label>
                     <select id="id_rubro" name="id_rubro" size="1" class="form-control" readonly>
                         <?php
-                        $registro = mysqli_query($con, 'select id_rubro, rubro from tipo_rubro_productivos order by rubro');
-                        while ($fila = mysqli_fetch_array($registro)) {
-                            if ($id_rubro == $fila[0]) {
-                                print '<option value="' . $fila[0] . '" selected>' . $fila[1] . "</option>\n";
-                            } else {
-                                print '<option value="' . $fila[0] . '">' . $fila[1] . "</option>\n";
-                            }
-                        }
-                        ?>
+                                                $registro = mysqli_query($con, 'select id_rubro, rubro from tipo_rubro_productivos order by rubro');
+while ($fila = mysqli_fetch_array($registro)) {
+    if ($id_rubro == $fila[0]) {
+        print '<option value="' . $fila[0] . '" selected>' . $fila[1] . "</option>\n";
+    } else {
+        print '<option value="' . $fila[0] . '">' . $fila[1] . "</option>\n";
+    }
+}
+?>
                     </select>
                 </div>
             </div>
@@ -738,15 +738,15 @@ $_SESSION['id_proyecto'] = $id_proyecto;
                     <select name="id_medio" id="id_medio" size="1" class="form-control" readonly>
                         <?php
 
-                        $registro = mysqli_query($con, 'select id_medio, medio from tipo_medios_contacto');
-                        while ($fila = mysqli_fetch_array($registro)) {
-                            if ($id_medio == $fila[0]) {
-                                print '<option value="' . $fila[0] . '" selected>' . $fila[1] . "</option>\n";
-                            } else {
-                                print '<option value="' . $fila[0] . '">' . $fila[1] . "</option>\n";
-                            }
-                        }
-                        ?>
+$registro = mysqli_query($con, 'select id_medio, medio from tipo_medios_contacto');
+while ($fila = mysqli_fetch_array($registro)) {
+    if ($id_medio == $fila[0]) {
+        print '<option value="' . $fila[0] . '" selected>' . $fila[1] . "</option>\n";
+    } else {
+        print '<option value="' . $fila[0] . '">' . $fila[1] . "</option>\n";
+    }
+}
+?>
                     </select>
                 </div>
             </div>
@@ -756,15 +756,15 @@ $_SESSION['id_proyecto'] = $id_proyecto;
                     <label> Programa registrado </label>
                     <select name="id_programa" id="id_programa" size="1" class="form-control" readonly>
                         <?php
-                        $registro = mysqli_query($con, 'select id_programa, programa from tipo_programas');
-                        while ($fila = mysqli_fetch_array($registro)) {
-                            if ($id_programa == $fila[0]) {
-                                print '<option value="' . $fila[0] . '" selected>' . $fila[1] . "</option>\n";
-                            } else {
-                                print '<option value="' . $fila[0] . '">' . $fila[1] . "</option>\n";
-                            }
-                        }
-                        ?>
+$registro = mysqli_query($con, 'select id_programa, programa from tipo_programas');
+while ($fila = mysqli_fetch_array($registro)) {
+    if ($id_programa == $fila[0]) {
+        print '<option value="' . $fila[0] . '" selected>' . $fila[1] . "</option>\n";
+    } else {
+        print '<option value="' . $fila[0] . '">' . $fila[1] . "</option>\n";
+    }
+}
+?>
                     </select>
                 </div>
             </div>

@@ -66,9 +66,7 @@ if ($captcha_success->success) {
     $funciona       = 0;                // NO FUNCIONA - TIENE QUE CARGAR DATOS DE LA EMPRESA
     $observaciones  = 'COMPLETE';       // RESEÑA DEL PROYECTO
 
-    mysqli_query(
-        $con,
-        "INSERT INTO registro_solicitantes (id_solicitante, id_rubro, id_medio, id_programa, observaciones, id_empresa, id_entidad) 
+    mysqli_query($con, "INSERT INTO registro_solicitantes (id_solicitante, id_rubro, id_medio, id_programa, observaciones, id_empresa, id_entidad) 
         VALUES ($id_solicitante, $id_rubro, $id_medio, $id_programa, '$observaciones', $id_empresa, $id_entidad)"
     ) or die('Error en la insercion registro_solicitantes');
 
