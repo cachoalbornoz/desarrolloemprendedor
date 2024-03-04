@@ -38,8 +38,8 @@
 	<div class="container">
 
 		<div class="row pb-3">
-			<div class="col-xs-4 col-md-3 col-lg-3 text-center">
-				<img src="/desarrolloemprendedor/public/imagenes/cabecera.png" class=" img-fluid" />
+			<div class="col-xs-4 col-md-4 col-lg-4 text-center">
+				<img src="/desarrolloemprendedor/public/imagenes/cabecera2024.png" class=" img-fluid" />
 			</div>
 			<div class="col-xs-8 col-md-9 col-lg-9 text-center">
 			</div>

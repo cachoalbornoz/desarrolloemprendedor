@@ -2,7 +2,7 @@
     <div id="contactoModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header btn-secretaria-2024 text-white-50">
                     <div class="modal-title text-center">
                         Secretaria de Desarrollo Económico y Emprendedor
                     </div>

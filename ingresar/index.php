@@ -43,7 +43,7 @@ $con = conectar();
 
                     <div class="row mb-3">
                         <div class="col-xs-12 col-md-12 col-lg-12">
-                            <input type="hidden" name="_token" value="<?php echo md5(time()); ?>">
+                            <input type="hidden" name="_token" value="<?php print md5(time()); ?>">
                             &nbsp;
                         </div>
                     </div>
@@ -57,7 +57,7 @@ $con = conectar();
 
                     <div class="row mb-3">
                         <div class="col-xs-12 col-md-12 col-lg-12">
-                            <input type="submit" class="btn btn-info btn-block" id="ingresar" value="INGRESAR" />
+                            <input type="submit" class="btn btn-secretaria-2024 btn-block" id="ingresar" value="INGRESAR" />
                         </div>
                     </div>
 
@@ -71,9 +71,9 @@ $con = conectar();
 </div>
 
 
-<?php 
+<?php
 
-require $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/frontend/accesorios/front-scripts.php'; 
+require $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/frontend/accesorios/front-scripts.php';
 
 mysqli_close($con);
 

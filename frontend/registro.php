@@ -7,9 +7,9 @@ $con = conectar();
 
 <form name="formsolicitante" id="formsolicitante" autocomplete="false" action='agregar_solicitantes.php' method="post">
 
-    <div class="card mb-2">
+    <div class="card mb-5">
 
-        <div class="card-header bg-info text-white">
+        <div class="card-header btn-secretaria-2024 text-white">
 
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-lg-6 p-3">
@@ -145,11 +145,11 @@ $con = conectar();
                         <option value="" disabled selected></option>
                         <?php
                         $departamentos = 'SELECT id, nombre FROM departamentos WHERE provincia_id = 7 ORDER BY nombre';
-                        $registro      = mysqli_query($con, $departamentos);
-                        while ($fila = mysqli_fetch_array($registro)) {
-                            print '<option value="' . $fila[0] . '-id_ciudad' . '">' . $fila[1] . "</option>\n";
-                        }
-                        ?>
+$registro                              = mysqli_query($con, $departamentos);
+while ($fila = mysqli_fetch_array($registro)) {
+    print '<option value="' . $fila[0] . '-id_ciudad' . '">' . $fila[1] . "</option>\n";
+}
+?>
                     </select>
                 </div>
                 <div class="col-xs-12 col-md-6 col-lg-6 p-3">
@@ -190,13 +190,13 @@ $con = conectar();
                 </div>
             </div>
 
-            <div class="row mb-3">
+            <div class="row mb-5">
                 <div class="col-xs-12 col-sm-6 col-lg-6 mt-3">
                     <div class="g-recaptcha" data-sitekey="6LdxcnUUAAAAAM5R_2E_NknVIft2KxtIiEoJNx3h"></div>
                 </div>
 
                 <div class="col-xs-12 col-sm-6 col-lg-6 align-self-center mt-3">
-                    <input id="btnguardar" type="submit" class="btn btn-info btn-block" value='Registrarme' />
+                    <input id="btnguardar" type="submit" class="btn btn-secretaria-2024 btn-block" value='Registrarme' />
                 </div>
             </div>
 

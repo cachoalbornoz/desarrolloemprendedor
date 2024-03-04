@@ -1,6 +1,8 @@
-<?php include $_SERVER['DOCUMENT_ROOT'] .'/desarrolloemprendedor/accesorios/header.php' ; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/accesorios/header.php'; ?>
 		
-		<?php include $_SERVER['DOCUMENT_ROOT'] .'/desarrolloemprendedor/accesorios/programas_desarrollo.php' ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/accesorios/programas_desarrollo.php'; ?>
+
+<div class="container">
 		
 		<div class="row">
 			<div class="col">
@@ -124,10 +126,11 @@
 			</div>
 		</div>
 			
+	</div>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] .'/desarrolloemprendedor/accesorios/script.php' ; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/accesorios/script.php'; ?>
 
-<?php include $_SERVER['DOCUMENT_ROOT'] .'/desarrolloemprendedor/accesorios/footer.php' ; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/accesorios/footer.php'; ?>
 		
 
 		

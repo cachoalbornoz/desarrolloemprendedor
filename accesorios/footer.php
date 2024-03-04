@@ -1,55 +1,45 @@
+    <div class="container mb-5">
+
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-lg-12">
-                <hr>
+            <div class="col-xs-12 col-sm-6 col-lg-6">
+                
             </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-lg-12">
+            <div class="col-xs-12 col-sm-6 col-lg-6">
                 CONTACTO
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-lg-12">
-                <br>
+        <div class="row mt-1 mb-1">
+            <div class="col-xs-12 col-sm-6 col-lg-6">
+                
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-6">
+            Secretaría de Desarrollo Productivo y Emprendedor
             </div>
         </div>
-        <div class="row">    
-            <div class="col-xs-12 col-sm-12 col-lg-6">
-                Secretaría de Desarrollo Económico y Emprendedor <br/>
-            
-                <a href="https://www.facebook.com/desarrolloemprendedorer/" target="_blank" class="text-muted" title="Desarrollo Emprendedor | Facebook">
-                    <i class="fab fa-facebook-f"></i> Facebook
-                </a> 
-                &nbsp;
-                <a href="https://www.instagram.com/economicoemprendedor.er/" target="_blank" class=" text-muted">
-                    <i class="fab fa-instagram"></i> Instagram
-                </a>
-                &nbsp;
-                <a href="https://www.youtube.com/channel/UCy0W_lkT1z66MrRN4FA9qAg" target="_blank"  class=" text-muted">
-                    <i class="fab fa-youtube"></i> Youtube
-                </a>
-            </div>
-            <div class="col-12 col-sm-12 col-lg-6">
-                Cervantes 69 - Paraná (3100) / Entre Ríos <br/>
-                Laprida 465 Planta Baja - Paraná (3100) / Entre Ríos
-            </div>
-        </div>
-
-        <div class="row">
-        <div class="col-xs-12 col-sm-12 col-lg-6">                
-                (343)4840964 / Jóvenes Emprendedores (343)4840681
-            </div>
-            <div class="d-none d-lg-block col-lg-6">
-                <i class="fas fa-envelope text-black-50"></i> economicoemprendedorer@gmail.com
-            </div>
-        </div>        
         
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-lg-12">
-                &nbsp;
+            <div class="col-xs-12 col-sm-6 col-lg-6">
+                
+            </div>
+            <div class="col-xs-12 col-sm-6 col-lg-6">
+                Secretaría (343)4840356 / Jóvenes Emprendedores (343)4840964
             </div>
         </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-6">                
+            </div>
+            <div class="col-xs-12 col-sm-12 col-lg-6">
+                Cervantes 69 - Paraná (3100) / Entre Ríos
+            </div>
+        </div>
+    </div>
 
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col-xs-12 col-sm-12 col-lg-12">
+                <img src="/desarrolloemprendedor/public/imagenes/footer-2024.png" class="img-fluid" />
+            </div>
+        </div>
     </div>
 
 </body>

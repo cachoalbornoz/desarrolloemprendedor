@@ -122,7 +122,7 @@ if ($captcha_success->success) {
     $titulo  = 'Consulta del Programa Asesorar ';
     $mensaje = 'Hemos recibido tu consulta. Gracias ' . $nombres . ', ' . $apellido . '. <br> </br> ';
     $mensaje .= '<hr> <br>Saludos ';
-    $logo = $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/public/imagenes/cabecera.png';
+    $logo = $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/public/imagenes/cabecera2024.png';
 
     //$envio = enviar($email, $titulo, $nombres, $mensaje, $logo);
 

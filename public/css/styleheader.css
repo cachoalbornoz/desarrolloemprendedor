@@ -4,32 +4,64 @@
 }
 
 @font-face {
-    font-family:'Avenir Next';
+    font-family: 'Avenir Next';
     src: local('Avenir'), url('/desarrolloemprendedor/public/font/Avenir_95_Black.ttf');
 }
 
 @font-face {
-    font-family:'Round';
+    font-family: 'Round';
     src: local('Round'), url('/desarrolloemprendedor/public/font/ROUND_PRO.OTF');
 }
 
-body {  
-    font-family: 'DINPro-Regular' !important;  
-    padding-top: 70px; 
+@font-face {
+    font-family: 'Gothan-Regular';
+    src: local('Gothan-Regular'), url('/desarrolloemprendedor/public/font/gothan/GothamNarrow-Book.otf');
+}
+
+@font-face {
+    font-family: 'Gothan-Bold';
+    src: local('Gothan-Bold'), url('/desarrolloemprendedor/public/font/gothan/GothamNarrow-Black.otf');
+}
+
+
+
+body {
+    font-family: 'Gothan-Regular' !important;
+    padding-top: 70px;
+}
+
+.container-fluid {
+    padding: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.btn-secretaria-2024 {
+    background-color: #88B64C;
+    border-color: #DFDEDE;
+}
+
+.gothan {
+    font-family: 'Gothan-Regular' !important;
+    font-style: normal;
+}
+
+.gothan-black {
+    font-family: 'Gothan-Black';
 }
 
 .favenir {
-    font-family: 'Avenir Next' !important;;
+    font-family: 'Avenir Next' !important;
     font-style: normal;
 }
 
 .dinopro {
-    font-family: 'DINPro-Regular' !important; 
+    font-family: 'DINPro-Regular' !important;
     font-style: normal;
 }
 
-.roundpro{
-    font-family: 'Round' !important; 
+.roundpro {
+    font-family: 'Round' !important;
     font-style: normal;
 }
 
@@ -47,8 +79,9 @@ body {
     text-transform: lowercase;
 }
 
-.dropdown-menu.show .dropdown-item:hover, .dropdown-menu.show .dropdown-item:focus {
-    color: #58595a  ; 
+.dropdown-menu.show .dropdown-item:hover,
+.dropdown-menu.show .dropdown-item:focus {
+    color: #58595a;
 }
 
 .jumbotron {
@@ -56,16 +89,17 @@ body {
     padding-bottom: 10px !important;
 }
 
-.text-black-75{
-    color: #333333  ; 
+.text-black-75 {
+    color: #333333;
 }
 
 .navbar-top {
     background-color: transparent !important;
 }
+
 .navbar-top .nav-item>a:hover,
 .navbar-top .nav-item>a:focus {
-  background-color: #e0e0e0;
+    background-color: #e0e0e0;
 }
 
 /* TextArea sin posibilidad de redimension */
@@ -78,15 +112,16 @@ textarea {
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* Firefox */
 input[type=number] {
-  -moz-appearance: textfield;
+    -moz-appearance: textfield;
 }
 
-.nav-opacity{
-    opacity: 0.85 !important;;
+.nav-opacity {
+    opacity: 0.85 !important;
+    ;
 }
