@@ -14,8 +14,8 @@ $id_rubro               = $_POST['id_rubro'];
 $nro_expediente_madre   = $_POST['nro_expediente_madre'];
 $nro_expediente_control = $_POST['nro_expediente_control'];
 $id_localidad           = $_POST['id_localidad'];
-$latitud                = $_POST['latitud'];
-$longitud               = $_POST['longitud'];
+$latitud                = (strlen($_POST['latitud']) > 0) ? $_POST['latitud'] : 0;
+$longitud               = (strlen($_POST['longitud']) > 0) ? $_POST['latitud'] : 0;
 $monto                  = $_POST['monto'];
 $fecha_otorgamiento     = $_POST['fecha_otorgamiento'];
 
@@ -34,6 +34,7 @@ $rows              = mysqli_num_rows($query_expedientes);
 if ($rows == 0) {
     $inserta = "INSERT INTO expedientes (nro_proyecto, id_rubro, nro_exp_madre, nro_exp_control, id_localidad, latitud, longitud, monto, fecha_otorgamiento, observaciones, estado, saldo, id_proyecto) 
     VALUES ($nro_proyecto, $id_rubro, $nro_expediente_madre, $nro_expediente_control, $id_localidad, $latitud, $longitud, $monto, '$fecha_otorgamiento', '$observaciones', 1, $monto, $nro_proyecto)";
+
     $resultado     = mysqli_query($con, $inserta) or die($inserta);
     $id_expediente = mysqli_insert_id($con);
 } else {
