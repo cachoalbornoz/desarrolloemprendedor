@@ -1,5 +1,7 @@
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/accesorios/header.php'; ?>
 
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/accesorios/copete.php'; ?>
+
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/accesorios/programas_desarrollo.php'; ?>
 
 

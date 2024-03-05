@@ -1,16 +1,5 @@
-<div class="container">        
-
-    <div class="row mb-5">
-        <div class="col-xs-12 col-md-4 col-lg-4 text-center">
-            <img src="/desarrolloemprendedor/public/imagenes/cabecera2024.png" class=" img-fluid" />
-        </div>
-        <div class="col-xs-12 col-md-4 col-lg-4 text-center">
-        </div>
-        <div class="col-xs-12 col-md-4 col-lg-4 text-right pt-5">
-            MINISTERIO DE <strong> DESARROLLO ECONÓMICO </strong>
-        </div>
-    </div>
-
+<div class="container"> 
+    
     <nav id="navbar_top" class="navbar navbar-expand-lg navbar-light bg-light pb-3 navbar-top">
         <a id="navbar_top-brand" class="navbar-brand d-none" href="#">
             <img src="/desarrolloemprendedor/public/imagenes/favicon.ico" alt="logo" style=" width:40px">

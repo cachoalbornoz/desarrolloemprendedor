@@ -59,7 +59,7 @@ if (!isset($_SESSION['usuario'])) {
 		<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
 
 			<a class="navbar-brand" href="#">
-				<img src="/desarrolloemprendedor/public/imagenes/logo_er.png" alt="" style=" width:40px">
+				<img src="/desarrolloemprendedor/public/imagenes/favicon.ico" alt="" style=" width:40px">
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
