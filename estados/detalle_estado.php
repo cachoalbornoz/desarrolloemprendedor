@@ -25,20 +25,22 @@ if(isset($_POST['operacion'])) {
             VALUES ('$fecha', '$fecha_prorroga', $id_expediente, $id_tipo_estado, $id_tipo_estado_ant)";
         mysqli_query($con, $insercion);
 
-        $edicion = mysqli_query($con, "UPDATE expedientes SET estado = $id_tipo_estado WHERE id_expediente = $id_expediente");
+        mysqli_query($con, "UPDATE expedientes SET estado = $id_tipo_estado WHERE id_expediente = $id_expediente");
 
     } else {
 
         if($operacion == 2) {
 
-            $seleccion          = mysqli_query($con, "SELECT id_tipo_estado_ant FROM expedientes_estados WHERE id_expediente = $id_expediente ORDER BY fecha desc limit 1");
+            $seleccion          = mysqli_query($con, "SELECT id_tipo_estado_ant FROM expedientes_estados 
+                WHERE id_expediente = $id_expediente 
+                ORDER BY fecha desc limit 1");
             $fila_estado        = mysqli_fetch_array($seleccion);
-            $id_tipo_estado_ant = $fila_estado[0];
-            $id                 = $_POST['id'];
-            $elimina            = "DELETE FROM expedientes_estados WHERE id_estado = $id";
-            mysqli_query($con, $elimina);
+            $id_tipo_estado_ant = $fila_estado['id_tipo_estado_ant'];
+            
+            $id           = $_POST['id'];
+            mysqli_query($con, "DELETE FROM expedientes_estados WHERE id_estado = $id");
 
-            $edicion = mysqli_query($con, "UPDATE expedientes SET estado = $id_tipo_estado_ant WHERE id_expediente = $id_expediente");
+            mysqli_query($con, "UPDATE expedientes SET estado = $id_tipo_estado_ant WHERE id_expediente = $id_expediente");
         }
     }
 }
@@ -69,11 +71,11 @@ while($fila = mysqli_fetch_array($tabla_estados)) { ?>
             </div>
             <div class="col-xs-12 col-sm-12 col-lg-3">
 
-                <?php 
-                    if(isset($fila['fecha_prorroga'])){
-                        print date('d-m-Y', strtotime($fila['fecha_prorroga'])); 
+                <?php
+                    if(isset($fila['fecha_prorroga'])) {
+                        print date('d-m-Y', strtotime($fila['fecha_prorroga']));
                     }
-                ?>
+    ?>
 
             </div>
             <div class="col-xs-12 col-sm-12 col-lg-3 text-center">

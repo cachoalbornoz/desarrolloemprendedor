@@ -26,7 +26,6 @@ require '../accesorios/admin-superior.php';
         </div>
     </div>
 
-
 <?php
     require_once('../accesorios/admin-scripts.php'); ?>
 

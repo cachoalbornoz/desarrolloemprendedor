@@ -52,11 +52,13 @@ if ($registro = mysqli_fetch_array($tabla)) {
                     <select name="id_tipo_estado" size="1" id="id_tipo_estado" class="form-control">
                         <option value = "0" disabled selected>Seleccione ... </option>
                         <?php
-                        $registro = mysqli_query($con, 'SELECT * FROM tipo_estado where id_estado < 20 order by estado asc');
-while($fila = mysqli_fetch_array($registro)) {
-    print '<option value=' . $fila[0] . '>' . $fila[1] . '</option>';
-}
-?>
+                        $registro = mysqli_query($con, 'SELECT * FROM tipo_estado 
+                            WHERE id_estado < 20 and id_estado <> 0
+                            ORDER BY estado asc');
+                        while($fila = mysqli_fetch_array($registro)) {
+                        print '<option value=' . $fila[0] . '>' . $fila[1] . '</option>';
+                        }
+                        ?>
                     </select>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-lg-3">
@@ -92,17 +94,23 @@ require_once '../accesorios/admin-scripts.php'; ?>
         let fecha           = document.getElementById('fecha').value
         let fecha_prorroga  = document.getElementById('fecha_prorroga').value
         let id_tipo_estado  = document.getElementById('id_tipo_estado').value
+
+        if(fecha != 0 && fecha_prorroga !=0 && id_tipo_estado !=0){
                 
-        $("#detalle_estado").load('detalle_estado.php', {operacion:1, fecha, fecha_prorroga, id_tipo_estado})
-        document.getElementById("fecha").value = ''
-        document.getElementById("fecha_prorroga").value = ''
-        document.getElementById("id_tipo_estado").value = 0
+            $("#detalle_estado").load('detalle_estado.php', {operacion:1, fecha, fecha_prorroga, id_tipo_estado})
+            document.getElementById("fecha").value = ''
+            document.getElementById("fecha_prorroga").value = ''
+            document.getElementById("id_tipo_estado").value = 0
+        }else{
+            toastr.options = { "progressBar": true, "showDuration": "3000", "timeOut": "3000" };
+            toastr.success("&nbsp;", "Verifique Fecha estado, Tipo estado ó Fecha prórroga");            
+        }
     }
     
     function eliminar_estado(id_estado){
         let id = id_estado
         if (confirm("Desea eliminar el estado seleccionado ?")){
-            $("#detalle_estado").load('detalle_estado.php', {operacion:2, id: id})
+            $("#detalle_estado").load('detalle_estado.php', {operacion:2, id})
         }   
     }
     
