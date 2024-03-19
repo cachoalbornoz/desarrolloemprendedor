@@ -2,28 +2,29 @@
 		
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/accesorios/programas_desarrollo.php'; ?>
 
-<div class="container">
+<div class="container mt-5 mb-5">
 		
-		<div class="row">
+		<div class="row mt-5 mb-5">
 			<div class="col">
 				<!-- <img src="/desarrolloemprendedor/public/imagenes/somos.jpeg" class="img-fluid"/> -->
 			</div>
 		</div>	
 		
-		<div class="row m-2">
+		<div class="row mt-5 mb-5">
 			<div class="col-xs-12">
 				<br/>
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="col-xs-12">
-				<h3>SOMOS</h3>
-			</div>
-		</div>
+		<div class="row mt-5 mb-5">
 
-		<div class="row">
-			<div class="col-xs-12">
+			<div class="col-xs-12 mt-3 mb-3">
+				<div class="mt-3 mb-3">
+					<b>SOMOS</b>
+</div>
+			</div>
+		
+			<div class="col-xs-12 mt-3 mb-3">
 				<p class="text-uppercase">
 					La Secretaría es un organismo dependiente del Ministerio de
 					Producción, Turismo y Desarrollo Económico del Gobierno de Entre Ríos,
@@ -35,19 +36,11 @@
 					MiPyMEs entrerrianas.
 				</p>
 			</div>
-		</div>
 		
-		<div class="row">
-			<div class="col-xs-12">
-				<br>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-12">
-				<p>
+			<div class="col-xs-12 mt-3 mb-3">
+				<div class="mt-3 mb-3">
 					<b>¿CÓMO TRABAJA LA SECRETARÍA DE DESARROLLO ECONÓMICO Y EMPRENDEDOR?</b>
-				</p>	
+				</div>	
 				<p>
 					Para la promoción del desarrollo económico y emprendedor provincial,
 					la Secretaría trabaja de manera articulada con los principales actores
@@ -57,11 +50,13 @@
 					local, regional, provincial, nacional e internacional.
 				</p>
 
-				<br>
+			</div>
+			
+			<div class="col-xs-12 mt-3 mb-3">
 
-				<p> 
+				<div class="mt-3 mb-3">
 					<b>¿QUÉ OBJETIVOS TIENE?</b>
-				</p>	
+				</div>	
 				<p>	
 					El objetivo es estimular la actividad económica, la diversificación e
 					integración productiva sustentable, la innovación y la creación de
@@ -72,12 +67,12 @@
 					y la creación de marcos institucionales para la cooperación.
 				</p>
 
-				<br>
+			</div>	
 
-
-				<p>
+			<div class="col-xs-12 mt-3 mb-3">
+				<div class="mt-3 mb-3">
 					<b>¿CÓMO SE COMPONE LA SECRETARÍA?</b>
-				</p>	
+				</div>	
 				<p>	
 					La Secretaría cuenta con dos áreas: la Dirección General de Desarrollo
 					Emprendedor y la Dirección General de Desarrollo Económico
@@ -85,45 +80,36 @@
 
 				</p>
 			</div>
-		</div>
+		
+			<div class="col-xs-12 mt-3 mb-3">
 
-		<div class="row m-5">
-			<div class="col-xs-12">
-				<br/>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-12">
-				<p class="p-2">
+				<div class="mt-3 mb-3">
 					<b>AUTORIDADES</b>
-					<br>
-					<div class="p-2">
-						<b>Secretaría de Desarrollo Económico y Emprendedor:</b> Pedro Gebhart
-					</div>
-					<div class="p-2">
-						<b>Dirección General de Desarrollo Económico Territorial:</b> Oscar H. Bustamante
-					</div>
-					<div class="p-2">
-						<b>Dirección de Información y Planificación Estratégica para el	Desarrollo Económico Territorial: </b> Naír Santana
-					</div>
-					<div class="p-2">
-						<b>Dirección General de Desarrollo Emprendedor:</b> Claudio Rosas Vico
-					</div>
-					<div class="p-2">
-						<b>Dirección de Evaluación y Seguimiento de Proyectos:</b> Cristian Klein
-					</div>
-					<div class="p-2">
-						<b>Dirección de Formación de Competencias Emprendedoras y Capital Emprendedor:</b> Marcelo Tisler
-					</div>
-					<div class="p-2">
-						<b>Dirección de Políticas de Apoyo Emprendedor:</b> María Eugenia Delsart
-					</div>
-					<div class="p-2">
-						<b>Dirección de Asistencia MiPyME:</b> Erika Cardozo
-					</div>
-				</p>
+				</div>
+
+				<div class="p-2">
+					Secretaria de  Desarrollo Productivo y Emprendedor: <b>Paula Vicari</b>
+				</div>
+				<div class="p-2">
+					Dirección de Desarrollo Emprendedor: <b>Evelyn Viganoni</b>
+				</div>
+				<div class="p-2">
+					Dirección de Información para el Desarrollo Económico: <b>Valentina Götte</b>
+				</div>
+				<div class="p-2">
+					Dirección de Asistencia a mi MiPymes: <b>Leonardo Walter</b>
+				</div>
+				<div class="p-2">
+					Coordinación General: <b>Ibel Ibarra</b>
+				</div>
+				<div class="p-2">
+					Coordinación de Evaluación y seguimientos de proyectos: <b>Sebastian Uhrig</b>
+				</div>
+				<div class="p-2">
+					Coordinación de Formación de Competencias Emprendedoras: <b>Valentina Wetzel</b>
+				</div>
 			</div>
+
 		</div>
 			
 	</div>
