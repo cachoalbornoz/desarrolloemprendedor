@@ -6,7 +6,7 @@
 		
 		<div class="row">
 			<div class="col">
-				<img src="/desarrolloemprendedor/public/imagenes/somos.jpeg" class="img-fluid"/>
+				<!-- <img src="/desarrolloemprendedor/public/imagenes/somos.jpeg" class="img-fluid"/> -->
 			</div>
 		</div>	
 		
