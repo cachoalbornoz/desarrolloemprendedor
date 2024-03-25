@@ -43,18 +43,20 @@ function enviar($email, $titulo, $nombres, $mensaje, $logo, $programa = 1){
                 )
             );
         }   
-        
-        $mail->CharSet = 'utf-8';
-        $mail->setFrom('pedrogebhart@entrerios.gov.ar', 'Secretaria de Desarrollo Emprendedor');
-        $mail->addAddress($email, $nombres);  
 
-        if($programa == 1){
-            $mail->addAddress('desarrolloemprendedor@entrerios.gov.ar', 'Programa Jovenes Emprendedores');  
-        }else{
-            if($programa == 4){
-                $mail->addAddress('dir.formacionemprendedora@gmail.com', 'Programa Competencias Emprendedoras');
-            }
-        }
+        $mail->CharSet = 'utf-8';
+        $mail->setFrom('cachoalbornoz@gmail.com', 'Secretaria de Desarrollo Emprendedor');
+        $mail->addAddress($email, $nombres);  
+        $mail->addAddress('desarrolloemprendedor@entrerios.gov.ar', 'Programa Jovenes Emprendedores');  
+        
+
+        // if($programa == 1){
+        //     $mail->addAddress('desarrolloemprendedor@entrerios.gov.ar', 'Programa Jovenes Emprendedores');  
+        // }else{
+        //     if($programa == 4){
+        //         $mail->addAddress('dir.formacionemprendedora@gmail.com', 'Programa Competencias Emprendedoras');
+        //     }
+        // }
         
         $mail->Subject  = $titulo;
 
