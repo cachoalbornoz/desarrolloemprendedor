@@ -1,80 +1,53 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/desarrolloemprendedor/public/libreria/TCPDF-main/examples/tcpdf_include.php';
+require '../accesorios/admin-superior.php';
 
-// create new PDF document
-$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+require_once '../accesorios/accesos_bd.php';
+$con = conectar();
 
-// set document information
-$pdf->SetCreator(PDF_CREATOR);
-$pdf->SetAuthor('Nicola Asuni');
-$pdf->SetTitle('TCPDF Example 001');
-$pdf->SetSubject('TCPDF Tutorial');
-$pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+$query = 'SELECT edc.id_expediente, edc.fecha_vcto, edc.estado
+    FROM expedientes exped
+    INNER JOIN expedientes_detalle_cuotas edc ON exped.id_expediente = edc.id_expediente
+    WHERE exped.estado = 6 AND edc.estado = 0 
+    AND YEAR(edc.fecha_vcto)=YEAR(NOW())
+    AND MONTH(edc.fecha_vcto) = MONTH(NOW()) + 1';
 
-// set default header data
-$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE . ' 001', PDF_HEADER_STRING, [0, 64, 255], [0, 64, 128]);
-$pdf->setFooterData([0, 64, 0], [0, 64, 128]);
+$tabla_prorroga = mysqli_query($con, $query);
 
-// set header and footer fonts
-$pdf->setHeaderFont([PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN]);
-$pdf->setFooterFont([PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA]);
+while($fila_prorroga = mysqli_fetch_array($tabla_prorroga)) {
 
-// set default monospaced font
-$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-
-// set margins
-$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
-
-// set auto page breaks
-$pdf->SetAutoPageBreak(true, PDF_MARGIN_BOTTOM);
-
-// set image scale factor
-$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-
-// set some language-dependent strings (optional)
-if (@file_exists(dirname(__FILE__) . '/lang/eng.php')) {
-    require_once dirname(__FILE__) . '/lang/eng.php';
-    $pdf->setLanguageArray($l);
 }
 
-// ---------------------------------------------------------
+?>
 
-// set default font subsetting mode
-$pdf->setFontSubsetting(true);
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+                AMBIENTE DESARROLLO
+            </div>
+        </div>
+    </div>
 
-// Set font
-// dejavusans is a UTF-8 Unicode font, if you only need to
-// print standard ASCII chars, you can use core fonts like
-// helvetica or times to reduce file size.
-$pdf->SetFont('dejavusans', '', 14, '', true);
+    <div class="card-body">
 
-// Add a page
-// This method has several options, check the source code documentation for more information.
-$pdf->AddPage();
+        <div class="row mt-5 mb-5">
+            <div class="col-xs-12 col-md-12 col-lg-12">
 
-// set text shadow effect
-$pdf->setTextShadow(['enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2, 'color' => [196, 196, 196], 'opacity' => 1, 'blend_mode' => 'Normal']);
+            Testing
+                
+            </div>
+        </div>
 
-// Set some content to print
-$html = <<<EOD
-<h1>Welcome to <a href="http://www.tcpdf.org" style="text-decoration:none;background-color:#CC0000;color:black;">&nbsp;<span style="color:black;">TC</span><span style="color:white;">PDF</span>&nbsp;</a>!</h1>
-<i>This is the first example of TCPDF library.</i>
-<p>This text is printed using the <i>writeHTMLCell()</i> method but you can also use: <i>Multicell(), writeHTML(), Write(), Cell() and Text()</i>.</p>
-<p>Please check the source code documentation and other examples for further information.</p>
-<p style="color:#CC0000;">TO IMPROVE AND EXPAND TCPDF I NEED YOUR SUPPORT, PLEASE <a href="http://sourceforge.net/donate/index.php?group_id=128076">MAKE A DONATION!</a></p>
-EOD;
+    </div>
+</div>
 
-// Print text using writeHTMLCell()
-$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
+<?php require_once '../accesorios/admin-scripts.php'; ?>
 
-// ---------------------------------------------------------
 
-// Close and output PDF document
-// This method has several options, check the source code documentation for more information.
-$pdf->Output('example_001.pdf', 'I');
+<script type="text/javascript">
+    $(document).ready(function() {
+        
+    })    
+</script>
 
-//============================================================+
-// END OF FILE
-//============================================================+
+<?php require_once '../accesorios/admin-inferior.php';

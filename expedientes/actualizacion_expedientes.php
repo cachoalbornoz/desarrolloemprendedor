@@ -84,3 +84,5 @@ while($fila_prorroga = mysqli_fetch_array($tabla_prorroga)) {
     mysqli_query($con, "UPDATE expedientes SET estado = $id_tipo_estado_act WHERE id_expediente = $id_expediente");
 
 }
+
+
