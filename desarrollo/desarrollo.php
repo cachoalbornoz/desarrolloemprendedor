@@ -82,7 +82,6 @@ enviar($email, $titulo, $titular, $mensaje, $logo);
                 
             </div>
         </div>
-
     </div>
 </div>
 

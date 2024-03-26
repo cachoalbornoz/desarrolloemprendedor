@@ -61,7 +61,7 @@ $query       = mysqli_query($con, $sql);
 $totalData   = mysqli_num_rows($query);
 $totalFilter = $totalData;
 
-$sql = "SELECT DISTINCT t1.id_proyecto, t1.id_estado, concat(t4.apellido, ', ', t4.nombres) AS solicitante, t1.denominacion, t2.icono, t1.monto, t5.nombre as localidad, t6.nombre as dpto, t7.resultado_final, dni, t9.tipo as sector, rubro, t8.id_rubro, t5.id as id_localidad, t1.fnovedad as fechan, informe, t1.latitud, t1.longitud, t1.funciona, t7.ultima_fecha as fechae, t11.forma, t12.entidad
+$sql = "SELECT DISTINCT t1.id_proyecto, t1.id_estado, concat(t4.apellido, ', ', t4.nombres) AS solicitante, t1.denominacion, t2.icono, t1.monto, t5.nombre as localidad, t6.nombre as dpto, t7.resultado_final, dni, t9.tipo as sector, rubro, t8.id_rubro, t5.id as id_localidad, t1.fnovedad as fechan, informe, t1.latitud, t1.longitud, t1.funciona, t7.ultima_fecha as fechae, t11.forma, t12.entidad, t4.id_solicitante
 FROM proyectos t1
 INNER JOIN tipo_estado t2 ON t1.id_estado = t2.id_estado
 INNER JOIN rel_proyectos_solicitantes t3 ON t1.id_proyecto = t3.id_proyecto
@@ -255,7 +255,7 @@ while ($row = mysqli_fetch_array($query)) {
     //
 
     $subdata[] = $link_foto;
-    $subdata[] = $row['solicitante'];
+    $subdata[] = '<a href="../personas/registro_edita.php?id_lugar=5&id_solicitante=' . $row['id_solicitante'] . '" title="Editar datos">' . $row['solicitante'] . '</a>';
     $subdata[] = $asociados;
     $subdata[] = '<div style="max-width: 15em; max-height: 5em">' . $row['denominacion'] . '</div>';
     $subdata[] = $row['monto'];
