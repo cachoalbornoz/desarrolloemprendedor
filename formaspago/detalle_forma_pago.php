@@ -238,15 +238,10 @@ if(isset($_POST['operacion'])){
 			<td>
 				<?php echo number_format($fila[8],2,',','.') ?>
 			</td>
-			<td>
-				<?php
-				if($fila[7] == 1){?>
-					<a href='javascript: void(0)' title='Eliminar' onclick="eliminar_cuota('<?php echo $fila[0] ?>')">
-						<i class="fas fa-trash text-danger"></i>
-					</a>
-				<?php
-				}
-				?>
+			<td>				
+				<a href='javascript: void(0)' title='Eliminar' onclick="eliminar_cuota('<?php echo $fila[0] ?>')">
+					<i class="fas fa-trash text-danger"></i>
+				</a>				
 			</td>
 		</tr>
 		<?php  
