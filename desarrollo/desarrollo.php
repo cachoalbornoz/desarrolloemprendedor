@@ -5,27 +5,6 @@ require_once '../accesorios/accesos_bd.php';
 require '../accesorios/mailer.php';
 $con = conectar();
 
-$query = 'SELECT edc.id_expediente, edc.fecha_vcto, edc.estado, emp.apellido, emp.nombres, emp.email
-    FROM expedientes exped
-    INNER JOIN rel_expedientes_emprendedores rel ON exped.id_expediente = rel.id_expediente 
-    INNER JOIN emprendedores emp ON rel.id_emprendedor = emp.id_emprendedor
-    INNER JOIN expedientes_detalle_cuotas edc ON exped.id_expediente = edc.id_expediente
-    WHERE exped.estado = 6 AND edc.estado = 0 
-    AND YEAR(edc.fecha_vcto)=YEAR(NOW())
-    AND MONTH(edc.fecha_vcto) = MONTH(NOW()) + 1
-    AND rel.id_responsabilidad = 1';
-
-$tabla_prorroga = mysqli_query($con, $query);
-
-// Testo de envío de mail
-$email   = 'cachoalbornoz@gmail.com';
-$titulo  = 'Programa Jovenes Emprendedores - Aviso Vcto Prorroga -';
-$titular = 'Guillermo  Albornoz';
-$mensaje = '<br>' . $titular . ' te comentamos x medio de este mail que el período de prórroga ha finalizado y el próximo mes comienzan los vencimientos de cuotas de tu Crédito. Saludos <br>';
-$logo    = null;
-
-enviar($email, $titulo, $titular, $mensaje, $logo);
-
 ?>
 
 <div class="card">
@@ -54,17 +33,45 @@ enviar($email, $titulo, $titular, $mensaje, $logo);
                     </thead>
                     <tbody>
                     <?php
+
+                    $proximo_mes = mes(date('m')+1);
+
+                    $apellido     = "Albornoz";
+                    $nombres      = "Guillermo";
+                    $email        = "cachoalbornoz@gmail.com";
+                    $asunto       = 'Programa Jóvenes Emprendedores - Fin período de prórroga';
+                    $destinatario = "$nombres, $apellido";
+                    $mensaje      = "<p> Estimada/o <strong> $nombres, $apellido </strong> </p> <p> Te informamos que el período de prórroga ha finalizado y el próximo mes de <strong> $proximo_mes </strong> comienzan los vencimientos de cuotas de tu Crédito. </p> <p> Saludos </p>";
+                    $logo         = null;
+
+                    //enviar($email, $asunto, $destinatario, $mensaje, $logo);
+
+                    $query = 'SELECT edc.id_expediente, edc.fecha_vcto, edc.estado, emp.apellido, emp.nombres, emp.email
+                    FROM expedientes exped
+                    INNER JOIN rel_expedientes_emprendedores rel ON exped.id_expediente = rel.id_expediente 
+                    INNER JOIN emprendedores emp ON rel.id_emprendedor = emp.id_emprendedor
+                    INNER JOIN expedientes_detalle_cuotas edc ON exped.id_expediente = edc.id_expediente
+                    WHERE exped.estado = 6 AND edc.estado = 0 
+                    AND YEAR(edc.fecha_vcto)=YEAR(NOW())
+                    AND MONTH(edc.fecha_vcto) = MONTH(NOW()) + 1
+                    AND rel.id_responsabilidad = 1
+                    ORDER BY emp.apellido, emp.nombres';
+
+                    $tabla_prorroga = mysqli_query($con, $query);
+
                     while($registro = mysqli_fetch_array($tabla_prorroga)) {
 
-                        $expediente = $registro['id_expediente'];
-                        $apellido   = $registro['apellido'];
-                        $nombres    = $registro['nombres'];
-                        $email      = $registro['email'];
-                        $titular    = $registro['nombres'] . ', ' . $registro['apellido'];
+                        $expediente   = $registro['id_expediente'];
+                        $apellido     = $registro['apellido'];
+                        $nombres      = $registro['nombres'];
+                        $email        = $registro['email'];
+                        $asunto       = 'Programa Jóvenes Emprendedores - Fin del período de prórroga';
+                        $destinatario = "$nombres, $apellido";
+                        $mensaje      = "<p> Estimada/o <strong> $nombres, $apellido </strong> </p> <p> Te informamos que el período de prórroga ha finalizado y el próximo mes de <strong> $proximo_mes </strong> comienzan los vencimientos de cuotas de tu Crédito. </p> <p> Saludos </p>";
+                        $logo         = null;
 
-                        $titulo  = 'Programa Jovenes Emprendedores - Aviso Vcto Prorroga -';
-                        $mensaje = '<br>' . $titular . ' te comentamos x medio de este mail que el período de prórroga ha finalizado y el próximo mes comienzan los vencimientos de cuotas de tu Crédito. Saludos <br>';
-                        $logo    = null;
+                        // enviar($email, $asunto, $destinatario, $mensaje, $logo);
+
                         ?>
                         <tr>
                             <td><?php print $expediente; ?></td>
@@ -74,7 +81,7 @@ enviar($email, $titulo, $titular, $mensaje, $logo);
                         </tr>
                     <?php
                     }
-?>
+                    ?>
                     </tbody>
                     
                     </table>
